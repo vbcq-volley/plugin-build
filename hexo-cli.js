@@ -73605,7 +73605,6 @@ var require_init = __commonJS({
     var spawn_1 = __importDefault3(require_spawn());
     var command_exists_1 = require_command_exists2();
     var ASSET_DIR = (0, path_1.join)(__dirname, "../../assets");
-    console.log(ASSET_DIR)
     var GIT_REPO_URL = "https://github.com/hexojs/hexo-starter.git";
     function initConsole(args) {
       console.log(args);

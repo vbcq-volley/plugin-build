@@ -56057,7 +56057,7 @@ var require_api = __commonJS({
         var path3 = hexo2.base_dir + "_admin-config.yml";
         if (!fs.existsSync(path3)) {
           hexo2.log.d("admin config not found, creating one");
-          fs.writeFile(hexo2.base_dir + "_admin-config.yml", "");
+          fs.writeFileSync(hexo2.base_dir + "_admin-config.yml", "");
           return {};
         } else {
           var settings2 = yml.load(fs.readFileSync(path3));
