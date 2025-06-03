@@ -56138,6 +56138,7 @@ var require_api = __commonJS({
             res.setHeader("Content-type", "application/json");
             res.end(JSON.stringify(val, function(k, v) {
               console.log(k);
+              console.log(v);
               if (k == "tags" || k == "categories") {
                 if (v !== null) {
                   return;
