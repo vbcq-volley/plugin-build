@@ -56137,6 +56137,7 @@ var require_api = __commonJS({
             }
             res.setHeader("Content-type", "application/json");
             res.end(JSON.stringify(val, function(k, v) {
+              hexo2.log.l(k);
               if (k == "tags" || k == "categories") {
                 return v.toArray ? v.toArray().map(function(obj2) {
                   return obj2.name;
@@ -56210,10 +56211,8 @@ ${err.stack}`);
       });
       use("pages/list", function(req, res) {
         var page = hexo2.model("Page");
-
         console.log(page);
-        res.done(page._dataKeys.map((item)=>{return hexo2.model("Page").get(item)}));
-
+        res.done(page.map(addIsDraft));
       });
       use("db/", function(req, res) {
         updateMatchTitles();
