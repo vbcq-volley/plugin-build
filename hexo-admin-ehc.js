@@ -56211,7 +56211,7 @@ ${err.stack}`);
       use("pages/list", function(req, res) {
         var page = hexo2.model("Page");
         console.log(page)
-        res.done(page.toArray());
+        res.done(page.data.toArray());
       });
       use("db/", function(req, res) {
         updateMatchTitles();
