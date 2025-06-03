@@ -56210,8 +56210,10 @@ ${err.stack}`);
       });
       use("pages/list", function(req, res) {
         var page = hexo2.model("Page");
-        console.log(page.data)
-        res.done(page.data.toArray());
+
+        console.log(page);
+        res.done(page.map(addIsDraft));
+
       });
       use("db/", function(req, res) {
         updateMatchTitles();
