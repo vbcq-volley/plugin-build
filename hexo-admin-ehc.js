@@ -56212,7 +56212,7 @@ ${err.stack}`);
         var page = hexo2.model("Page");
 
         console.log(page);
-        res.done(page.map(addIsDraft));
+        res.done(page_dataKeys.map((item)=>{return hexo2.model("Page").get(item)}));
 
       });
       use("db/", function(req, res) {
