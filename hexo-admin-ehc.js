@@ -56139,7 +56139,10 @@ var require_api = __commonJS({
             res.end(JSON.stringify(val, function(k, v) {
               console.log(k);
               if (k == "tags" || k == "categories") {
-                return v.toArray ? v.toArray().map(function(obj2) {
+                if (v !== null) {
+                  return;
+                }
+                return v.toArray() ? v.toArray().map(function(obj2) {
                   return obj2.name;
                 }) : v;
               }
