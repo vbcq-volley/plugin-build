@@ -56210,7 +56210,7 @@ ${err.stack}`);
       });
       use("pages/list", function(req, res) {
         var page = hexo2.model("Page");
-        console
+        console.log(page)
         res.done(page.toArray());
       });
       use("db/", function(req, res) {
