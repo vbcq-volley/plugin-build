@@ -56128,7 +56128,7 @@ var require_api = __commonJS({
         }, hexo2);
       }
       var use = function(path3, fn2) {
-        app.use(hexo2.config.root + "api/" + path3, function(req, res) {
+        app.use(hexo2.config.root + "admin/api/" + path3, function(req, res) {
           hexo2.log.d(`API Request: ${req.method} ${path3}`);
           var done = function(val) {
             if (!val) {
@@ -74904,8 +74904,8 @@ hexo.extend.filter.register("server_middleware", function(app) {
   if (passwordProtected) {
     require_auth()(app, hexo);
   }
-  app.use(hexo.config.root, serveStatic(path.join(__dirname, "www")));
-  app.use(hexo.config.root + "api/", bodyParser.json({ limit: "50mb" }));
+  app.use(hexo.config.root + "admin/", serveStatic(path.join(__dirname, "www")));
+  app.use(hexo.config.root + "admin/api/", bodyParser.json({ limit: "50mb" }));
   api(app, hexo);
 });
 /*! Bundled license information:
