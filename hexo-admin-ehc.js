@@ -56137,7 +56137,7 @@ var require_api = __commonJS({
             }
             res.setHeader("Content-type", "application/json");
             res.end(JSON.stringify(val, function(k, v) {
-              hexo2.log.l(k);
+              console.log(k);
               if (k == "tags" || k == "categories") {
                 return v.toArray ? v.toArray().map(function(obj2) {
                   return obj2.name;
