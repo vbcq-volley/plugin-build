@@ -56140,10 +56140,10 @@ var require_api = __commonJS({
               console.log(k);
               console.log(v);
               if (k == "tags" || k == "categories") {
-                if (v !== null) {
+                if (v === null) {
                   return;
                 }
-                return v.toArray() ? v.toArray().map(function(obj2) {
+                return (v || []).toArray() ? (v || []).toArray().map(function(obj2) {
                   return obj2.name;
                 }) : v;
               }
