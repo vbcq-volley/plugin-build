@@ -56053,7 +56053,7 @@ var require_api = __commonJS({
           categories: cats,
           tags,
           metadata: Object.keys(hexo2.config.metadata || {})
-        }; 
+        };
       }
       function getSettings() {
         var path3 = hexo2.base_dir + "_admin-config.yml";
