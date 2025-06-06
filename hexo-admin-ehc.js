@@ -56072,6 +56072,12 @@ var require_api = __commonJS({
         });
         console.log(cats);
         console.log(tags);
+        if (Object.keys(cats).length === 0) {
+          cats = null;
+        }
+        if (Object.keys(tags).length === 0) {
+          tags = null;
+        }
         return {
           categories: cats,
           tags,
