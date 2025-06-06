@@ -4,9 +4,9 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 
-// node_modules/.pnpm/hexo-pagination@3.0.0/node_modules/hexo-pagination/lib/pagination.js
+// ../../node_modules/hexo-pagination/lib/pagination.js
 var require_pagination = __commonJS({
-  "node_modules/.pnpm/hexo-pagination@3.0.0/node_modules/hexo-pagination/lib/pagination.js"(exports2, module2) {
+  "../../node_modules/hexo-pagination/lib/pagination.js"(exports2, module2) {
     "use strict";
     var { format } = require("util");
     function pagination(base, posts, options = {}) {

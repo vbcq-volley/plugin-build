@@ -4,9 +4,9 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 
-// node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/picocolors.js
+// ../../node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/picocolors.js
 var require_picocolors = __commonJS({
-  "node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/picocolors.js"(exports2, module2) {
+  "../../node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/picocolors.js"(exports2, module2) {
     var p = process || {};
     var argv = p.argv || [];
     var env = p.env || {};
