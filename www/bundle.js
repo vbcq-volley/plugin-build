@@ -466,6 +466,7 @@ class App {
     
     const main = document.createElement('div');
     main.className = 'app_main';
+    main.id=main.className
     app.appendChild(main);
     
     // Attendre que le DOM soit chargé
@@ -5488,9 +5489,9 @@ class Router {
     const handler = this.routes[route] || Posts;
     this.params = params;
     
-    let main = document.querySelector('.app_main');
+    let main = document.querySelector('#app_main');
     while (!main) {
-      main = document.querySelector('.app_main');
+      main = document.querySelector('#app_main');
     }
     main.innerHTML = '';
     
