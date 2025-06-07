@@ -468,16 +468,20 @@ class App {
     main.className = 'app_main';
     main.id=main.className
     app.appendChild(main);
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.appendChild(app);
+    
+    // Attendre que le DOM soit chargé
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementsByTagName('body')[0].appendChild(app);
+        window.addEventListener('hashchange', this.handleRoute.bind(this));
+        this.handleRoute(main);
+      });
+    } else {
+      // Si le DOM est déjà chargé
+      document.getElementsByTagName('body')[0].appendChild(app);
       window.addEventListener('hashchange', this.handleRoute.bind(this));
       this.handleRoute(main);
-    });
-    // Attendre que le DOM soit chargé
-  
-    
-    // Gestion du routage
-   
+    }
   }
   
   handleRoute(div) {
