@@ -480,11 +480,11 @@ class App {
     
     // Gestion du routage
     window.addEventListener('hashchange', this.handleRoute.bind(this));
-    this.handleRoute();
+    this.handleRoute(main);
   }
   
-  handleRoute() {
-    router.handleRoute();
+  handleRoute(div) {
+    router.handleRoute(div);
   }
 }
 
@@ -5477,8 +5477,9 @@ class Router {
     this.params = {};
   }
 
-  init() {
+  init(div) {
     window.addEventListener('hashchange', this.handleRoute.bind(this));
+    this.div=div
     this.handleRoute();
   }
 
@@ -5489,9 +5490,9 @@ class Router {
     const handler = this.routes[route] || Posts;
     this.params = params;
     
-    let main = document.querySelector('#app_main');
+    let main = this.div
     while (!main) {
-      main = document.querySelector('#app_main');
+      main = this.div
     }
     main.innerHTML = '';
     
