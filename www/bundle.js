@@ -5488,7 +5488,10 @@ class Router {
     const handler = this.routes[route] || Posts;
     this.params = params;
     
-    const main = document.querySelector('.app_main');
+    let main = document.querySelector('.app_main');
+    while (!main) {
+      main = document.querySelector('.app_main');
+    }
     main.innerHTML = '';
     
     if (typeof handler === 'function') {
