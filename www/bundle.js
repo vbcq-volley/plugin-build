@@ -468,19 +468,16 @@ class App {
     main.className = 'app_main';
     main.id=main.className
     app.appendChild(main);
-    
-    // Attendre que le DOM soit chargé
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        document.body.appendChild(app);
-      });
-    } else {
+    document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(app);
-    }
+      window.addEventListener('hashchange', this.handleRoute.bind(this));
+      this.handleRoute(main);
+    });
+    // Attendre que le DOM soit chargé
+  
     
     // Gestion du routage
-    window.addEventListener('hashchange', this.handleRoute.bind(this));
-    this.handleRoute(main);
+   
   }
   
   handleRoute(div) {
