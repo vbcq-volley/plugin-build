@@ -425,11 +425,11 @@ deleteEntry : (modelName, index) => delet(`/db/${modelName}/${index}`),
 /**
  * admin menu bar
  */
-const router = require('./router');
+const Router = require('./router');
 
 class App {
-  constructor() {
-    this.initializeApp(document.body);
+  constructor(node) {
+    this.initializeApp(node);
   }
 
   initializeApp(node) {
@@ -475,14 +475,8 @@ class App {
     main.id = 'app_main';
     app.appendChild(main);
     
-    // Initialisation du routage
-    window.addEventListener('hashchange', this.handleRoute.bind(this));
-    const currentHash = window.location.hash.slice(1) || '/posts';
-    this.handleRoute(main, currentHash);
-  }
-  
-  handleRoute(div, hash) {
-    router.handleRoute(div, hash);
+    // Initialisation du router
+    this.router = new Router(main);
   }
 }
 
@@ -2514,11 +2508,10 @@ class Editor {
 module.exports = Editor
 
 },{"./check-grammar":8,"./code-mirror":9,"./config-dropper":10,"./pop-gallery":28,"./rename-file":31,"./rendered":32,"./since-when":38,"codemirror":104,"es6-promise":155,"path":227}],18:[function(require,module,exports){
-var router = require('./app')
+const App = require('./app');
 
 module.exports = function (node) {
-  const vanguard= new router(node)
-  return vanguard
+  return new App(node);
 }
 
 
@@ -5435,7 +5428,6 @@ class Results {
 
 module.exports = new Results()
 },{"./api":3,"./new-result":23,"./rendered":32,"./since-when":38,"lodash":197,"moment":211}],35:[function(require,module,exports){
-const App = require('./app');
 const Post = require('./post');
 const Posts = require('./posts');
 const Page = require('./page');
@@ -5454,7 +5446,8 @@ const result = require("./result");
 const results = require("./results");
 
 class Router {
-  constructor() {
+  constructor(div) {
+    this.div = div;
     this.routes = {
       'posts': Posts,
       'post': Post,
@@ -5475,11 +5468,11 @@ class Router {
     };
     
     this.params = {};
+    this.init();
   }
 
-  init(div) {
+  init() {
     window.addEventListener('hashchange', this.handleRoute.bind(this));
-    this.div=div
     this.handleRoute();
   }
 
@@ -5490,16 +5483,14 @@ class Router {
     const handler = this.routes[route] || Posts;
     this.params = params;
     
-    let main = this.div
-    while (!main) {
-      main = this.div
-    }
-    main.innerHTML = '';
+    if (!this.div) return;
+    
+    this.div.innerHTML = '';
     
     if (typeof handler === 'function') {
       const instance = new handler();
       if (typeof instance.render === 'function') {
-        main.appendChild(instance.render());
+        this.div.appendChild(instance.render());
       }
     }
   }
@@ -5509,9 +5500,9 @@ class Router {
   }
 }
 
-module.exports = new Router();
+module.exports = Router;
 
-},{"./about":2,"./app":5,"./auth-setup":6,"./data":13,"./datas":14,"./deploy":15,"./page":26,"./pages":27,"./post":29,"./posts":30,"./result":33,"./results":34,"./settings":37,"./stade":39,"./stades":40,"./team":41,"./teams":42}],36:[function(require,module,exports){
+},{"./about":2,"./auth-setup":6,"./data":13,"./datas":14,"./deploy":15,"./page":26,"./pages":27,"./post":29,"./posts":30,"./result":33,"./results":34,"./settings":37,"./stade":39,"./stades":40,"./team":41,"./teams":42}],36:[function(require,module,exports){
 // index.js
 var admin = require('./')
   , api = require('./api')
