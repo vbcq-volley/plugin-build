@@ -1499,26 +1499,33 @@ module.exports = DataFetcher;
 
 
 },{"es6-promise":155}],13:[function(require,module,exports){
-var DataFetcher = require('./data-fetcher');
-var api = require('./api');
-var Editor_data = require('./editor-data');
-var _ = require('lodash');
-var moment = require('moment');
+const DataFetcher = require('./data-fetcher');
+const api = require('./api');
+const Editor_data = require('./editor-data');
+const _ = require('lodash');
+const moment = require('moment');
 
 class Data {
   constructor(params) {
     this.params = params;
     this.state = {
-      updated: moment()
+      updated: moment(),
+      data: null
     };
     this.element = null;
-    this.dataFetcher = new DataFetcher((params) => {
-      console.log(params);
-      console.log();
-      return {
-        params: params
-      };
-    });
+    this.dataFetcher = new DataFetcher(this.fetchData.bind(this));
+    this.init();
+  }
+
+  init() {
+    this.state = {
+      data: null
+    };
+  }
+
+  async fetchData() {
+    const params = router.getParams();
+    return await api.getEntry("data", params[0]);
   }
 
   render() {
@@ -1532,6 +1539,26 @@ class Data {
     
     this.element = editor.render();
     return this.element;
+  }
+
+  updateView(div) {
+    if (!this.state.data) {
+      div.textContent = 'Chargement...';
+      return;
+    }
+
+    const content = document.createElement('div');
+    content.className = 'data-content';
+    
+    const title = document.createElement('h2');
+    title.textContent = this.state.data.title;
+    content.appendChild(title);
+
+    const date = document.createElement('p');
+    date.textContent = `Date: ${this.state.data.date}`;
+    content.appendChild(date);
+
+    div.appendChild(content);
   }
 }
 
@@ -1548,138 +1575,69 @@ var Newpage = require('./new-data');
 
 class Datas {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchDatas.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      selected: 0,
-      pages: [],
-      previousPage: null,
-      params: ["match"]
+      datas: [],
+      selected: 0
     };
-    this.element = null;
-    this.dataFetcher = new DataFetcher((params) => {
-      return { "pages": api.getEntries("match") };
-    });
   }
 
-  setState(newState) {
-    this.state = { ...this.state, ...newState };
-    this.render();
-  }
-
-  _onNew(page) {
-    const pages = this.state.pages.slice();
-    pages.unshift(page);
-    this.setState({ pages: pages });
-    window.location.hash = `#/data/${page._id}`;
-  }
-
-  goTo(id, e) {
-    if (e) {
-      e.preventDefault();
-    }
-    window.location.hash = `#/data/${id}`;
+  async fetchDatas() {
+    return await api.getEntries("data");
   }
 
   render() {
-    if (!this.state.pages.length) {
-      const div = document.createElement('div');
-      div.textContent = 'Chargement...';
-      return div;
-    }
-
-    if (this.element) {
-      // Mise à jour des éléments existants
-      const list = this.element.querySelector('.posts_list');
-      if (list) {
-        list.innerHTML = '';
-        this._renderList(list);
-      }
-      return this.element;
-    }
-
     const div = document.createElement('div');
-    div.className = 'posts';
+    div.className = 'datas';
+    
+    this.dataFetcher.getData().then(datas => {
+      this.state.datas = datas;
+      this.updateView(div);
+    });
 
-    const ul = document.createElement('ul');
-    ul.className = 'posts_list';
-    this._renderList(ul);
-    div.appendChild(ul);
-
-    const current = this.state.pages[this.state.selected] || {};
-    const url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/');
-    const rootPath = url.slice(0, url.indexOf('admin')).join('/');
-
-    const displayDiv = document.createElement('div');
-    displayDiv.className = 'posts_display';
-    if (current.isDraft) {
-      displayDiv.className += ' posts_display--draft';
-    }
-
-    const rendered = new Rendered();
-    rendered.className = 'posts_content';
-    rendered.text = JSON.stringify(current);
-    rendered.type = 'match';
-    displayDiv.appendChild(rendered.render());
-
-    div.appendChild(displayDiv);
-    this.element = div;
-    return this.element;
+    return div;
   }
 
-  _renderList(container) {
-    const newPage = new Newpage();
-    newPage.onNew = this._onNew.bind(this);
-    container.appendChild(newPage.render());
+  updateView(div) {
+    if (!this.state.datas) {
+      div.textContent = 'Chargement...';
+      return;
+    }
 
-    this.state.pages.forEach((page, i) => {
+    const container = document.createElement('div');
+    container.className = 'datas-container';
+
+    // Liste des données
+    const list = document.createElement('ul');
+    list.className = 'datas-list';
+    
+    this.state.datas.forEach((data, i) => {
       const li = document.createElement('li');
-      li.className = 'posts_post';
-      if (page.isDraft) {
-        li.className += ' posts_post--draft';
-      }
-      if (i === this.state.selected) {
-        li.className += ' posts_post--selected';
-      }
-
-      li.addEventListener('dblclick', () => this.goTo(page._id));
-      li.addEventListener('click', () => this.setState({ selected: i }));
-
-      const titleSpan = document.createElement('span');
-      titleSpan.className = 'posts_post-title';
-      titleSpan.textContent = page.title;
-      li.appendChild(titleSpan);
-
-      const dateSpan = document.createElement('span');
-      dateSpan.className = 'posts_post-date';
-      dateSpan.textContent = moment(page.date).format('MMM Do YYYY');
-      li.appendChild(dateSpan);
-
-      const permaLink = document.createElement('a');
-      permaLink.className = 'posts_perma-link';
-      permaLink.target = '_blank';
-      permaLink.href = rootPath + '/' + page.path;
-      const permaIcon = document.createElement('i');
-      permaIcon.className = 'fa fa-link';
-      permaLink.appendChild(permaIcon);
-      li.appendChild(permaLink);
-
-      const editLink = document.createElement('a');
-      editLink.className = 'posts_edit-link';
-      editLink.href = `#/data/${page._id}`;
-      const editIcon = document.createElement('i');
-      editIcon.className = 'fa fa-pencil-square-o';
-      editLink.appendChild(editIcon);
-      li.appendChild(editLink);
-
-      const resultLink = document.createElement('a');
-      resultLink.className = 'result add';
-      resultLink.href = `#/resultat/${page._id}`;
-      const resultIcon = document.createElement('i');
-      resultIcon.className = 'fa fa-pencil-square-o';
-      resultLink.appendChild(resultIcon);
-      li.appendChild(resultLink);
-
-      container.appendChild(li);
+      li.className = `data-item ${i === this.state.selected ? 'selected' : ''}`;
+      li.textContent = data.title;
+      li.addEventListener('click', () => {
+        this.state.selected = i;
+        this.updateView(div);
+      });
+      list.appendChild(li);
     });
+
+    container.appendChild(list);
+
+    // Détails de la donnée sélectionnée
+    if (this.state.datas[this.state.selected]) {
+      const details = document.createElement('div');
+      details.className = 'data-details';
+      const data = this.state.datas[this.state.selected];
+      details.textContent = `Date: ${data.date}`;
+      container.appendChild(details);
+    }
+
+    div.appendChild(container);
   }
 }
 
@@ -2561,1253 +2519,636 @@ class Modal {
 module.exports = Modal;
 
 },{}],20:[function(require,module,exports){
+const DataFetcher = require('./data-fetcher');
 const api = require('./api');
 
 class NewData {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.createData.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      showing: false,
-      loading: true,
-      text: 'Untitled',
-      pageType: 'match',
-      team1: '',
-      team2: '',
-      homeDateTime: '',
-      awayDateTime: '',
-      homeLocation: '',
-      awayLocation: '',
-      group: '',
-      team1Score: '',
-      team2Score: '',
-      isForfeit: false,
-      isPostponed: false,
-      matches: [],
-      team: [],
-      selectedMatch: null,
-      matchType: 'home',
-      team1Forfeit: false,
-      team2Forfeit: false,
-      team1Postponed: false,
-      team2Postponed: false,
-      session: 0
+      title: '',
+      content: '',
+      date: '',
+      type: 'match',
+      status: 'scheduled'
     };
-    this.onNew = null;
   }
 
-  _onKeydown(e) {
-    if (e.key === 'Enter') {
-      this._onSubmit(e);
-    }
-  }
-
-  _onShow() {
-    const temp = { showing: true };
-    api.getEntries("match").then((matches) => {
-      console.log(matches);
-      temp["match"] = matches;
-      this.state.matches = matches;
-      this.render();
-    });
-    api.getEntries("team").then((team) => {
-      temp["team"] = team;
-      this.state.team = team;
-      this.render();
-    });
-  }
-
-  _onBlur(e) {
-    if (this.state.showing && !this._isClickInsideForm(e)) {
-      this._onCancel();
-    }
-  }
-
-  _isClickInsideForm(e) {
-    return this.form.contains(e.relatedTarget);
-  }
-
-  _onSubmit(e) {
-    e.preventDefault();
-    this.state.loading = true;
-    this.state.showing = false;
-    this.render();
-
-    const formatDate = (dateTimeString) => {
-      console.log(dateTimeString);
-      if (!dateTimeString) return '';
-      const date = new Date(dateTimeString);
-      return new Intl.DateTimeFormat('fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      }).format(date);
+  async createData() {
+    const data = {
+      title: this.state.title,
+      content: this.state.content,
+      date: this.state.date,
+      type: this.state.type,
+      status: this.state.status
     };
-
-    const pageData = {
-      text: this.state.text,
-      type: this.state.pageType,
-      session: parseInt(this.state.session)
-    };
-
-    console.log(this.state);
-    if (this.state.pageType === 'match') {
-      pageData.team1 = this.state.team1;
-      pageData.team2 = this.state.team2;
-      pageData.homeDate = formatDate(this.state.homeDateTime);
-      pageData.awayDate = formatDate(this.state.awayDateTime);
-      pageData.homeLocation = this.state.homeLocation;
-      pageData.awayLocation = this.state.awayLocation;
-      pageData.group = this.state.group;
-    } else if (this.state.pageType === 'result') {
-      pageData.team1 = this.state.team1;
-      pageData.team2 = this.state.team2;
-      pageData.group = this.state.group;
-      pageData.date = this.state.matchType === 'home' ? this.state.homeDate : this.state.awayDate;
-      pageData.team1Score = this.state.isForfeit ? 'Forfait' : this.state.team1Score;
-      pageData.team2Score = this.state.isForfeit ? 'Forfait' : this.state.team2Score;
-      pageData.isPostponed = this.state.isPostponed;
-    }
-
-    api.addEntry(pageData.type, pageData).then((page) => {
-      this.state.showing = false;
-      this.state.text = 'Untitled';
-      this.state.pageType = 'match';
-      this.state.team1 = '';
-      this.state.team2 = '';
-      this.state.homeDateTime = '';
-      this.state.awayDateTime = '';
-      this.state.homeLocation = '';
-      this.state.awayLocation = '';
-      this.state.group = '';
-      this.state.team1Score = '';
-      this.state.team2Score = '';
-      this.state.isForfeit = false;
-      this.state.isPostponed = false;
-      this.state.selectedMatch = null;
-      this.state.matchType = 'home';
-      this.state.session = 0;
-      if (this.onNew) {
-        this.onNew(page);
-      }
-    }, (err) => {
-      console.error('Failed! to make page', err);
-    });
-  }
-
-  _onCancel() {
-    this.state.showing = false;
-    this.render();
-  }
-
-  _onChange(e) {
-    this.state.text = e.target.value;
-    this.render();
-  }
-
-  _onPageTypeChange(e) {
-    this.state.pageType = e.target.value;
-    this.render();
-  }
-
-  _onTeam1Change(e) {
-    this.state.team1 = e.target.value;
-    this.render();
-  }
-
-  _onTeam2Change(e) {
-    this.state.team2 = e.target.value;
-    this.render();
-  }
-
-  _onHomeDateTimeChange(e) {
-    this.state.homeDateTime = e.target.value;
-    this.render();
-  }
-
-  _onAwayDateTimeChange(e) {
-    this.state.awayDateTime = e.target.value;
-    this.render();
-  }
-
-  _onHomeLocationChange(e) {
-    this.state.homeLocation = e.target.value;
-    this.render();
-  }
-
-  _onAwayLocationChange(e) {
-    this.state.awayLocation = e.target.value;
-    this.render();
-  }
-
-  _onGroupChange(e) {
-    this.state.group = e.target.value;
-    this.render();
-  }
-
-  _onTeam1ScoreChange(e) {
-    this.state.team1Score = e.target.value;
-    this.render();
-  }
-
-  _onTeam2ScoreChange(e) {
-    this.state.team2Score = e.target.value;
-    this.render();
-  }
-
-  _onForfeitChange(e) {
-    this.state.isForfeit = e.target.checked;
-    this.render();
-  }
-
-  _onPostponedChange(e) {
-    this.state.isPostponed = e.target.checked;
-    this.render();
-  }
-
-  _onMatchTypeChange(e) {
-    this.state.matchType = e.target.value;
-    this.render();
-  }
-
-  _onSessionChange(e) {
-    this.state.session = parseInt(e.target.value);
-    this.render();
-  }
-
-  _onMatchSelect(e) {
-    const selectedMatchId = e.target.value;
-    const selectedMatch = this.state.matches.find(match => match._id === selectedMatchId);
-    this.state.selectedMatch = selectedMatch;
-
-    if (selectedMatch) {
-      this.state.team1 = selectedMatch.team1;
-      this.state.team2 = selectedMatch.team2;
-      this.state.homeDateTime = selectedMatch.homeDateTime;
-      this.state.awayDateTime = selectedMatch.awayDateTime;
-      this.state.homeLocation = selectedMatch.homeLocation;
-      this.state.awayLocation = selectedMatch.awayLocation;
-      this.state.group = selectedMatch.group;
-      this.state.session = selectedMatch.session;
-    }
-    this.render();
+    return await api.createEntry("data", data);
   }
 
   render() {
-    const container = document.createElement('div');
-    container.className = 'new-data';
-
-    if (!this.state.showing) {
-      const button = document.createElement('div');
-      button.className = 'new-data_button';
-      button.innerHTML = '<i class="fa fa-plus"></i> New Data';
-      button.addEventListener('click', this._onShow.bind(this));
-      container.appendChild(button);
-      return container;
-    }
-
-    this.form = container;
-    container.addEventListener('blur', this._onBlur.bind(this), true);
-
+    const div = document.createElement('div');
+    div.className = 'new-data';
+    
     const form = document.createElement('form');
     form.className = 'new-data-form';
-    form.addEventListener('submit', this._onSubmit.bind(this));
-
-    // Page Type
-    const pageTypeGroup = document.createElement('div');
-    pageTypeGroup.className = 'form-group';
-
-    const pageTypeLabel = document.createElement('label');
-    pageTypeLabel.textContent = 'Type de page';
-
-    const pageTypeSelect = document.createElement('select');
-    pageTypeSelect.className = 'form-control';
-    pageTypeSelect.value = this.state.pageType;
-    pageTypeSelect.addEventListener('change', this._onPageTypeChange.bind(this));
-
-    const matchOption = document.createElement('option');
-    matchOption.value = 'match';
-    matchOption.textContent = 'Match';
-    pageTypeSelect.appendChild(matchOption);
-
-    const resultOption = document.createElement('option');
-    resultOption.value = 'result';
-    resultOption.textContent = 'Résultat';
-    pageTypeSelect.appendChild(resultOption);
-
-    pageTypeGroup.appendChild(pageTypeLabel);
-    pageTypeGroup.appendChild(pageTypeSelect);
-    form.appendChild(pageTypeGroup);
-
-    // Title
-    const titleGroup = document.createElement('div');
-    titleGroup.className = 'form-group';
-
-    const titleLabel = document.createElement('label');
-    titleLabel.textContent = 'Titre';
-
+    
     const titleInput = document.createElement('input');
     titleInput.type = 'text';
-    titleInput.className = 'form-control';
-    titleInput.value = this.state.text;
-    titleInput.addEventListener('change', this._onChange.bind(this));
-
-    titleGroup.appendChild(titleLabel);
-    titleGroup.appendChild(titleInput);
-    form.appendChild(titleGroup);
-
-    // Team 1
-    const team1Group = document.createElement('div');
-    team1Group.className = 'form-group';
-
-    const team1Label = document.createElement('label');
-    team1Label.textContent = 'Équipe 1';
-
-    const team1Input = document.createElement('input');
-    team1Input.type = 'text';
-    team1Input.className = 'form-control';
-    team1Input.value = this.state.team1;
-    team1Input.addEventListener('change', this._onTeam1Change.bind(this));
-
-    team1Group.appendChild(team1Label);
-    team1Group.appendChild(team1Input);
-    form.appendChild(team1Group);
-
-    // Team 2
-    const team2Group = document.createElement('div');
-    team2Group.className = 'form-group';
-
-    const team2Label = document.createElement('label');
-    team2Label.textContent = 'Équipe 2';
-
-    const team2Input = document.createElement('input');
-    team2Input.type = 'text';
-    team2Input.className = 'form-control';
-    team2Input.value = this.state.team2;
-    team2Input.addEventListener('change', this._onTeam2Change.bind(this));
-
-    team2Group.appendChild(team2Label);
-    team2Group.appendChild(team2Input);
-    form.appendChild(team2Group);
-
-    // Home Date Time
-    const homeDateTimeGroup = document.createElement('div');
-    homeDateTimeGroup.className = 'form-group';
-
-    const homeDateTimeLabel = document.createElement('label');
-    homeDateTimeLabel.textContent = 'Date et heure (domicile)';
-
-    const homeDateTimeInput = document.createElement('input');
-    homeDateTimeInput.type = 'datetime-local';
-    homeDateTimeInput.className = 'form-control';
-    homeDateTimeInput.value = this.state.homeDateTime;
-    homeDateTimeInput.addEventListener('change', this._onHomeDateTimeChange.bind(this));
-
-    homeDateTimeGroup.appendChild(homeDateTimeLabel);
-    homeDateTimeGroup.appendChild(homeDateTimeInput);
-    form.appendChild(homeDateTimeGroup);
-
-    // Away Date Time
-    const awayDateTimeGroup = document.createElement('div');
-    awayDateTimeGroup.className = 'form-group';
-
-    const awayDateTimeLabel = document.createElement('label');
-    awayDateTimeLabel.textContent = 'Date et heure (extérieur)';
-
-    const awayDateTimeInput = document.createElement('input');
-    awayDateTimeInput.type = 'datetime-local';
-    awayDateTimeInput.className = 'form-control';
-    awayDateTimeInput.value = this.state.awayDateTime;
-    awayDateTimeInput.addEventListener('change', this._onAwayDateTimeChange.bind(this));
-
-    awayDateTimeGroup.appendChild(awayDateTimeLabel);
-    awayDateTimeGroup.appendChild(awayDateTimeInput);
-    form.appendChild(awayDateTimeGroup);
-
-    // Home Location
-    const homeLocationGroup = document.createElement('div');
-    homeLocationGroup.className = 'form-group';
-
-    const homeLocationLabel = document.createElement('label');
-    homeLocationLabel.textContent = 'Lieu (domicile)';
-
-    const homeLocationInput = document.createElement('input');
-    homeLocationInput.type = 'text';
-    homeLocationInput.className = 'form-control';
-    homeLocationInput.value = this.state.homeLocation;
-    homeLocationInput.addEventListener('change', this._onHomeLocationChange.bind(this));
-
-    homeLocationGroup.appendChild(homeLocationLabel);
-    homeLocationGroup.appendChild(homeLocationInput);
-    form.appendChild(homeLocationGroup);
-
-    // Away Location
-    const awayLocationGroup = document.createElement('div');
-    awayLocationGroup.className = 'form-group';
-
-    const awayLocationLabel = document.createElement('label');
-    awayLocationLabel.textContent = 'Lieu (extérieur)';
-
-    const awayLocationInput = document.createElement('input');
-    awayLocationInput.type = 'text';
-    awayLocationInput.className = 'form-control';
-    awayLocationInput.value = this.state.awayLocation;
-    awayLocationInput.addEventListener('change', this._onAwayLocationChange.bind(this));
-
-    awayLocationGroup.appendChild(awayLocationLabel);
-    awayLocationGroup.appendChild(awayLocationInput);
-    form.appendChild(awayLocationGroup);
-
-    // Group
-    const groupGroup = document.createElement('div');
-    groupGroup.className = 'form-group';
-
-    const groupLabel = document.createElement('label');
-    groupLabel.textContent = 'Groupe';
-
-    const groupInput = document.createElement('input');
-    groupInput.type = 'text';
-    groupInput.className = 'form-control';
-    groupInput.value = this.state.group;
-    groupInput.addEventListener('change', this._onGroupChange.bind(this));
-
-    groupGroup.appendChild(groupLabel);
-    groupGroup.appendChild(groupInput);
-    form.appendChild(groupGroup);
-
-    // Session
-    const sessionGroup = document.createElement('div');
-    sessionGroup.className = 'form-group';
-
-    const sessionLabel = document.createElement('label');
-    sessionLabel.textContent = 'Session';
-
-    const sessionInput = document.createElement('input');
-    sessionInput.type = 'number';
-    sessionInput.className = 'form-control';
-    sessionInput.value = this.state.session;
-    sessionInput.addEventListener('change', this._onSessionChange.bind(this));
-
-    sessionGroup.appendChild(sessionLabel);
-    sessionGroup.appendChild(sessionInput);
-    form.appendChild(sessionGroup);
-
-    // Submit Button
+    titleInput.placeholder = 'Titre';
+    titleInput.value = this.state.title;
+    titleInput.addEventListener('change', (e) => {
+      this.state.title = e.target.value;
+    });
+    
+    const contentTextarea = document.createElement('textarea');
+    contentTextarea.placeholder = 'Contenu';
+    contentTextarea.value = this.state.content;
+    contentTextarea.addEventListener('change', (e) => {
+      this.state.content = e.target.value;
+    });
+    
+    const dateInput = document.createElement('input');
+    dateInput.type = 'datetime-local';
+    dateInput.value = this.state.date;
+    dateInput.addEventListener('change', (e) => {
+      this.state.date = e.target.value;
+    });
+    
+    const typeSelect = document.createElement('select');
+    typeSelect.value = this.state.type;
+    typeSelect.addEventListener('change', (e) => {
+      this.state.type = e.target.value;
+    });
+    
+    const types = ['match', 'news', 'event'];
+    types.forEach(type => {
+      const option = document.createElement('option');
+      option.value = type;
+      option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+      typeSelect.appendChild(option);
+    });
+    
+    const statusSelect = document.createElement('select');
+    statusSelect.value = this.state.status;
+    statusSelect.addEventListener('change', (e) => {
+      this.state.status = e.target.value;
+    });
+    
+    const statuses = ['scheduled', 'in_progress', 'completed', 'cancelled'];
+    statuses.forEach(status => {
+      const option = document.createElement('option');
+      option.value = status;
+      option.textContent = status.split('_').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ');
+      statusSelect.appendChild(option);
+    });
+    
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    submitButton.className = 'btn btn-primary';
-    submitButton.innerHTML = '<i class="fa fa-save"></i> Enregistrer';
+    submitButton.textContent = 'Créer';
+    
+    form.appendChild(titleInput);
+    form.appendChild(contentTextarea);
+    form.appendChild(dateInput);
+    form.appendChild(typeSelect);
+    form.appendChild(statusSelect);
     form.appendChild(submitButton);
-
-    // Cancel Button
-    const cancelButton = document.createElement('button');
-    cancelButton.type = 'button';
-    cancelButton.className = 'btn btn-secondary';
-    cancelButton.innerHTML = '<i class="fa fa-times"></i> Annuler';
-    cancelButton.addEventListener('click', this._onCancel.bind(this));
-    form.appendChild(cancelButton);
-
-    container.appendChild(form);
-    return container;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const result = await this.dataFetcher.getData();
+        if (result) {
+          window.location.hash = `#/data/${result._id}`;
+        }
+      } catch (error) {
+        console.error('Erreur lors de la création:', error);
+      }
+    });
+    
+    div.appendChild(form);
+    return div;
   }
 }
 
 module.exports = NewData;
 
-},{"./api":3}],21:[function(require,module,exports){
+},{"./api":3,"./data-fetcher":12}],21:[function(require,module,exports){
+const DataFetcher = require('./data-fetcher');
 const api = require('./api');
 
 class NewPage {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.createPage.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      showing: false,
-      loading: true,
-      text: 'Untitled'
+      title: '',
+      content: '',
+      isDraft: true
     };
-    this.onNew = null;
   }
 
-  _onKeydown(e) {
-    if (e.key === 'Enter') {
-      this._onSubmit(e);
-    }
-  }
-
-  _onShow() {
-    this.state.showing = true;
-    this.render();
-  }
-
-  _onBlur() {
-    if (this.state.showing) {
-      this._onCancel();
-    }
-  }
-
-  _onSubmit(e) {
-    e.preventDefault();
-    this.state.loading = true;
-    this.state.showing = false;
-    this.render();
-    
-    api.newPage(this.state.text).then((page) => {
-      this.state.showing = false;
-      this.state.text = 'Untitled';
-      if (this.onNew) {
-        this.onNew(page);
-      }
-    }, (err) => {
-      console.error('Failed! to make page', err);
-    });
-  }
-
-  _onCancel() {
-    this.state.showing = false;
-    this.render();
-  }
-
-  _onChange(e) {
-    this.state.text = e.target.value;
-    this.render();
+  async createPage() {
+    const pageData = {
+      title: this.state.title,
+      content: this.state.content,
+      isDraft: this.state.isDraft,
+      date: new Date().toISOString()
+    };
+    return await api.createEntry("page", pageData);
   }
 
   render() {
-    const container = document.createElement('div');
-    container.className = 'new-post';
-
-    if (!this.state.showing) {
-      const button = document.createElement('div');
-      button.className = 'new-post_button';
-      button.innerHTML = '<i class="fa fa-plus"></i> New page';
-      button.addEventListener('click', this._onShow.bind(this));
-      container.appendChild(button);
-      return container;
-    }
-
-    const input = document.createElement('input');
-    input.className = 'new-post_input';
-    input.value = this.state.text;
-    input.addEventListener('blur', this._onBlur.bind(this));
-    input.addEventListener('keypress', this._onKeydown.bind(this));
-    input.addEventListener('change', this._onChange.bind(this));
-    container.appendChild(input);
-
-    const okButton = document.createElement('i');
-    okButton.className = 'fa fa-check-circle new-post_ok';
-    okButton.addEventListener('mousedown', this._onSubmit.bind(this));
-    container.appendChild(okButton);
-
-    const cancelButton = document.createElement('i');
-    cancelButton.className = 'fa fa-times-circle new-post_cancel';
-    cancelButton.addEventListener('mousedown', this._onCancel.bind(this));
-    container.appendChild(cancelButton);
-
-    return container;
+    const div = document.createElement('div');
+    div.className = 'new-page';
+    
+    const form = document.createElement('form');
+    form.className = 'new-page-form';
+    
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.placeholder = 'Titre de la page';
+    titleInput.value = this.state.title;
+    titleInput.addEventListener('change', (e) => {
+      this.state.title = e.target.value;
+    });
+    
+    const contentTextarea = document.createElement('textarea');
+    contentTextarea.placeholder = 'Contenu de la page';
+    contentTextarea.value = this.state.content;
+    contentTextarea.addEventListener('change', (e) => {
+      this.state.content = e.target.value;
+    });
+    
+    const draftCheckbox = document.createElement('input');
+    draftCheckbox.type = 'checkbox';
+    draftCheckbox.checked = this.state.isDraft;
+    draftCheckbox.addEventListener('change', (e) => {
+      this.state.isDraft = e.target.checked;
+    });
+    
+    const draftLabel = document.createElement('label');
+    draftLabel.textContent = 'Brouillon';
+    draftLabel.appendChild(draftCheckbox);
+    
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Créer la page';
+    
+    form.appendChild(titleInput);
+    form.appendChild(contentTextarea);
+    form.appendChild(draftLabel);
+    form.appendChild(submitButton);
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const result = await this.dataFetcher.getData();
+        if (result) {
+          window.location.hash = `#/page/${result._id}`;
+        }
+      } catch (error) {
+        console.error('Erreur lors de la création de la page:', error);
+      }
+    });
+    
+    div.appendChild(form);
+    return div;
   }
 }
 
 module.exports = NewPage;
 
-},{"./api":3}],22:[function(require,module,exports){
+},{"./api":3,"./data-fetcher":12}],22:[function(require,module,exports){
+const DataFetcher = require('./data-fetcher');
 const api = require('./api');
 
 class NewPost {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.createPost.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      showing: false,
-      loading: true,
-      text: 'Untitled'
+      title: '',
+      content: '',
+      isDraft: true
     };
-    this.onNew = null;
   }
 
-  _onKeydown(e) {
-    if (e.key === 'Enter') {
-      this._onSubmit(e);
-    }
-  }
-
-  _onShow() {
-    this.state.showing = true;
-    this.render();
-  }
-
-  _onBlur() {
-    if (this.state.showing) {
-      this._onCancel();
-    }
-  }
-
-  _onSubmit(e) {
-    e.preventDefault();
-    this.state.loading = true;
-    this.state.showing = false;
-    this.render();
-    
-    api.newPost(this.state.text).then((post) => {
-      this.state.showing = false;
-      this.state.text = 'Untitled';
-      if (this.onNew) {
-        this.onNew(post);
-      }
-    }, (err) => {
-      console.error('Failed! to make post', err);
-    });
-  }
-
-  _onCancel() {
-    this.state.showing = false;
-    this.render();
-  }
-
-  _onChange(e) {
-    this.state.text = e.target.value;
-    this.render();
+  async createPost() {
+    const postData = {
+      title: this.state.title,
+      content: this.state.content,
+      isDraft: this.state.isDraft,
+      date: new Date().toISOString()
+    };
+    return await api.createEntry("post", postData);
   }
 
   render() {
-    const container = document.createElement('div');
-    container.className = 'new-post';
-
-    if (!this.state.showing) {
-      const button = document.createElement('div');
-      button.className = 'new-post_button';
-      button.innerHTML = '<i class="fa fa-plus"></i> New Post';
-      button.addEventListener('click', this._onShow.bind(this));
-      container.appendChild(button);
-      return container;
-    }
-
-    const input = document.createElement('input');
-    input.className = 'new-post_input';
-    input.value = this.state.text;
-    input.addEventListener('blur', this._onBlur.bind(this));
-    input.addEventListener('keypress', this._onKeydown.bind(this));
-    input.addEventListener('change', this._onChange.bind(this));
-    container.appendChild(input);
-
-    const okButton = document.createElement('i');
-    okButton.className = 'fa fa-check-circle new-post_ok';
-    okButton.addEventListener('mousedown', this._onSubmit.bind(this));
-    container.appendChild(okButton);
-
-    const cancelButton = document.createElement('i');
-    cancelButton.className = 'fa fa-times-circle new-post_cancel';
-    cancelButton.addEventListener('mousedown', this._onCancel.bind(this));
-    container.appendChild(cancelButton);
-
-    return container;
+    const div = document.createElement('div');
+    div.className = 'new-post';
+    
+    const form = document.createElement('form');
+    form.className = 'new-post-form';
+    
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.placeholder = 'Titre de l\'article';
+    titleInput.value = this.state.title;
+    titleInput.addEventListener('change', (e) => {
+      this.state.title = e.target.value;
+    });
+    
+    const contentTextarea = document.createElement('textarea');
+    contentTextarea.placeholder = 'Contenu de l\'article';
+    contentTextarea.value = this.state.content;
+    contentTextarea.addEventListener('change', (e) => {
+      this.state.content = e.target.value;
+    });
+    
+    const draftCheckbox = document.createElement('input');
+    draftCheckbox.type = 'checkbox';
+    draftCheckbox.checked = this.state.isDraft;
+    draftCheckbox.addEventListener('change', (e) => {
+      this.state.isDraft = e.target.checked;
+    });
+    
+    const draftLabel = document.createElement('label');
+    draftLabel.textContent = 'Brouillon';
+    draftLabel.appendChild(draftCheckbox);
+    
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Créer l\'article';
+    
+    form.appendChild(titleInput);
+    form.appendChild(contentTextarea);
+    form.appendChild(draftLabel);
+    form.appendChild(submitButton);
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const result = await this.dataFetcher.getData();
+        if (result) {
+          window.location.hash = `#/post/${result._id}`;
+        }
+      } catch (error) {
+        console.error('Erreur lors de la création de l\'article:', error);
+      }
+    });
+    
+    div.appendChild(form);
+    return div;
   }
 }
 
 module.exports = NewPost;
 
-},{"./api":3}],23:[function(require,module,exports){
-const api = require('./api')
+},{"./api":3,"./data-fetcher":12}],23:[function(require,module,exports){
+const DataFetcher = require('./data-fetcher');
+const api = require('./api');
 
 class NewResult {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.createResult.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      team1: '',
-      team2: '',
-      team1Score: '',
-      team2Score: '',
-      matchType: 'home',
-      team1Forfeit: false,
-      team2Forfeit: false,
-      team1Postponed: false,
-      team2Postponed: false,
-      matchId: '',
-      group: '1',
-      session: 1,
+      homeTeam: '',
+      awayTeam: '',
+      homeScore: '',
+      awayScore: '',
       date: '',
-      matches: []
-    }
+      stadium: '',
+      competition: ''
+    };
   }
 
-  init(container, onNew) {
-    this.container = container
-    this.onNew = onNew
-    this.loadData()
-    this.render()
-  }
-
-  loadData() {
-    api.getEntries('match').then((matches) => {
-      this.state.matches = matches
-      this.render()
-    })
-  }
-
-  handleMatchSelect(e) {
-    const matchId = e.target.value
-    const selectedMatch = this.state.matches.find(m => m._id === matchId)
-    
-    if (selectedMatch) {
-      this.state.matchId = selectedMatch._id
-      this.state.team1 = selectedMatch.team1
-      this.state.team2 = selectedMatch.team2
-      this.state.date = selectedMatch.homeDate
-      this.state.group = selectedMatch.group
-      this.state.session = selectedMatch.session
-      this.render()
-    }
-  }
-
-  handleMatchTypeChange(e) {
-    const matchType = e.target.value
-    const selectedMatch = this.state.matches.find(m => m._id === this.state.matchId)
-    
-    if (selectedMatch) {
-      this.state.matchType = matchType
-      this.state.date = matchType === 'home' ? selectedMatch.homeDate : selectedMatch.awayDate
-      this.render()
-    }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    const forfeitTeam = this.state.team1Forfeit ? this.state.team1 : 
-                       this.state.team2Forfeit ? this.state.team2 : null
-    const postponedTeam = this.state.team1Postponed ? this.state.team1 :
-                         this.state.team2Postponed ? this.state.team2 : null
-
-    api.addEntry('result', {
-      team1: this.state.team1,
-      team2: this.state.team2,
-      team1Score: this.state.team1Score,
-      team2Score: this.state.team2Score,
-      matchType: this.state.matchType,
-      isForfeit: this.state.team1Forfeit || this.state.team2Forfeit,
-      forfeitTeam: forfeitTeam,
-      isPostponed: this.state.team1Postponed || this.state.team2Postponed,
-      postponedTeam: postponedTeam,
-      matchId: this.state.matchId,
-      group: this.state.group,
-      session: this.state.session,
+  async createResult() {
+    const resultData = {
+      homeTeam: this.state.homeTeam,
+      awayTeam: this.state.awayTeam,
+      homeScore: parseInt(this.state.homeScore),
+      awayScore: parseInt(this.state.awayScore),
       date: this.state.date,
-      text: `Résultat: ${this.state.team1} vs ${this.state.team2}`,
-      type: 'result'
-    }).then((result) => {
-      if (this.onNew) {
-        this.onNew(result)
-      } else {
-        window.location.hash = '#/results'
-      }
-    })
-  }
-
-  handleChange(field, e) {
-    this.state[field] = e.target.value
-    this.render()
-  }
-
-  handleCheckboxChange(field, e) {
-    this.state[field] = e.target.checked
-    this.render()
+      stadium: this.state.stadium,
+      competition: this.state.competition
+    };
+    return await api.createEntry("result", resultData);
   }
 
   render() {
-    const container = document.createElement('div')
-    container.className = 'new-result-page'
-
-    const title = document.createElement('h2')
-    title.textContent = 'Créer un nouveau résultat'
-
-    const form = document.createElement('form')
-    form.className = 'new-result-form'
-    form.onsubmit = (e) => this.handleSubmit(e)
-
-    // Match selection
-    const matchGroup = document.createElement('div')
-    matchGroup.className = 'form-group'
-
-    const matchLabel = document.createElement('label')
-    matchLabel.textContent = 'Sélectionner un match'
-
-    const matchSelect = document.createElement('select')
-    matchSelect.className = 'form-control'
-    matchSelect.value = this.state.matchId
-    matchSelect.onchange = (e) => this.handleMatchSelect(e)
-
-    const defaultOption = document.createElement('option')
-    defaultOption.value = ''
-    defaultOption.textContent = 'Sélectionner un match...'
-    matchSelect.appendChild(defaultOption)
-
-    this.state.matches.forEach(match => {
-      const option = document.createElement('option')
-      option.value = match._id
-      option.textContent = `${match.team1} vs ${match.team2} - ${match.homeDate}`
-      matchSelect.appendChild(option)
-    })
-
-    matchGroup.appendChild(matchLabel)
-    matchGroup.appendChild(matchSelect)
-    form.appendChild(matchGroup)
-
-    // Match type
-    const typeGroup = document.createElement('div')
-    typeGroup.className = 'form-group'
-
-    const typeLabel = document.createElement('label')
-    typeLabel.textContent = 'Type de Match'
-
-    const typeSelect = document.createElement('select')
-    typeSelect.className = 'form-control'
-    typeSelect.value = this.state.matchType
-    typeSelect.onchange = (e) => this.handleMatchTypeChange(e)
-
-    const homeOption = document.createElement('option')
-    homeOption.value = 'home'
-    homeOption.textContent = 'Domicile'
-
-    const awayOption = document.createElement('option')
-    awayOption.value = 'away'
-    awayOption.textContent = 'Extérieur'
-
-    typeSelect.appendChild(homeOption)
-    typeSelect.appendChild(awayOption)
-
-    typeGroup.appendChild(typeLabel)
-    typeGroup.appendChild(typeSelect)
-    form.appendChild(typeGroup)
-
-    // Team 1
-    const team1Group = document.createElement('div')
-    team1Group.className = 'form-group'
-
-    const team1Label = document.createElement('label')
-    team1Label.textContent = 'Équipe 1'
-
-    const team1Input = document.createElement('input')
-    team1Input.type = 'text'
-    team1Input.className = 'form-control'
-    team1Input.value = this.state.team1
-    team1Input.required = true
-    team1Input.onchange = (e) => this.handleChange('team1', e)
-
-    team1Group.appendChild(team1Label)
-    team1Group.appendChild(team1Input)
-    form.appendChild(team1Group)
-
-    // Team 1 Score
-    const score1Group = document.createElement('div')
-    score1Group.className = 'form-group'
-
-    const score1Label = document.createElement('label')
-    score1Label.textContent = 'Score Équipe 1'
-
-    const score1Input = document.createElement('input')
-    score1Input.type = 'number'
-    score1Input.className = 'form-control'
-    score1Input.value = this.state.team1Score
-    score1Input.required = true
-    score1Input.onchange = (e) => this.handleChange('team1Score', e)
-
-    score1Group.appendChild(score1Label)
-    score1Group.appendChild(score1Input)
-    form.appendChild(score1Group)
-
-    // Team 2 Score
-    const score2Group = document.createElement('div')
-    score2Group.className = 'form-group'
-
-    const score2Label = document.createElement('label')
-    score2Label.textContent = 'Score Équipe 2'
-
-    const score2Input = document.createElement('input')
-    score2Input.type = 'number'
-    score2Input.className = 'form-control'
-    score2Input.value = this.state.team2Score
-    score2Input.required = true
-    score2Input.onchange = (e) => this.handleChange('team2Score', e)
-
-    score2Group.appendChild(score2Label)
-    score2Group.appendChild(score2Input)
-    form.appendChild(score2Group)
-
-    // Team 2
-    const team2Group = document.createElement('div')
-    team2Group.className = 'form-group'
-
-    const team2Label = document.createElement('label')
-    team2Label.textContent = 'Équipe 2'
-
-    const team2Input = document.createElement('input')
-    team2Input.type = 'text'
-    team2Input.className = 'form-control'
-    team2Input.value = this.state.team2
-    team2Input.required = true
-    team2Input.onchange = (e) => this.handleChange('team2', e)
-
-    team2Group.appendChild(team2Label)
-    team2Group.appendChild(team2Input)
-    form.appendChild(team2Group)
-
-    // Date
-    const dateGroup = document.createElement('div')
-    dateGroup.className = 'form-group'
-
-    const dateLabel = document.createElement('label')
-    dateLabel.textContent = 'Date du match'
-
-    const dateInput = document.createElement('input')
-    dateInput.type = 'text'
-    dateInput.className = 'form-control'
-    dateInput.value = this.state.date
-    dateInput.placeholder = 'ex: 31 mars 2025 à 20:30'
-    dateInput.required = true
-    dateInput.onchange = (e) => this.handleChange('date', e)
-
-    dateGroup.appendChild(dateLabel)
-    dateGroup.appendChild(dateInput)
-    form.appendChild(dateGroup)
-
-    // Forfeit checkboxes
-    const forfeit1Group = document.createElement('div')
-    forfeit1Group.className = 'form-group'
-
-    const forfeit1Label = document.createElement('label')
-    const forfeit1Checkbox = document.createElement('input')
-    forfeit1Checkbox.type = 'checkbox'
-    forfeit1Checkbox.checked = this.state.team1Forfeit
-    forfeit1Checkbox.onchange = (e) => this.handleCheckboxChange('team1Forfeit', e)
-    forfeit1Label.appendChild(forfeit1Checkbox)
-    forfeit1Label.appendChild(document.createTextNode(` ${this.state.team1} - Forfait`))
-
-    forfeit1Group.appendChild(forfeit1Label)
-    form.appendChild(forfeit1Group)
-
-    const forfeit2Group = document.createElement('div')
-    forfeit2Group.className = 'form-group'
-
-    const forfeit2Label = document.createElement('label')
-    const forfeit2Checkbox = document.createElement('input')
-    forfeit2Checkbox.type = 'checkbox'
-    forfeit2Checkbox.checked = this.state.team2Forfeit
-    forfeit2Checkbox.onchange = (e) => this.handleCheckboxChange('team2Forfeit', e)
-    forfeit2Label.appendChild(forfeit2Checkbox)
-    forfeit2Label.appendChild(document.createTextNode(` ${this.state.team2} - Forfait`))
-
-    forfeit2Group.appendChild(forfeit2Label)
-    form.appendChild(forfeit2Group)
-
-    // Postponed checkboxes
-    const postponed1Group = document.createElement('div')
-    postponed1Group.className = 'form-group'
-
-    const postponed1Label = document.createElement('label')
-    const postponed1Checkbox = document.createElement('input')
-    postponed1Checkbox.type = 'checkbox'
-    postponed1Checkbox.checked = this.state.team1Postponed
-    postponed1Checkbox.onchange = (e) => this.handleCheckboxChange('team1Postponed', e)
-    postponed1Label.appendChild(postponed1Checkbox)
-    postponed1Label.appendChild(document.createTextNode(` ${this.state.team1} - Reporté`))
-
-    postponed1Group.appendChild(postponed1Label)
-    form.appendChild(postponed1Group)
-
-    const postponed2Group = document.createElement('div')
-    postponed2Group.className = 'form-group'
-
-    const postponed2Label = document.createElement('label')
-    const postponed2Checkbox = document.createElement('input')
-    postponed2Checkbox.type = 'checkbox'
-    postponed2Checkbox.checked = this.state.team2Postponed
-    postponed2Checkbox.onchange = (e) => this.handleCheckboxChange('team2Postponed', e)
-    postponed2Label.appendChild(postponed2Checkbox)
-    postponed2Label.appendChild(document.createTextNode(` ${this.state.team2} - Reporté`))
-
-    postponed2Group.appendChild(postponed2Label)
-    form.appendChild(postponed2Group)
-
-    // Submit button
-    const submitButton = document.createElement('button')
-    submitButton.type = 'submit'
-    submitButton.className = 'btn btn-primary'
-    submitButton.textContent = 'Créer'
-    form.appendChild(submitButton)
-
-    container.appendChild(title)
-    container.appendChild(form)
-
-    this.container.innerHTML = ''
-    this.container.appendChild(container)
+    const div = document.createElement('div');
+    div.className = 'new-result';
+    
+    const form = document.createElement('form');
+    form.className = 'new-result-form';
+    
+    const homeTeamInput = document.createElement('input');
+    homeTeamInput.type = 'text';
+    homeTeamInput.placeholder = 'Équipe à domicile';
+    homeTeamInput.value = this.state.homeTeam;
+    homeTeamInput.addEventListener('change', (e) => {
+      this.state.homeTeam = e.target.value;
+    });
+    
+    const awayTeamInput = document.createElement('input');
+    awayTeamInput.type = 'text';
+    awayTeamInput.placeholder = 'Équipe à l\'extérieur';
+    awayTeamInput.value = this.state.awayTeam;
+    awayTeamInput.addEventListener('change', (e) => {
+      this.state.awayTeam = e.target.value;
+    });
+    
+    const homeScoreInput = document.createElement('input');
+    homeScoreInput.type = 'number';
+    homeScoreInput.placeholder = 'Score domicile';
+    homeScoreInput.value = this.state.homeScore;
+    homeScoreInput.addEventListener('change', (e) => {
+      this.state.homeScore = e.target.value;
+    });
+    
+    const awayScoreInput = document.createElement('input');
+    awayScoreInput.type = 'number';
+    awayScoreInput.placeholder = 'Score extérieur';
+    awayScoreInput.value = this.state.awayScore;
+    awayScoreInput.addEventListener('change', (e) => {
+      this.state.awayScore = e.target.value;
+    });
+    
+    const dateInput = document.createElement('input');
+    dateInput.type = 'date';
+    dateInput.value = this.state.date;
+    dateInput.addEventListener('change', (e) => {
+      this.state.date = e.target.value;
+    });
+    
+    const stadiumInput = document.createElement('input');
+    stadiumInput.type = 'text';
+    stadiumInput.placeholder = 'Stade';
+    stadiumInput.value = this.state.stadium;
+    stadiumInput.addEventListener('change', (e) => {
+      this.state.stadium = e.target.value;
+    });
+    
+    const competitionInput = document.createElement('input');
+    competitionInput.type = 'text';
+    competitionInput.placeholder = 'Compétition';
+    competitionInput.value = this.state.competition;
+    competitionInput.addEventListener('change', (e) => {
+      this.state.competition = e.target.value;
+    });
+    
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Créer le résultat';
+    
+    form.appendChild(homeTeamInput);
+    form.appendChild(awayTeamInput);
+    form.appendChild(homeScoreInput);
+    form.appendChild(awayScoreInput);
+    form.appendChild(dateInput);
+    form.appendChild(stadiumInput);
+    form.appendChild(competitionInput);
+    form.appendChild(submitButton);
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const result = await this.dataFetcher.getData();
+        if (result) {
+          window.location.hash = `#/result/${result._id}`;
+        }
+      } catch (error) {
+        console.error('Erreur lors de la création du résultat:', error);
+      }
+    });
+    
+    div.appendChild(form);
+    return div;
   }
 }
 
-module.exports = NewResult
-},{"./api":3}],24:[function(require,module,exports){
+module.exports = NewResult;
+},{"./api":3,"./data-fetcher":12}],24:[function(require,module,exports){
+const DataFetcher = require('./data-fetcher');
 const api = require('./api');
 
 class NewStade {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.createStade.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      stadeName: '',
-      address: ''
+      name: '',
+      capacity: '',
+      city: '',
+      country: ''
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    api.addEntry('stade', {
-      stadeName: this.state.stadeName,
-      address: this.state.address
-    }).then(() => {
-      window.location.hash = '#/stades';
-    });
-  }
-
-  handleChange(field, e) {
-    this.state[field] = e.target.value;
-    this.render();
+  async createStade() {
+    const stadeData = {
+      name: this.state.name,
+      capacity: parseInt(this.state.capacity),
+      city: this.state.city,
+      country: this.state.country
+    };
+    return await api.createEntry("stade", stadeData);
   }
 
   render() {
-    const container = document.createElement('div');
-    container.className = 'new-stade-page';
-
-    const title = document.createElement('h2');
-    title.textContent = 'Créer un nouveau stade';
-    container.appendChild(title);
-
+    const div = document.createElement('div');
+    div.className = 'new-stade';
+    
     const form = document.createElement('form');
     form.className = 'new-stade-form';
-    form.addEventListener('submit', this.handleSubmit.bind(this));
-
-    const stadeNameGroup = document.createElement('div');
-    stadeNameGroup.className = 'form-group';
-
-    const stadeNameLabel = document.createElement('label');
-    stadeNameLabel.textContent = 'Nom du stade';
-    stadeNameGroup.appendChild(stadeNameLabel);
-
-    const stadeNameInput = document.createElement('input');
-    stadeNameInput.type = 'text';
-    stadeNameInput.value = this.state.stadeName;
-    stadeNameInput.className = 'form-control';
-    stadeNameInput.required = true;
-    stadeNameInput.addEventListener('change', this.handleChange.bind(this, 'stadeName'));
-    stadeNameGroup.appendChild(stadeNameInput);
-
-    form.appendChild(stadeNameGroup);
-
-    const addressGroup = document.createElement('div');
-    addressGroup.className = 'form-group';
-
-    const addressLabel = document.createElement('label');
-    addressLabel.textContent = 'Adresse';
-    addressGroup.appendChild(addressLabel);
-
-    const addressInput = document.createElement('input');
-    addressInput.type = 'text';
-    addressInput.value = this.state.address;
-    addressInput.className = 'form-control';
-    addressInput.required = true;
-    addressInput.addEventListener('change', this.handleChange.bind(this, 'address'));
-    addressGroup.appendChild(addressInput);
-
-    form.appendChild(addressGroup);
-
+    
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Nom du stade';
+    nameInput.value = this.state.name;
+    nameInput.addEventListener('change', (e) => {
+      this.state.name = e.target.value;
+    });
+    
+    const capacityInput = document.createElement('input');
+    capacityInput.type = 'number';
+    capacityInput.placeholder = 'Capacité';
+    capacityInput.value = this.state.capacity;
+    capacityInput.addEventListener('change', (e) => {
+      this.state.capacity = e.target.value;
+    });
+    
+    const cityInput = document.createElement('input');
+    cityInput.type = 'text';
+    cityInput.placeholder = 'Ville';
+    cityInput.value = this.state.city;
+    cityInput.addEventListener('change', (e) => {
+      this.state.city = e.target.value;
+    });
+    
+    const countryInput = document.createElement('input');
+    countryInput.type = 'text';
+    countryInput.placeholder = 'Pays';
+    countryInput.value = this.state.country;
+    countryInput.addEventListener('change', (e) => {
+      this.state.country = e.target.value;
+    });
+    
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    submitButton.className = 'btn btn-primary';
-    submitButton.innerHTML = '<i class="fa fa-save"></i> Enregistrer';
+    submitButton.textContent = 'Créer le stade';
+    
+    form.appendChild(nameInput);
+    form.appendChild(capacityInput);
+    form.appendChild(cityInput);
+    form.appendChild(countryInput);
     form.appendChild(submitButton);
-
-    container.appendChild(form);
-    return container;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const result = await this.dataFetcher.getData();
+        if (result) {
+          window.location.hash = `#/stade/${result._id}`;
+        }
+      } catch (error) {
+        console.error('Erreur lors de la création du stade:', error);
+      }
+    });
+    
+    div.appendChild(form);
+    return div;
   }
 }
 
 module.exports = NewStade; 
-},{"./api":3}],25:[function(require,module,exports){
+},{"./api":3,"./data-fetcher":12}],25:[function(require,module,exports){
+const DataFetcher = require('./data-fetcher');
 const api = require('./api');
 
 class NewTeam {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.createTeam.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
-      showing: true,
-      loading: true,
-      text: 'Untitled',
       teamName: '',
       coach: '',
-      group: '',
-      link: ''
+      stadium: '',
+      founded: '',
+      country: ''
     };
-    this.onNew = null;
   }
 
-  _onKeydown(e) {
-    if (e.key === 'Enter') {
-      this._onSubmit(e);
-    }
-  }
-
-  _onShow() {
-    this.state.showing = true;
-    this.render();
-  }
-
-  _onBlur(e) {
-    if (this.state.showing && !this._isClickInsideForm(e)) {
-      this._onCancel();
-    }
-  }
-
-  _isClickInsideForm(e) {
-    const formNode = this.form;
-    return formNode.contains(e.relatedTarget);
-  }
-
-  _onSubmit(e) {
-    e.preventDefault();
-    this.state.loading = true;
-    this.state.showing = true;
-    this.render();
-
+  async createTeam() {
     const teamData = {
-      text: this.state.text,
       teamName: this.state.teamName,
       coach: this.state.coach,
-      group: this.state.group
+      stadium: this.state.stadium,
+      founded: this.state.founded,
+      country: this.state.country
     };
-
-    api.addEntry('team', teamData).then((team) => {
-      this.state.showing = true;
-      this.state.text = 'Untitled';
-      this.state.teamName = '';
-      this.state.coach = '';
-      this.state.group = '';
-      if (this.onNew) {
-        this.onNew(team);
-      }
-    }, (err) => {
-      console.error('Failed to create team', err);
-    });
-  }
-
-  _onCancel() {
-    this.state.showing = false;
-    this.render();
-  }
-
-  _onChange(e) {
-    this.state.text = e.target.value;
-    this.render();
-  }
-
-  _onTeamNameChange(e) {
-    this.state.teamName = e.target.value;
-    this.render();
-  }
-
-  _onCoachChange(e) {
-    this.state.coach = e.target.value;
-    this.render();
-  }
-
-  _onGroupChange(e) {
-    this.state.group = e.target.value;
-    this.render();
-  }
-
-  _onLinkChange(e) {
-    this.state.link = e.target.value;
-    this.render();
+    return await api.createEntry("team", teamData);
   }
 
   render() {
-    const container = document.createElement('div');
-    container.className = 'new-team';
-
-    if (!this.state.showing) {
-      const button = document.createElement('div');
-      button.className = 'new-team_button';
-      button.innerHTML = '<i class="fa fa-plus"></i> New Team';
-      button.addEventListener('click', this._onShow.bind(this));
-      container.appendChild(button);
-      return container;
-    }
-
-    this.form = container;
-    container.addEventListener('blur', this._onBlur.bind(this), true);
-
-    const input = document.createElement('input');
-    input.className = 'new-team_input';
-    input.value = this.state.text;
-    input.addEventListener('keypress', this._onKeydown.bind(this));
-    input.addEventListener('change', this._onChange.bind(this));
-    container.appendChild(input);
-
-    const formGroup = document.createElement('div');
-
-    const teamNameLabel = document.createElement('label');
-    teamNameLabel.textContent = 'Team Name:';
-    const teamNameInput = document.createElement('input');
-    teamNameInput.type = 'text';
-    teamNameInput.value = this.state.teamName;
-    teamNameInput.addEventListener('change', this._onTeamNameChange.bind(this));
-    teamNameLabel.appendChild(teamNameInput);
-    formGroup.appendChild(teamNameLabel);
-
-    const coachLabel = document.createElement('label');
-    coachLabel.textContent = 'Coach:';
-    const coachInput = document.createElement('input');
-    coachInput.type = 'text';
-    coachInput.value = this.state.coach;
-    coachInput.addEventListener('change', this._onCoachChange.bind(this));
-    coachLabel.appendChild(coachInput);
-    formGroup.appendChild(coachLabel);
-
-    const groupLabel = document.createElement('label');
-    groupLabel.textContent = 'Group:';
-    const groupSelect = document.createElement('select');
-    groupSelect.value = this.state.group;
-    groupSelect.addEventListener('change', this._onGroupChange.bind(this));
+    const div = document.createElement('div');
+    div.className = 'new-team';
     
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = 'Select a group';
-    groupSelect.appendChild(defaultOption);
+    const form = document.createElement('form');
+    form.className = 'new-team-form';
     
-    ['1', '2', '3'].forEach(group => {
-      const option = document.createElement('option');
-      option.value = group;
-      option.textContent = `Group ${group}`;
-      groupSelect.appendChild(option);
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Nom de l\'équipe';
+    nameInput.value = this.state.teamName;
+    nameInput.addEventListener('change', (e) => {
+      this.state.teamName = e.target.value;
     });
     
-    groupLabel.appendChild(groupSelect);
-    formGroup.appendChild(groupLabel);
-    container.appendChild(formGroup);
-
-    const linkLabel = document.createElement('label');
-    const linkInput = document.createElement('input');
-    linkInput.type = 'link';
-    linkInput.value = this.state.link;
-    linkInput.addEventListener('change', this._onLinkChange.bind(this));
-    linkLabel.appendChild(linkInput);
-    container.appendChild(linkLabel);
-
-    const okButton = document.createElement('i');
-    okButton.className = 'fa fa-check-circle new-team_ok';
-    okButton.addEventListener('mousedown', this._onSubmit.bind(this));
-    container.appendChild(okButton);
-
-    const cancelButton = document.createElement('i');
-    cancelButton.className = 'fa fa-times-circle new-team_cancel';
-    cancelButton.addEventListener('mousedown', this._onCancel.bind(this));
-    container.appendChild(cancelButton);
-
-    return container;
+    const coachInput = document.createElement('input');
+    coachInput.type = 'text';
+    coachInput.placeholder = 'Entraîneur';
+    coachInput.value = this.state.coach;
+    coachInput.addEventListener('change', (e) => {
+      this.state.coach = e.target.value;
+    });
+    
+    const stadiumInput = document.createElement('input');
+    stadiumInput.type = 'text';
+    stadiumInput.placeholder = 'Stade';
+    stadiumInput.value = this.state.stadium;
+    stadiumInput.addEventListener('change', (e) => {
+      this.state.stadium = e.target.value;
+    });
+    
+    const foundedInput = document.createElement('input');
+    foundedInput.type = 'number';
+    foundedInput.placeholder = 'Année de création';
+    foundedInput.value = this.state.founded;
+    foundedInput.addEventListener('change', (e) => {
+      this.state.founded = e.target.value;
+    });
+    
+    const countryInput = document.createElement('input');
+    countryInput.type = 'text';
+    countryInput.placeholder = 'Pays';
+    countryInput.value = this.state.country;
+    countryInput.addEventListener('change', (e) => {
+      this.state.country = e.target.value;
+    });
+    
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Créer l\'équipe';
+    
+    form.appendChild(nameInput);
+    form.appendChild(coachInput);
+    form.appendChild(stadiumInput);
+    form.appendChild(foundedInput);
+    form.appendChild(countryInput);
+    form.appendChild(submitButton);
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const result = await this.dataFetcher.getData();
+        if (result) {
+          window.location.hash = `#/team/${result._id}`;
+        }
+      } catch (error) {
+        console.error('Erreur lors de la création de l\'équipe:', error);
+      }
+    });
+    
+    div.appendChild(form);
+    return div;
   }
 }
 
 module.exports = NewTeam;
 
-},{"./api":3}],26:[function(require,module,exports){
+},{"./api":3,"./data-fetcher":12}],26:[function(require,module,exports){
 const DataFetcher = require('./data-fetcher');
 const api = require('./api');
 const Promise = require('es6-promise').Promise;
@@ -3975,21 +3316,18 @@ const Router = require('./router');
 
 class Pages {
   constructor() {
-    this.state = {
-      pages: null,
-      selected: 0
-    };
+    this.dataFetcher = new DataFetcher(this.fetchPages.bind(this));
     this.init();
   }
 
-  async init() {
-    try {
-      const pages = await api.pages();
-      this.state.pages = _.sortBy(pages, ['isDraft', 'date']).reverse();
-      this.render();
-    } catch (error) {
-      console.error('Error loading pages:', error);
-    }
+  init() {
+    this.state = {
+      pages: []
+    };
+  }
+
+  async fetchPages() {
+    return await api.getEntries("page");
   }
 
   onNew(page) {
@@ -4006,85 +3344,36 @@ class Pages {
   }
 
   render() {
-    if (!this.state.pages) {
-      const loading = document.createElement('div');
-      loading.className = 'pages';
-      loading.textContent = 'Loading...';
-      return loading;
+    const div = document.createElement('div');
+    div.className = 'pages';
+    
+    this.dataFetcher.getData().then(pages => {
+      this.state.pages = pages;
+      this.updateView(div);
+    });
+
+    return div;
+  }
+
+  updateView(div) {
+    if (!this.state.pages || this.state.pages.length === 0) {
+      div.textContent = 'Aucune page trouvée';
+      return;
     }
 
-    const container = document.createElement('div');
-    container.className = 'posts';
-
     const list = document.createElement('ul');
-    list.className = 'posts_list';
+    list.className = 'pages-list';
 
-    // Ajouter le bouton NewPage
-    const newPage = new Newpage();
-    newPage.onNew = this.onNew.bind(this);
-    list.appendChild(newPage.render());
-
-    // Rendre la liste des pages
-    this.state.pages.forEach((page, i) => {
+    this.state.pages.forEach(page => {
       const li = document.createElement('li');
-      li.className = `posts_post ${page.isDraft ? 'posts_post--draft' : ''} ${i === this.state.selected ? 'posts_post--selected' : ''}`;
-      
-      const title = document.createElement('span');
-      title.className = 'posts_post-title';
-      title.textContent = page.title;
-      
-      const date = document.createElement('span');
-      date.className = 'posts_post-date';
-      date.textContent = moment(page.date).format('MMM Do YYYY');
-      
-      const permaLink = document.createElement('a');
-      permaLink.className = 'posts_perma-link';
-      permaLink.target = '_blank';
-      const url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/');
-      const rootPath = url.slice(0, url.indexOf('admin')).join('/');
-      permaLink.href = rootPath + '/' + page.path;
-      permaLink.innerHTML = '<i class="fa fa-link"></i>';
-      
-      const editLink = document.createElement('a');
-      editLink.className = 'posts_edit-link';
-      editLink.href = `#/page/${page._id}`;
-      editLink.innerHTML = '<i class="fa fa-pencil-square-o"></i>';
-      
-      li.appendChild(title);
-      li.appendChild(date);
-      li.appendChild(permaLink);
-      li.appendChild(editLink);
-      
-      li.addEventListener('dblclick', this.goTo.bind(this, page._id));
-      li.addEventListener('click', () => {
-        this.state.selected = i;
-        this.render();
-      });
-      
+      const a = document.createElement('a');
+      a.href = `#/page/${page._id}`;
+      a.textContent = page.title;
+      li.appendChild(a);
       list.appendChild(li);
     });
 
-    container.appendChild(list);
-
-    // Afficher le contenu de la page sélectionnée
-    const current = this.state.pages[this.state.selected] || {};
-    const display = document.createElement('div');
-    display.className = `posts_display ${current.isDraft ? 'posts_display--draft' : ''}`;
-
-    if (current.isDraft) {
-      const draftMessage = document.createElement('div');
-      draftMessage.className = 'posts_draft-message';
-      draftMessage.textContent = 'Draft';
-      display.appendChild(draftMessage);
-    }
-
-    const rendered = new Rendered();
-    rendered.className = 'posts_content';
-    rendered.text = current.content;
-    display.appendChild(rendered.render());
-
-    container.appendChild(display);
-    return container;
+    div.appendChild(list);
   }
 }
 
@@ -5672,32 +4961,29 @@ class SinceWhen {
 module.exports = SinceWhen
 
 },{}],39:[function(require,module,exports){
-var DataFetcher = require('./data-fetcher');
-var api = require('./api');
-var _ = require('lodash');
-var moment = require('moment');
-var Editor_data = require('./editor-data');
+const DataFetcher = require('./data-fetcher');
+const api = require('./api');
+const _ = require('lodash');
+const moment = require('moment');
+const Editor_data = require('./editor-data');
 
 class Stade {
-  constructor(params) {
-    this.params = params;
-    this.state = {
-      updated: moment(),
-      stade: [],
-      filteredEntries: []
-    };
+  constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchStade.bind(this));
     this.init();
   }
 
-  async init() {
-    await this.fetchStadeData(this.params.matchId);
+  init() {
+    this.state = {
+      updated: moment(),
+      stade: null,
+      filteredEntries: []
+    };
   }
 
-  async fetchStadeData(id) {
-    console.log(id);
-    const stades = await api.getEntries("stade");
-    this.state.stade = stades.find(match => match._id === id);
-    this.render();
+  async fetchStade() {
+    const params = router.getParams();
+    return await api.getEntry("stade", params[0]);
   }
 
   async filterEntriesWithAPI() {
@@ -5707,12 +4993,35 @@ class Stade {
   }
 
   render() {
+    const div = document.createElement('div');
+    div.className = 'stade';
+    
+    this.dataFetcher.getData().then(stade => {
+      this.state.stade = stade;
+      this.updateView(div);
+    });
+
+    return div;
+  }
+
+  updateView(div) {
     if (!this.state.stade) {
-      return document.createElement('div').textContent = 'Loading stade data...';
+      div.textContent = 'Chargement...';
+      return;
     }
 
-    const editor = new Editor_data(this.params.matchId, "stade");
-    return editor.render();
+    const content = document.createElement('div');
+    content.className = 'stade-content';
+    
+    const name = document.createElement('h2');
+    name.textContent = this.state.stade.stadeName;
+    content.appendChild(name);
+
+    const capacity = document.createElement('p');
+    capacity.textContent = `Capacité: ${this.state.stade.capacity}`;
+    content.appendChild(capacity);
+
+    div.appendChild(content);
   }
 }
 
@@ -5729,23 +5038,21 @@ const Router = require('./router');
 
 class Stades {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchStades.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
       selected: 0,
       showNewForm: false,
       stades: [],
       updated: moment()
     };
-    this.init();
   }
 
-  async init() {
-    try {
-      const stades = await api.getEntries("stade");
-      this.state.stades = stades;
-      this.render();
-    } catch (error) {
-      console.error('Error loading stades:', error);
-    }
+  async fetchStades() {
+    return await api.getEntries("stade");
   }
 
   toggleNewForm() {
@@ -5779,15 +5086,25 @@ class Stades {
   }
 
   render() {
+    const div = document.createElement('div');
+    div.className = 'stades';
+    
+    this.dataFetcher.getData().then(stades => {
+      this.state.stades = stades;
+      this.updateView(div);
+    });
+
+    return div;
+  }
+
+  updateView(div) {
     if (!this.state.stades) {
-      const loading = document.createElement('div');
-      loading.className = 'stades';
-      loading.textContent = 'Loading...';
-      return loading;
+      div.textContent = 'Chargement...';
+      return;
     }
 
     const container = document.createElement('div');
-    container.className = 'posts';
+    container.className = 'stades-container';
 
     // Header
     const header = document.createElement('div');
@@ -5819,40 +5136,16 @@ class Stades {
 
     // Stades list
     const list = document.createElement('ul');
-    list.className = 'posts_list';
+    list.className = 'stades-list';
 
     this.state.stades.forEach((stade, i) => {
       const li = document.createElement('li');
-      li.className = `posts_post ${i === this.state.selected ? 'posts_post--selected' : ''}`;
-      
-      const title = document.createElement('span');
-      title.className = 'posts_post-title';
-      title.textContent = stade.stadeName;
-      
-      const editLink = document.createElement('a');
-      editLink.href = `#/stade/${stade._id}`;
-      editLink.innerHTML = '<i class="fa fa-pencil-square-o"></i>';
-      
-      const deleteLink = document.createElement('a');
-      deleteLink.className = 'posts_delete-link';
-      deleteLink.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-        </svg>
-      `;
-      deleteLink.addEventListener('click', this.onDelete.bind(this, stade._id));
-      
-      li.appendChild(title);
-      li.appendChild(editLink);
-      li.appendChild(deleteLink);
-      
-      li.addEventListener('dblclick', this.goTo.bind(this, stade._id));
+      li.className = `stade-item ${i === this.state.selected ? 'selected' : ''}`;
+      li.textContent = stade.stadeName;
       li.addEventListener('click', () => {
         this.state.selected = i;
-        this.render();
+        this.updateView(div);
       });
-      
       list.appendChild(li);
     });
 
@@ -5870,53 +5163,77 @@ class Stades {
     display.appendChild(rendered.render());
 
     container.appendChild(display);
-    return container;
+    div.appendChild(container);
   }
 }
 
 module.exports = Stades;
 },{"./api":3,"./data-fetcher":12,"./new-stade":24,"./rendered":32,"./router":35,"./since-when":38,"lodash":197,"moment":211}],41:[function(require,module,exports){
-var DataFetcher = require('./data-fetcher');
-var api = require('./api');
-var _ = require('lodash');
-var moment = require('moment');
-var Editor_data = require('./editor-data');
+const DataFetcher = require('./data-fetcher');
+const api = require('./api');
+const _ = require('lodash');
+const moment = require('moment');
+const Editor_data = require('./editor-data');
 
 class Team {
-  constructor(params) {
-    this.params = params;
-    this.state = {
-      updated: moment(),
-      team: [],
-      filteredEntries: []
-    };
+  constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchTeam.bind(this));
     this.init();
   }
 
-  async init() {
-    await this.fetchTeamData(this.params.matchId);
+  init() {
+    this.state = {
+      team: null
+    };
   }
 
-  async fetchTeamData(id) {
-    console.log(id);
-    const teams = await api.getEntries("team");
-    this.state.team = teams.find(match => match._id === id);
-    this.render();
-  }
-
-  async filterEntriesWithAPI() {
-    const filteredEntries = await api.getEntries(this.state.team);
-    this.state.filteredEntries = filteredEntries;
-    this.render();
+  async fetchTeam() {
+    const params = router.getParams();
+    return await api.getEntry("team", params[0]);
   }
 
   render() {
+    const div = document.createElement('div');
+    div.className = 'team';
+    
+    this.dataFetcher.getData().then(team => {
+      this.state.team = team;
+      this.updateView(div);
+    });
+
+    return div;
+  }
+
+  updateView(div) {
     if (!this.state.team) {
-      return document.createElement('div').textContent = 'Loading team data...';
+      div.textContent = 'Chargement...';
+      return;
     }
 
-    const editor = new Editor_data(this.params.matchId, "team");
-    return editor.render();
+    const content = document.createElement('div');
+    content.className = 'team-content';
+    
+    const name = document.createElement('h2');
+    name.textContent = this.state.team.teamName;
+    content.appendChild(name);
+
+    const details = document.createElement('div');
+    details.className = 'team-details';
+    
+    if (this.state.team.coach) {
+      const coach = document.createElement('p');
+      coach.textContent = `Entraîneur: ${this.state.team.coach}`;
+      details.appendChild(coach);
+    }
+
+    if (this.state.team.stadium) {
+      const stadium = document.createElement('p');
+      stadium.textContent = `Stade: ${this.state.team.stadium}`;
+      details.appendChild(stadium);
+    }
+
+    content.appendChild(details);
+    div.appendChild(content);
   }
 }
 
