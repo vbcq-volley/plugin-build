@@ -491,7 +491,10 @@ class App {
   }
 }
 
-module.exports = new App();
+// Exportation de la fonction d'initialisation
+module.exports = function() {
+  return new App();
+};
 
 },{"./router":35}],6:[function(require,module,exports){
 var bcrypt = require('bcrypt-nodejs');
