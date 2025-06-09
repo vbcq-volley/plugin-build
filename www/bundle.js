@@ -471,6 +471,7 @@ class App {
     
     // Initialisation immédiate
     const body = document.getElementsByTagName('body')[0];
+    console.log(body)
     if (body) {
       body.appendChild(app);
       window.addEventListener('hashchange', this.handleRoute.bind(this));
