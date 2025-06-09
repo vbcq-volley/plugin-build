@@ -786,6 +786,7 @@ class App {
 
   handleRoute() {
     const hash = window.location.hash.slice(1);
+	console.log(hash)
     const [route, id] = hash.split('/');
     this.state.currentRoute = route;
     
