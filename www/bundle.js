@@ -1469,42 +1469,33 @@ module.exports = Confirm;
 var p = require('es6-promise')
   , Promise = p.Promise
 
-module.exports = function (fetch) {
-  
-  return {
-    getInitialState: function () {
-      return { }
-    },
+class DataFetcher {
+  constructor(fetchFn) {
+    this.fetchFn = fetchFn;
+    this.state = {};
+  }
 
-    componentWillMount: function () {
-      this.loadData(this.props)
-    },
-
-    componentWillReceiveProps: function (nextProps) {
-      this.loadData(nextProps)
-    },
-
-    loadData: function (props) {
-      console.log(props.params)
-      if(props.params==Object()){
-        return 
-      }
-      var items = fetch(props.params)
-      console.log(props)
-      Object.keys(items).forEach((name) => {
-        Promise.resolve(items[name]).then((data) => {
-          if (!this.isMounted()) return
-          var update = {}
-          update[name] = data
-          this.setState(update)
-          if (this.dataDidLoad) {
-            this.dataDidLoad(name, data)
-          }
-        })
-      })
+  async getData() {
+    try {
+      const data = await this.fetchFn();
+      this.state = data;
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
     }
   }
+
+  getState() {
+    return this.state;
+  }
+
+  setState(newState) {
+    this.state = { ...this.state, ...newState };
+  }
 }
+
+module.exports = DataFetcher;
 
 
 },{"es6-promise":155}],13:[function(require,module,exports){
@@ -3828,6 +3819,7 @@ const Router = require('./router');
 
 class Page {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchPage.bind(this));
     this.state = {
       updated: moment(),
       page: null,
@@ -3840,6 +3832,17 @@ class Page {
     };
     
     this.init();
+  }
+
+  init() {
+    this.state = {
+      page: null
+    };
+  }
+
+  async fetchPage() {
+    const params = Router.getParams();
+    return await api.page(params[0]);
   }
 
   async init() {
@@ -4278,6 +4281,7 @@ const confirm = function (message, options = {}) {
 
 class Post {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchPost.bind(this));
     this.state = {
       updated: moment(),
       post: null,
@@ -4292,11 +4296,21 @@ class Post {
     this.init();
   }
 
+  init() {
+    this.state = {
+      post: null
+    };
+  }
+
+  async fetchPost() {
+    const params = Router.getParams();
+    return await api.post(params[0]);
+  }
+
   async init() {
     try {
-      const params = Router.getParams();
       const [post, tagsCategoriesAndMetadata, settings] = await Promise.all([
-        api.post(params[0]),
+        api.post(Router.getParams()[0]),
         api.tagsCategoriesAndMetadata(),
         api.settings()
       ]);
@@ -4307,7 +4321,7 @@ class Post {
       
       this._post = _.debounce((update) => {
         const now = moment();
-        api.post(params[0], update).then(() => {
+        api.post(Router.getParams()[0], update).then(() => {
           this.state.updated = now;
           this.render();
         });
@@ -4447,24 +4461,20 @@ const Router = require('./router');
 
 class Posts {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchPosts.bind(this));
+    this.init();
+  }
+
+  init() {
     this.state = {
       posts: null,
       selected: 0
     };
-    this.init();
   }
 
-  async init() {
-    try {
-      const posts = await api.posts();
-      this.state.posts = _.sortBy(
-        _.filter(posts, post => !post.isDiscarded),
-        ['isDraft', 'date']
-      ).reverse();
-      this.render();
-    } catch (error) {
-      console.error('Error loading posts:', error);
-    }
+  async fetchPosts() {
+    const response = await fetch('/api/posts');
+    return await response.json();
   }
 
   onNew(post) {
@@ -4481,6 +4491,22 @@ class Posts {
   }
 
   render() {
+    const div = document.createElement('div');
+    div.className = 'posts';
+    
+    // Utilisation de dataFetcher
+    this.dataFetcher.getData().then(posts => {
+      this.state.posts = _.sortBy(
+        _.filter(posts, post => !post.isDiscarded),
+        ['isDraft', 'date']
+      ).reverse();
+      this.updateView(div);
+    });
+
+    return div;
+  }
+
+  updateView(div) {
     if (!this.state.posts) {
       return document.createElement('div');
     }
@@ -4556,7 +4582,7 @@ class Posts {
     display.appendChild(rendered.render());
 
     container.appendChild(display);
-    return container;
+    div.appendChild(container);
   }
 }
 
@@ -5240,6 +5266,7 @@ const Editor_data = require('./editor-data')
 class Result {
   constructor() {
     this.editor = new Editor_data()
+    this.init()
   }
 
   init(container, params) {
@@ -5248,9 +5275,13 @@ class Result {
       type: 'result'
     })
   }
+
+  render() {
+    // Rendu
+  }
 }
 
-module.exports = new Result() 
+module.exports = Result 
 },{"./editor-data":16}],34:[function(require,module,exports){
 const _ = require('lodash')
 const moment = require('moment')
@@ -5261,6 +5292,10 @@ const api = require('./api')
 
 class Results {
   constructor() {
+    this.init();
+  }
+
+  init() {
     this.state = {
       selected: 0,
       showNewForm: false,
@@ -5426,8 +5461,9 @@ class Results {
   }
 }
 
-module.exports = new Results()
+module.exports = Results;
 },{"./api":3,"./new-result":23,"./rendered":32,"./since-when":38,"lodash":197,"moment":211}],35:[function(require,module,exports){
+const App = require('./app');
 const Post = require('./post');
 const Posts = require('./posts');
 const Page = require('./page');
@@ -5442,8 +5478,8 @@ const team = require("./team");
 const teams = require("./teams");
 const stade = require("./stade");
 const stades = require("./stades");
-const result = require("./result");
-const results = require("./results");
+const Result = require("./result");
+const Results = require("./results");
 
 class Router {
   constructor(div) {
@@ -5459,8 +5495,8 @@ class Router {
       'team': team,
       'stades': stades,
       'stade': stade,
-      'results': results,
-      'result': result,
+      'results': Results,
+      'result': Result,
       'about': About,
       'deploy': Deploy,
       'settings': Settings,
@@ -5502,7 +5538,7 @@ class Router {
 
 module.exports = Router;
 
-},{"./about":2,"./auth-setup":6,"./data":13,"./datas":14,"./deploy":15,"./page":26,"./pages":27,"./post":29,"./posts":30,"./result":33,"./results":34,"./settings":37,"./stade":39,"./stades":40,"./team":41,"./teams":42}],36:[function(require,module,exports){
+},{"./about":2,"./app":5,"./auth-setup":6,"./data":13,"./datas":14,"./deploy":15,"./page":26,"./pages":27,"./post":29,"./posts":30,"./result":33,"./results":34,"./settings":37,"./stade":39,"./stades":40,"./team":41,"./teams":42}],36:[function(require,module,exports){
 // index.js
 var admin = require('./')
   , api = require('./api')
@@ -5898,6 +5934,7 @@ const Router = require('./router');
 
 class Teams {
   constructor() {
+    this.dataFetcher = new DataFetcher(this.fetchTeams.bind(this));
     this.state = {
       selected: 0,
       showNewForm: false,
@@ -5907,14 +5944,14 @@ class Teams {
     this.init();
   }
 
-  async init() {
-    try {
-      const teams = await api.getEntries("team");
-      this.state.teams = teams;
-      this.render();
-    } catch (error) {
-      console.error('Error loading teams:', error);
-    }
+  init() {
+    this.state = {
+      teams: []
+    };
+  }
+
+  async fetchTeams() {
+    return await api.teams();
   }
 
   toggleNewForm() {
@@ -5948,120 +5985,34 @@ class Teams {
   }
 
   render() {
-    if (!this.state.teams) {
-      const loading = document.createElement('div');
-      loading.className = 'teams';
-      loading.textContent = 'Loading...';
-      return loading;
-    }
-
-    const container = document.createElement('div');
-    container.className = 'posts';
-
-    // Header
-    const header = document.createElement('div');
-    header.className = 'posts_header';
+    const div = document.createElement('div');
+    div.className = 'teams';
     
-    const title = document.createElement('h2');
-    title.textContent = 'Équipes';
-    
-    const newButton = document.createElement('button');
-    newButton.className = 'new-team-button';
-    newButton.innerHTML = `<i class="fa fa-plus" /> ${this.state.showNewForm ? 'Annuler' : 'Nouvelle équipe'}`;
-    newButton.addEventListener('click', this.toggleNewForm.bind(this));
-    
-    header.appendChild(title);
-    header.appendChild(newButton);
-    container.appendChild(header);
-
-    // New team form
-    if (this.state.showNewForm) {
-      const formContainer = document.createElement('div');
-      formContainer.className = 'new-team-form-container';
-      
-      const newTeam = new Newteam();
-      newTeam.onNew = this.onNew.bind(this);
-      formContainer.appendChild(newTeam.render());
-      
-      container.appendChild(formContainer);
-    }
-
-    // Teams list
-    const list = document.createElement('ul');
-    list.className = 'posts_list';
-
-    this.state.teams.forEach((team, i) => {
-      const li = document.createElement('li');
-      li.className = `posts_post ${team.isDraft ? 'posts_post--draft' : ''} ${i === this.state.selected ? 'posts_post--selected' : ''}`;
-      
-      const title = document.createElement('span');
-      title.className = 'posts_post-title';
-      title.textContent = team.teamName;
-      
-      const date = document.createElement('span');
-      date.className = 'posts_post-date';
-      date.textContent = team.date;
-      
-      const permaLink = document.createElement('a');
-      permaLink.className = 'posts_perma-link';
-      permaLink.target = '_blank';
-      const url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/');
-      const rootPath = url.slice(0, url.indexOf('admin')).join('/');
-      permaLink.href = rootPath + '/' + team.path;
-      permaLink.innerHTML = '<i class="fa fa-link"></i>';
-      
-      const editLink = document.createElement('a');
-      editLink.className = 'posts_edit-link';
-      editLink.href = `#/team/${team._id}`;
-      editLink.innerHTML = '<i class="fa fa-pencil"></i>';
-      
-      const deleteLink = document.createElement('a');
-      deleteLink.className = 'posts_delete-link';
-      deleteLink.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-        </svg>
-      `;
-      deleteLink.addEventListener('click', this.onDelete.bind(this, team._id));
-      
-      li.appendChild(title);
-      li.appendChild(date);
-      li.appendChild(permaLink);
-      li.appendChild(editLink);
-      li.appendChild(deleteLink);
-      
-      li.addEventListener('dblclick', this.goTo.bind(this, team._id));
-      li.addEventListener('click', () => {
-        this.state.selected = i;
-        this.render();
-      });
-      
-      list.appendChild(li);
+    this.dataFetcher.getData().then(teams => {
+      this.state.teams = teams;
+      this.updateView(div);
     });
 
-    container.appendChild(list);
+    return div;
+  }
 
-    // Display selected team
-    const current = this.state.teams[this.state.selected] || {};
-    const display = document.createElement('div');
-    display.className = `posts_display ${current.isDraft ? 'posts_display--draft' : ''}`;
-
-    if (current.isDraft) {
-      const draftMessage = document.createElement('div');
-      draftMessage.className = 'posts_draft-message';
-      draftMessage.textContent = 'Draft';
-      display.appendChild(draftMessage);
+  updateView(div) {
+    if (!this.state.teams) {
+      div.textContent = 'Chargement...';
+      return;
     }
 
-    const rendered = new Rendered();
-    rendered.className = 'posts_content';
-    rendered.text = JSON.stringify(current, null, 2);
-    rendered.type = 'team';
-    display.appendChild(rendered.render());
-
-    container.appendChild(display);
-    return container;
+    // Mise à jour de la vue avec les équipes
+    const list = document.createElement('ul');
+    list.className = 'teams-list';
+    
+    this.state.teams.forEach(team => {
+      const item = document.createElement('li');
+      item.textContent = team.name;
+      list.appendChild(item);
+    });
+    
+    div.appendChild(list);
   }
 }
 
