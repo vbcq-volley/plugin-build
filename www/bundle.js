@@ -429,18 +429,24 @@ const router = require('./router');
 
 class App {
   constructor() {
-    this.initializeApp();
+    this.initializeApp(document.body);
   }
 
-  initializeApp() {
+  initializeApp(node) {
+    // Création de la structure principale
     const app = document.createElement('div');
     app.className = 'app';
+    node.appendChild(app);
     
+    // Création du header
     const header = document.createElement('div');
     header.className = 'app_header';
+    app.appendChild(header);
     
+    // Création de la navigation
     const nav = document.createElement('ul');
     nav.className = 'app_nav';
+    header.appendChild(nav);
     
     const menuItems = [
       { text: 'Posts', route: 'posts' },
@@ -453,6 +459,7 @@ class App {
       { text: 'À propos', route: 'about' }
     ];
     
+    // Création des éléments de menu
     menuItems.forEach(item => {
       const li = document.createElement('li');
       const a = document.createElement('a');
@@ -462,33 +469,20 @@ class App {
       nav.appendChild(li);
     });
     
-    header.appendChild(nav);
-    app.appendChild(header);
-    
+    // Création de la zone principale
     const main = document.createElement('div');
     main.className = 'app_main';
-    main.id=main.className
+    main.id = 'app_main';
     app.appendChild(main);
     
-    // Initialisation immédiate
-    const body = document.getElementsByTagName('body')[0];
-    console.log(body)
-    if (body) {
-      body.appendChild(app);
-      window.addEventListener('hashchange', this.handleRoute.bind(this));
-      this.handleRoute(main);
-    } else {
-      // Fallback si le body n'est pas encore disponible
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementsByTagName('body')[0].appendChild(app);
-        window.addEventListener('hashchange', this.handleRoute.bind(this));
-        this.handleRoute(main);
-      });
-    }
+    // Initialisation du routage
+    window.addEventListener('hashchange', this.handleRoute.bind(this));
+    const currentHash = window.location.hash.slice(1) || '/posts';
+    this.handleRoute(main, currentHash);
   }
   
-  handleRoute(div) {
-    router.handleRoute(div);
+  handleRoute(div, hash) {
+    router.handleRoute(div, hash);
   }
 }
 
@@ -2523,7 +2517,8 @@ module.exports = Editor
 var router = require('./app')
 
 module.exports = function (node) {
-  router.init()
+  const vanguard= new router(node)
+  return vanguard
 }
 
 
