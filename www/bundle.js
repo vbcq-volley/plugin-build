@@ -426,12 +426,13 @@ deleteEntry : (modelName, index) => delet(`/db/${modelName}/${index}`),
  * admin menu bar
  */
 const router = require('./router');
+
 class App {
   constructor() {
-    this.init();
+    this.initializeApp();
   }
 
-  init() {
+  initializeApp() {
     const app = document.createElement('div');
     app.className = 'app';
     
@@ -491,10 +492,8 @@ class App {
   }
 }
 
-// Exportation de la fonction d'initialisation
-module.exports = function() {
-  return new App();
-};
+// Exportation de la classe
+module.exports = App;
 
 },{"./router":35}],6:[function(require,module,exports){
 var bcrypt = require('bcrypt-nodejs');
