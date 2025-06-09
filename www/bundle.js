@@ -469,18 +469,19 @@ class App {
     main.id=main.className
     app.appendChild(main);
     
-    // Attendre que le DOM soit chargé
-    if (document.readyState === 'loading') {
+    // Initialisation immédiate
+    const body = document.getElementsByTagName('body')[0];
+    if (body) {
+      body.appendChild(app);
+      window.addEventListener('hashchange', this.handleRoute.bind(this));
+      this.handleRoute(main);
+    } else {
+      // Fallback si le body n'est pas encore disponible
       document.addEventListener('DOMContentLoaded', () => {
         document.getElementsByTagName('body')[0].appendChild(app);
         window.addEventListener('hashchange', this.handleRoute.bind(this));
         this.handleRoute(main);
       });
-    } else {
-      // Si le DOM est déjà chargé
-      document.getElementsByTagName('body')[0].appendChild(app);
-      window.addEventListener('hashchange', this.handleRoute.bind(this));
-      this.handleRoute(main);
     }
   }
   
