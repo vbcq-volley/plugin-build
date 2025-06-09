@@ -867,7 +867,5 @@ document.addEventListener('DOMContentLoaded', () => {
   new App(node);
 });
 
-window.App = function(node) {
-  return new App(node);
-};
+
 
