@@ -162,7 +162,7 @@ class API {
   }
 
   async uploadMultiFiles(files) {
-    console.log()
+    console.log(files)
     const formData = new FormData();
     files.forEach(file => {
       formData.append(file.name, file);
@@ -1790,6 +1790,7 @@ class App {
       this.loadImages();
       fileInput.value = '';
     } catch (error) {
+      
       alert('Erreur lors de l\'upload: ' + error.message);
     }
   }
