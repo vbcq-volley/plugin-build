@@ -1346,7 +1346,7 @@ class DataEditor {
         } else {
           await api.createEntry('match', data);
         }
-        window.location.hash = '#/datas';
+        window.location.hash = '#/admin/datas';
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1401,7 +1401,7 @@ class App {
     menuItems.forEach(item => {
       const li = document.createElement('li');
       const a = document.createElement('a');
-      a.href = `#/${item.route}`;
+      a.href = `#/admin/${item.route}`;
       a.textContent = item.text;
       li.appendChild(a);
       nav.appendChild(li);
@@ -1436,7 +1436,7 @@ class App {
         break;
       case 'post':
         if (id) {
-          view = new Post(this.main, id);
+          view = new PostEditor(this.main, id);
         } else {
           view = new PostEditor(this.main);
         }
