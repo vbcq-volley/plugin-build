@@ -924,7 +924,7 @@ class PostEditor {
       const data = {
         title: formData.get('title'),
         _content: this.editor.getValue(),
-        date: formData.get('date')
+        date: formData.get('date') 
       };
 
       try {
