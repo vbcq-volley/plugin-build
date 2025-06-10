@@ -1423,7 +1423,7 @@ class App {
 
   handleRoute() {
     const hash = window.location.hash.slice(1);
-    console.log(hash)
+    console.log(hash.split('/'))
     const [bin,route, id] = hash.split('/');
     this.state.currentRoute = route;
     
