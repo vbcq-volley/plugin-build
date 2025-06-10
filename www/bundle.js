@@ -176,7 +176,7 @@ class API {
   }
 
   async getMatch() {
-    return this.getEntries("math");
+    return this.getEntries("match");
   }
 }
 
