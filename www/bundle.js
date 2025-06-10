@@ -54,15 +54,129 @@ class API {
     });
   }
 
-  async getSettings() {
-    return this.request('/settings');
+  async getPosts() {
+    return this.request('/posts/list');
   }
 
-  async updateSettings(settings) {
-    return this.request('/settings', {
-      method: 'PUT',
-      body: JSON.stringify(settings)
+  async getPost(id, data) {
+    if (data) {
+      return this.request(`/posts/${id}`, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+    }
+    return this.request(`/posts/${id}`);
+  }
+
+  async createPost(title) {
+    return this.request('/posts/new', {
+      method: 'POST',
+      body: JSON.stringify({ title })
     });
+  }
+
+  async getPages() {
+    return this.request('/pages/list');
+  }
+
+  async getPage(id, data) {
+    if (data) {
+      return this.request(`/pages/${id}`, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+    }
+    return this.request(`/pages/${id}`);
+  }
+
+  async createPage(title) {
+    return this.request('/pages/new', {
+      method: 'POST',
+      body: JSON.stringify({ title })
+    });
+  }
+
+  async deploy(message) {
+    return this.request('/deploy', {
+      method: 'POST',
+      body: JSON.stringify({ message })
+    });
+  }
+
+  async uploadImage(data, filename) {
+    return this.request('/images/upload', {
+      method: 'POST',
+      body: JSON.stringify({ data, filename })
+    });
+  }
+
+  async removePost(id) {
+    return this.request(`/posts/${id}/remove`, {
+      method: 'POST'
+    });
+  }
+
+  async publishPost(id) {
+    return this.request(`/posts/${id}/publish`, {
+      method: 'POST'
+    });
+  }
+
+  async unpublishPost(id) {
+    return this.request(`/posts/${id}/unpublish`, {
+      method: 'POST'
+    });
+  }
+
+  async renamePost(id, filename) {
+    return this.request(`/posts/${id}/rename`, {
+      method: 'POST',
+      body: JSON.stringify({ filename })
+    });
+  }
+
+  async getTagsCategoriesAndMetadata() {
+    return this.request('/tags-categories-and-metadata');
+  }
+
+  async getSettings() {
+    return this.request('/settings/list');
+  }
+
+  async setSetting(name, value, addedOptions) {
+    return this.request('/settings/set', {
+      method: 'POST',
+      body: JSON.stringify({ name, value, addedOptions })
+    });
+  }
+
+  async getGallery() {
+    return this.request('/gallery/list');
+  }
+
+  async setGallery(name, createAt) {
+    return this.request('/gallery/set', {
+      method: 'POST',
+      body: JSON.stringify({ name, createAt })
+    });
+  }
+
+  async uploadMultiFiles(files) {
+    const formData = new FormData();
+    files.forEach(file => {
+      formData.append(file.name, file);
+    });
+    return this.request('/upload', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  }
+
+  async getMatch() {
+    return this.request('/match/list');
   }
 }
 
@@ -847,7 +961,8 @@ class App {
               return;
           }
         } else {
-          this.main.innerHTML = '<div class="error">Route non trouvée</div>';
+          view = new Posts(this.main);
+        
           return;
         }
     }
