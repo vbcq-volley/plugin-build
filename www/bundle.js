@@ -1246,11 +1246,11 @@ class ResultEditor {
           </div>
           <div class="form-group">
             <label for="team">Équipe</label>
-            <input type="text" id="team" name="team" value="${result.team || ''}" required>
+            <input type="text" id="team" name="team" value="${result.team1 || ''}" required>
           </div>
           <div class="form-group">
             <label for="opponent">Adversaire</label>
-            <input type="text" id="opponent" name="opponent" value="${result.opponent || ''}" required>
+            <input type="text" id="opponent" name="opponent" value="${result.team2 || ''}" required>
           </div>
           <div class="form-group">
             <label for="teamScore">Score de l'équipe</label>
