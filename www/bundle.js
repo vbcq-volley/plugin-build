@@ -1423,8 +1423,7 @@ class App {
 
   handleRoute() {
     const hash = window.location.hash.slice(1);
-    console.log(hash)
-    const [bin,route, id] = hash.split('/');
+    const [route, id] = hash.split('/');
     this.state.currentRoute = route;
     
     if (this.state.currentView) {
@@ -1437,7 +1436,11 @@ class App {
         view = new Posts(this.main);
         break;
       case 'post':
-        view = id ? new Post(this.main, id) : new PostEditor(this.main);
+        if (id) {
+          view = new Post(this.main, id);
+        } else {
+          view = new PostEditor(this.main);
+        }
         break;
       case 'post-edit':
         view = new PostEditor(this.main, id);
@@ -1446,7 +1449,11 @@ class App {
         view = new Pages(this.main);
         break;
       case 'page':
-        view = id ? new Page(this.main, id) : new PageEditor(this.main);
+        if (id) {
+          view = new Page(this.main, id);
+        } else {
+          view = new PageEditor(this.main);
+        }
         break;
       case 'page-edit':
         view = new PageEditor(this.main, id);
@@ -1455,7 +1462,11 @@ class App {
         view = new Teams(this.main);
         break;
       case 'team':
-        view = id ? new Team(this.main, id) : new TeamEditor(this.main);
+        if (id) {
+          view = new Team(this.main, id);
+        } else {
+          view = new TeamEditor(this.main);
+        }
         break;
       case 'team-edit':
         view = new TeamEditor(this.main, id);
@@ -1464,7 +1475,11 @@ class App {
         view = new Stades(this.main);
         break;
       case 'stade':
-        view = id ? new Stade(this.main, id) : new StadeEditor(this.main);
+        if (id) {
+          view = new Stade(this.main, id);
+        } else {
+          view = new StadeEditor(this.main);
+        }
         break;
       case 'stade-edit':
         view = new StadeEditor(this.main, id);
@@ -1473,7 +1488,11 @@ class App {
         view = new Results(this.main);
         break;
       case 'result':
-        view = id ? new Result(this.main, id) : new ResultEditor(this.main);
+        if (id) {
+          view = new Result(this.main, id);
+        } else {
+          view = new ResultEditor(this.main);
+        }
         break;
       case 'result-edit':
         view = new ResultEditor(this.main, id);
@@ -1482,7 +1501,11 @@ class App {
         view = new Datas(this.main);
         break;
       case 'data':
-        view = id ? new Data(this.main, id) : new DataEditor(this.main);
+        if (id) {
+          view = new Data(this.main, id);
+        } else {
+          view = new DataEditor(this.main);
+        }
         break;
       case 'data-edit':
         view = new DataEditor(this.main, id);
