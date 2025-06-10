@@ -1401,7 +1401,7 @@ class App {
     menuItems.forEach(item => {
       const li = document.createElement('li');
       const a = document.createElement('a');
-      a.href = `#/admin/${item.route}`;
+      a.href = `#/${item.route}`;
       a.textContent = item.text;
       li.appendChild(a);
       nav.appendChild(li);
