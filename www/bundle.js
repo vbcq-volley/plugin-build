@@ -1050,7 +1050,7 @@ class TeamEditor {
         teamName: formData.get('teamName'),
         coach: formData.get('coach'),
         stadium: formData.get('stadium'),
-        founded: formData.get('founded'),
+        founded: parseInt(formData.get('founded')),
         country: formData.get('country')
       };
 
@@ -1259,7 +1259,7 @@ class DataEditor {
   }
 
   async fetchData() {
-    return this.id ? api.getEntry('data', this.id) : null;
+    return this.id ? api.getEntry('match', this.id) : null;
   }
 
   render() {
@@ -1312,9 +1312,9 @@ class DataEditor {
 
       try {
         if (this.id) {
-          await api.updateEntry('data', this.id, data);
+          await api.updateEntry('match', this.id, data);
         } else {
-          await api.createEntry('data', data);
+          await api.createEntry('match', data);
         }
         window.location.hash = '#/datas';
       } catch (error) {
