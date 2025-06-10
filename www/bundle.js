@@ -983,8 +983,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new App(node);
 });
 
-module.exports = function(node) {
-  return new App(node);
-};
+
 
 },{}]},{},[1]);
