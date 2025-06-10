@@ -1778,8 +1778,8 @@ class App {
 
   async handleImageUpload() {
     const fileInput = this.imageModal.querySelector('#image-upload');
-    const files = fileInput.files;
-    console.log(files)
+    const files = Array.from(fileInput.files);
+
     if (files.length === 0) {
       alert('Veuillez sélectionner au moins une image');
       return;
@@ -1790,7 +1790,6 @@ class App {
       this.loadImages();
       fileInput.value = '';
     } catch (error) {
-      console.log(files)
       alert('Erreur lors de l\'upload: ' + error.message);
     }
   }
