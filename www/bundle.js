@@ -401,7 +401,7 @@ class Results {
     return api.getEntries('result');
   }
 
-  render() {
+  render() { 
     this.dataFetcher.getData().then(() => this.updateView());
   }
 
