@@ -488,7 +488,7 @@ class Datas {
           ${datas.map(data => `
             <li>
               <a href="#/data/${data._id}">${data.title}</a>
-              <span class="date">${new Date(data.date).toLocaleDateString()}</span>
+              <span class="date">${data.homeDate}</span>
             </li>
           `).join('')}
         </ul>
