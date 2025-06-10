@@ -841,6 +841,7 @@ class PostEditor {
     this.node = node;
     this.id = id;
     this.dataFetcher = new DataFetcher(this.fetchPost.bind(this));
+    this.editor = null;
   }
 
   async fetchPost() {
@@ -885,13 +886,22 @@ class PostEditor {
     `;
     this.node.innerHTML = html;
 
+    // Initialisation de CodeMirror
+    this.editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+      mode: 'markdown',
+      theme: 'monokai',
+      lineNumbers: true,
+      lineWrapping: true,
+      autofocus: true
+    });
+
     const form = document.getElementById('post-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
       const data = {
         title: formData.get('title'),
-        content: formData.get('content'),
+        content: this.editor.getValue(),
         date: formData.get('date')
       };
 
@@ -900,6 +910,9 @@ class PostEditor {
           await api.getPost(this.id, data);
         } else {
           await api.createPost(data.title);
+          // Mise à jour du contenu après création
+          const newPost = await api.getPost(this.id);
+          await api.getPost(newPost._id, data);
         }
         window.location.hash = '#/posts';
       } catch (error) {
@@ -909,6 +922,9 @@ class PostEditor {
   }
 
   destroy() {
+    if (this.editor) {
+      this.editor.toTextArea();
+    }
     this.node.innerHTML = '';
   }
 }
@@ -918,6 +934,7 @@ class PageEditor {
     this.node = node;
     this.id = id;
     this.dataFetcher = new DataFetcher(this.fetchPage.bind(this));
+    this.editor = null;
   }
 
   async fetchPage() {
@@ -958,13 +975,22 @@ class PageEditor {
     `;
     this.node.innerHTML = html;
 
+    // Initialisation de CodeMirror
+    this.editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+      mode: 'markdown',
+      theme: 'monokai',
+      lineNumbers: true,
+      lineWrapping: true,
+      autofocus: true
+    });
+
     const form = document.getElementById('page-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
       const data = {
         title: formData.get('title'),
-        content: formData.get('content')
+        content: this.editor.getValue()
       };
 
       try {
@@ -972,6 +998,9 @@ class PageEditor {
           await api.getPage(this.id, data);
         } else {
           await api.createPage(data.title);
+          // Mise à jour du contenu après création
+          const newPage = await api.getPage(this.id);
+          await api.getPage(newPage._id, data);
         }
         window.location.hash = '#/pages';
       } catch (error) {
@@ -981,6 +1010,9 @@ class PageEditor {
   }
 
   destroy() {
+    if (this.editor) {
+      this.editor.toTextArea();
+    }
     this.node.innerHTML = '';
   }
 }
@@ -1475,6 +1507,14 @@ const url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/');
 const rootPath = url.slice(0, url.indexOf('admin')).join('/');
 
 api.init('rest', rootPath + '/admin/api');
+
+// Ajout de CodeMirror dans le head
+document.head.innerHTML += `
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/markdown/markdown.min.js"></script>
+`;
 
 // Création de la div et initialisation de l'application
 document.addEventListener('DOMContentLoaded', () => {
