@@ -211,7 +211,7 @@ class Posts {
   }
 
   async fetchPosts() {
-    return api.getEntries('post');
+    return api.getPosts();
   }
 
   render() {
@@ -258,7 +258,7 @@ class Pages {
   }
 
   async fetchPages() {
-    return api.getEntries('page');
+    return api.getPages();
   }
 
   render() {
@@ -447,7 +447,7 @@ class Datas {
   }
 
   async fetchDatas() {
-    return api.getEntries('data');
+    return api.getMatch();
   }
 
   render() {
@@ -537,11 +537,9 @@ class Settings {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const newSettings = {};
       for (const [key, value] of formData.entries()) {
-        newSettings[key] = value === 'on' ? true : value;
+        await api.setSetting(key, value === 'on' ? true : value);
       }
-      await api.updateSettings(newSettings);
       this.render();
     });
   }
@@ -580,7 +578,7 @@ class Post {
   }
 
   async fetchPost() {
-    return api.getEntry('post', this.id);
+    return api.getPost(this.id);
   }
 
   render() {
@@ -625,7 +623,7 @@ class Page {
   }
 
   async fetchPage() {
-    return api.getEntry('page', this.id);
+    return api.getPage(this.id);
   }
 
   render() {
@@ -975,6 +973,7 @@ class App {
 // Initialisation de l'API
 const url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/');
 const rootPath = url.slice(0, url.indexOf('admin')).join('/');
+
 api.init('rest', rootPath + '/admin/api');
 
 // Création de la div et initialisation de l'application
