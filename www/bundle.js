@@ -162,7 +162,7 @@ class API {
   }
 
   async uploadMultiFiles(files) {
-    
+    console.log()
     const formData = new FormData();
     files.forEach(file => {
       formData.append(file.name, file);
