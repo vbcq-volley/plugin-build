@@ -1177,6 +1177,26 @@ class ResultEditor {
     return this.id ? api.getEntry('result', this.id) : null;
   }
 
+  formatDate(date) {
+    if (!date) return '';
+    const d = new Date(date);
+    return d.toLocaleDateString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+
+  parseDate(dateStr) {
+    if (!dateStr) return null;
+    const [datePart, timePart] = dateStr.split(' ');
+    const [day, month, year] = datePart.split('/');
+    const [hour, minute] = timePart.split(':');
+    return new Date(year, month - 1, day, hour, minute).toISOString();
+  }
+
   render() {
     this.dataFetcher.getData().then(() => this.updateView());
   }
