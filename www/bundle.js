@@ -910,10 +910,11 @@ class PostEditor {
           await api.getPost(this.id, data);
         } else {
           await api.createPost(data.title);
+          // Mise à jour du contenu après création
           const newPost = await api.getPost(this.id);
           await api.getPost(newPost._id, data);
         }
-        window.location.hash = '#/admin/posts';
+        window.location.hash = '#/posts';
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -997,10 +998,11 @@ class PageEditor {
           await api.getPage(this.id, data);
         } else {
           await api.createPage(data.title);
+          // Mise à jour du contenu après création
           const newPage = await api.getPage(this.id);
           await api.getPage(newPage._id, data);
         }
-        window.location.hash = '#/admin/pages';
+        window.location.hash = '#/pages';
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1090,7 +1092,7 @@ class TeamEditor {
         } else {
           await api.createEntry('team', data);
         }
-        window.location.hash = '#/admin/teams';
+        window.location.hash = '#/teams';
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1172,7 +1174,7 @@ class StadeEditor {
         } else {
           await api.createEntry('stade', data);
         }
-        window.location.hash = '#/admin/stades';
+        window.location.hash = '#/stades';
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
