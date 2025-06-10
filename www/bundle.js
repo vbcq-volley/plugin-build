@@ -1464,7 +1464,7 @@ class App {
         break;
       case 'team':
         if (id) {
-          view = new Team(this.main, id);
+          view = new TeamEditor(this.main, id);
         } else {
           view = new TeamEditor(this.main);
         }
@@ -1477,7 +1477,7 @@ class App {
         break;
       case 'stade':
         if (id) {
-          view = new Stade(this.main, id);
+          view = new StadeEditor(this.main, id);
         } else {
           view = new StadeEditor(this.main);
         }
@@ -1490,7 +1490,7 @@ class App {
         break;
       case 'result':
         if (id) {
-          view = new Result(this.main, id);
+          view = new ResultEditor(this.main, id);
         } else {
           view = new ResultEditor(this.main);
         }
