@@ -1,4 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+  
 // index.js
 class API {
   constructor() {
@@ -2326,11 +2327,10 @@ class TournamentMatches {
     const tbody = this.node.querySelector('tbody');
     tbody.innerHTML = this.data.map(match => `
       <tr>
-        <td>${match.team1Name}</td>
-        <td>${match.team2Name}</td>
+        <td>${match.team1}</td>
+        <td>${match.team2}</td>
         <td>${this.formatDate(match.matchDate)}</td>
         <td>${match.round}</td>
-        <td>${match.winner ? `Gagnant: ${match.winner}` : 'En attente'}</td>
         <td>
           <a href="#/tournament-matches/${match.id}" class="btn btn-primary">Modifier</a>
           <button class="btn btn-danger" onclick="deleteMatch('${match.id}')">Supprimer</button>
@@ -2351,7 +2351,6 @@ class TournamentMatches {
               <th>Équipe 2</th>
               <th>Date</th>
               <th>Tour</th>
-              <th>Statut</th>
               <th>Actions</th>
             </tr>
           </thead>
