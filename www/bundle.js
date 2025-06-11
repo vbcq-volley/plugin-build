@@ -904,10 +904,7 @@ class PostEditor {
             <input type="date" id="date" name="date" value="${post.date ? new Date(post.date).toISOString().split('T')[0] : ''}">
           </div>
           <div class="form-group">
-            <label for="continueEditing">
-              <input type="checkbox" id="continueEditing" name="continueEditing">
-              Continuer l'édition
-            </label>
+           
           </div>
           <button type="submit">Enregistrer</button>
         </form>
@@ -1011,10 +1008,7 @@ class PageEditor {
           </div>
           <div id="description-preview" class="preview"></div>
           <div class="form-group">
-            <label for="continueEditing">
-              <input type="checkbox" id="continueEditing" name="continueEditing">
-              Continuer l'édition
-            </label>
+           
           </div>
           <button type="submit">Enregistrer</button>
         </form>
