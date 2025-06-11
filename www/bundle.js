@@ -2326,10 +2326,11 @@ class TournamentMatches {
     const tbody = this.node.querySelector('tbody');
     tbody.innerHTML = this.data.map(match => `
       <tr>
-        <td>${match.team1}</td>
-        <td>${match.team2}</td>
+        <td>${match.team1Name}</td>
+        <td>${match.team2Name}</td>
         <td>${this.formatDate(match.matchDate)}</td>
         <td>${match.round}</td>
+        <td>${match.winner ? `Gagnant: ${match.winner}` : 'En attente'}</td>
         <td>
           <a href="#/tournament-matches/${match.id}" class="btn btn-primary">Modifier</a>
           <button class="btn btn-danger" onclick="deleteMatch('${match.id}')">Supprimer</button>
@@ -2350,6 +2351,7 @@ class TournamentMatches {
               <th>Équipe 2</th>
               <th>Date</th>
               <th>Tour</th>
+              <th>Statut</th>
               <th>Actions</th>
             </tr>
           </thead>
