@@ -177,7 +177,47 @@ class API {
   }
 
   async getMatch() {
-    return this.getEntries("match");
+    return this.getEntries('matches');
+  }
+
+  async getTournamentMatches() {
+    return this.getEntries('tournament_matches');
+  }
+
+  async getTournamentMatch(id) {
+    return this.getEntry('tournament_matches', id);
+  }
+
+  async createTournamentMatch(data) {
+    return this.createEntry('tournament_matches', data);
+  }
+
+  async updateTournamentMatch(id, data) {
+    return this.updateEntry('tournament_matches', id, data);
+  }
+
+  async deleteTournamentMatch(id) {
+    return this.deleteEntry('tournament_matches', id);
+  }
+
+  async getTournamentResults() {
+    return this.getEntries('tournament_results');
+  }
+
+  async getTournamentResult(id) {
+    return this.getEntry('tournament_results', id);
+  }
+
+  async createTournamentResult(data) {
+    return this.createEntry('tournament_results', data);
+  }
+
+  async updateTournamentResult(id, data) {
+    return this.updateEntry('tournament_results', id, data);
+  }
+
+  async deleteTournamentResult(id) {
+    return this.deleteEntry('tournament_results', id);
   }
 }
 
@@ -1855,13 +1895,6 @@ class DataEditor {
         <h2>${this.id ? 'Modifier le match' : 'Nouveau match'}</h2>
         <form id="data-form">
           <div class="form-group">
-            <label for="matchType">Type de match</label>
-            <select id="matchType" name="matchType" required>
-              <option value="regular" ${data.matchType === 'regular' ? 'selected' : ''}>Match régulier</option>
-              <option value="tournament" ${data.matchType === 'tournament' ? 'selected' : ''}>Tournoi</option>
-            </select>
-          </div>
-          <div class="form-group">
             <label for="group">Groupe</label>
             <select id="group" name="group" required>
               <option value="">Sélectionner un groupe</option>
@@ -1875,18 +1908,23 @@ class DataEditor {
             <input type="number" id="session" name="session" value="${data.session || ''}" required>
           </div>
           <div class="form-group">
-            <label for="tournamentRound" id="tournamentRoundLabel" style="display: none;">Tour du tournoi</label>
-            <select id="tournamentRound" name="tournamentRound" style="display: none;">
-              <option value="1" ${data.tournamentRound === '1' ? 'selected' : ''}>Premier tour</option>
-              <option value="2" ${data.tournamentRound === '2' ? 'selected' : ''}>Deuxième tour</option>
-              <option value="3" ${data.tournamentRound === '3' ? 'selected' : ''}>Troisième tour</option>
-              <option value="4" ${data.tournamentRound === '4' ? 'selected' : ''}>Quatrième tour</option>
-              <option value="final" ${data.tournamentRound === 'final' ? 'selected' : ''}>Finale</option>
+            <label for="team1">Équipe 1</label>
+            <select id="team1" name="team1" required>
+              <option value="">Sélectionner une équipe</option>
+              ${teams.map(team => `
+                <option value="${team.teamName}" 
+                  ${data.team1 === team.teamName ? 'selected' : ''}
+                  data-group="${team.group}"
+                  class="team-option"
+                  data-team="${team.teamName}">
+                  ${team.teamName} (${team.coach})
+                </option>
+              `).join('')}
             </select>
           </div>
           <div class="form-group">
-            <label for="team1">Équipe 1</label>
-            <select id="team1" name="team1" required>
+            <label for="team2">Équipe 2</label>
+            <select id="team2" name="team2" required>
               <option value="">Sélectionner une équipe</option>
               ${teams.map(team => `
                 <option value="${team.teamName}" 
@@ -2003,6 +2041,277 @@ class DataEditor {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
     });
+  }
+
+  destroy() {
+    this.node.innerHTML = '';
+  }
+}
+
+class TournamentMatch {
+  constructor(node, id = null) {
+    this.node = node;
+    this.id = id;
+    this.data = null;
+  }
+
+  async fetchMatch() {
+    this.data = await api.getEntry('tournament_matches', this.id);
+  }
+
+  render() {
+    this.node.innerHTML = this.template();
+    this.updateView();
+  }
+
+  updateView() {
+    if (!this.data) return;
+
+    const form = this.node.querySelector('form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      try {
+        if (this.id) {
+          await api.updateEntry('tournament_matches', this.id, data);
+        } else {
+          await api.createEntry('tournament_matches', data);
+        }
+        window.location.hash = '#/tournament-matches';
+      } catch (error) {
+        console.error('Erreur lors de la sauvegarde:', error);
+      }
+    });
+  }
+
+  template() {
+    return `
+      <div class="tournament-match-editor">
+        <h2>${this.id ? 'Modifier le match' : 'Nouveau match de tournoi'}</h2>
+        <form>
+          <div class="form-group">
+            <label>Équipe 1</label>
+            <select name="team1" required>
+              <option value="">Sélectionner une équipe</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Équipe 2</label>
+            <select name="team2" required>
+              <option value="">Sélectionner une équipe</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Date du match</label>
+            <input type="datetime-local" name="matchDate" required>
+          </div>
+          <div class="form-group">
+            <label>Tour</label>
+            <select name="round" required>
+              <option value="preliminary">Préliminaire</option>
+              <option value="quarter">Quart de finale</option>
+              <option value="semi">Demi-finale</option>
+              <option value="final">Finale</option>
+            </select>
+          </div>
+          <button type="submit">Enregistrer</button>
+        </form>
+      </div>
+    `;
+  }
+
+  destroy() {
+    this.node.innerHTML = '';
+  }
+}
+
+class TournamentResult {
+  constructor(node, id = null) {
+    this.node = node;
+    this.id = id;
+    this.data = null;
+  }
+
+  async fetchResult() {
+    this.data = await api.getEntry('tournament_results', this.id);
+  }
+
+  render() {
+    this.node.innerHTML = this.template();
+    this.updateView();
+  }
+
+  updateView() {
+    if (!this.data) return;
+
+    const form = this.node.querySelector('form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      try {
+        if (this.id) {
+          await api.updateEntry('tournament_results', this.id, data);
+        } else {
+          await api.createEntry('tournament_results', data);
+        }
+        window.location.hash = '#/tournament-results';
+      } catch (error) {
+        console.error('Erreur lors de la sauvegarde:', error);
+      }
+    });
+  }
+
+  template() {
+    return `
+      <div class="tournament-result-editor">
+        <h2>${this.id ? 'Modifier le résultat' : 'Nouveau résultat de tournoi'}</h2>
+        <form>
+          <div class="form-group">
+            <label>Match</label>
+            <select name="matchId" required>
+              <option value="">Sélectionner un match</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Score Équipe 1</label>
+            <input type="number" name="score1" min="0" required>
+          </div>
+          <div class="form-group">
+            <label>Score Équipe 2</label>
+            <input type="number" name="score2" min="0" required>
+          </div>
+          <div class="form-group">
+            <label>Statistiques</label>
+            <textarea name="stats" rows="4"></textarea>
+          </div>
+          <button type="submit">Enregistrer</button>
+        </form>
+      </div>
+    `;
+  }
+
+  destroy() {
+    this.node.innerHTML = '';
+  }
+}
+
+class TournamentMatches {
+  constructor(node) {
+    this.node = node;
+    this.data = null;
+  }
+
+  async fetchMatches() {
+    this.data = await api.getTournamentMatches();
+  }
+
+  render() {
+    this.node.innerHTML = this.template();
+    this.updateView();
+  }
+
+  updateView() {
+    if (!this.data) return;
+
+    const tbody = this.node.querySelector('tbody');
+    tbody.innerHTML = this.data.map(match => `
+      <tr>
+        <td>${match.team1}</td>
+        <td>${match.team2}</td>
+        <td>${this.formatDate(match.matchDate)}</td>
+        <td>${match.round}</td>
+        <td>
+          <a href="#/tournament-matches/${match.id}" class="btn btn-primary">Modifier</a>
+          <button class="btn btn-danger" onclick="deleteMatch('${match.id}')">Supprimer</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  template() {
+    return `
+      <div class="tournament-matches">
+        <h2>Matchs de Tournoi</h2>
+        <a href="#/tournament-matches/new" class="btn btn-success">Nouveau Match</a>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Équipe 1</th>
+              <th>Équipe 2</th>
+              <th>Date</th>
+              <th>Tour</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  destroy() {
+    this.node.innerHTML = '';
+  }
+
+  formatDate(date) {
+    return new Date(date).toLocaleString('fr-FR');
+  }
+}
+
+class TournamentResults {
+  constructor(node) {
+    this.node = node;
+    this.data = null;
+  }
+
+  async fetchResults() {
+    this.data = await api.getTournamentResults();
+  }
+
+  render() {
+    this.node.innerHTML = this.template();
+    this.updateView();
+  }
+
+  updateView() {
+    if (!this.data) return;
+
+    const tbody = this.node.querySelector('tbody');
+    tbody.innerHTML = this.data.map(result => `
+      <tr>
+        <td>${result.matchId}</td>
+        <td>${result.score1}</td>
+        <td>${result.score2}</td>
+        <td>
+          <a href="#/tournament-results/${result.id}" class="btn btn-primary">Modifier</a>
+          <button class="btn btn-danger" onclick="deleteResult('${result.id}')">Supprimer</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  template() {
+    return `
+      <div class="tournament-results">
+        <h2>Résultats de Tournoi</h2>
+        <a href="#/tournament-results/new" class="btn btn-success">Nouveau Résultat</a>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Match</th>
+              <th>Score Équipe 1</th>
+              <th>Score Équipe 2</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    `;
   }
 
   destroy() {
@@ -2179,101 +2488,84 @@ class App {
 
   handleRoute() {
     const hash = window.location.hash.slice(1);
-    const [bin,route, id] = hash.split('/');
-    this.state.currentRoute = route;
-    
-    if (this.state.currentView) {
-      this.state.currentView.destroy();
-    }
-    
+    const [route, id] = hash.split('/');
     let view;
+
     switch (route) {
       case 'posts':
-        view = new Posts(this.main);
-        break;
-      case 'post':
         if (id) {
-          view = new PostEditor(this.main, id);
+          view = new Post(this.main, id);
         } else {
-          view = new PostEditor(this.main);
+          view = new Posts(this.main);
         }
-        break;
-      case 'post-edit':
-        view = new PostEditor(this.main, id);
         break;
       case 'pages':
-        view = new Pages(this.main);
-        break;
-      case 'page':
         if (id) {
-          view = new PageEditor(this.main, id);
+          view = new Page(this.main, id);
         } else {
-          view = new PageEditor(this.main);
+          view = new Pages(this.main);
         }
-        break;
-      case 'page-edit':
-        view = new PageEditor(this.main, id);
         break;
       case 'teams':
-        view = new Teams(this.main);
-        break;
-      case 'team':
         if (id) {
-          view = new TeamEditor(this.main, id);
+          view = new Team(this.main, id);
         } else {
-          view = new TeamEditor(this.main);
+          view = new Teams(this.main);
         }
-        break;
-      case 'team-edit':
-        view = new TeamEditor(this.main, id);
         break;
       case 'stades':
-        view = new Stades(this.main);
-        break;
-      case 'stade':
         if (id) {
-          view = new StadeEditor(this.main, id);
+          view = new Stade(this.main, id);
         } else {
-          view = new StadeEditor(this.main);
+          view = new Stades(this.main);
         }
-        break;
-      case 'stade-edit':
-        view = new StadeEditor(this.main, id);
         break;
       case 'results':
-        view = new Results(this.main);
-        break;
-      case 'result':
         if (id) {
-          view = new ResultEditor(this.main, id);
+          view = new Result(this.main, id);
         } else {
-          view = new ResultEditor(this.main);
+          view = new Results(this.main);
         }
-        break;
-      case 'result-edit':
-        view = new ResultEditor(this.main, id);
         break;
       case 'datas':
-        view = new Datas(this.main);
-        break;
-      case 'data':
         if (id) {
-          view = new DataEditor(this.main, id);
+          view = new Data(this.main, id);
         } else {
-          view = new DataEditor(this.main);
+          view = new Datas(this.main);
         }
         break;
-      case 'data-edit':
-        view = new DataEditor(this.main, id);
+      case 'settings':
+        view = new Settings(this.main);
         break;
       case 'about':
         view = new About(this.main);
         break;
+      case 'tournament-matches':
+        if (id === 'new') {
+          view = new TournamentMatch(this.main);
+        } else if (id) {
+          view = new TournamentMatch(this.main, id);
+        } else {
+          view = new TournamentMatches(this.main);
+        }
+        break;
+      case 'tournament-results':
+        if (id === 'new') {
+          view = new TournamentResult(this.main);
+        } else if (id) {
+          view = new TournamentResult(this.main, id);
+        } else {
+          view = new TournamentResults(this.main);
+        }
+        break;
       default:
         view = new Posts(this.main);
     }
-    
-    this.state.currentView = view;
+
+    if (this.currentView) {
+      this.currentView.destroy();
+    }
+    this.currentView = view;
     view.render();
   }
 }
