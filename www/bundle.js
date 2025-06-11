@@ -1529,6 +1529,7 @@ class DataEditor {
     this.teamsFetcher = new DataFetcher(this.fetchTeams.bind(this));
     this.stadesFetcher = new DataFetcher(this.fetchStades.bind(this));
     this.matchesFetcher = new DataFetcher(this.fetchMatches.bind(this));
+    this.continueEditing = localStorage.getItem('continueEditing') === 'true';
   }
 
   async fetchData() {
@@ -1733,7 +1734,7 @@ class DataEditor {
           </div>
           <div class="form-group">
             <label for="continueEditing">
-              <input type="checkbox" id="continueEditing" name="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing" ${this.continueEditing ? 'checked' : ''}>
               Continuer l'édition
             </label>
           </div>
@@ -1747,6 +1748,13 @@ class DataEditor {
     const groupSelect = document.getElementById('group');
     const sessionInput = document.getElementById('session');
     const team1Select = document.getElementById('team1');
+    const continueEditingCheckbox = document.getElementById('continueEditing');
+
+    // Ajout de l'écouteur pour le checkbox "Continuer l'édition"
+    continueEditingCheckbox.addEventListener('change', (e) => {
+      localStorage.setItem('continueEditing', e.target.checked);
+      this.continueEditing = e.target.checked;
+    });
 
     // Ajout des écouteurs d'événements pour le filtrage
     groupSelect.addEventListener('change', () => this.updateTeamOptions());
@@ -1778,7 +1786,7 @@ class DataEditor {
         } else {
           await api.createEntry('match', data);
         }
-        if (!formData.get('continueEditing')) {
+        if (!this.continueEditing) {
           window.location.hash = '#/datas';
         } else {
           window.location.reload();
