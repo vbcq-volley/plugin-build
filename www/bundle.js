@@ -1212,6 +1212,7 @@ class TeamEditor {
     this.dataFetcher = new DataFetcher(this.fetchTeam.bind(this));
     this.editor = null;
     this.continueEditing = localStorage.getItem('continueEditing') === 'true';
+    this.lastGroup = localStorage.getItem('lastGroup') || '';
   }
 
   async fetchTeam() {
