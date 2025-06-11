@@ -879,7 +879,10 @@ class Result {
             <label for="postponedTeam">Équipe reportée</label>
             <input type="text" id="postponedTeam" name="postponedTeam" value="${result.postponedTeam || ''}">
           </div>
-          <button type="submit">Enregistrer</button>
+          <div class="form-buttons">
+            <button type="submit">Enregistrer</button>
+            <button type="button" class="continue-button">Continuer</button>
+          </div>
         </form>
       </div>
     `;
@@ -952,6 +955,41 @@ class Result {
           await api.createEntry('result', data);
         }
         window.location.hash = '#/results';
+      } catch (error) {
+        alert('Erreur lors de l\'enregistrement: ' + error.message);
+      }
+    });
+
+    // Ajout de l'événement pour le bouton Continuer
+    const continueButton = form.querySelector('.continue-button');
+    continueButton.addEventListener('click', async () => {
+      const formData = new FormData(form);
+      const matchType = formData.get('matchType');
+      const selectedMatch = matches.find(m => m._id === formData.get('matchId'));
+      
+      const data = {
+        matchType,
+        team1: selectedMatch.team1,
+        team2: selectedMatch.team2,
+        team1Score: formData.get('team1Score'),
+        team2Score: formData.get('team2Score'),
+        isForfeit: formData.get('isForfeit') === 'on',
+        forfeitTeam: formData.get('forfeitTeam'),
+        isPostponed: formData.get('isPostponed') === 'on',
+        postponedTeam: formData.get('postponedTeam'),
+        matchId: formData.get('matchId'),
+        group: selectedMatch.group,
+        session: parseInt(selectedMatch.session),
+        date: matchType === 'home' ? selectedMatch.homeDate : selectedMatch.awayDate
+      };
+
+      try {
+        if (this.id) {
+          await api.updateEntry('result', this.id, data);
+        } else {
+          await api.createEntry('result', data);
+        }
+        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1177,7 +1215,10 @@ class PageEditor {
             <textarea id="content" name="content" rows="10" required>${page.content || ''}</textarea>
           </div>
           <div id="description-preview" class="preview"></div>
-          <button type="submit">Enregistrer</button>
+          <div class="form-buttons">
+            <button type="submit">Enregistrer</button>
+            <button type="button" class="continue-button">Continuer</button>
+          </div>
         </form>
       </div>
     `;
@@ -1219,6 +1260,29 @@ class PageEditor {
           await api.getPage(newPage._id, data);
         }
         window.location.hash = '#/pages';
+      } catch (error) {
+        alert('Erreur lors de l\'enregistrement: ' + error.message);
+      }
+    });
+
+    // Ajout de l'événement pour le bouton Continuer
+    const continueButton = form.querySelector('.continue-button');
+    continueButton.addEventListener('click', async () => {
+      const formData = new FormData(form);
+      const data = {
+        title: formData.get('title'),
+        content: this.editor.getValue()
+      };
+
+      try {
+        if (this.id) {
+          await api.getPage(this.id, data);
+        } else {
+          await api.createPage(data.title);
+          const newPage = await api.getPage(this.id);
+          await api.getPage(newPage._id, data);
+        }
+        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1295,7 +1359,10 @@ class TeamEditor {
             <textarea id="description" name="description" rows="10">${team.description || ''}</textarea>
             <div id="description-preview" class="preview"></div>
           </div>
-          <button type="submit">Enregistrer</button>
+          <div class="form-buttons">
+            <button type="submit">Enregistrer</button>
+            <button type="button" class="continue-button">Continuer</button>
+          </div>
         </form>
       </div>
     `;
@@ -1340,6 +1407,31 @@ class TeamEditor {
           await api.createEntry('team', data);
         }
         window.location.hash = '#/teams';
+      } catch (error) {
+        alert('Erreur lors de l\'enregistrement: ' + error.message);
+      }
+    });
+
+    // Ajout de l'événement pour le bouton Continuer
+    const continueButton = form.querySelector('.continue-button');
+    continueButton.addEventListener('click', async () => {
+      const formData = new FormData(form);
+      const data = {
+        teamName: formData.get('teamName'),
+        coach: formData.get('coach'),
+        coachContact: formData.get('coachContact'),
+        coachEmail: formData.get('coachEmail'),
+        group: formData.get('group'),
+        description: this.editor.getValue()
+      };
+
+      try {
+        if (this.id) {
+          await api.updateEntry('team', this.id, data);
+        } else {
+          await api.createEntry('team', data);
+        }
+        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1399,7 +1491,10 @@ class StadeEditor {
             <textarea id="description" name="description" rows="10">${stade.description || ''}</textarea>
             <div id="description-preview" class="preview"></div>
           </div>
-          <button type="submit">Enregistrer</button>
+          <div class="form-buttons">
+            <button type="submit">Enregistrer</button>
+            <button type="button" class="continue-button">Continuer</button>
+          </div>
         </form>
       </div>
     `;
@@ -1441,6 +1536,28 @@ class StadeEditor {
           await api.createEntry('stade', data);
         }
         window.location.hash = '#/stades';
+      } catch (error) {
+        alert('Erreur lors de l\'enregistrement: ' + error.message);
+      }
+    });
+
+    // Ajout de l'événement pour le bouton Continuer
+    const continueButton = form.querySelector('.continue-button');
+    continueButton.addEventListener('click', async () => {
+      const formData = new FormData(form);
+      const data = {
+        stadeName: formData.get('stadeName'),
+        address: formData.get('address'),
+        description: this.editor.getValue()
+      };
+
+      try {
+        if (this.id) {
+          await api.updateEntry('stade', this.id, data);
+        } else {
+          await api.createEntry('stade', data);
+        }
+        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
