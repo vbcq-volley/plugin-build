@@ -947,11 +947,9 @@ class PostEditor {
           const newPost = await api.getPost(this.id);
           await api.getPost(newPost._id, data);
         }
-        if (!formData.get('continueEditing')) {
+        
           window.location.hash = '#/posts';
-        } else {
-          window.location.reload();
-        }
+        
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1050,11 +1048,9 @@ class PageEditor {
           const newPage = await api.getPage(this.id);
           await api.getPage(newPage._id, data);
         }
-        if (!formData.get('continueEditing')) {
+        
           window.location.hash = '#/pages';
-        } else {
-          window.location.reload();
-        }
+        
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1133,8 +1129,8 @@ class TeamEditor {
             <div id="description-preview" class="preview"></div>
           </div>
           <div class="form-group">
-            <label for="continueEditing">
-              <input type="checkbox" id="continueEditing" name="continueEditing">
+          <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing" ${this.continueEditing ? 'checked' : ''}>
               Continuer l'édition
             </label>
           </div>
@@ -1143,7 +1139,13 @@ class TeamEditor {
       </div>
     `;
     this.node.innerHTML = html;
+    const continueEditingCheckbox = document.getElementById('continueEditing');
 
+    // Ajout de l'écouteur pour le checkbox "Continuer l'édition"
+    continueEditingCheckbox.addEventListener('change', (e) => {
+      localStorage.setItem('continueEditing', e.target.checked);
+      this.continueEditing = e.target.checked;
+    });
     // Initialisation de CodeMirror
     this.editor = CodeMirror.fromTextArea(document.getElementById('description'), {
       mode: 'markdown',
@@ -1182,7 +1184,7 @@ class TeamEditor {
         } else {
           await api.createEntry('team', data);
         }
-        if (!formData.get('continueEditing')) {
+        if (!this.continueEditing) {
           window.location.hash = '#/teams';
         } else {
           window.location.reload();
@@ -1248,8 +1250,8 @@ class StadeEditor {
             <div id="description-preview" class="preview"></div>
           </div>
           <div class="form-group">
-            <label for="continueEditing">
-              <input type="checkbox" id="continueEditing" name="continueEditing">
+          <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing" ${this.continueEditing ? 'checked' : ''}>
               Continuer l'édition
             </label>
           </div>
@@ -1258,7 +1260,13 @@ class StadeEditor {
       </div>
     `;
     this.node.innerHTML = html;
+    const continueEditingCheckbox = document.getElementById('continueEditing');
 
+    // Ajout de l'écouteur pour le checkbox "Continuer l'édition"
+    continueEditingCheckbox.addEventListener('change', (e) => {
+      localStorage.setItem('continueEditing', e.target.checked);
+      this.continueEditing = e.target.checked;
+    });
     // Initialisation de CodeMirror
     this.editor = CodeMirror.fromTextArea(document.getElementById('description'), {
       mode: 'markdown',
@@ -1294,7 +1302,7 @@ class StadeEditor {
         } else {
           await api.createEntry('stade', data);
         }
-        if (!formData.get('continueEditing')) {
+        if (!this.continueEditing) {
           window.location.hash = '#/stades';
         } else {
           window.location.reload();
@@ -1425,8 +1433,8 @@ class ResultEditor {
             <input type="text" id="postponedTeam" name="postponedTeam" value="${result.postponedTeam || ''}">
           </div>
           <div class="form-group">
-            <label for="continueEditing">
-              <input type="checkbox" id="continueEditing" name="continueEditing">
+          <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing" ${this.continueEditing ? 'checked' : ''}>
               Continuer l'édition
             </label>
           </div>
@@ -1435,7 +1443,13 @@ class ResultEditor {
       </div>
     `;
     this.node.innerHTML = html;
+    const continueEditingCheckbox = document.getElementById('continueEditing');
 
+    // Ajout de l'écouteur pour le checkbox "Continuer l'édition"
+    continueEditingCheckbox.addEventListener('change', (e) => {
+      localStorage.setItem('continueEditing', e.target.checked);
+      this.continueEditing = e.target.checked;
+    });
     // Gestion de l'affichage des champs conditionnels
     const isForfeitCheckbox = document.getElementById('isForfeit');
     const forfeitTeamGroup = document.getElementById('forfeitTeamGroup');
@@ -1502,7 +1516,7 @@ class ResultEditor {
         } else {
           await api.createEntry('result', data);
         }
-        if (!formData.get('continueEditing')) {
+        if (!this.continueEditing) {
           window.location.hash = '#/results';
         } else {
           window.location.reload();
