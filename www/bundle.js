@@ -793,7 +793,7 @@ class Page {
       return;
     }
 
-    const page = this.dataFetcher.data;
+    const page = this.dataFetcher.data || {};
     const html = `
       <div class="page">
         <h2>${page.title}</h2>
@@ -2355,6 +2355,8 @@ class App {
       { text: 'Stades', route: 'stades' },
       { text: 'Résultats', route: 'results' },
       { text: 'Matchs', route: 'datas' },
+      { text: 'Matchs Tournoi', route: 'tournament-matches' },
+      { text: 'Résultats Tournoi', route: 'tournament-results' },
       { text: 'À propos', route: 'about' }
     ];
     
@@ -2488,7 +2490,7 @@ class App {
 
   handleRoute() {
     const hash = window.location.hash.slice(1);
-    const [route, id] = hash.split('/');
+    const [bin,route, id] = hash.split('/');
     let view;
 
     switch (route) {
