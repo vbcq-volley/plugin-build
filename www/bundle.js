@@ -1259,9 +1259,9 @@ class TeamEditor {
             <label for="group">Groupe</label>
             <select id="group" name="group" required>
               <option value="">Sélectionner un groupe</option>
-              <option value="1" ${team.group === '1' ? 'selected' : ''}>Groupe 1</option>
-              <option value="2" ${team.group === '2' ? 'selected' : ''}>Groupe 2</option>
-              <option value="3" ${team.group === '3' ? 'selected' : ''}>Groupe 3</option>
+              <option value="1" ${(team.group === '1' || (!team.group && this.lastGroup === '1')) ? 'selected' : ''}>Groupe 1</option>
+              <option value="2" ${(team.group === '2' || (!team.group && this.lastGroup === '2')) ? 'selected' : ''}>Groupe 2</option>
+              <option value="3" ${(team.group === '3' || (!team.group && this.lastGroup === '3')) ? 'selected' : ''}>Groupe 3</option>
             </select>
           </div>
           <div class="form-group">
@@ -1281,12 +1281,20 @@ class TeamEditor {
     `;
     this.node.innerHTML = html;
     const continueEditingCheckbox = document.getElementById('continueEditing');
+    const groupSelect = document.getElementById('group');
 
     // Ajout de l'écouteur pour le checkbox "Continuer l'édition"
     continueEditingCheckbox.addEventListener('change', (e) => {
       localStorage.setItem('continueEditing', e.target.checked);
       this.continueEditing = e.target.checked;
     });
+
+    // Ajout de l'écouteur pour sauvegarder le groupe sélectionné
+    groupSelect.addEventListener('change', (e) => {
+      localStorage.setItem('lastGroup', e.target.value);
+      this.lastGroup = e.target.value;
+    });
+
     // Initialisation de CodeMirror
     this.editor = CodeMirror.fromTextArea(document.getElementById('description'), {
       mode: 'markdown',
