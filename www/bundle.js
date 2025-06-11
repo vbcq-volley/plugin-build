@@ -774,226 +774,39 @@ class Result {
     this.node = node;
     this.id = id;
     this.dataFetcher = new DataFetcher(this.fetchResult.bind(this));
-    this.matchesFetcher = new DataFetcher(this.fetchMatches.bind(this));
   }
 
   async fetchResult() {
-    return this.id ? api.getEntry('result', this.id) : null;
-  }
-
-  async fetchMatches() {
-    return api.getEntries('match');
-  }
-
-  formatDate(date) {
-    if (!date) return '';
-    const d = new Date(date);
-    return d.toLocaleDateString('fr-FR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  }
-
-  parseDate(dateStr) {
-    if (!dateStr) return null;
-    const [datePart, timePart] = dateStr.split(' ');
-    const [day, month, year] = datePart.split('/');
-    const [hour, minute] = timePart.split(':');
-    return new Date(year, month , day, hour, minute).toISOString();
+    return api.getEntry('result', this.id);
   }
 
   render() {
-    Promise.all([
-      this.dataFetcher.getData(),
-      this.matchesFetcher.getData()
-    ]).then(() => this.updateView());
+    this.dataFetcher.getData().then(() => this.updateView());
   }
 
   updateView() {
-    if (this.dataFetcher.loading || this.matchesFetcher.loading) {
+    if (this.dataFetcher.loading) {
       this.node.innerHTML = '<div class="loading">Chargement...</div>';
       return;
     }
 
-    if (this.dataFetcher.error || this.matchesFetcher.error) {
-      this.node.innerHTML = `<div class="error">${this.dataFetcher.error || this.matchesFetcher.error}</div>`;
+    if (this.dataFetcher.error) {
+      this.node.innerHTML = `<div class="error">${this.dataFetcher.error}</div>`;
       return;
     }
 
-    const result = this.dataFetcher.data || {};
-    const matches = this.matchesFetcher.data || [];
-
+    const result = this.dataFetcher.data;
     const html = `
-      <div class="result-editor">
-        <h2>${this.id ? 'Modifier le résultat' : 'Nouveau résultat'}</h2>
-        <form id="result-form">
-          <div class="form-group">
-            <label for="matchId">Match</label>
-            <select id="matchId" name="matchId" required>
-              <option value="">Sélectionner un match</option>
-              ${matches.map(match => `
-                <option value="${match._id}" 
-                  ${result.matchId === match._id ? 'selected' : ''}
-                  data-team1="${match.team1}"
-                  data-team2="${match.team2}"
-                  data-home-date="${match.homeDate}"
-                  data-away-date="${match.awayDate}"
-                  data-group="${match.group}"
-                  data-session="${match.session}">
-                  ${match.team1} vs ${match.team2} (${match.homeDate})
-                </option>
-              `).join('')}
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="matchType">Type de match</label>
-            <select id="matchType" name="matchType" required>
-              <option value="home" ${result.matchType === 'home' ? 'selected' : ''}>Match à domicile</option>
-              <option value="away" ${result.matchType === 'away' ? 'selected' : ''}>Match à l'extérieur</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="team1Score">Score équipe 1</label>
-            <input type="number" id="team1Score" name="team1Score" value="${result.team1Score || ''}" required>
-          </div>
-          <div class="form-group">
-            <label for="team2Score">Score équipe 2</label>
-            <input type="number" id="team2Score" name="team2Score" value="${result.team2Score || ''}" required>
-          </div>
-          <div class="form-group">
-            <label for="isForfeit">Forfait</label>
-            <input type="checkbox" id="isForfeit" name="isForfeit" ${result.isForfeit ? 'checked' : ''}>
-          </div>
-          <div class="form-group" id="forfeitTeamGroup" style="display: ${result.isForfeit ? 'block' : 'none'}">
-            <label for="forfeitTeam">Équipe en forfait</label>
-            <input type="text" id="forfeitTeam" name="forfeitTeam" value="${result.forfeitTeam || ''}">
-          </div>
-          <div class="form-group">
-            <label for="isPostponed">Reporté</label>
-            <input type="checkbox" id="isPostponed" name="isPostponed" ${result.isPostponed ? 'checked' : ''}>
-          </div>
-          <div class="form-group" id="postponedTeamGroup" style="display: ${result.isPostponed ? 'block' : 'none'}">
-            <label for="postponedTeam">Équipe reportée</label>
-            <input type="text" id="postponedTeam" name="postponedTeam" value="${result.postponedTeam || ''}">
-          </div>
-          <div class="form-buttons">
-            <button type="submit">Enregistrer</button>
-            <button type="button" class="continue-button">Continuer</button>
-          </div>
-        </form>
+      <div class="result">
+        <h2>${result.homeTeam} ${result.homeScore} - ${result.awayScore} ${result.awayTeam}</h2>
+        <div class="details">
+          <p><strong>Date:</strong> ${new Date(result.date).toLocaleDateString()}</p>
+          <p><strong>Stade:</strong> ${result.stadium}</p>
+          <p><strong>Compétition:</strong> ${result.competition}</p>
+        </div>
       </div>
     `;
     this.node.innerHTML = html;
-
-    // Gestion de l'affichage des champs conditionnels
-    const isForfeitCheckbox = document.getElementById('isForfeit');
-    const forfeitTeamGroup = document.getElementById('forfeitTeamGroup');
-    const isPostponedCheckbox = document.getElementById('isPostponed');
-    const postponedTeamGroup = document.getElementById('postponedTeamGroup');
-    const matchSelect = document.getElementById('matchId');
-
-    isForfeitCheckbox.addEventListener('change', () => {
-      forfeitTeamGroup.style.display = isForfeitCheckbox.checked ? 'block' : 'none';
-    });
-
-    isPostponedCheckbox.addEventListener('change', () => {
-      postponedTeamGroup.style.display = isPostponedCheckbox.checked ? 'block' : 'none';
-    });
-
-    // Mise à jour des équipes et dates en fonction du match sélectionné
-    matchSelect.addEventListener('change', () => {
-      const selectedOption = matchSelect.options[matchSelect.selectedIndex];
-      if (selectedOption.value) {
-        const team1 = selectedOption.dataset.team1;
-        const team2 = selectedOption.dataset.team2;
-        const homeDate = selectedOption.dataset.homeDate;
-        const awayDate = selectedOption.dataset.awayDate;
-        const group = selectedOption.dataset.group;
-        const session = selectedOption.dataset.session;
-
-        // Mise à jour des champs cachés
-        const form = document.getElementById('result-form');
-        form.dataset.team1 = team1;
-        form.dataset.team2 = team2;
-        form.dataset.homeDate = homeDate;
-        form.dataset.awayDate = awayDate;
-        form.dataset.group = group;
-        form.dataset.session = session;
-      }
-    });
-
-    const form = document.getElementById('result-form');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const matchType = formData.get('matchType');
-      const selectedMatch = matches.find(m => m._id === formData.get('matchId'));
-      
-      const data = {
-        matchType,
-        team1: selectedMatch.team1,
-        team2: selectedMatch.team2,
-        team1Score: formData.get('team1Score'),
-        team2Score: formData.get('team2Score'),
-        isForfeit: formData.get('isForfeit') === 'on',
-        forfeitTeam: formData.get('forfeitTeam'),
-        isPostponed: formData.get('isPostponed') === 'on',
-        postponedTeam: formData.get('postponedTeam'),
-        matchId: formData.get('matchId'),
-        group: selectedMatch.group,
-        session: parseInt(selectedMatch.session),
-        date: matchType === 'home' ? selectedMatch.homeDate : selectedMatch.awayDate
-      };
-
-      try {
-        if (this.id) {
-          await api.updateEntry('result', this.id, data);
-        } else {
-          await api.createEntry('result', data);
-        }
-        window.location.hash = '#/results';
-      } catch (error) {
-        alert('Erreur lors de l\'enregistrement: ' + error.message);
-      }
-    });
-
-    // Ajout de l'événement pour le bouton Continuer
-    const continueButton = form.querySelector('.continue-button');
-    continueButton.addEventListener('click', async () => {
-      const formData = new FormData(form);
-      const matchType = formData.get('matchType');
-      const selectedMatch = matches.find(m => m._id === formData.get('matchId'));
-      
-      const data = {
-        matchType,
-        team1: selectedMatch.team1,
-        team2: selectedMatch.team2,
-        team1Score: formData.get('team1Score'),
-        team2Score: formData.get('team2Score'),
-        isForfeit: formData.get('isForfeit') === 'on',
-        forfeitTeam: formData.get('forfeitTeam'),
-        isPostponed: formData.get('isPostponed') === 'on',
-        postponedTeam: formData.get('postponedTeam'),
-        matchId: formData.get('matchId'),
-        group: selectedMatch.group,
-        session: parseInt(selectedMatch.session),
-        date: matchType === 'home' ? selectedMatch.homeDate : selectedMatch.awayDate
-      };
-
-      try {
-        if (this.id) {
-          await api.updateEntry('result', this.id, data);
-        } else {
-          await api.createEntry('result', data);
-        }
-        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
-      } catch (error) {
-        alert('Erreur lors de l\'enregistrement: ' + error.message);
-      }
-    });
   }
 
   destroy() {
@@ -1090,10 +903,13 @@ class PostEditor {
             <label for="date">Date</label>
             <input type="date" id="date" name="date" value="${post.date ? new Date(post.date).toISOString().split('T')[0] : ''}">
           </div>
-          <div class="form-buttons">
-            <button type="submit">Enregistrer</button>
-            <button type="button" class="continue-button">Continuer</button>
+          <div class="form-group">
+            <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing">
+              Continuer l'édition
+            </label>
           </div>
+          <button type="submit">Enregistrer</button>
         </form>
       </div>
     `;
@@ -1134,32 +950,11 @@ class PostEditor {
           const newPost = await api.getPost(this.id);
           await api.getPost(newPost._id, data);
         }
-        window.location.hash = '#/posts';
-      } catch (error) {
-        alert('Erreur lors de l\'enregistrement: ' + error.message);
-      }
-    });
-
-    // Ajout de l'événement pour le bouton Continuer
-    const continueButton = form.querySelector('.continue-button');
-    continueButton.addEventListener('click', async () => {
-      const formData = new FormData(form);
-      const data = {
-        title: formData.get('title'),
-        _content: this.editor.getValue(),
-        date: formData.get('date') 
-      };
-
-      try {
-        if (this.id) {
-          await api.getPost(this.id, data);
+        if (!formData.get('continueEditing')) {
+          window.location.hash = '#/posts';
         } else {
-          await api.createPost(data.title);
-          const newPost = await api.getPost(this.id);
-          await api.getPost(newPost._id, data);
+          window.location.reload();
         }
-        // Au lieu de rediriger, on reste sur la page
-        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1215,10 +1010,13 @@ class PageEditor {
             <textarea id="content" name="content" rows="10" required>${page.content || ''}</textarea>
           </div>
           <div id="description-preview" class="preview"></div>
-          <div class="form-buttons">
-            <button type="submit">Enregistrer</button>
-            <button type="button" class="continue-button">Continuer</button>
+          <div class="form-group">
+            <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing">
+              Continuer l'édition
+            </label>
           </div>
+          <button type="submit">Enregistrer</button>
         </form>
       </div>
     `;
@@ -1238,7 +1036,6 @@ class PageEditor {
       preview.innerHTML = marked.parse(content);
     };
    
-
     this.editor.on('change', updatePreview);
     updatePreview();
     const form = document.getElementById('page-form');
@@ -1259,30 +1056,11 @@ class PageEditor {
           const newPage = await api.getPage(this.id);
           await api.getPage(newPage._id, data);
         }
-        window.location.hash = '#/pages';
-      } catch (error) {
-        alert('Erreur lors de l\'enregistrement: ' + error.message);
-      }
-    });
-
-    // Ajout de l'événement pour le bouton Continuer
-    const continueButton = form.querySelector('.continue-button');
-    continueButton.addEventListener('click', async () => {
-      const formData = new FormData(form);
-      const data = {
-        title: formData.get('title'),
-        content: this.editor.getValue()
-      };
-
-      try {
-        if (this.id) {
-          await api.getPage(this.id, data);
+        if (!formData.get('continueEditing')) {
+          window.location.hash = '#/pages';
         } else {
-          await api.createPage(data.title);
-          const newPage = await api.getPage(this.id);
-          await api.getPage(newPage._id, data);
+          window.location.reload();
         }
-        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1359,10 +1137,13 @@ class TeamEditor {
             <textarea id="description" name="description" rows="10">${team.description || ''}</textarea>
             <div id="description-preview" class="preview"></div>
           </div>
-          <div class="form-buttons">
-            <button type="submit">Enregistrer</button>
-            <button type="button" class="continue-button">Continuer</button>
+          <div class="form-group">
+            <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing">
+              Continuer l'édition
+            </label>
           </div>
+          <button type="submit">Enregistrer</button>
         </form>
       </div>
     `;
@@ -1406,32 +1187,11 @@ class TeamEditor {
         } else {
           await api.createEntry('team', data);
         }
-        window.location.hash = '#/teams';
-      } catch (error) {
-        alert('Erreur lors de l\'enregistrement: ' + error.message);
-      }
-    });
-
-    // Ajout de l'événement pour le bouton Continuer
-    const continueButton = form.querySelector('.continue-button');
-    continueButton.addEventListener('click', async () => {
-      const formData = new FormData(form);
-      const data = {
-        teamName: formData.get('teamName'),
-        coach: formData.get('coach'),
-        coachContact: formData.get('coachContact'),
-        coachEmail: formData.get('coachEmail'),
-        group: formData.get('group'),
-        description: this.editor.getValue()
-      };
-
-      try {
-        if (this.id) {
-          await api.updateEntry('team', this.id, data);
+        if (!formData.get('continueEditing')) {
+          window.location.hash = '#/teams';
         } else {
-          await api.createEntry('team', data);
+          window.location.reload();
         }
-        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1491,10 +1251,13 @@ class StadeEditor {
             <textarea id="description" name="description" rows="10">${stade.description || ''}</textarea>
             <div id="description-preview" class="preview"></div>
           </div>
-          <div class="form-buttons">
-            <button type="submit">Enregistrer</button>
-            <button type="button" class="continue-button">Continuer</button>
+          <div class="form-group">
+            <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing">
+              Continuer l'édition
+            </label>
           </div>
+          <button type="submit">Enregistrer</button>
         </form>
       </div>
     `;
@@ -1535,29 +1298,11 @@ class StadeEditor {
         } else {
           await api.createEntry('stade', data);
         }
-        window.location.hash = '#/stades';
-      } catch (error) {
-        alert('Erreur lors de l\'enregistrement: ' + error.message);
-      }
-    });
-
-    // Ajout de l'événement pour le bouton Continuer
-    const continueButton = form.querySelector('.continue-button');
-    continueButton.addEventListener('click', async () => {
-      const formData = new FormData(form);
-      const data = {
-        stadeName: formData.get('stadeName'),
-        address: formData.get('address'),
-        description: this.editor.getValue()
-      };
-
-      try {
-        if (this.id) {
-          await api.updateEntry('stade', this.id, data);
+        if (!formData.get('continueEditing')) {
+          window.location.hash = '#/stades';
         } else {
-          await api.createEntry('stade', data);
+          window.location.reload();
         }
-        alert('Enregistrement réussi ! Vous pouvez continuer à éditer.');
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1682,6 +1427,12 @@ class ResultEditor {
             <label for="postponedTeam">Équipe reportée</label>
             <input type="text" id="postponedTeam" name="postponedTeam" value="${result.postponedTeam || ''}">
           </div>
+          <div class="form-group">
+            <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing">
+              Continuer l'édition
+            </label>
+          </div>
           <button type="submit">Enregistrer</button>
         </form>
       </div>
@@ -1754,7 +1505,11 @@ class ResultEditor {
         } else {
           await api.createEntry('result', data);
         }
-        window.location.hash = '#/results';
+        if (!formData.get('continueEditing')) {
+          window.location.hash = '#/results';
+        } else {
+          window.location.reload();
+        }
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -1773,6 +1528,7 @@ class DataEditor {
     this.dataFetcher = new DataFetcher(this.fetchData.bind(this));
     this.teamsFetcher = new DataFetcher(this.fetchTeams.bind(this));
     this.stadesFetcher = new DataFetcher(this.fetchStades.bind(this));
+    this.matchesFetcher = new DataFetcher(this.fetchMatches.bind(this));
   }
 
   async fetchData() {
@@ -1786,6 +1542,11 @@ class DataEditor {
   async fetchStades() {
     return api.getEntries('stade');
   }
+
+  async fetchMatches() {
+    return api.getEntries('match');
+  }
+
   formatDate(date) {
     if (!date) return '';
     const d = new Date(date);
@@ -1805,33 +1566,100 @@ class DataEditor {
     const [hour, minute] = timePart.split(':');
     return new Date(year, month , day, hour, minute).toISOString();
   }
+
+  isTeamAvailable(teamName, session=1, currentMatchId = null) {
+    return !this.matchesFetcher.data.some(match => 
+      match._id !== currentMatchId && 
+      match.session === session && 
+      (match.team1 === teamName || match.team2 === teamName)
+    );
+  }
+
+  updateTeamOptions() {
+    const groupSelect = document.getElementById('group');
+    const sessionInput = document.getElementById('session');
+    const team1Select = document.getElementById('team1');
+    const team2Select = document.getElementById('team2');
+
+    const selectedGroup = groupSelect.value;
+    const session = parseInt(sessionInput.value);
+    const currentMatchId = this.id;
+
+    // Mise à jour des options pour team1
+    Array.from(team1Select.options).forEach(option => {
+      if (option.value === '') return;
+      const teamGroup = option.dataset.group;
+      const teamName = option.dataset.team;
+      const isAvailable = this.isTeamAvailable(teamName, session, currentMatchId);
+      
+      if (teamGroup === selectedGroup && isAvailable) {
+        option.style.display = '';
+        option.disabled = false;
+      } else {
+        option.style.display = 'none';
+        option.disabled = true;
+      }
+    });
+
+    // Mise à jour des options pour team2
+    Array.from(team2Select.options).forEach(option => {
+      if (option.value === '') return;
+      const teamGroup = option.dataset.group;
+      const teamName = option.dataset.team;
+      const isAvailable = this.isTeamAvailable(teamName, session, currentMatchId);
+      
+      if (teamGroup === selectedGroup && isAvailable && teamName !== team1Select.value) {
+        option.style.display = '';
+        option.disabled = false;
+      } else {
+        option.style.display = 'none';
+        option.disabled = true;
+      }
+    });
+  }
+
   render() {
     Promise.all([
       this.dataFetcher.getData(),
       this.teamsFetcher.getData(),
-      this.stadesFetcher.getData()
+      this.stadesFetcher.getData(),
+      this.matchesFetcher.getData()
     ]).then(() => this.updateView());
   }
 
   updateView() {
-    if (this.dataFetcher.loading || this.teamsFetcher.loading || this.stadesFetcher.loading) {
+    if (this.dataFetcher.loading || this.teamsFetcher.loading || this.stadesFetcher.loading || this.matchesFetcher.loading) {
       this.node.innerHTML = '<div class="loading">Chargement...</div>';
       return;
     }
 
-    if (this.dataFetcher.error || this.teamsFetcher.error || this.stadesFetcher.error) {
-      this.node.innerHTML = `<div class="error">${this.dataFetcher.error || this.teamsFetcher.error || this.stadesFetcher.error}</div>`;
+    if (this.dataFetcher.error || this.teamsFetcher.error || this.stadesFetcher.error || this.matchesFetcher.error) {
+      this.node.innerHTML = `<div class="error">${this.dataFetcher.error || this.teamsFetcher.error || this.stadesFetcher.error || this.matchesFetcher.error}</div>`;
       return;
     }
 
     const data = this.dataFetcher.data || {};
     const teams = this.teamsFetcher.data || [];
     const stades = this.stadesFetcher.data || [];
+    const matches = this.matchesFetcher.data || [];
 
     const html = `
       <div class="data-editor">
         <h2>${this.id ? 'Modifier le match' : 'Nouveau match'}</h2>
         <form id="data-form">
+          <div class="form-group">
+            <label for="group">Groupe</label>
+            <select id="group" name="group" required>
+              <option value="">Sélectionner un groupe</option>
+              <option value="1" ${data.group === '1' ? 'selected' : ''}>Groupe 1</option>
+              <option value="2" ${data.group === '2' ? 'selected' : ''}>Groupe 2</option>
+              <option value="3" ${data.group === '3' ? 'selected' : ''}>Groupe 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="session">Session</label>
+            <input type="number" id="session" name="session" value="${data.session || ''}" required>
+          </div>
           <div class="form-group">
             <label for="team1">Équipe 1</label>
             <select id="team1" name="team1" required>
@@ -1839,7 +1667,9 @@ class DataEditor {
               ${teams.map(team => `
                 <option value="${team.teamName}" 
                   ${data.team1 === team.teamName ? 'selected' : ''}
-                  data-group="${team.group}">
+                  data-group="${team.group}"
+                  class="team-option"
+                  data-team="${team.teamName}">
                   ${team.teamName} (${team.coach})
                 </option>
               `).join('')}
@@ -1852,7 +1682,9 @@ class DataEditor {
               ${teams.map(team => `
                 <option value="${team.teamName}" 
                   ${data.team2 === team.teamName ? 'selected' : ''}
-                  data-group="${team.group}">
+                  data-group="${team.group}"
+                  class="team-option"
+                  data-team="${team.teamName}">
                   ${team.teamName} (${team.coach})
                 </option>
               `).join('')}
@@ -1860,11 +1692,11 @@ class DataEditor {
           </div>
           <div class="form-group">
             <label for="homeDate">Date du match à domicile</label>
-            <input type="date" id="homeDate" name="homeDate" value="${this.parseDate(data.homeDate)  || ''}" required placeholder="JJ mois AAAA à HH:mm">
+            <input type="date" id="homeDate" name="homeDate" value="${this.parseDate(data.homeDate) || ''}" required>
           </div>
           <div class="form-group">
             <label for="awayDate">Date du match à l'extérieur</label>
-            <input type="date" id="awayDate" name="awayDate" value="${this.parseDate(data.awayDate) || ''}" required placeholder="JJ mois AAAA à HH:mm">
+            <input type="date" id="awayDate" name="awayDate" value="${this.parseDate(data.awayDate) || ''}" required>
           </div>
           <div class="form-group">
             <label for="homeLocation">Lieu du match à domicile</label>
@@ -1891,19 +1723,6 @@ class DataEditor {
             </select>
           </div>
           <div class="form-group">
-            <label for="group">Groupe</label>
-            <select id="group" name="group" required>
-              <option value="">Sélectionner un groupe</option>
-              <option value="1" ${data.group === '1' ? 'selected' : ''}>Groupe 1</option>
-              <option value="2" ${data.group === '2' ? 'selected' : ''}>Groupe 2</option>
-              <option value="3" ${data.group === '3' ? 'selected' : ''}>Groupe 3</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="session">Session</label>
-            <input type="number" id="session" name="session" value="${data.session || ''}" required>
-          </div>
-          <div class="form-group">
             <label for="matchStatus">Statut du match</label>
             <select id="matchStatus" name="matchStatus">
               <option value="scheduled" ${data.matchStatus === 'scheduled' ? 'selected' : ''}>Planifié</option>
@@ -1912,6 +1731,12 @@ class DataEditor {
               <option value="cancelled" ${data.matchStatus === 'cancelled' ? 'selected' : ''}>Annulé</option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="continueEditing">
+              <input type="checkbox" id="continueEditing" name="continueEditing">
+              Continuer l'édition
+            </label>
+          </div>
           <button type="submit">Enregistrer</button>
         </form>
       </div>
@@ -1919,30 +1744,17 @@ class DataEditor {
     this.node.innerHTML = html;
 
     const form = document.getElementById('data-form');
-    const team1Select = document.getElementById('team1');
-    const team2Select = document.getElementById('team2');
     const groupSelect = document.getElementById('group');
+    const sessionInput = document.getElementById('session');
+    const team1Select = document.getElementById('team1');
 
-    // Mise à jour automatique du groupe en fonction de l'équipe sélectionnée
-    const updateGroup = () => {
-      const team1Option = team1Select.options[team1Select.selectedIndex];
-      const team2Option = team2Select.options[team2Select.selectedIndex];
-      
-      if (team1Option.value && team2Option.value) {
-        const team1Group = team1Option.dataset.group;
-        const team2Group = team2Option.dataset.group;
-        
-        if (team1Group === team2Group) {
-          groupSelect.value = team1Group;
-        } else {
-          alert('Les équipes sélectionnées doivent appartenir au même groupe');
-          groupSelect.value = '';
-        }
-      }
-    };
+    // Ajout des écouteurs d'événements pour le filtrage
+    groupSelect.addEventListener('change', () => this.updateTeamOptions());
+    sessionInput.addEventListener('change', () => this.updateTeamOptions());
+    team1Select.addEventListener('change', () => this.updateTeamOptions());
 
-    team1Select.addEventListener('change', updateGroup);
-    team2Select.addEventListener('change', updateGroup);
+    // Initialisation du filtrage
+    this.updateTeamOptions();
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1950,7 +1762,7 @@ class DataEditor {
       const data = {
         team1: formData.get('team1'),
         team2: formData.get('team2'),
-        homeDate: this.formatDate(formData.get('homeDate')) ,
+        homeDate: this.formatDate(formData.get('homeDate')),
         awayDate: this.formatDate(formData.get('awayDate')),
         homeLocation: formData.get('homeLocation'),
         awayLocation: formData.get('awayLocation'),
@@ -1966,7 +1778,11 @@ class DataEditor {
         } else {
           await api.createEntry('match', data);
         }
-        window.location.hash = '#/datas';
+        if (!formData.get('continueEditing')) {
+          window.location.hash = '#/datas';
+        } else {
+          window.location.reload();
+        }
       } catch (error) {
         alert('Erreur lors de l\'enregistrement: ' + error.message);
       }
@@ -2433,43 +2249,6 @@ document.head.innerHTML += `
       margin-top: 5px;
       font-size: 14px;
       color: #666;
-    }
-  </style>
-`;
-
-// Ajout des styles CSS pour les boutons
-document.head.innerHTML += `
-  <style>
-    .form-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .continue-button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .continue-button:hover {
-      background-color: #45a049;
-    }
-
-    button[type="submit"] {
-      background-color: #2196F3;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #1976D2;
     }
   </style>
 `;
