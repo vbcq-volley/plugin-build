@@ -898,6 +898,7 @@ class PostEditor {
             <label for="content">Contenu</label>
             <textarea id="content" name="content" rows="10" required>${post._content || ''}</textarea>
           </div>
+          <div id="description-preview" class="preview"></div>
           <div class="form-group">
             <label for="date">Date</label>
             <input type="date" id="date" name="date" value="${post.date ? new Date(post.date).toISOString().split('T')[0] : ''}">
@@ -991,6 +992,7 @@ class PageEditor {
             <label for="content">Contenu</label>
             <textarea id="content" name="content" rows="10" required>${page.content || ''}</textarea>
           </div>
+          <div id="description-preview" class="preview"></div>
           <button type="submit">Enregistrer</button>
         </form>
       </div>
