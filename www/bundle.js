@@ -242,7 +242,7 @@ class Posts {
             <li>
               <a href="#/post/${post._id}">${post.title}</a>
               <div class="post-details">
-                <span class="date">${new Date(post.date).toLocaleDateString()}</span>
+                <span class="date">${this.formatDate(post.date)}</span>
                 <span class="author">${post.author || 'Anonyme'}</span>
               </div>
             </li>
@@ -255,6 +255,31 @@ class Posts {
 
   destroy() {
     this.node.innerHTML = '';
+  }
+
+  formatDate(date) {
+    if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
+    const d = new Date(date);
+    const months = [
+      'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    
+    return `${day} ${month} ${year} à ${hours}:${minutes}`;
   }
 }
 
@@ -495,7 +520,7 @@ class Datas {
           ${datas.map(data => `
             <li>
               <a href="#/data/${data._id}">${data.title}</a>
-              <span class="date">${data.homeDate}</span>
+              <span class="date">${this.formatDate(data.homeDate)}</span>
             </li>
           `).join('')}
         </ul>
@@ -506,6 +531,31 @@ class Datas {
 
   destroy() {
     this.node.innerHTML = '';
+  }
+
+  formatDate(date) {
+    if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
+    const d = new Date(date);
+    const months = [
+      'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    
+    return `${day} ${month} ${year} à ${hours}:${minutes}`;
   }
 }
 
@@ -639,7 +689,7 @@ class Post {
         <h2>${post.title}</h2>
         <div class="content">${post._content}</div>
         <div class="meta">
-          <span class="date">${new Date(post.date).toLocaleDateString()}</span>
+          <span class="date">${this.formatDate(post.date)}</span>
           <span class="author">${post.author || 'Anonyme'}</span>
         </div>
       </div>
@@ -649,6 +699,31 @@ class Post {
 
   destroy() {
     this.node.innerHTML = '';
+  }
+
+  formatDate(date) {
+    if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
+    const d = new Date(date);
+    const months = [
+      'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    
+    return `${day} ${month} ${year} à ${hours}:${minutes}`;
   }
 }
 
@@ -815,7 +890,7 @@ class Result {
       <div class="result">
         <h2>${result.homeTeam} ${result.homeScore} - ${result.awayScore} ${result.awayTeam}</h2>
         <div class="details">
-          <p><strong>Date:</strong> ${new Date(result.date).toLocaleDateString()}</p>
+          <p><strong>Date:</strong> ${this.formatDate(result.date)}</p>
           <p><strong>Stade:</strong> ${result.stadium}</p>
           <p><strong>Compétition:</strong> ${result.competition}</p>
         </div>
@@ -826,6 +901,31 @@ class Result {
 
   destroy() {
     this.node.innerHTML = '';
+  }
+
+  formatDate(date) {
+    if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
+    const d = new Date(date);
+    const months = [
+      'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    
+    return `${day} ${month} ${year} à ${hours}:${minutes}`;
   }
 }
 
@@ -861,7 +961,7 @@ class Data {
         <h2>${data.title}</h2>
         <div class="content">${data.content}</div>
         <div class="meta">
-          <span class="date">${new Date(data.date).toLocaleDateString()}</span>
+          <span class="date">${this.formatDate(data.date)}</span>
         </div>
       </div>
     `;
@@ -870,6 +970,31 @@ class Data {
 
   destroy() {
     this.node.innerHTML = '';
+  }
+
+  formatDate(date) {
+    if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
+    const d = new Date(date);
+    const months = [
+      'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+    ];
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    
+    return `${day} ${month} ${year} à ${hours}:${minutes}`;
   }
 }
 
@@ -1355,6 +1480,15 @@ class ResultEditor {
 
   formatDate(date) {
     if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
     const d = new Date(date);
     const months = [
       'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
@@ -1421,11 +1555,11 @@ class ResultEditor {
                   ${result.matchId === match._id ? 'selected' : ''}
                   data-team1="${match.team1}"
                   data-team2="${match.team2}"
-                  data-home-date="${match.homeDate}"
-                  data-away-date="${match.awayDate}"
+                  data-home-date="${this.formatDate(match.homeDate)}"
+                  data-away-date="${this.formatDate(match.awayDate)}"
                   data-group="${match.group}"
                   data-session="${match.session}">
-                  ${match.team1} vs ${match.team2} (${match.homeDate})
+                  ${match.team1} vs ${match.team2} (${this.formatDate(match.homeDate)})
                 </option>
               `).join('')}
             </select>
@@ -1590,6 +1724,15 @@ class DataEditor {
 
   formatDate(date) {
     if (!date) return '';
+    
+    // Vérifier si la date est dans l'ancien format (JJ/MM/AAAA HH:mm)
+    if (typeof date === 'string' && date.includes('/')) {
+      const [datePart, timePart] = date.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes] = timePart.split(':');
+      date = new Date(year, month - 1, day, hours, minutes);
+    }
+    
     const d = new Date(date);
     const months = [
       'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
