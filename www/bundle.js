@@ -1005,7 +1005,11 @@ class PageEditor {
       lineWrapping: true,
       autofocus: true
     });
-
+    const updatePreview = () => {
+      const preview = document.getElementById('description-preview');
+      const content = this.editor.getValue();
+      preview.innerHTML = marked.parse(content);
+    };
     const form = document.getElementById('page-form');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
