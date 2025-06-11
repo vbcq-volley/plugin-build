@@ -577,15 +577,29 @@ class About {
   }
 
   render() {
-    
-    const html = `
-      <div class="about">
-        <h2>À propos</h2>
-        <p>Version: 1.0.0</p>
-        <p>Un panneau d'administration pour Hexo</p>
-      </div>
-    `;
-    this.node.innerHTML = html;
+    const fetchReadme = async (username, repo) => {
+      try {
+        const response = await fetch(`https://raw.githubusercontent.com/${username}/${repo}/master/README.md`);
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération du README');
+        }
+        const readmeContent = await response.text();
+        return readmeContent;
+      } catch (error) {
+        console.error('Erreur:', error);
+        return null;
+      }
+    };
+
+    const renderReadme = async (username, repo) => {
+      const readmeContent = await fetchReadme(username, repo);
+      if (readmeContent) {
+        this.node.innerHTML=marked.parse(readmeContent)
+        return readmeContent;
+      }
+      return 'Impossible de charger le README';
+    };
+  renderReadme("vbcq-volley","temp")
   }
 
   destroy() {
