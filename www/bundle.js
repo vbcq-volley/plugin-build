@@ -1859,6 +1859,9 @@ class DataEditor {
             <select id="matchType" name="matchType" required>
               <option value="regular" ${data.matchType === 'regular' ? 'selected' : ''}>Match régulier</option>
               <option value="tournament" ${data.matchType === 'tournament' ? 'selected' : ''}>Tournoi</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="group">Groupe</label>
             <select id="group" name="group" required>
               <option value="">Sélectionner un groupe</option>
@@ -1872,23 +1875,18 @@ class DataEditor {
             <input type="number" id="session" name="session" value="${data.session || ''}" required>
           </div>
           <div class="form-group">
-            <label for="team1">Équipe 1</label>
-            <select id="team1" name="team1" required>
-              <option value="">Sélectionner une équipe</option>
-              ${teams.map(team => `
-                <option value="${team.teamName}" 
-                  ${data.team1 === team.teamName ? 'selected' : ''}
-                  data-group="${team.group}"
-                  class="team-option"
-                  data-team="${team.teamName}">
-                  ${team.teamName} (${team.coach})
-                </option>
-              `).join('')}
+            <label for="tournamentRound" id="tournamentRoundLabel" style="display: none;">Tour du tournoi</label>
+            <select id="tournamentRound" name="tournamentRound" style="display: none;">
+              <option value="1" ${data.tournamentRound === '1' ? 'selected' : ''}>Premier tour</option>
+              <option value="2" ${data.tournamentRound === '2' ? 'selected' : ''}>Deuxième tour</option>
+              <option value="3" ${data.tournamentRound === '3' ? 'selected' : ''}>Troisième tour</option>
+              <option value="4" ${data.tournamentRound === '4' ? 'selected' : ''}>Quatrième tour</option>
+              <option value="final" ${data.tournamentRound === 'final' ? 'selected' : ''}>Finale</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="team2">Équipe 2</label>
-            <select id="team2" name="team2" required>
+            <label for="team1">Équipe 1</label>
+            <select id="team1" name="team1" required>
               <option value="">Sélectionner une équipe</option>
               ${teams.map(team => `
                 <option value="${team.teamName}" 
