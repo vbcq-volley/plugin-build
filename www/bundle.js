@@ -2615,7 +2615,7 @@ class App {
         break;
       case 'post':
         if (id) {
-          view = new Post(this.main, id);
+          view = new PostEditor(this.main, id);
         } else {
           view = new PostEditor(this.main);
         }
@@ -2625,7 +2625,7 @@ class App {
         break;
       case 'page':
         if (id) {
-          view = new Page(this.main, id);
+          view = new PageEditor(this.main, id);
         } else {
           view = new PageEditor(this.main);
         }
@@ -2645,7 +2645,7 @@ class App {
         break;
       case 'stade':
         if (id) {
-          view = new Stade(this.main, id);
+          view = new StadeEditor(this.main, id);
         } else {
           view = new StadeEditor(this.main);
         }
