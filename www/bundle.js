@@ -2345,7 +2345,7 @@ class TournamentMatches {
         <td>${this.formatDate(match.matchDate)}</td>
         <td>${match.round}</td>
         <td>
-          <a href="#/tournament-matches/${match.id}" class="btn btn-primary">Modifier</a>
+          <a href="#/tournament-match/${match.id}" class="btn btn-primary">Modifier</a>
           <button class="btn btn-danger" onclick="deleteMatch('${match.id}')">Supprimer</button>
         </td>
       </tr>
@@ -2357,8 +2357,8 @@ class TournamentMatches {
       <div class="tournament-matches">
         <h2>Matchs de Tournoi</h2>
         <div class="actions">
-          <a href="#/tournament-matches" class="btn btn-success">Nouveau Match</a>
-          <a href="#/tournament-matches/view" class="btn btn-info">Visualiser</a>
+          <a href="#/tournament-match" class="btn btn-success">Nouveau Match</a>
+
         </div>
         <table class="table">
           <thead>
@@ -2410,7 +2410,7 @@ class TournamentResults {
         <td>${result.score1}</td>
         <td>${result.score2}</td>
         <td>
-          <a href="#/tournament-results/${result.id}" class="btn btn-primary">Modifier</a>
+          <a href="#/tournament-result/${result.id}" class="btn btn-primary">Modifier</a>
           <button class="btn btn-danger" onclick="deleteResult('${result.id}')">Supprimer</button>
         </td>
       </tr>
@@ -2422,8 +2422,8 @@ class TournamentResults {
       <div class="tournament-results">
         <h2>Résultats de Tournoi</h2>
         <div class="actions">
-          <a href="#/tournament-results" class="btn btn-success">Nouveau Résultat</a>
-          <a href="#/tournament-results/view" class="btn btn-info">Visualiser</a>
+          <a href="#/tournament-result" class="btn btn-success">Nouveau Résultat</a>
+      
         </div>
         <table class="table">
           <thead>
