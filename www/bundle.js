@@ -2231,7 +2231,7 @@ class TournamentResult {
   
   }
 
-  async fetchMatch() {
+  async fetchMatch(id) {
     this.match = await api.getEntry('tournament_matches', this.data.matchId);
   }
 
