@@ -56344,7 +56344,7 @@ ${err.stack}`);
           console.error(err, err.stack);
           return res.send(500, "Failed to create page");
         }).then(function(file) {
-          var source2 = file.path.slice(hexo2.source_dir.length);
+          var source2 = file.path.slice(hexo2.source_dir.length).replace("\\", "/");
           hexo2.source.process([source2]).then(function() {
             var page = hexo2.model("Page").findOne({ source: source2 });
             console.log(source2);
