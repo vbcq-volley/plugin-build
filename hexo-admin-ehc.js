@@ -56347,6 +56347,7 @@ ${err.stack}`);
           var source2 = file.path.slice(hexo2.source_dir.length);
           hexo2.source.process([source2]).then(function() {
             var page = hexo2.model("Page").findOne({ source: source2 });
+            console.log(source2);
             res.done(addIsDraft(page));
           });
         });
