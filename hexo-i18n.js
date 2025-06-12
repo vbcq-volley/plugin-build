@@ -4,9 +4,9 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 
-// ../../node_modules/sprintf-js/src/sprintf.js
+// node_modules/.pnpm/sprintf-js@1.1.3/node_modules/sprintf-js/src/sprintf.js
 var require_sprintf = __commonJS({
-  "../../node_modules/sprintf-js/src/sprintf.js"(exports2) {
+  "node_modules/.pnpm/sprintf-js@1.1.3/node_modules/sprintf-js/src/sprintf.js"(exports2) {
     !function() {
       "use strict";
       var re = {
