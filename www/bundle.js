@@ -2229,6 +2229,7 @@ class TournamentResult {
 
   render() {
     this.node.innerHTML = this.template();
+    
     this.updateView();
   }
 
