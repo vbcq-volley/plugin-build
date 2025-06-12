@@ -2267,6 +2267,7 @@ class TournamentResult {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      
       const formData = new FormData(form);
       const data = {
         matchId: formData.get('matchId'),
