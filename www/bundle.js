@@ -2441,6 +2441,7 @@ class TournamentResults {
 
   render() {
     this.node.innerHTML = this.template();
+    this.f
     this.updateView();
   }
 
@@ -2455,7 +2456,7 @@ class TournamentResults {
         <td>${result.score2}</td>
         <td>
           <a href="#/tournament-result/${result._id}" class="btn btn-primary">Modifier</a>
-          <button class="btn btn-danger" onclick="deleteResult('${result.id}')">Supprimer</button>
+          <button class="btn btn-danger" onclick="deleteResult('${result._id}')">Supprimer</button>
         </td>
       </tr>
     `).join('');
