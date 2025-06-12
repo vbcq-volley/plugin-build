@@ -2217,11 +2217,18 @@ class TournamentResult {
   }
 
   async fetchResult() {
-    
-    this.data = await api.getEntry('tournament_results', this.id);
-    if (this.data) {
-      await this.fetchMatch();
+    if(this.id){
+      this.data = await api.getEntry('tournament_results', this.id);
+      if (this.data) {
+        await this.fetchMatch();
+      }
+    }else{
+      this.data=await api.getEntries('tournament_results')[0]
+      if (this.data) {
+        await this.fetchMatch();
+      }
     }
+  
   }
 
   async fetchMatch() {
