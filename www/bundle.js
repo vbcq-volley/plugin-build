@@ -2299,7 +2299,7 @@ class TournamentResult {
     try {
       const matches = await api.getTournamentMatches();
       const options = matches
-        .filter(match => !match.winner || match.id === this.data?.matchId)
+        .filter(match => !match.winner || match._id === this.data?.matchId)
         .map(match => `
           <option value="${match.id}" ${this.data?.matchId === match.id ? 'selected' : ''}>
             ${match.team1Name} vs ${match.team2Name} (${match.round})
