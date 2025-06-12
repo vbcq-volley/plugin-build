@@ -2655,7 +2655,7 @@ class App {
         break;
       case 'result':
         if (id) {
-          view = new Result(this.main, id);
+          view = new ResultEditor(this.main, id);
         } else {
           view = new ResultEditor(this.main);
         }
@@ -2665,7 +2665,7 @@ class App {
         break;
       case 'data':
         if (id) {
-          view = new Data(this.main, id);
+          view = new DataEditor(this.main, id);
         } else {
           view = new DataEditor(this.main);
         }
