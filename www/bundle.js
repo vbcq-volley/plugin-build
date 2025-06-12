@@ -2441,7 +2441,7 @@ class TournamentResults {
 
   render() {
     this.node.innerHTML = this.template();
-    this.f
+    this.fetchResults().t
     this.updateView();
   }
 
