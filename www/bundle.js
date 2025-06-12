@@ -1,5 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
 // index.js
 class API {
   constructor() {
@@ -2347,7 +2346,10 @@ class TournamentMatches {
     return `
       <div class="tournament-matches">
         <h2>Matchs de Tournoi</h2>
-        <a href="#/tournament-matches/new" class="btn btn-success">Nouveau Match</a>
+        <div class="actions">
+          <a href="#/tournament-matches" class="btn btn-success">Nouveau Match</a>
+          <a href="#/tournament-matches/view" class="btn btn-info">Visualiser</a>
+        </div>
         <table class="table">
           <thead>
             <tr>
@@ -2409,7 +2411,10 @@ class TournamentResults {
     return `
       <div class="tournament-results">
         <h2>Résultats de Tournoi</h2>
-        <a href="#/tournament-results/new" class="btn btn-success">Nouveau Résultat</a>
+        <div class="actions">
+          <a href="#/tournament-results" class="btn btn-success">Nouveau Résultat</a>
+          <a href="#/tournament-results/view" class="btn btn-info">Visualiser</a>
+        </div>
         <table class="table">
           <thead>
             <tr>
@@ -2654,18 +2659,14 @@ class App {
         view = new About(this.main);
         break;
       case 'tournament-matches':
-        if (id === 'new') {
-          view = new TournamentMatch(this.main);
-        } else if (id) {
+        if (id) {
           view = new TournamentMatch(this.main, id);
         } else {
           view = new TournamentMatches(this.main);
         }
         break;
       case 'tournament-results':
-        if (id === 'new') {
-          view = new TournamentResult(this.main);
-        } else if (id) {
+        if (id) {
           view = new TournamentResult(this.main, id);
         } else {
           view = new TournamentResults(this.main);
@@ -2870,6 +2871,29 @@ document.head.innerHTML += `
       margin-top: 5px;
       font-size: 14px;
       color: #666;
+    }
+  </style>
+`;
+
+// Ajout des styles CSS pour les boutons d'action
+document.head.innerHTML += `
+  <style>
+    .actions {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn-info {
+      background-color: #17a2b8;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-info:hover {
+      background-color: #138496;
     }
   </style>
 `;
