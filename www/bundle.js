@@ -2269,7 +2269,7 @@ class TournamentResult {
       e.preventDefault();
       
       const formData = new FormData(form);
-      
+      this.id
       const data = {
         matchId: formData.get('matchId'),
         score1: parseInt(formData.get('score1')),
