@@ -2146,16 +2146,15 @@ class TournamentMatch {
   template() {
     return `
       <div class="tournament-match-editor">
-        <h2>${this.id ? 'Modifier le match' : 'Nouveau match de tournoi'}</h2>
+        <h2>${this.id ? 'Modifier le match' : 'Nouveau match'}</h2>
         <form>
           <div class="form-group">
             <label>Équipe 1</label>
-            <select name="team1" required>
-              <option value="">Sélectionner une équipe</option>
-            </select>
+            <select name="team1" required></select>
           </div>
           <div class="form-group">
             <label>Équipe 2</label>
+            <select name="team2" required></select>
             <select name="team2" required>
               <option value="">Sélectionner une équipe</option>
             </select>
