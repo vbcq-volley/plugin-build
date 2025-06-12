@@ -1076,7 +1076,7 @@ class PostEditor {
           </div>
           <div class="form-group">
             <label for="contenue">Contenu</label>
-            <textarea id="contenue" name="content" rows="10" required>${post._content || ''}</textarea>
+            <textarea id="contenue" name="content" rows="10" >${post._content || ''}</textarea>
           </div>
           <div id="description-preview" class="preview"></div>
           <div class="form-group">
