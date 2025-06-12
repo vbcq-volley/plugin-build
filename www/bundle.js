@@ -2058,7 +2058,12 @@ class TournamentMatch {
   }
 
   async fetchMatch() {
-    this.data = await api.getEntry('tournament_matches', this.id);
+    if(this.id){
+      this.data = await api.getEntry('tournament_matches', this.id);
+    }else{
+      this.data = await api.getEntries('tournament_matches');
+    }
+    
     await this.fetchTeams();
     await this.fetchTournamentTeams();
   }
