@@ -2635,7 +2635,7 @@ class App {
         break;
       case 'team':
         if (id) {
-          view = new Team(this.main, id);
+          view = new TeamEditor(this.main, id);
         } else {
           view = new TeamEditor(this.main);
         }
