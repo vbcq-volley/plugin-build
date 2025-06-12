@@ -2220,19 +2220,19 @@ class TournamentResult {
     if(this.id){
       this.data = await api.getEntry('tournament_results', this.id);
       if (this.data) {
-        await this.fetchMatch();
+        await this.fetchMatch(this.data.matchId);
       }
     }else{
       this.data=await api.getEntries('tournament_results')[0]
       if (this.data) {
-        await this.fetchMatch();
+        await this.fetchMatch(this.data.matchId);
       }
     }
   
   }
 
   async fetchMatch(id) {
-    this.match = await api.getEntry('tournament_matches', this.data.matchId);
+    this.match = await api.getEntry('tournament_matches', id);
   }
 
   render() {
