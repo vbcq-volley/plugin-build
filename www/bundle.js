@@ -1075,7 +1075,7 @@ class PostEditor {
             <input type="text" id="title" name="title" value="${post.title || ''}" required>
           </div>
           <div class="form-group">
-            <label for="content">Contenu</label>
+            <label for="contenut">Contenu</label>
             <textarea id="content" name="content" rows="10" required>${post._content || ''}</textarea>
           </div>
           <div id="description-preview" class="preview"></div>
@@ -1341,7 +1341,7 @@ class TeamEditor {
       theme: 'monokai',
       lineNumbers: true,
       lineWrapping: true,
-      autofocus: true
+      autofocus: false
     });
 
     // Mise à jour de la prévisualisation
@@ -1462,7 +1462,7 @@ class StadeEditor {
       theme: 'monokai',
       lineNumbers: true,
       lineWrapping: true,
-      autofocus: true
+      autofocus: false
     });
 
     // Mise à jour de la prévisualisation
