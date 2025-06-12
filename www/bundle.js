@@ -1075,8 +1075,8 @@ class PostEditor {
             <input type="text" id="title" name="title" value="${post.title || ''}" required>
           </div>
           <div class="form-group">
-            <label for="contenut">Contenu</label>
-            <textarea id="content" name="content" rows="10" required>${post._content || ''}</textarea>
+            <label for="contenue">Contenu</label>
+            <textarea id="contenue" name="content" rows="10" required>${post._content || ''}</textarea>
           </div>
           <div id="description-preview" class="preview"></div>
           <div class="form-group">
@@ -1093,7 +1093,7 @@ class PostEditor {
     this.node.innerHTML = html;
 
     // Initialisation de CodeMirror
-    this.editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+    this.editor = CodeMirror.fromTextArea(document.getElementById('contenue'), {
       mode: 'markdown',
       theme: 'monokai',
       lineNumbers: true,
