@@ -4,9 +4,9 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 
-// ../../node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/utils.js
+// node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/utils.js
 var require_utils = __commonJS({
-  "../../node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/utils.js"(exports2) {
+  "node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/utils.js"(exports2) {
     "use strict";
     var regExpChars = /[|\\{}()[\]^$+*?.]/g;
     var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -138,9 +138,9 @@ function encode_char(c) {
   }
 });
 
-// ../../node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/package.json
+// node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/package.json
 var require_package = __commonJS({
-  "../../node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/package.json"(exports2, module2) {
+  "node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/package.json"(exports2, module2) {
     module2.exports = {
       name: "ejs",
       description: "Embedded JavaScript templates",
@@ -186,9 +186,9 @@ var require_package = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/ejs.js
+// node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/ejs.js
 var require_ejs = __commonJS({
-  "../../node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/ejs.js"(exports2) {
+  "node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/ejs.js"(exports2) {
     "use strict";
     var fs = require("fs");
     var path = require("path");
