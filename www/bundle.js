@@ -2311,6 +2311,7 @@ class TournamentResult {
   async loadMatches(select) {
     try {
       const matches = await api.getTournamentMatches();
+      console.log(matches)
       const options = matches
         .filter(match => !match.winner || match._id === this.data?.matchId)
         .map(match => `
@@ -2441,8 +2442,10 @@ class TournamentResults {
 
   render() {
     this.node.innerHTML = this.template();
-    this.fetchResults().t
-    this.updateView();
+    this.fetchResults().then(()=>{
+      this.updateView();
+    })
+   
   }
 
   updateView() {
