@@ -1216,7 +1216,7 @@ class PageEditor {
       const formData = new FormData(form);
       const data = {
         title: formData.get('title'),
-        content: this.editor.getValue()
+        _content: this.editor.getValue()
       };
 
       try {
