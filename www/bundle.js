@@ -2076,7 +2076,7 @@ class TournamentMatch {
       .filter(match => match.id !== this.id && match.winner)
       .map(match => ({
         id: `winner_${match.id}`,
-        name: match.winner
+        teamName: match.winner
       }));
   }
 
@@ -2127,7 +2127,7 @@ class TournamentMatch {
         matchDate: formData.get('matchDate'),
         round: formData.get('round'),
         team1Name: allTeams.find(t => t.id === formData.get('team1'))?.name,
-        team2Name: allTeams.find(t => t.id === formData.get('team2'))?.name
+        team2Name: allTeams.find(t => t.id === formData.get('team2'))?.teamName
       };
       
       try {
