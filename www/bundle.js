@@ -1182,7 +1182,7 @@ class PageEditor {
           </div>
           <div class="form-group">
             <label for="contenue">Contenu</label>
-            <textarea id="contenue" name="contenue" rows="10" >${page.content || ''}</textarea>
+            <textarea id="contenue" name="contenue" rows="10" >${page._content || ''}</textarea>
           </div>
           <div id="description-preview" class="preview"></div>
           <div class="form-group">
