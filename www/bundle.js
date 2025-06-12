@@ -2104,7 +2104,7 @@ class TournamentMatch {
       ).join('');
     }else{
        teamOptions = allTeams.map(team => 
-        `<option value="${team.id}"  ''>${team.name}</option>`
+        `<option value="${team.id}"  ''>${team.teamName}</option>`
       ).join('');
     }
     
