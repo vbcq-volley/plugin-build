@@ -56056,6 +56056,7 @@ var require_api = __commonJS({
     updateMatchTitles();
     module2.exports = function(app, hexo2) {
       function addIsDraft(post) {
+        console.log(post);
         if (post.source) {
           post.isDraft = post.source.indexOf("_draft") === 0;
           post.isDiscarded = post.source.indexOf("_discarded") === 0;
