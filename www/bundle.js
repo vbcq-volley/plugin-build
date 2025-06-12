@@ -2118,6 +2118,13 @@ class TournamentMatch {
       form.querySelector('[name="round"]').value = this.data.round;
     }
 
+    // Ajouter l'écouteur d'événement pour le bouton de suppression
+    const deleteButton = form.querySelector('#deleteMatch');
+    if (deleteButton) {
+      deleteButton.addEventListener('click', () => this.deleteMatch());
+    }
+
+    // Gérer la soumission du formulaire
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
@@ -2129,16 +2136,17 @@ class TournamentMatch {
         team1Name: allTeams.find(t => t._id === formData.get('team1'))?.teamName,
         team2Name: allTeams.find(t => t._id === formData.get('team2'))?.teamName
       };
-      
+
       try {
         if (this.id) {
-          await api.updateEntry('tournament_matches', this.id, data);
+          await api.updateTournamentMatch(this.id, data);
         } else {
-          await api.createEntry('tournament_matches', data);
+          await api.createTournamentMatch(data);
         }
         window.location.hash = '#/tournament-matches';
       } catch (error) {
-        console.error('Erreur lors de la sauvegarde:', error);
+        console.error('Erreur lors de l\'enregistrement du match:', error);
+        alert('Une erreur est survenue lors de l\'enregistrement du match');
       }
     });
   }
@@ -2150,11 +2158,12 @@ class TournamentMatch {
         <form>
           <div class="form-group">
             <label>Équipe 1</label>
-            <select name="team1" required></select>
+            <select name="team1" required>
+              <option value="">Sélectionner une équipe</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Équipe 2</label>
-            <select name="team2" required></select>
             <select name="team2" required>
               <option value="">Sélectionner une équipe</option>
             </select>
@@ -2172,7 +2181,11 @@ class TournamentMatch {
               <option value="final">Finale</option>
             </select>
           </div>
-          <button type="submit">Enregistrer</button>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            ${this.id ? '<button type="button" class="btn btn-danger" id="deleteMatch">Supprimer</button>' : ''}
+            <a href="#/tournament-matches" class="btn btn-secondary">Annuler</a>
+          </div>
         </form>
       </div>
     `;
@@ -2180,6 +2193,18 @@ class TournamentMatch {
 
   destroy() {
     this.node.innerHTML = '';
+  }
+
+  async deleteMatch() {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce match ?')) {
+      try {
+        await api.deleteTournamentMatch(this.id);
+        window.location.hash = '#/tournament-matches';
+      } catch (error) {
+        console.error('Erreur lors de la suppression du match:', error);
+        alert('Une erreur est survenue lors de la suppression du match');
+      }
+    }
   }
 }
 
@@ -2348,8 +2373,8 @@ class TournamentMatches {
         <td>${this.formatDate(match.matchDate)}</td>
         <td>${match.round}</td>
         <td>
-          <a href="#/tournament-match/${match.id}" class="btn btn-primary">Modifier</a>
-          <button class="btn btn-danger" onclick="deleteMatch('${match.id}')">Supprimer</button>
+          <a href="#/tournament-match/${match._id}" class="btn btn-primary">Modifier</a>
+          <button class="btn btn-danger" onclick="deleteMatch('${match._id}')">Supprimer</button>
         </td>
       </tr>
     `).join('');
