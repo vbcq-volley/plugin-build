@@ -2098,9 +2098,16 @@ class TournamentMatch {
 
     // Remplir les options des équipes
     const allTeams = [...this.teams, ...this.tournamentTeams];
-    const teamOptions = allTeams.map(team => 
-      `<option value="${team.id}" ${this.data.team1 === team.id ? 'selected' : ''}>${team.name}</option>`
-    ).join('');
+    if(this.data){
+      const teamOptions = allTeams.map(team => 
+        `<option value="${team.id}" ${this.data.team1 === team.id ? 'selected' : ''}>${team.name}</option>`
+      ).join('');
+    }else{
+      const teamOptions = allTeams.map(team => 
+        `<option value="${team.id}"  ''>${team.name}</option>`
+      ).join('');
+    }
+    
     console.log(allTeams)
     team1Select.innerHTML = '<option value="">Sélectionner une équipe</option>' + teamOptions;
     team2Select.innerHTML = '<option value="">Sélectionner une équipe</option>' + teamOptions;
