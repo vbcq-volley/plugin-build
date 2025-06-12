@@ -2067,7 +2067,7 @@ class TournamentMatch {
   }
 
   async fetchTeams() {
-    this.teams = await api.getEntries('teams');
+    this.teams = await api.getEntries('team');
   }
 
   async fetchTournamentTeams() {
