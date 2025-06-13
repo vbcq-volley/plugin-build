@@ -177,7 +177,7 @@ class API {
   }
 
   async getMatch() {
-    return this.getEntries('matches');
+    return this.getEntries('match');
   }
 
   async getTournamentMatches() {
