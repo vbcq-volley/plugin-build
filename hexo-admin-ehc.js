@@ -56056,7 +56056,6 @@ var require_api = __commonJS({
     updateMatchTitles();
     module2.exports = function(app, hexo2) {
       function addIsDraft(post) {
-        console.log(post);
         if (!post) {
           return {};
         }
@@ -56074,8 +56073,6 @@ var require_api = __commonJS({
         hexo2.model("Tag").forEach(function(tag) {
           tags[tag._id] = tag.name;
         });
-        console.log(cats);
-        console.log(tags);
         if (Object.keys(cats).length === 0) {
           cats = null;
         }
@@ -56246,7 +56243,6 @@ ${err.stack}`);
       });
       use("pages/list", function(req, res) {
         var page = hexo2.model("Page");
-        console.log(page);
         res.done(page.map(addIsDraft));
       });
       use("db/", function(req, res) {
@@ -56347,7 +56343,6 @@ ${err.stack}`);
           var source2 = file.path.slice(hexo2.source_dir.length).replace("\\", "/");
           hexo2.source.process([source2]).then(function() {
             var page = hexo2.model("Page").findOne({ source: source2 });
-            console.log(source2);
             res.done(addIsDraft(page));
           });
         });
@@ -56398,7 +56393,6 @@ ${err.stack}`);
         if (!req.body) {
           return res.send(400, "No page body given");
         }
-        console.log(req.body);
         updatePage(id, req.body, function(err, page2) {
           if (err) {
             return res.send(400, err);
