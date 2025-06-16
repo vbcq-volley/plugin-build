@@ -352,6 +352,7 @@ class Pages {
     const html = `
       <div class="pages">
         <h2>Pages</h2>
+        <a href="#/page/${page._id}">crée une page </a>
         <ul>
           ${pages.map(page => `
             <li>
