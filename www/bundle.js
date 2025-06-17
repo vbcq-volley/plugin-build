@@ -275,7 +275,7 @@ class Posts {
       <div class="posts">
         <div class="header-actions">
           <h2>Posts</h2>
-          <button class="create-button" onclick="window.location.hash='#/post'">Créer un nouveau post</button>
+          <button class="create-button" onclick="window.location.hash='#/post'">Créer un nouveau évenement</button>
         </div>
         <ul>
           ${posts.map(post => `
@@ -1127,7 +1127,7 @@ class PostEditor {
         } else {
           const t=await api.createPost(data.title);
           // Mise à jour du contenu après création
-          const newPost = await api.getPost(t.id);
+          const newPost = await api.getPost(t._id);
           await api.getPost(newPost._id, data);
         }
         
