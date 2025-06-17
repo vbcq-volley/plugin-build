@@ -56417,15 +56417,15 @@ ${err.stack}`);
           return res.send(400, "No title given");
         }
         var postParameters = { title: req.body.title, layout: "posts", date: /* @__PURE__ */ new Date(), author: hexo2.config.author, source: "_post" };
-        hexo2.log.d(postParameters);
+        hexo2.log(postParameters);
         hexo2.post.create(postParameters).error(function(err) {
           hexo2.log.d("l'erreur est a la cr\xE9ation du post");
           console.error(err, err.stack);
           return res.send(500, "Failed to create post");
         }).then(function(file) {
           var source2 = postParameters.source;
-          hexo2.log.d(file);
-          res.send(200, "succes");
+          hexo2.log(file);
+          res.done(addIsDraft(file));
         });
       });
       use("posts/", function(req, res, next) {
