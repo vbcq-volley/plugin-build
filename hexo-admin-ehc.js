@@ -56423,9 +56423,11 @@ ${err.stack}`);
           console.error(err, err.stack);
           return res.send(500, "Failed to create post");
         }).then(function(file) {
-          var source2 = postParameters.source;
-          hexo2.log.d(file);
-          res.done(addIsDraft(file));
+          var source2 = file.path.slice(hexo2.source_dir.length).replace("\\", "/");
+          hexo2.source.process([source2]).then(function() {
+            var page = hexo2.model("Post").findOne({ source: source2 });
+            res.done(addIsDraft(page));
+          });
         });
       });
       use("posts/", function(req, res, next) {
