@@ -2536,7 +2536,7 @@ class TournamentMatches {
     return `
       <div class="tournament-matches">
         <h2>Matchs du Tournoi</h2>
-        <button class="btn btn-primary" onclick="app.currentView.generateMatches()">Générer les matchs</button>
+        <button class="btn btn-primary generate-matches">Générer les matchs</button>
         <div class="matches-list">
           ${this.data ? this.data.map(match => `
             <div class="match-item">
@@ -2560,13 +2560,18 @@ class TournamentMatches {
     this.node.innerHTML = this.template();
     this.fetchMatches().then((data) => {
       this.updateView();
-      // Add event listener for delete buttons
+      // Add event listeners for delete buttons
       this.node.querySelectorAll('.delete-match').forEach(button => {
         button.addEventListener('click', (e) => {
           const matchId = e.target.dataset.matchId;
           this.deleteMatch(matchId);
         });
       });
+      // Add event listener for generate matches button
+      const generateButton = this.node.querySelector('.generate-matches');
+      if (generateButton) {
+        generateButton.addEventListener('click', () => this.generateMatches());
+      }
     });
   }
 
