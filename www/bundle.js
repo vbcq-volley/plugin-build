@@ -2304,7 +2304,6 @@ class TournamentGenerator {
   }
 
 
-
   template() {
     return `
       <div class="tournament-generator">
