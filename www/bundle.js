@@ -208,7 +208,20 @@ class API {
   }
 
   async getAvailableTeams() {
-    return this.request('/db/team/available');
+    try {
+      const teams = await this.getEntries('team');
+      const tournamentMatches = await this.getTournamentMatches();
+      
+      // Filter teams that have no match in the tournament
+      const teamsWithMatches = new Set(tournamentMatches
+        .map(match => [match.team1Name, match.team2Name])
+        .flat());
+      
+      return teams.filter(team => !teamsWithMatches.has(team.name));
+    } catch (error) {
+      console.error('Erreur lors du filtrage des équipes:', error);
+      throw error;
+    }
   }
 
   async getTournamentStructure() {
