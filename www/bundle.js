@@ -2086,7 +2086,7 @@ class TournamentGenerator {
   }
 
   // Fonction utilitaire pour fermer la popup
-  static closePopup(popup) {
+   closePopup(popup) {
     popup.style.display = 'none';
     document.body.style.overflow = 'auto';
   }
@@ -2211,21 +2211,21 @@ class TournamentGenerator {
         const selectedType = Array.from(typeButtons).find(btn => btn.classList.contains('selected'))?.dataset.type;
         if (selectedType && dateInput.value) {
           resolve({ type: selectedType, startDate: dateInput.value });
-          closePopup(popup);
+          this.closePopup(popup);
         }
       });
 
       // Gérer l'annulation
       cancelButton.addEventListener('click', () => {
         resolve(null);
-        closePopup(popup);
+          this.closePopup(popup);
       });
 
       // Fermer la popup en cliquant en dehors
       popup.addEventListener('click', (e) => {
         if (e.target === popup) {
           resolve(null);
-          closePopup(popup);
+          this.closePopup(popup);
         }
       });
     });
