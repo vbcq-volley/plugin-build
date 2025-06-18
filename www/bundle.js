@@ -3160,7 +3160,7 @@ document.head.innerHTML += `
 document.addEventListener('DOMContentLoaded', () => {
   const node = document.createElement('div');
   document.body.appendChild(node);
-  new App(node);
+  const app=new App(node);
 });
 
 
