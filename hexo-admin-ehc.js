@@ -56345,6 +56345,7 @@ ${err.stack}`);
           }
           const matches = generateTournamentMatches(type, startDate, teams);
           matches.forEach((match) => {
+            console.log(match);
             db.create("tournament_matches", match);
           });
           res.done(matches);
@@ -56378,6 +56379,7 @@ ${err.stack}`);
       function generateTournamentMatches(type, startDate, teams) {
         const matches = [];
         const teamCount = teams.length;
+        console.log(type);
         if (type === "poule") {
           for (let i = 0; i < teamCount; i++) {
             for (let j = i + 1; j < teamCount; j++) {
