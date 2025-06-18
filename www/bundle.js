@@ -2091,11 +2091,29 @@ class TournamentGenerator {
     document.body.style.overflow = 'auto';
   }
 
-  async generatePouleMatches(teams, startDate) {
-    const matches = [];
-    const teamCount = teams.length;
+  // Diviser les équipes en 4 groupes
+  divideTeamsIntoGroups(teams) {
+    // Mélanger les équipes aléatoirement
+    const shuffledTeams = [...teams].sort(() => Math.random() - 0.5);
+    
+    // Calculer le nombre d'équipes par groupe
+    const teamsPerGroup = Math.ceil(shuffledTeams.length / 4);
+    
+    // Créer les 4 groupes
+    const groups = [];
+    for (let i = 0; i < 4; i++) {
+      groups.push(shuffledTeams.slice(i * teamsPerGroup, (i + 1) * teamsPerGroup));
+    }
+    
+    return groups;
+  }
 
-    // Générer tous les matchs possibles
+  // Générer les matchs pour un groupe spécifique
+  generateGroupMatches(group, startDate, groupName) {
+    const matches = [];
+    const teamCount = group.length;
+
+    // Générer tous les matchs possibles dans le groupe
     for (let i = 0; i < teamCount; i++) {
       for (let j = i + 1; j < teamCount; j++) {
         const matchDate = new Date(startDate);
@@ -2103,18 +2121,37 @@ class TournamentGenerator {
         matchDate.setDate(matchDate.getDate() + matches.length * 2);
 
         matches.push({
-          team1: teams[i]._id,
-          team2: teams[j]._id,
+          team1: group[i]._id,
+          team2: group[j]._id,
           matchDate: matchDate.toISOString(),
           round: 'poule',
-          team1Name: teams[i].teamName,
-          team2Name: teams[j].teamName
+          team1Name: group[i].teamName,
+          team2Name: group[j].teamName,
+          group: groupName // Ajouter le nom du groupe au match
         });
       }
     }
 
     return matches;
   }
+
+  async generatePouleMatches(teams, startDate) {
+    // Diviser les équipes en 4 groupes
+    const groups = this.divideTeamsIntoGroups(teams);
+    
+    // Générer les matchs pour chaque groupe
+    const allMatches = [];
+    
+    // Générer les matchs pour chaque groupe
+    for (let i = 0; i < groups.length; i++) {
+      const groupName = String.fromCharCode(65 + i); // A, B, C, D
+      const groupMatches = this.generateGroupMatches(groups[i], startDate, groupName);
+      allMatches.push(...groupMatches);
+    }
+    
+    return allMatches;
+  }
+  
 
   async generateEliminationMatches(teams, startDate) {
     const matches = [];
@@ -2243,12 +2280,19 @@ class TournamentGenerator {
         // Pour la phase de poule, prendre toutes les équipes disponibles
         teams = await this.api.getAvailableTeams();
       }
-
+      const matches=[]
       // Générer les matchs selon le type de tournoi
-
+      if(type=="poule"){
+        const groups = this.divideTeamsIntoGroups(teams);
+        groups.forEach(async(team)=>{
+          matches.push(await this.api.generateMatches({type:type,startDate:startDate   ,teams:team}));
+        })
+      }else{
+        matches.push(      await this.api.generateMatches({type:type,startDate:startDate   ,teams:teams}))
+      }
 
       // Créer les matchs via l'API
-     const matches= await this.api.generateMatches({type:type,startDate:startDate   ,teams:teams});
+
 
       return matches;
     } catch (error) {
