@@ -217,7 +217,7 @@ class API {
         .map(match => [match.team1Name, match.team2Name])
         .flat());
       
-      return teams.filter(team => !teamsWithMatches.has(team.name));
+      return teams.filter(team => !teamsWithMatches.has(team.teamName));
     } catch (error) {
       console.error('Erreur lors du filtrage des équipes:', error);
       throw error;
