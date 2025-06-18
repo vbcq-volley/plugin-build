@@ -56337,7 +56337,7 @@ ${err.stack}`);
             return res.send(405, "Method Not Allowed");
         }
       });
-      use("tournament_matches/generate", function(req, res) {
+      use("tournament_matches/generate/", function(req, res) {
         try {
           const { type, startDate, teams } = req.body;
           if (!type || !startDate || !Array.isArray(teams)) {
@@ -56353,7 +56353,7 @@ ${err.stack}`);
           res.send(400, `Bad Request: ${error.message}`);
         }
       });
-      use("tournament/ranking", function(req, res) {
+      use("tournament/ranking/", function(req, res) {
         try {
           const teams = db.read("team");
           const results = db.read("tournament_results");
@@ -56364,7 +56364,7 @@ ${err.stack}`);
           res.send(400, `Bad Request: ${error.message}`);
         }
       });
-      use("tournament/stats", function(req, res) {
+      use("tournament/stats/", function(req, res) {
         try {
           const matches = db.read("tournament_matches");
           const results = db.read("tournament_results");
@@ -56537,7 +56537,7 @@ ${err.stack}`);
           }
         });
       }
-      use("tournament/matches/winners", function(req, res) {
+      use("tournament/matches/winners/", function(req, res) {
         try {
           const { round } = req.body;
           if (!round) {
@@ -56570,7 +56570,7 @@ ${err.stack}`);
         const index = rounds.indexOf(round);
         return index > 0 ? rounds[index - 1] : null;
       }
-      use("tournament/matches/update-winner", function(req, res) {
+      use("tournament/matches/update-winner/", function(req, res) {
         try {
           const { matchId, previousMatchId } = req.body;
           if (!matchId || !previousMatchId) {
@@ -56597,7 +56597,7 @@ ${err.stack}`);
           res.send(400, `Bad Request: ${error.message}`);
         }
       });
-      use("tournament/matches/forfeit", function(req, res) {
+      use("tournament/matches/forfeit/", function(req, res) {
         try {
           const { matchId, teamId, reason } = req.body;
           if (!matchId || !teamId) {
@@ -56631,7 +56631,7 @@ ${err.stack}`);
           res.send(400, `Bad Request: ${error.message}`);
         }
       });
-      use("tournament/matches/draw", function(req, res) {
+      use("tournament/matches/draw/", function(req, res) {
         try {
           const { matchId, score } = req.body;
           if (!matchId || typeof score !== "number") {
@@ -56657,7 +56657,7 @@ ${err.stack}`);
           res.send(400, `Bad Request: ${error.message}`);
         }
       });
-      use("tournament/matches/drawlots", function(req, res) {
+      use("tournament/matches/drawlots/", function(req, res) {
         try {
           const { teams, round } = req.body;
           if (!teams || !Array.isArray(teams) || !round) {
