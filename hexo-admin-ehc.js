@@ -56606,6 +56606,7 @@ ${err.stack}`);
         }
         console.log(db.data.tournament_ranking);
         db.data.tournament_ranking.entries = currentRanking;
+        db.saveToFile(db.filename);
       }
       function updateNextMatches() {
         const matches = db.read("tournament_matches");
