@@ -56481,7 +56481,7 @@ ${err.stack}`);
             rank: 0
           }))
         }));
-        rankingByGroup.forEach((groupRanking) => {
+        rankingByGroup.map((groupRanking) => {
           const groupResults = results.filter((result) => {
             const match = tournamentMatches.find((m) => m._id === result.matchId);
             return match && match.poule === groupRanking.group;
