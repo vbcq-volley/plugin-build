@@ -1436,9 +1436,9 @@ var require_fresh = __commonJS({
           return false;
         }
         var etagStale = true;
-        var matches2 = parseTokenList(noneMatch);
-        for (var i = 0; i < matches2.length; i++) {
-          var match = matches2[i];
+        var matches = parseTokenList(noneMatch);
+        for (var i = 0; i < matches.length; i++) {
+          var match = matches[i];
           if (match === etag || match === "W/" + etag || "W/" + match === etag) {
             etagStale = false;
             break;
@@ -25535,7 +25535,7 @@ var require_cookiejar = __commonJS({
         }
         return new Cookie2().parse(str, request_domain, request_path);
       };
-      Cookie2.prototype.matches = function matches2(access_info) {
+      Cookie2.prototype.matches = function matches(access_info) {
         if (this.noscript && access_info.script || this.secure && !access_info.secure || !this.collidesWith(access_info)) {
           return false;
         }
@@ -25626,22 +25626,22 @@ var require_cookiejar = __commonJS({
             }
           };
           this.getCookies = function getCookies(access_info) {
-            var matches2 = [], cookie_name, cookie;
+            var matches = [], cookie_name, cookie;
             for (cookie_name in cookies) {
               cookie = this.getCookie(cookie_name, access_info);
               if (cookie) {
-                matches2.push(cookie);
+                matches.push(cookie);
               }
             }
-            matches2.toString = function toString() {
-              return matches2.join(":");
+            matches.toString = function toString() {
+              return matches.join(":");
             };
-            matches2.toValueString = function toValueString() {
-              return matches2.map(function(c) {
+            matches.toValueString = function toValueString() {
+              return matches.map(function(c) {
                 return c.toValueString();
               }).join(";");
             };
-            return matches2;
+            return matches;
           };
           return this;
         }
@@ -28542,11 +28542,11 @@ var require_moment = __commonJS({
       });
       var chunkOffset = /([\+\-]|\d\d)/gi;
       function offsetFromString(matcher, string) {
-        var matches2 = (string || "").match(matcher), chunk, parts, minutes2;
-        if (matches2 === null) {
+        var matches = (string || "").match(matcher), chunk, parts, minutes2;
+        if (matches === null) {
           return null;
         }
-        chunk = matches2[matches2.length - 1] || [];
+        chunk = matches[matches.length - 1] || [];
         parts = (chunk + "").match(chunkOffset) || ["-", 0, 0];
         minutes2 = +(parts[1] * 60) + toInt(parts[2]);
         return minutes2 === 0 ? 0 : parts[0] === "+" ? minutes2 : -minutes2;
@@ -35023,11 +35023,11 @@ var require_debuggability = __commonJS({
       };
       var parseLineInfoRegex = /[\/<\(]([^:\/]+):(\d+):(?:\d+)\)?\s*$/;
       function parseLineInfo(line) {
-        var matches2 = line.match(parseLineInfoRegex);
-        if (matches2) {
+        var matches = line.match(parseLineInfoRegex);
+        if (matches) {
           return {
-            fileName: matches2[1],
-            line: parseInt(matches2[2], 10)
+            fileName: matches[1],
+            line: parseInt(matches[2], 10)
           };
         }
       }
@@ -40106,8 +40106,8 @@ var require_braces = __commonJS({
       if (!(patternRe instanceof RegExp)) {
         patternRe = patternRegex();
       }
-      var matches2 = str.match(patternRe) || [];
-      var m = matches2[0];
+      var matches = str.match(patternRe) || [];
+      var m = matches[0];
       switch (m) {
         case "\\,":
           return escapeCommas(str, arr, opts);
@@ -49444,11 +49444,11 @@ var require_nanomatch = __commonJS({
           }
         }
       }
-      var matches2 = utils.diff(keep, omit);
+      var matches = utils.diff(keep, omit);
       if (!options || options.nodupes !== false) {
-        return utils.unique(matches2);
+        return utils.unique(matches);
       }
-      return matches2;
+      return matches;
     }
     nanomatch.match = function(list, pattern, options) {
       if (Array.isArray(pattern)) {
@@ -49456,20 +49456,20 @@ var require_nanomatch = __commonJS({
       }
       var unixify = utils.unixify(options);
       var isMatch = memoize("match", pattern, options, nanomatch.matcher);
-      var matches2 = [];
+      var matches = [];
       list = utils.arrayify(list);
       var len = list.length;
       var idx = -1;
       while (++idx < len) {
         var ele = list[idx];
         if (ele === pattern || isMatch(ele)) {
-          matches2.push(utils.value(ele, unixify, options));
+          matches.push(utils.value(ele, unixify, options));
         }
       }
       if (typeof options === "undefined") {
-        return utils.unique(matches2);
+        return utils.unique(matches);
       }
-      if (matches2.length === 0) {
+      if (matches.length === 0) {
         if (options.failglob === true) {
           throw new Error('no matches found for "' + pattern + '"');
         }
@@ -49478,9 +49478,9 @@ var require_nanomatch = __commonJS({
         }
       }
       if (options.ignore) {
-        matches2 = nanomatch.not(matches2, options.ignore, options);
+        matches = nanomatch.not(matches, options.ignore, options);
       }
-      return options.nodupes !== false ? utils.unique(matches2) : matches2;
+      return options.nodupes !== false ? utils.unique(matches) : matches;
     };
     nanomatch.isMatch = function(str, pattern, options) {
       if (typeof str !== "string") {
@@ -49554,11 +49554,11 @@ var require_nanomatch = __commonJS({
       var ignore = opts.ignore;
       delete opts.ignore;
       list = utils.arrayify(list);
-      var matches2 = utils.diff(list, nanomatch(list, patterns, opts));
+      var matches = utils.diff(list, nanomatch(list, patterns, opts));
       if (ignore) {
-        matches2 = utils.diff(matches2, nanomatch(list, ignore));
+        matches = utils.diff(matches, nanomatch(list, ignore));
       }
-      return opts.nodupes !== false ? utils.unique(matches2) : matches2;
+      return opts.nodupes !== false ? utils.unique(matches) : matches;
     };
     nanomatch.contains = function(str, patterns, options) {
       if (typeof str !== "string") {
@@ -50366,17 +50366,17 @@ var require_extglob3 = __commonJS({
       var isMatch = extglob.matcher(pattern, options);
       var len = list.length;
       var idx = -1;
-      var matches2 = [];
+      var matches = [];
       while (++idx < len) {
         var ele = list[idx];
         if (isMatch(ele)) {
-          matches2.push(ele);
+          matches.push(ele);
         }
       }
       if (typeof options === "undefined") {
-        return unique(matches2);
+        return unique(matches);
       }
-      if (matches2.length === 0) {
+      if (matches.length === 0) {
         if (options.failglob === true) {
           throw new Error('no matches found for "' + pattern + '"');
         }
@@ -50384,7 +50384,7 @@ var require_extglob3 = __commonJS({
           return [pattern.split("\\").join("")];
         }
       }
-      return options.nodupes !== false ? unique(matches2) : matches2;
+      return options.nodupes !== false ? unique(matches) : matches;
     };
     extglob.isMatch = function(str, pattern, options) {
       if (typeof pattern !== "string") {
@@ -50779,11 +50779,11 @@ var require_micromatch2 = __commonJS({
           keep.push.apply(keep, micromatch.match(list, pattern, options));
         }
       }
-      var matches2 = utils.diff(keep, omit);
+      var matches = utils.diff(keep, omit);
       if (!options || options.nodupes !== false) {
-        return utils.unique(matches2);
+        return utils.unique(matches);
       }
-      return matches2;
+      return matches;
     }
     micromatch.match = function(list, pattern, options) {
       if (Array.isArray(pattern)) {
@@ -50791,20 +50791,20 @@ var require_micromatch2 = __commonJS({
       }
       var unixify = utils.unixify(options);
       var isMatch = memoize("match", pattern, options, micromatch.matcher);
-      var matches2 = [];
+      var matches = [];
       list = utils.arrayify(list);
       var len = list.length;
       var idx = -1;
       while (++idx < len) {
         var ele = list[idx];
         if (ele === pattern || isMatch(ele)) {
-          matches2.push(utils.value(ele, unixify, options));
+          matches.push(utils.value(ele, unixify, options));
         }
       }
       if (typeof options === "undefined") {
-        return utils.unique(matches2);
+        return utils.unique(matches);
       }
-      if (matches2.length === 0) {
+      if (matches.length === 0) {
         if (options.failglob === true) {
           throw new Error('no matches found for "' + pattern + '"');
         }
@@ -50813,9 +50813,9 @@ var require_micromatch2 = __commonJS({
         }
       }
       if (options.ignore) {
-        matches2 = micromatch.not(matches2, options.ignore, options);
+        matches = micromatch.not(matches, options.ignore, options);
       }
-      return options.nodupes !== false ? utils.unique(matches2) : matches2;
+      return options.nodupes !== false ? utils.unique(matches) : matches;
     };
     micromatch.isMatch = function(str, pattern, options) {
       if (typeof str !== "string") {
@@ -50890,11 +50890,11 @@ var require_micromatch2 = __commonJS({
       delete opts.ignore;
       var unixify = utils.unixify(opts);
       list = utils.arrayify(list).map(unixify);
-      var matches2 = utils.diff(list, micromatch(list, patterns, opts));
+      var matches = utils.diff(list, micromatch(list, patterns, opts));
       if (ignore) {
-        matches2 = utils.diff(matches2, micromatch(list, ignore));
+        matches = utils.diff(matches, micromatch(list, ignore));
       }
-      return opts.nodupes !== false ? utils.unique(matches2) : matches2;
+      return opts.nodupes !== false ? utils.unique(matches) : matches;
     };
     micromatch.contains = function(str, patterns, options) {
       if (typeof str !== "string") {
@@ -56027,8 +56027,8 @@ var require_api = __commonJS({
       filename: "./source/_data/db.json"
     });
     function updateMatchTitles() {
-      const matches2 = db.read("match");
-      const updatedMatches = matches2.map((item, index) => {
+      const matches = db.read("match");
+      const updatedMatches = matches.map((item, index) => {
         if (!item.title || item.title !== `${item.team1} vs ${item.team2}`) {
           item.title = `${item.team1} vs ${item.team2}`;
           db.update("match", index, item);
@@ -56343,12 +56343,12 @@ ${err.stack}`);
           if (!type || !startDate || !Array.isArray(teams)) {
             return res.send(400, "Missing required parameters");
           }
-          const matches2 = generateTournamentMatches(type, startDate, teams);
-          matches2.forEach((match) => {
+          const matches = generateTournamentMatches(type, startDate, teams);
+          matches.forEach((match) => {
             console.log(match);
             db.create("tournament_matches", match);
           });
-          res.done(matches2);
+          res.done(matches);
         } catch (error) {
           hexo2.log.e(`Error generating matches: ${error.message}`);
           res.send(400, `Bad Request: ${error.message}`);
@@ -56381,9 +56381,9 @@ ${err.stack}`);
       });
       use("tournament/stats/", function(req, res) {
         try {
-          const matches2 = db.read("tournament_matches");
+          const matches = db.read("tournament_matches");
           const results = db.read("tournament_results");
-          const stats = calculateTournamentStats(matches2, results);
+          const stats = calculateTournamentStats(matches, results);
           res.done(stats);
         } catch (error) {
           hexo2.log.e(`Error getting tournament stats: ${error.message}`);
@@ -56391,15 +56391,15 @@ ${err.stack}`);
         }
       });
       function generateTournamentMatches(type, startDate, teams) {
-        const matches2 = [];
+        const matches = [];
         const teamCount = teams.length;
         console.log(type);
         if (type === "poule") {
           for (let i = 0; i < teamCount; i++) {
             for (let j = i + 1; j < teamCount; j++) {
               const matchDate = new Date(startDate);
-              matchDate.setDate(matchDate.getDate() + matches2.length * 2);
-              matches2.push({
+              matchDate.setDate(matchDate.getDate() + matches.length * 2);
+              matches.push({
                 team1: teams[i]._id,
                 team2: teams[j]._id,
                 matchDate: matchDate.toISOString(),
@@ -56420,14 +56420,14 @@ ${err.stack}`);
             const roundMatches = [];
             for (let i = 0; i < matchNumber; i += 2) {
               const matchDate = new Date(startDate);
-              matchDate.setDate(matchDate.getDate() + matches2.length * 7);
+              matchDate.setDate(matchDate.getDate() + matches.length * 7);
               let team1Ref;
               let team2Ref;
               if (currentRound === "quart") {
                 team1Ref = teams[i]._id;
                 team2Ref = teams[i + 1]._id;
               } else {
-                const previousRounds = matches2.filter((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1]);
+                const previousRounds = matches.filter((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1]);
                 const matchIndex = Math.floor(i / 2);
                 const match1 = previousRounds[matchIndex * 2];
                 const match2 = previousRounds[matchIndex * 2 + 1];
@@ -56450,7 +56450,7 @@ ${err.stack}`);
                 _id: uuid.v4()
               });
             }
-            matches2.push(...roundMatches);
+            matches.push(...roundMatches);
             teams = roundMatches;
             matchNumber = Math.ceil(matchNumber / 2);
             if (currentRound === "quart") {
@@ -56460,7 +56460,7 @@ ${err.stack}`);
             }
           }
         }
-        return matches2;
+        return matches;
       }
       function calculateTournamentRanking(teams, results) {
         const tournamentMatches = db.read("tournament_matches");
@@ -56487,6 +56487,7 @@ ${err.stack}`);
             return match && match.poule === groupRanking.group;
           });
           groupResults.forEach((result) => {
+            const matches = db.read("tournament_matches");
             const match = matches.find((m) => m._id === result.matchId);
             if (!match) return;
             const team1 = groupRanking.teams.find((t) => t._id === result.team1);
@@ -56530,9 +56531,9 @@ ${err.stack}`);
         });
         return rankingByGroup;
       }
-      function calculateTournamentStats(matches2, results) {
+      function calculateTournamentStats(matches, results) {
         const stats = {
-          totalMatches: matches2.length,
+          totalMatches: matches.length,
           completedMatches: results.length,
           topScorers: [],
           mostGoalsFor: null,
@@ -56607,10 +56608,10 @@ ${err.stack}`);
         db.tournament_ranking.entries = currentRanking;
       }
       function updateNextMatches() {
-        const matches2 = db.read("tournament_matches");
+        const matches = db.read("tournament_matches");
         const results = db.read("tournament_results");
         results.forEach((result) => {
-          const match = matches2.find((m) => m._id === result.matchId);
+          const match = matches.find((m) => m._id === result.matchId);
           if (!match) return;
           console.log(result);
           if (!result.winner) {
@@ -56629,7 +56630,7 @@ ${err.stack}`);
             const roundTab = ["quart", "semi", "final"];
             const currentRoundIndex = roundTab.indexOf(match.round);
             if (currentRoundIndex === -1) return;
-            const nextRoundMatches = matches2.filter(
+            const nextRoundMatches = matches.filter(
               (m) => m.round === roundTab[currentRoundIndex + 1] && (m.team1Ref === match._id || m.team2Ref === match._id)
             );
             nextRoundMatches.forEach((nextMatch) => {
@@ -56654,10 +56655,10 @@ ${err.stack}`);
           if (!round) {
             return res.send(400, "Round is required");
           }
-          const matches2 = db.read("tournament_matches");
+          const matches = db.read("tournament_matches");
           const results = db.read("tournament_results");
           const previousRound = getPreviousRound(round);
-          const previousMatches = matches2.filter((m) => m.round === previousRound);
+          const previousMatches = matches.filter((m) => m.round === previousRound);
           const winners = previousMatches.map((match) => {
             const result = results.find((r) => r.matchId === match._id);
             if (result && result.winner) {
@@ -56775,9 +56776,9 @@ ${err.stack}`);
             return res.send(400, "Missing required parameters");
           }
           const shuffledTeams = [...teams].sort(() => Math.random() - 0.5);
-          const matches2 = [];
+          const matches = [];
           for (let i = 0; i < shuffledTeams.length; i += 2) {
-            matches2.push({
+            matches.push({
               team1: shuffledTeams[i]._id,
               team2: shuffledTeams[i + 1]?._id,
               round,
@@ -56787,10 +56788,10 @@ ${err.stack}`);
               drawDate: (/* @__PURE__ */ new Date()).toISOString()
             });
           }
-          matches2.forEach((match) => {
+          matches.forEach((match) => {
             db.create("tournament_matches", match);
           });
-          res.done(matches2);
+          res.done(matches);
         } catch (error) {
           hexo2.log.e(`Error drawing lots: ${error.message}`);
           res.send(400, `Bad Request: ${error.message}`);
@@ -61276,11 +61277,11 @@ var require_debuggability2 = __commonJS({
       };
       var parseLineInfoRegex = /[\/<\(]([^:\/]+):(\d+):(?:\d+)\)?\s*$/;
       function parseLineInfo(line) {
-        var matches2 = line.match(parseLineInfoRegex);
-        if (matches2) {
+        var matches = line.match(parseLineInfoRegex);
+        if (matches) {
           return {
-            fileName: matches2[1],
-            line: parseInt(matches2[2], 10)
+            fileName: matches[1],
+            line: parseInt(matches[2], 10)
           };
         }
       }
@@ -72669,14 +72670,14 @@ var require_openid = __commonJS({
         if (!params2.hasOwnProperty(k)) {
           continue;
         }
-        var matches2 = k.match(regex);
-        if (!matches2) {
+        var matches = k.match(regex);
+        if (!matches) {
           continue;
         }
-        if (matches2[1] == "type") {
-          aliases[params2[k]] = matches2[2];
+        if (matches[1] == "type") {
+          aliases[params2[k]] = matches[2];
         } else {
-          values[matches2[2]] = params2[k];
+          values[matches[2]] = params2[k];
         }
       }
       for (var ns in aliases) {
