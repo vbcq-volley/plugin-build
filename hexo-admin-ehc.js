@@ -56604,8 +56604,8 @@ ${err.stack}`);
             teams: globalRanking
           });
         }
-        console.log(db.tournament_ranking);
-        db.tournament_ranking.entries = currentRanking;
+        console.log(db.data.tournament_ranking);
+        db.data.tournament_ranking.entries = currentRanking;
       }
       function updateNextMatches() {
         const matches = db.read("tournament_matches");
