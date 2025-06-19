@@ -56410,6 +56410,7 @@ ${err.stack}`);
                 team1Ref = teams[i]._id;
                 team2Ref = teams[i + 1]._id;
               } else {
+                console.log(matches.find((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1] && !roundMatches.some((match) => match.team1 === m._id || match.team2 === m._id)));
                 team1Ref = matches.find((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1] && !roundMatches.some((match) => match.team1 === m._id || match.team2 === m._id)).winner;
                 team2Ref = matches.find((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1] && !roundMatches.some((match) => match.team2 === m._id || match.team1 === m._id)).winner;
               }
