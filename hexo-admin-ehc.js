@@ -56556,10 +56556,15 @@ ${err.stack}`);
               (m) => m.round === roundTab[currentRoundIndex + 1] && (m.team1Ref === match._id || m.team2Ref === match._id)
             );
             nextRoundMatches.forEach((nextMatch) => {
+              const teams = db.read("teams");
+              const winnerTeam = teams.find((t) => t._id === result.winner);
+              const winnerTeamName = winnerTeam ? winnerTeam.teamName : "";
               const updatedNextMatch = {
                 ...nextMatch,
                 team1: nextMatch.team1Ref === match._id ? result.winner : nextMatch.team1,
-                team2: nextMatch.team2Ref === match._id ? result.winner : nextMatch.team2
+                team2: nextMatch.team2Ref === match._id ? result.winner : nextMatch.team2,
+                team1Name: nextMatch.team1Ref === match._id ? winnerTeamName : nextMatch.team1Name,
+                team2Name: nextMatch.team2Ref === match._id ? winnerTeamName : nextMatch.team2Name
               };
               db.update("tournament_matches", db.findIndex("tournament_matches", nextMatch), updatedNextMatch);
             });
