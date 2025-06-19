@@ -56464,6 +56464,7 @@ ${err.stack}`);
       }
       function calculateTournamentRanking(teams, results) {
         const tournamentMatches = db.read("tournament_matches");
+        console.log(tournamentMatches);
         const groups = [...new Set(tournamentMatches.map((match) => match.poule))];
         const rankingByGroup = groups.map((group) => ({
           group,
