@@ -2809,6 +2809,7 @@ class TournamentMatches {
         button.addEventListener('click', (e) => {
           const matchId = e.target.dataset.matchId;
           this.deleteMatch(matchId);
+
         });
       });
       // Add event listener for generate matches button
@@ -2845,7 +2846,7 @@ class TournamentMatches {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce match ?')) {
       api.deleteTournamentMatch(id)
         .then(() => {
-          this.fetchMatches();
+          this.render();
         })
         .catch(error => {
           console.error('Erreur lors de la suppression du match:', error);
