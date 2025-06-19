@@ -56410,10 +56410,12 @@ ${err.stack}`);
                 team1Ref = teams[i]._id;
                 team2Ref = teams[i + 1]._id;
               } else {
-                const previousRMatch = matches.filter((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1]);
-                console.log(previousRMatch);
-                team1Ref = previousRMatch.indexOf(previousRMatch.find((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1] && !roundMatches.some((match) => match.team1 === m._id || match.team2 === m._id)));
-                team2Ref = previousRMatch.indexOf(previousRMatch.find((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1] && !roundMatches.some((match) => match.team2 === m._id || match.team1 === m.id)));
+                const previousRounds = matches.filter((m) => m.round === roundTab[roundTab.indexOf(currentRound) - 1]);
+                const matchIndex = Math.floor(i / 2);
+                const match1 = previousRounds[matchIndex * 2];
+                const match2 = previousRounds[matchIndex * 2 + 1];
+                team1Ref = match1._id;
+                team2Ref = match2._id;
               }
               roundMatches.push({
                 team1: team1Ref,
@@ -56535,21 +56537,28 @@ ${err.stack}`);
       function updateNextMatches() {
         const matches = db.read("tournament_matches");
         const results = db.read("tournament_results");
-        matches.forEach((match) => {
-          if (!match.winner && match.round !== "final") {
-            const previousMatches = matches.filter(
-              (m) => m.round !== match.round && (m.team1 === match.team1 || m.team2 === match.team1)
+        results.forEach((result) => {
+          const match = matches.find((m) => m._id === result.matchId);
+          if (!match) return;
+          const updatedMatch = {
+            ...match,
+            winner: result.winner
+          };
+          db.update("tournament_matches", db.findIndex("tournament_matches", match), updatedMatch);
+          if (match.round !== "final") {
+            const roundTab = ["quart", "semi", "final"];
+            const currentRoundIndex = roundTab.indexOf(match.round);
+            if (currentRoundIndex === -1) return;
+            const nextRoundMatches = matches.filter(
+              (m) => m.round === roundTab[currentRoundIndex + 1] && (m.team1Ref === match._id || m.team2Ref === match._id)
             );
-            previousMatches.forEach((previousMatch) => {
-              const previousResult = results.find((r) => r.matchId === previousMatch._id);
-              if (previousResult && previousResult.winner) {
-                const updatedMatch = {
-                  ...match,
-                  winner: previousResult.winner,
-                  previousMatch: previousMatch._id
-                };
-                db.update("tournament_matches", db.findIndex("tournament_matches", match), updatedMatch);
-              }
+            nextRoundMatches.forEach((nextMatch) => {
+              const updatedNextMatch = {
+                ...nextMatch,
+                team1: nextMatch.team1Ref === match._id ? result.winner : nextMatch.team1,
+                team2: nextMatch.team2Ref === match._id ? result.winner : nextMatch.team2
+              };
+              db.update("tournament_matches", db.findIndex("tournament_matches", nextMatch), updatedNextMatch);
             });
           }
         });
