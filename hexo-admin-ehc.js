@@ -56574,14 +56574,13 @@ ${err.stack}`);
         const oldRanking = db.read("tournament_ranking");
         const currentRanking = oldRanking || [];
         ranking.forEach((groupRanking) => {
-          const groupIndex = db.findIndex(oldRanking, groupRanking);
+          const groupIndex = [...new Set(currentRanking.map((r) => r.group))].indexOf(groupRanking.group);
           if (groupIndex !== -1) {
             currentRanking[groupIndex] = groupRanking;
           } else {
             currentRanking.push(groupRanking);
           }
         });
-        db.update("tournament_ranking", db.findIndex(oldRanking), currentRanking);
         updateNextMatches();
         const globalRanking = currentRanking.flatMap((group) => group.teams);
         globalRanking.sort((a, b) => {
