@@ -56543,6 +56543,14 @@ ${err.stack}`);
         results.forEach((result) => {
           const match = matches.find((m) => m._id === result.matchId);
           if (!match) return;
+          console.log(result);
+          if (!result.winner) {
+            if (result.score1 < result.score2) {
+              result.winner = match.team2;
+            } else {
+              result.winner = match.team1;
+            }
+          }
           const updatedMatch = {
             ...match,
             winner: result.winner
