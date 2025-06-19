@@ -56420,8 +56420,8 @@ ${err.stack}`);
                 team2Ref = match2._id;
               }
               roundMatches.push({
-                team1: team1Ref,
-                team2: team2Ref,
+                team1: teams[i]._id,
+                team2: teams[i + 1]._id,
                 matchDate: matchDate.toISOString(),
                 round: currentRound,
                 team1Name: currentRound === "quart" ? teams[i].teamName : `Gagnant du match ${team1Ref}`,
@@ -56564,7 +56564,7 @@ ${err.stack}`);
               (m) => m.round === roundTab[currentRoundIndex + 1] && (m.team1Ref === match._id || m.team2Ref === match._id)
             );
             nextRoundMatches.forEach((nextMatch) => {
-              const teams = db.read("teams");
+              const teams = db.read("team");
               const winnerTeam = teams.find((t) => t._id === result.winner);
               const winnerTeamName = winnerTeam ? winnerTeam.teamName : "";
               const updatedNextMatch = {
