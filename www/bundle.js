@@ -199,7 +199,9 @@ class API {
   async deleteTournamentMatch(id) {
     return this.deleteEntry('tournament_matches', id);
   }
-
+  async deleteTeam(id) {
+    return this.deleteEntry('team', id);
+  }
   async generateMatches(data) {
     return this.request('/tournament_matches/generate', {
       method: 'POST',
@@ -1285,6 +1287,7 @@ class TeamEditor {
     this.editor = null;
     this.continueEditing = localStorage.getItem('continueEditing') === 'true';
     this.lastGroup = localStorage.getItem('lastGroup') || '';
+
   }
 
   async fetchTeam() {
@@ -1347,6 +1350,7 @@ class TeamEditor {
               Continuer l'édition
             </label>
           </div>
+          <button type="button" class="delete-btn">Supprimer</button>
           <button type="submit">Enregistrer</button>
         </form>
       </div>
@@ -1385,6 +1389,17 @@ class TeamEditor {
 
     this.editor.on('change', updatePreview);
     updatePreview();
+
+    // Add delete button handler
+    const deleteButton = document.querySelector('.delete-btn');
+    if (deleteButton) {
+      deleteButton.addEventListener('click', async (e) => {
+        if (confirm('Êtes-vous sûr de vouloir supprimer cette équipe ?')) {
+          await api.deleteTeam(this.id);
+          window.location.hash = '#/teams';
+        }
+      });
+    }
 
     const form = document.getElementById('team-form');
     form.addEventListener('submit', async (e) => {
