@@ -56540,7 +56540,7 @@ ${err.stack}`);
           groupRanking.teams.forEach((team, index) => {
             team.rank = index + 1;
           });
-          console.log(groupRanking.teams.filter((team) => {
+          console.log("les \xE9quipe valide sont " + groupRanking.teams.filter((team) => {
             return team.points != 0;
           }));
           return groupRanking;
