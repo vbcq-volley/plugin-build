@@ -55991,7 +55991,7 @@ var require_api = __commonJS({
        * Save the data to a file
        * @param {string} filename - The name of the file to save the data
        */
-      saveToFile(filename, maxRetries = 50, retryDelay = 1e3) {
+      saveToFile(filename, maxRetries = 50, retryDelay = 100) {
         const checkWriteAccess = () => {
           try {
             fs.accessSync(filename, fs.constants.W_OK);
@@ -56005,6 +56005,7 @@ var require_api = __commonJS({
           if (checkWriteAccess()) {
             try {
               fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
+              console.log("fichier sauvegard\xE9e ");
               return;
             } catch (error) {
               console.error(`Error saving to file: ${error.message}`);
