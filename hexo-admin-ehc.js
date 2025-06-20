@@ -56497,7 +56497,7 @@ ${err.stack}`);
           });
           groupResults.forEach((result) => {
             const matches = db.read("tournament_results");
-            const match = matches.find((m) => m.matchId === result._id);
+            const match = matches.find((m) => m._id === result.matchId);
             console.log("match non trouv\xE9e " + JSON.stringify(result, null, 2));
             if (!match) return;
             console.log("les r\xE9sultat sont " + JSON.stringify(result, null, 2));
