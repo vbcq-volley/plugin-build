@@ -56503,8 +56503,6 @@ ${err.stack}`);
             console.log("les r\xE9sultat sont " + JSON.stringify(result, null, 2));
             const team1 = groupRanking.teams.find((t) => t._id === match.team1);
             const team2 = groupRanking.teams.find((t) => t._id === match.team2);
-            console.log(team1);
-            console.log(team2);
             if (!team1 || !team2) return;
             const score1 = parseInt(result.score1) || 0;
             const score2 = parseInt(result.score2) || 0;
@@ -56530,7 +56528,6 @@ ${err.stack}`);
             team2.goalDifference = team2.goalsFor - team2.goalsAgainst;
           });
           groupRanking.teams.sort((a, b) => {
-            console.log(a.points);
             if (a.points !== b.points) {
               return b.points - a.points;
             }
@@ -56542,9 +56539,9 @@ ${err.stack}`);
           groupRanking.teams.forEach((team, index) => {
             team.rank = index + 1;
           });
-          console.log("les \xE9quipe valide sont " + groupRanking.teams.filter((team) => {
+          console.log("les \xE9quipe valide sont " + JSON.stringify(groupRanking.teams.filter((team) => {
             return team.points != 0;
-          }));
+          }), null, 2));
           return groupRanking;
         });
       }
