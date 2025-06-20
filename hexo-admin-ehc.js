@@ -56490,7 +56490,7 @@ ${err.stack}`);
             rank: 0
           }))
         }));
-        rankingByGroup.map((groupRanking) => {
+        return rankingByGroup.map((groupRanking) => {
           const groupResults = results.filter((result) => {
             const match = tournamentMatches.find((m) => m._id === result.matchId);
             return match && match.poule === groupRanking.group;
@@ -56498,11 +56498,11 @@ ${err.stack}`);
           groupResults.forEach((result) => {
             const matches = db.read("tournament_results");
             const match = matches.find((m) => m.matchId === result._id);
-            console.log("match non trouv\xE9e " + result);
+            console.log("match non trouv\xE9e " + JSON.stringify(result, null, 2));
             if (!match) return;
-            console.log("les r\xE9sultat sont " + result);
-            const team1 = db.read("team").find((t) => t._id === result.team1);
-            const team2 = db.read("team").find((t) => t._id === result.team2);
+            console.log("les r\xE9sultat sont " + JSON.stringify(result, null, 2));
+            const team1 = groupRanking.teams.find((t) => t._id === match.team1);
+            const team2 = groupRanking.teams.find((t) => t._id === match.team2);
             console.log(team1);
             console.log(team2);
             if (!team1 || !team2) return;
@@ -56530,6 +56530,7 @@ ${err.stack}`);
             team2.goalDifference = team2.goalsFor - team2.goalsAgainst;
           });
           groupRanking.teams.sort((a, b) => {
+            console.log(a.points);
             if (a.points !== b.points) {
               return b.points - a.points;
             }
@@ -56546,7 +56547,6 @@ ${err.stack}`);
           }));
           return groupRanking;
         });
-        return rankingByGroup;
       }
       function calculateTournamentStats(matches, results) {
         const stats = {
@@ -56632,7 +56632,6 @@ ${err.stack}`);
         results.forEach((result) => {
           const match = matches.find((m) => m._id === result.matchId);
           if (!match) return;
-          console.log(result);
           if (!result.winner) {
             if (result.score1 < result.score2) {
               result.winner = match.team2;
