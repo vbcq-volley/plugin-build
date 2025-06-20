@@ -56619,6 +56619,8 @@ ${err.stack}`);
         updateNextMatches();
         const globalRanking = currentRanking.flatMap((group) => group.teams).filter((item, index, self2) => {
           console.log(item);
+          console.log(self2.findIndex((it) => item.teamName === it.teamName));
+          console.log(index);
           if (self2.findIndex((it) => item.teamName === it.teamName) === index) {
             return true;
           }
