@@ -56499,7 +56499,7 @@ ${err.stack}`);
             const matches = db.read("tournament_results");
             const match = matches.find((m) => m.matchId === result._id);
             if (!match) return;
-            console.log(result);
+            console.log("les r\xE9sultat sont " + result);
             const team1 = db.read("team").find((t) => t._id === result.team1);
             const team2 = db.read("team").find((t) => t._id === result.team2);
             console.log(team1);
