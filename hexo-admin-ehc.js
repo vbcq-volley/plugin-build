@@ -56498,7 +56498,6 @@ ${err.stack}`);
           groupResults.forEach((result) => {
             const matches = db.read("tournament_results");
             const match = matches.find((m) => m.matchId === result._id);
-            console.log(match);
             if (!match) return;
             const team1 = groupRanking.teams.find((t) => t._id === result.team1);
             const team2 = groupRanking.teams.find((t) => t._id === result.team2);
