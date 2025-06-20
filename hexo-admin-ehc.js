@@ -56528,7 +56528,9 @@ ${err.stack}`);
           groupRanking.teams.forEach((team, index) => {
             team.rank = index + 1;
           });
-          console.log(groupRanking);
+          console.log(groupRanking.teams.filter((team) => {
+            return team.points != 0;
+          }));
           return groupRanking;
         });
         return rankingByGroup;
