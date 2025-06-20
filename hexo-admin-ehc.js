@@ -56525,7 +56525,6 @@ ${err.stack}`);
             const match = matches.find((m) => m._id === result.matchId);
             console.log("match non trouv\xE9e " + JSON.stringify(result, null, 2));
             if (!match) return;
-            console.log("les r\xE9sultat sont " + JSON.stringify(result, null, 2));
             const team1 = groupRanking.teams.find((t) => t._id === match.team1);
             const team2 = groupRanking.teams.find((t) => t._id === match.team2);
             if (!team1 || !team2) return;
@@ -56564,9 +56563,6 @@ ${err.stack}`);
           groupRanking.teams.forEach((team, index) => {
             team.rank = index + 1;
           });
-          console.log("les \xE9quipe valide sont " + JSON.stringify(groupRanking.teams.filter((team) => {
-            return team.points != 0;
-          }), null, 2));
           return groupRanking;
         });
       }
@@ -56648,7 +56644,6 @@ ${err.stack}`);
             teams: globalRanking
           });
         }
-        console.log(db.data.tournament_ranking);
         db.data.tournament_ranking.entries = currentRanking;
         db.saveToFile(db.filename);
       }
