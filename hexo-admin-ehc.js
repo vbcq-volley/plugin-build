@@ -55860,6 +55860,11 @@ var require_api = __commonJS({
     var deploy = require_deploy();
     var uuid = require_cjs();
     var DB = class {
+      /**
+       * Constructor for the DB class
+       * @param {object} options - Options for the class
+       * @param {string} [filename] - The filename to load the data from
+       */
       constructor(options, filename) {
         if (!options || typeof options !== "object") {
           throw new Error("Options must be an object");
@@ -55998,6 +56003,11 @@ var require_api = __commonJS({
        * Load the data from a file
        * @param {string} filename - The name of the file to load the data from
        */
+      /**
+      * Load the database from a file
+      * @param {string} filename - The file to load from
+      * @throws {Error} If file load operation fails
+      */
       loadFromFile(filename) {
         try {
           if (fs.existsSync(filename)) {
@@ -56464,7 +56474,6 @@ ${err.stack}`);
       }
       function calculateTournamentRanking(teams, results) {
         const tournamentMatches = db.read("tournament_matches");
-        console.log(tournamentMatches);
         const groups = [...new Set(tournamentMatches.map((match) => match.poule))];
         const rankingByGroup = groups.map((group) => ({
           group,
@@ -56489,9 +56498,12 @@ ${err.stack}`);
           groupResults.forEach((result) => {
             const matches = db.read("tournament_matches");
             const match = matches.find((m) => m._id === result.matchId);
+            console.log(match);
             if (!match) return;
             const team1 = groupRanking.teams.find((t) => t._id === result.team1);
             const team2 = groupRanking.teams.find((t) => t._id === result.team2);
+            console.log(team1);
+            console.log(team2);
             if (!team1 || !team2) return;
             const score1 = parseInt(result.score1) || 0;
             const score2 = parseInt(result.score2) || 0;
@@ -56612,6 +56624,7 @@ ${err.stack}`);
         db.data.tournament_ranking.entries = currentRanking;
         db.saveToFile(db.filename);
       }
+      updateTournamentRanking();
       function updateNextMatches() {
         const matches = db.read("tournament_matches");
         const results = db.read("tournament_results");
