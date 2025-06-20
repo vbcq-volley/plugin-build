@@ -55991,12 +55991,36 @@ var require_api = __commonJS({
        * Save the data to a file
        * @param {string} filename - The name of the file to save the data
        */
-      saveToFile(filename) {
-        try {
-          fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
-        } catch (error) {
-          console.error(`Error saving to file: ${error.message}`);
-          throw error;
+      saveToFile(filename, maxRetries = 50, retryDelay = 1e3) {
+        const checkWriteAccess = () => {
+          try {
+            fs.accessSync(filename, fs.constants.W_OK);
+            return true;
+          } catch (error) {
+            return false;
+          }
+        };
+        let retries = 0;
+        while (retries < maxRetries) {
+          if (checkWriteAccess()) {
+            try {
+              fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
+              return;
+            } catch (error) {
+              console.error(`Error saving to file: ${error.message}`);
+              throw error;
+            }
+          } else {
+            retries++;
+            if (retries < maxRetries) {
+              console.log(`File not writable. Attempt ${retries}/${maxRetries}, retrying in ${retryDelay}ms...`);
+              const start = Date.now();
+              while (Date.now() - start < retryDelay) {
+              }
+            } else {
+              throw new Error(`Failed to write to file after ${maxRetries} attempts`);
+            }
+          }
         }
       }
       /**
