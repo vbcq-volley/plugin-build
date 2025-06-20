@@ -56528,6 +56528,7 @@ ${err.stack}`);
           groupRanking.teams.forEach((team, index) => {
             team.rank = index + 1;
           });
+          return groupRanking;
         });
         return rankingByGroup;
       }
