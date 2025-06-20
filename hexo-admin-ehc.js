@@ -56621,7 +56621,12 @@ ${err.stack}`);
           }
         });
         updateNextMatches();
-        const globalRanking = currentRanking.flatMap((group) => group.teams);
+        const globalRanking = currentRanking.flatMap((group) => group.teams).filter((item, index, self2) => {
+          if (self2.findIndex((item2) => item2.teamName === item2.teamName) === index) {
+            return true;
+          }
+          return false;
+        });
         globalRanking.sort((a, b) => {
           if (a.points !== b.points) {
             return b.points - a.points;
