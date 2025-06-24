@@ -56207,6 +56207,9 @@ var require_api = __commonJS({
                 }
                 console.log(v);
                 console.log(typeof v);
+                if (typeof v !== "object") {
+                  v = v.toArray();
+                }
                 return v ? v.map(function(obj2) {
                   return obj2.name;
                 }) : v;
