@@ -56005,7 +56005,6 @@ var require_api = __commonJS({
           if (checkWriteAccess()) {
             try {
               fs.writeFileSync(filename, JSON.stringify(this.data, null, 2));
-              console.log("fichier sauvegard\xE9e ");
               return;
             } catch (error) {
               console.error(`Error saving to file: ${error.message}`);
@@ -56206,6 +56205,7 @@ var require_api = __commonJS({
                 if (v === null) {
                   return;
                 }
+                console.log(v);
                 return (v || []).toArray() ? (v || []).toArray().map(function(obj2) {
                   return obj2.name;
                 }) : v;
@@ -56380,7 +56380,6 @@ ${err.stack}`);
           }
           const matches = generateTournamentMatches(type, startDate, teams);
           matches.forEach((match) => {
-            console.log(match);
             db.create("tournament_matches", match);
           });
           res.done(matches);
@@ -56428,7 +56427,6 @@ ${err.stack}`);
       function generateTournamentMatches(type, startDate, teams) {
         const matches = [];
         const teamCount = teams.length;
-        console.log(type);
         if (type === "poule") {
           for (let i = 0; i < teamCount; i++) {
             for (let j = i + 1; j < teamCount; j++) {
@@ -56466,8 +56464,6 @@ ${err.stack}`);
                 const matchIndex = Math.floor(i / 2);
                 const match1 = previousRounds[matchIndex * 2];
                 const match2 = previousRounds[matchIndex * 2 + 1];
-                console.log(match1);
-                console.log(match2);
                 team1Ref = match1._id;
                 team2Ref = match2._id;
               }
@@ -56523,7 +56519,6 @@ ${err.stack}`);
           groupResults.forEach((result) => {
             const matches = db.read("tournament_matches");
             const match = matches.find((m) => m._id === result.matchId);
-            console.log("match non trouv\xE9e " + JSON.stringify(result, null, 2));
             if (!match) return;
             const team1 = groupRanking.teams.find((t) => t._id === match.team1);
             const team2 = groupRanking.teams.find((t) => t._id === match.team2);
@@ -56618,9 +56613,6 @@ ${err.stack}`);
         });
         updateNextMatches();
         const globalRanking = currentRanking.flatMap((group) => group.teams).filter((item, index, self2) => {
-          console.log(item);
-          console.log(self2.findIndex((it) => item.teamName === it.teamName));
-          console.log(index);
           if (self2.findIndex((it) => item.teamName === it.teamName) === index) {
             return true;
           }
