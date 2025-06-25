@@ -86602,6 +86602,7 @@ var require_update = __commonJS({
       }
       var config = hexo2.config, layout = post.layout = (post.layout || config.default_layout).toLowerCase(), slug = post.slug = `${hfm.escape(post.slug || post.title, config.filename_case)}-${Date.now()}`, date = post.date = post.date ? moment(post.date) : moment();
       var split = hfm.split(post.raw), frontMatter = split.data;
+      console.log(hfm.parse([frontMatter, "---", split.content].join("\n")));
       compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
       var preservedKeys = ["title", "date", "tags", "categories", "_content", "author"];
       Object.keys(hexo2.config.metadata || {}).forEach(function(key) {
@@ -172560,7 +172561,6 @@ var require_api2 = __commonJS({
           const apiBasePath = `${rootPrefix}hexopro/api/`.replace("//", "/");
           const pathRegex = new RegExp("^" + apiBasePath + regexPath + "$");
           app.use(function(req, res, next) {
-            console.log(req);
             const match = req.url.split("?")[0].match(pathRegex);
             if (match) {
               req.params = req.params || {};
