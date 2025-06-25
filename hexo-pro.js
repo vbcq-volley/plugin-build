@@ -6552,17 +6552,52 @@ var require_jsonwebtoken = __commonJS({
   }
 });
 
+// locales/fr.js
+var require_fr = __commonJS({
+  "locales/fr.js"(exports2, module2) {
+    module2.exports = {
+      // Messages d'erreur généraux
+      "\u670D\u52A1\u5668\u9519\u8BEF": "Erreur serveur",
+      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
+      "\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF": "Nom d'utilisateur ou mot de passe incorrect",
+      "\u7CFB\u7EDF\u9519\u8BEF\uFF1AJWT \u5BC6\u94A5\u672A\u914D\u7F6E": "Erreur syst\xE8me : cl\xE9 JWT non configur\xE9e",
+      "\u767B\u5F55\u6210\u529F": "Connexion r\xE9ussie",
+      // Messages d'images
+      "\u6587\u4EF6\u5939\u540D\u79F0\u4E0D\u80FD\u4E3A\u7A7A": "Le nom du dossier ne peut pas \xEAtre vide",
+      "\u6587\u4EF6\u5939\u540D\u79F0\u53EA\u80FD\u5305\u542B\u5B57\u6BCD\u3001\u6570\u5B57\u3001\u4E0B\u5212\u7EBF\u3001\u77ED\u6A2A\u7EBF\u548C\u4E2D\u6587": "Le nom du dossier ne peut contenir que des lettres, des chiffres, des underscores, des traits d'union et des caract\xE8res chinois",
+      "\u8BFB\u53D6\u6587\u4EF6\u5939\u5931\u8D25": "\xC9chec de la lecture du dossier",
+      "\u8BFB\u53D6\u56FE\u7247\u5931\u8D25": "\xC9chec de la lecture des images",
+      // Messages de paramètres
+      "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25": "\xC9chec de la v\xE9rification de l'\xE9tat du syst\xE8me",
+      "\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\uFF0C\u4E0D\u80FD\u518D\u6B21\u6CE8\u518C": "Le syst\xE8me est d\xE9j\xE0 initialis\xE9, impossible de s'enregistrer \xE0 nouveau",
+      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
+      // Messages de succès
+      "\u83B7\u53D6\u56FE\u7247\u6210\u529F": "R\xE9cup\xE9ration des images r\xE9ussie",
+      "\u521B\u5EFA\u6587\u4EF6\u5939\u6210\u529F": "Cr\xE9ation du dossier r\xE9ussie",
+      "\u5220\u9664\u6587\u4EF6\u5939\u6210\u529F": "Suppression du dossier r\xE9ussie",
+      "\u4E0A\u4F20\u56FE\u7247\u6210\u529F": "T\xE9l\xE9chargement de l'image r\xE9ussi",
+      "\u5220\u9664\u56FE\u7247\u6210\u529F": "Suppression de l'image r\xE9ussie",
+      "\u66F4\u65B0\u8BBE\u7F6E\u6210\u529F": "Mise \xE0 jour des param\xE8tres r\xE9ussie",
+      "\u6CE8\u518C\u6210\u529F": "Enregistrement r\xE9ussi"
+    };
+  }
+});
+
 // login_api.js
 var require_login_api = __commonJS({
   "login_api.js"(exports2, module2) {
     var jwt2 = require_jsonwebtoken();
+    var locales = require_fr();
+    function translate(key) {
+      return locales[key] || key;
+    }
     module2.exports = function(app, hexo2, use, db) {
       const { userDb, settingsDb } = db;
       use("login", function(req, res) {
         if (!global.actualNeedLogin) {
           return res.done({
             code: -2,
-            msg: "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55"
+            msg: translate("\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55")
           });
         }
         const { username, password } = req.body;
@@ -6570,13 +6605,13 @@ var require_login_api = __commonJS({
           if (err) {
             return res.done({
               code: 500,
-              msg: "\u670D\u52A1\u5668\u9519\u8BEF"
+              msg: translate("\u670D\u52A1\u5668\u9519\u8BEF")
             });
           }
           if (!user || user.password.toString() !== password) {
             return res.done({
               code: -1,
-              msg: "\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF"
+              msg: translate("\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF")
             });
           }
           if (!global.jwtSecret) {
@@ -6588,7 +6623,7 @@ var require_login_api = __commonJS({
                 console.error("[Hexo Pro Login]: JWT Secret \u5728\u767B\u5F55\u65F6\u4ECD\u672A\u914D\u7F6E!");
                 return res.done({
                   code: 500,
-                  msg: "\u7CFB\u7EDF\u9519\u8BEF\uFF1AJWT \u5BC6\u94A5\u672A\u914D\u7F6E"
+                  msg: translate("\u7CFB\u7EDF\u9519\u8BEF\uFF1AJWT \u5BC6\u94A5\u672A\u914D\u7F6E")
                 });
               }
             });
@@ -6605,7 +6640,7 @@ var require_login_api = __commonJS({
         );
         res.done({
           code: 0,
-          msg: "\u767B\u5F55\u6210\u529F",
+          msg: translate("\u767B\u5F55\u6210\u529F"),
           token
         });
       }
@@ -155089,37 +155124,6 @@ var require_multer = __commonJS({
   }
 });
 
-// locales/fr.js
-var require_fr = __commonJS({
-  "locales/fr.js"(exports2, module2) {
-    module2.exports = {
-      // Messages d'erreur généraux
-      "\u670D\u52A1\u5668\u9519\u8BEF": "Erreur serveur",
-      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
-      "\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF": "Nom d'utilisateur ou mot de passe incorrect",
-      "\u7CFB\u7EDF\u9519\u8BEF\uFF1AJWT \u5BC6\u94A5\u672A\u914D\u7F6E": "Erreur syst\xE8me : cl\xE9 JWT non configur\xE9e",
-      "\u767B\u5F55\u6210\u529F": "Connexion r\xE9ussie",
-      // Messages d'images
-      "\u6587\u4EF6\u5939\u540D\u79F0\u4E0D\u80FD\u4E3A\u7A7A": "Le nom du dossier ne peut pas \xEAtre vide",
-      "\u6587\u4EF6\u5939\u540D\u79F0\u53EA\u80FD\u5305\u542B\u5B57\u6BCD\u3001\u6570\u5B57\u3001\u4E0B\u5212\u7EBF\u3001\u77ED\u6A2A\u7EBF\u548C\u4E2D\u6587": "Le nom du dossier ne peut contenir que des lettres, des chiffres, des underscores, des traits d'union et des caract\xE8res chinois",
-      "\u8BFB\u53D6\u6587\u4EF6\u5939\u5931\u8D25": "\xC9chec de la lecture du dossier",
-      "\u8BFB\u53D6\u56FE\u7247\u5931\u8D25": "\xC9chec de la lecture des images",
-      // Messages de paramètres
-      "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25": "\xC9chec de la v\xE9rification de l'\xE9tat du syst\xE8me",
-      "\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\uFF0C\u4E0D\u80FD\u518D\u6B21\u6CE8\u518C": "Le syst\xE8me est d\xE9j\xE0 initialis\xE9, impossible de s'enregistrer \xE0 nouveau",
-      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
-      // Messages de succès
-      "\u83B7\u53D6\u56FE\u7247\u6210\u529F": "R\xE9cup\xE9ration des images r\xE9ussie",
-      "\u521B\u5EFA\u6587\u4EF6\u5939\u6210\u529F": "Cr\xE9ation du dossier r\xE9ussie",
-      "\u5220\u9664\u6587\u4EF6\u5939\u6210\u529F": "Suppression du dossier r\xE9ussie",
-      "\u4E0A\u4F20\u56FE\u7247\u6210\u529F": "T\xE9l\xE9chargement de l'image r\xE9ussi",
-      "\u5220\u9664\u56FE\u7247\u6210\u529F": "Suppression de l'image r\xE9ussie",
-      "\u66F4\u65B0\u8BBE\u7F6E\u6210\u529F": "Mise \xE0 jour des param\xE8tres r\xE9ussie",
-      "\u6CE8\u518C\u6210\u529F": "Enregistrement r\xE9ussi"
-    };
-  }
-});
-
 // image_api.js
 var require_image_api = __commonJS({
   "image_api.js"(exports2, module2) {
@@ -155129,6 +155133,9 @@ var require_image_api = __commonJS({
     var { v4: uuidv4 } = (init_esm_node(), __toCommonJS(esm_node_exports));
     var utils = require_utils5();
     var locales = require_fr();
+    function translate(key) {
+      return locales[key] || key;
+    }
     module2.exports = function(app, hexo2, use) {
       console.log(hexo2.source_dir);
       const storage = multer.diskStorage({
@@ -155160,7 +155167,7 @@ var require_image_api = __commonJS({
             }
           });
         } catch (err) {
-          console.error("\u8BFB\u53D6\u6587\u4EF6\u5939\u5931\u8D25:", err);
+          console.error(translate("\u8BFB\u53D6\u6587\u4EF6\u5939\u5931\u8D25:"), err);
         }
         let images = [];
         try {
@@ -155180,7 +155187,7 @@ var require_image_api = __commonJS({
             }
           });
         } catch (err) {
-          console.error("\u8BFB\u53D6\u56FE\u7247\u5931\u8D25:", err);
+          console.error(translate("\u8BFB\u53D6\u56FE\u7247\u5931\u8D25:"), err);
         }
         images.sort((a, b) => b.lastModified - a.lastModified);
         const total = images.length;
@@ -155198,32 +155205,32 @@ var require_image_api = __commonJS({
       use("images/createFolder", function(req, res) {
         const folderName = req.body.folderName;
         if (!folderName) {
-          return res.send(400, "\u6587\u4EF6\u5939\u540D\u79F0\u4E0D\u80FD\u4E3A\u7A7A");
+          return res.send(400, translate("\u6587\u4EF6\u5939\u540D\u79F0\u4E0D\u80FD\u4E3A\u7A7A"));
         }
         if (!/^[\w\u4e00-\u9fa5\-]+$/.test(folderName)) {
-          return res.send(400, "\u6587\u4EF6\u5939\u540D\u79F0\u53EA\u80FD\u5305\u542B\u5B57\u6BCD\u3001\u6570\u5B57\u3001\u4E0B\u5212\u7EBF\u3001\u77ED\u6A2A\u7EBF\u548C\u4E2D\u6587");
+          return res.send(400, translate("\u6587\u4EF6\u5939\u540D\u79F0\u53EA\u80FD\u5305\u542B\u5B57\u6BCD\u3001\u6570\u5B57\u3001\u4E0B\u5212\u7EBF\u3001\u77ED\u6A2A\u7EBF\u548C\u4E2D\u6587"));
         }
         const folderPath = path2.join(hexo2.source_dir, "images", folderName);
         try {
           if (fs2.existsSync(folderPath)) {
-            return res.send(400, "\u6587\u4EF6\u5939\u5DF2\u5B58\u5728");
+            return res.send(400, translate("\u6587\u4EF6\u5939\u5DF2\u5B58\u5728"));
           }
           fs2.ensureDirSync(folderPath);
           res.done({ success: true, folderName });
         } catch (err) {
-          console.error("\u521B\u5EFA\u6587\u4EF6\u5939\u5931\u8D25:", err);
-          res.send(500, "\u521B\u5EFA\u6587\u4EF6\u5939\u5931\u8D25: " + err.message);
+          console.error(translate("\u521B\u5EFA\u6587\u4EF6\u5939\u5931\u8D25:"), err);
+          res.send(500, translate("\u521B\u5EFA\u6587\u4EF6\u5939\u5931\u8D25: " + err.message));
         }
       });
       use("images/delete", function(req, res) {
         const imagePath = req.body.path;
         if (!imagePath) {
-          return res.send(400, "\u56FE\u7247\u8DEF\u5F84\u4E0D\u80FD\u4E3A\u7A7A");
+          return res.send(400, translate("\u56FE\u7247\u8DEF\u5F84\u4E0D\u80FD\u4E3A\u7A7A"));
         }
         const fullPath = path2.join(hexo2.source_dir, imagePath);
         try {
           if (!fs2.existsSync(fullPath)) {
-            return res.send(404, "\u56FE\u7247\u4E0D\u5B58\u5728");
+            return res.send(404, translate("\u56FE\u7247\u4E0D\u5B58\u5728"));
           }
           fs2.removeSync(fullPath);
           res.done({ success: true });
@@ -162026,12 +162033,16 @@ var require_settings_api = __commonJS({
     var path2 = require("path");
     var yaml = require_js_yaml();
     var jwt2 = require_jsonwebtoken();
+    var locales = require_fr();
+    function translate(key) {
+      return locales[key] || key;
+    }
     module2.exports = function(app, hexo2, use, db) {
       const { userDb, settingsDb } = db;
       use("settings/check-first-use", function(req, res) {
         userDb.count({}, (err, count) => {
           if (err) {
-            return res.done({ code: 500, msg: "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25" });
+            return res.done({ code: 500, msg: translate("\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25") });
           }
           if (count === 0) {
             return res.done({
@@ -162044,7 +162055,7 @@ var require_settings_api = __commonJS({
           }
           userDb.find({}, (err2, users) => {
             if (err2) {
-              return res.done({ code: 500, msg: "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25" });
+              return res.done({ code: 500, msg: translate("\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25") });
             }
             const hasRealUser = users.some((user) => !user.isTemporary);
             const hasTemporaryUser = users.some((user) => user.isTemporary);
@@ -162079,19 +162090,19 @@ var require_settings_api = __commonJS({
       use("settings/register", function(req, res) {
         userDb.count({}, (err, count) => {
           if (err) {
-            return res.done({ code: 500, msg: "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25" });
+            return res.done({ code: 500, msg: translate("\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25") });
           }
           if (count === 0) {
             proceedWithRegistration();
           } else {
             userDb.find({}, (err2, users) => {
               if (err2) {
-                return res.done({ code: 500, msg: "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25" });
+                return res.done({ code: 500, msg: translate("\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25") });
               }
               const hasRealUser = users.some((user) => !user.isTemporary);
               const tempUsers = users.filter((user) => user.isTemporary);
               if (hasRealUser) {
-                return res.done({ code: 403, msg: "\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\uFF0C\u4E0D\u80FD\u518D\u6B21\u6CE8\u518C" });
+                return res.done({ code: 403, msg: translate("\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\uFF0C\u4E0D\u80FD\u518D\u6B21\u6CE8\u518C") });
               } else if (tempUsers.length > 0) {
                 cleanupTemporaryUsersAndProceed(tempUsers);
               } else {
@@ -162105,7 +162116,7 @@ var require_settings_api = __commonJS({
             userDb.remove({ isTemporary: true }, { multi: true }, (err2) => {
               if (err2) {
                 console.error("[Hexo Pro]: \u5220\u9664\u4E34\u65F6\u7528\u6237\u5931\u8D25:", err2);
-                return res.done({ code: 500, msg: "\u6E05\u7406\u4E34\u65F6\u7528\u6237\u5931\u8D25" });
+                return res.done({ code: 500, msg: translate("\u6E05\u7406\u4E34\u65F6\u7528\u6237\u5931\u8D25") });
               }
               settingsDb.remove({ username: { $in: tempUsernames } }, { multi: true }, (err3) => {
                 if (err3) {
@@ -162119,10 +162130,10 @@ var require_settings_api = __commonJS({
           function proceedWithRegistration() {
             const { username, password, confirmPassword, avatar } = req.body;
             if (!username || !password) {
-              return res.done({ code: 400, msg: "\u7528\u6237\u540D\u548C\u5BC6\u7801\u4E0D\u80FD\u4E3A\u7A7A" });
+              return res.done({ code: 400, msg: translate("\u7528\u6237\u540D\u548C\u5BC6\u7801\u4E0D\u80FD\u4E3A\u7A7A") });
             }
             if (password !== confirmPassword) {
-              return res.done({ code: 400, msg: "\u4E24\u6B21\u8F93\u5165\u7684\u5BC6\u7801\u4E0D\u4E00\u81F4" });
+              return res.done({ code: 400, msg: translate("\u4E24\u6B21\u8F93\u5165\u7684\u5BC6\u7801\u4E0D\u4E00\u81F4") });
             }
             const newUser = {
               username,
@@ -162135,7 +162146,7 @@ var require_settings_api = __commonJS({
             };
             userDb.insert(newUser, (err2) => {
               if (err2) {
-                return res.done({ code: 500, msg: "\u521B\u5EFA\u7528\u6237\u5931\u8D25" });
+                return res.done({ code: 500, msg: translate("\u521B\u5EFA\u7528\u6237\u5931\u8D25") });
               }
               const newSettings = {
                 username,
