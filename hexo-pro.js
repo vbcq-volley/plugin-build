@@ -172560,6 +172560,7 @@ var require_api2 = __commonJS({
           const apiBasePath = `${rootPrefix}hexopro/api/`.replace("//", "/");
           const pathRegex = new RegExp("^" + apiBasePath + regexPath + "$");
           app.use(function(req, res, next) {
+            console.log(req);
             const match = req.url.split("?")[0].match(pathRegex);
             if (match) {
               req.params = req.params || {};
