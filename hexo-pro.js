@@ -86515,8 +86515,8 @@ var require_update = __commonJS({
       }
       var config = hexo2.config, layout = post.layout = (post.layout || config.default_layout).toLowerCase(), slug = post.slug = `${hfm.escape(post.slug || post.title, config.filename_case)}-${Date.now()}`, date = post.date = post.date ? moment(post.date) : moment();
       var split = hfm.split(post.raw), frontMatter = split.data;
-      console.log(hfm.parse([frontMatter, "---", split.content].join("\n")));
-      compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
+      console.log(split);
+      var compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
       console.log(compiled);
       var preservedKeys = ["title", "date", "tags", "categories", "_content", "author"];
       Object.keys(hexo2.config.metadata || {}).forEach(function(key) {
@@ -97604,12 +97604,12 @@ var require_subselects = __commonJS({
           // Used as a placeholder. Will be replaced with the actual element.
           [exports2.PLACEHOLDER_ELEMENT]
         ) : void 0;
-        var compiled2 = compileToken(subselect, opts, context);
-        if (compiled2 === boolbase_1.default.falseFunc)
+        var compiled = compileToken(subselect, opts, context);
+        if (compiled === boolbase_1.default.falseFunc)
           return boolbase_1.default.falseFunc;
-        var hasElement = ensureIsTag(compiled2, adapter);
-        if (context && compiled2 !== boolbase_1.default.trueFunc) {
-          var _a = compiled2.shouldTestNextSiblings, shouldTestNextSiblings_1 = _a === void 0 ? false : _a;
+        var hasElement = ensureIsTag(compiled, adapter);
+        if (context && compiled !== boolbase_1.default.trueFunc) {
+          var _a = compiled.shouldTestNextSiblings, shouldTestNextSiblings_1 = _a === void 0 ? false : _a;
           return function(elem) {
             if (!next(elem))
               return false;
