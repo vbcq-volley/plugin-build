@@ -155089,6 +155089,37 @@ var require_multer = __commonJS({
   }
 });
 
+// locales/fr.js
+var require_fr = __commonJS({
+  "locales/fr.js"(exports2, module2) {
+    module2.exports = {
+      // Messages d'erreur généraux
+      "\u670D\u52A1\u5668\u9519\u8BEF": "Erreur serveur",
+      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
+      "\u7528\u6237\u540D\u6216\u5BC6\u7801\u9519\u8BEF": "Nom d'utilisateur ou mot de passe incorrect",
+      "\u7CFB\u7EDF\u9519\u8BEF\uFF1AJWT \u5BC6\u94A5\u672A\u914D\u7F6E": "Erreur syst\xE8me : cl\xE9 JWT non configur\xE9e",
+      "\u767B\u5F55\u6210\u529F": "Connexion r\xE9ussie",
+      // Messages d'images
+      "\u6587\u4EF6\u5939\u540D\u79F0\u4E0D\u80FD\u4E3A\u7A7A": "Le nom du dossier ne peut pas \xEAtre vide",
+      "\u6587\u4EF6\u5939\u540D\u79F0\u53EA\u80FD\u5305\u542B\u5B57\u6BCD\u3001\u6570\u5B57\u3001\u4E0B\u5212\u7EBF\u3001\u77ED\u6A2A\u7EBF\u548C\u4E2D\u6587": "Le nom du dossier ne peut contenir que des lettres, des chiffres, des underscores, des traits d'union et des caract\xE8res chinois",
+      "\u8BFB\u53D6\u6587\u4EF6\u5939\u5931\u8D25": "\xC9chec de la lecture du dossier",
+      "\u8BFB\u53D6\u56FE\u7247\u5931\u8D25": "\xC9chec de la lecture des images",
+      // Messages de paramètres
+      "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25": "\xC9chec de la v\xE9rification de l'\xE9tat du syst\xE8me",
+      "\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\uFF0C\u4E0D\u80FD\u518D\u6B21\u6CE8\u518C": "Le syst\xE8me est d\xE9j\xE0 initialis\xE9, impossible de s'enregistrer \xE0 nouveau",
+      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
+      // Messages de succès
+      "\u83B7\u53D6\u56FE\u7247\u6210\u529F": "R\xE9cup\xE9ration des images r\xE9ussie",
+      "\u521B\u5EFA\u6587\u4EF6\u5939\u6210\u529F": "Cr\xE9ation du dossier r\xE9ussie",
+      "\u5220\u9664\u6587\u4EF6\u5939\u6210\u529F": "Suppression du dossier r\xE9ussie",
+      "\u4E0A\u4F20\u56FE\u7247\u6210\u529F": "T\xE9l\xE9chargement de l'image r\xE9ussi",
+      "\u5220\u9664\u56FE\u7247\u6210\u529F": "Suppression de l'image r\xE9ussie",
+      "\u66F4\u65B0\u8BBE\u7F6E\u6210\u529F": "Mise \xE0 jour des param\xE8tres r\xE9ussie",
+      "\u6CE8\u518C\u6210\u529F": "Enregistrement r\xE9ussi"
+    };
+  }
+});
+
 // image_api.js
 var require_image_api = __commonJS({
   "image_api.js"(exports2, module2) {
@@ -155097,7 +155128,9 @@ var require_image_api = __commonJS({
     var multer = require_multer();
     var { v4: uuidv4 } = (init_esm_node(), __toCommonJS(esm_node_exports));
     var utils = require_utils5();
+    var locales = require_fr();
     module2.exports = function(app, hexo2, use) {
+      console.log(hexo2.source_dir);
       const storage = multer.diskStorage({
         destination: function(req, file, cb) {
           const imagesDir = path2.join(hexo2.source_dir, "images");
