@@ -155141,6 +155141,7 @@ var require_image_api = __commonJS({
       const storage = multer.diskStorage({
         destination: function(req, file, cb) {
           const imagesDir = path2.join(hexo2.source_dir, "images");
+          console.log(path2.resolve(imagesDir));
           fs2.ensureDirSync(imagesDir);
           cb(null, imagesDir);
         },
@@ -172842,7 +172843,7 @@ hexo.extend.filter.register("server_middleware", function(app) {
   app.use((req, res, next) => {
     if (req.originalUrl.startsWith("/pro")) {
       const isStaticFile = [".html", ".css", ".js", ".jpg", ".png", ".gif"].some((extension) => req.originalUrl.endsWith(extension));
-      let filePath = path.join(__dirname, "www", "index.html");
+      let filePath = path.join(__dirname, "www", "pro.html");
       if (isStaticFile) {
         filePath = path.join(__dirname, "www", req.originalUrl.substring(4));
       }
@@ -172874,7 +172875,7 @@ hexo.extend.filter.register("server_middleware", function(app) {
   ];
   console.log(unlessPaths);
   api(app, hexo).catch((err) => {
-    console.error("[Hexo Pro]: API \u521D\u59CB\u5316\u8FC7\u7A0B\u4E2D\u53D1\u751F\u672A\u6355\u83B7\u9519\u8BEF:", err);
+    hexo.log.e("[Hexo Pro]: API \u521D\u59CB\u5316\u8FC7\u7A0B\u4E2D\u53D1\u751F\u672A\u6355\u83B7\u9519\u8BEF:", err);
   });
 });
 module.exports = {
