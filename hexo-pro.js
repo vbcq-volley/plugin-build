@@ -86477,6 +86477,108 @@ ${content}`;
   }
 });
 
+// utils.js
+var require_utils5 = __commonJS({
+  "utils.js"(exports2, module2) {
+    module2.exports = {
+      base64Decode: function base64Decode(base64) {
+        return decodeURIComponent(escape(atob(base64)));
+      }
+    };
+  }
+});
+
+// update.js
+var require_update = __commonJS({
+  "update.js"(exports2, module2) {
+    var path2 = require("path");
+    var moment = require_moment();
+    var hfm = require_front_matter();
+    var fs2 = require_fs();
+    var extend = (original, other) => {
+      for (let key in other) {
+        original[key] = other[key];
+      }
+      return original;
+    };
+    var utils = require_utils5();
+    module2.exports = function(model, unimark, update, callback, hexo2) {
+      unimark = utils.base64Decode(unimark);
+      const newFrontMatter = update.frontMatter;
+      if (newFrontMatter) {
+        delete update.frontMatter;
+      }
+      var post = hexo2.model(model).filter((post2) => {
+        return unimark === post2.permalink;
+      }).data[0];
+      if (!post) {
+        return callback("Post not found");
+      }
+      var config = hexo2.config, layout = post.layout = (post.layout || config.default_layout).toLowerCase(), slug = post.slug = `${hfm.escape(post.slug || post.title, config.filename_case)}-${Date.now()}`, date = post.date = post.date ? moment(post.date) : moment();
+      var split = hfm.split(post.raw), frontMatter = split.data;
+      console.log(hfm.parse([frontMatter, "---", split.content].join("\n")));
+      compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
+      var preservedKeys = ["title", "date", "tags", "categories", "_content", "author"];
+      Object.keys(hexo2.config.metadata || {}).forEach(function(key) {
+        preservedKeys.push(key);
+      });
+      var prev_full = post.full_source, full_source = prev_full;
+      if (update.source && update.source !== post.source) {
+        full_source = hexo2.source_dir + update.source;
+      }
+      preservedKeys.forEach(function(attr) {
+        if (attr in update) {
+          console.log(compiled);
+          compiled[attr] = update[attr];
+        }
+      });
+      compiled.date = moment(compiled.date).toDate();
+      if (newFrontMatter) {
+        Object.keys(newFrontMatter).forEach((name) => {
+          compiled[name] = newFrontMatter[name];
+        });
+        Object.keys(compiled).forEach((name) => {
+          if (["title", "date", "tags", "categories", "_content", "author"].includes(name)) {
+            return;
+          }
+          if (Object.keys(newFrontMatter).includes(name)) {
+            return;
+          }
+          delete compiled[name];
+        });
+      }
+      delete update._content;
+      console.log(compiled);
+      var raw = hfm.stringify(compiled, { prefixSeparator: true });
+      update.raw = raw;
+      update.updated = moment();
+      update.slug = slug;
+      if (typeof update.tags !== "undefined") {
+        post.setTags(update.tags);
+        delete update.tags;
+      }
+      if (typeof update.categories !== "undefined") {
+        post.setCategories(update.categories);
+        delete update.categories;
+      }
+      extend(post, update);
+      post.save().then(async () => {
+        fs2.writeFileSync(full_source, raw);
+        hexo2.log.info("\u6587\u7AE0\u4FDD\u5B58\u6210\u529F\uFF01");
+        await hexo2.source.process().then(function() {
+          callback(null, hexo2.model(model).filter((post2) => {
+            const permalink = post2.permalink;
+            return unimark === permalink;
+          }).data[0]);
+        });
+      }).catch((err) => {
+        hexo2.log.error("\u4FDD\u5B58\u5931\u8D25:", err);
+        callback(err, null);
+      });
+    };
+  }
+});
+
 // node_modules/extend/index.js
 var require_extend = __commonJS({
   "node_modules/extend/index.js"(exports2, module2) {
@@ -86564,101 +86666,6 @@ var require_extend = __commonJS({
         }
       }
       return target;
-    };
-  }
-});
-
-// utils.js
-var require_utils5 = __commonJS({
-  "utils.js"(exports2, module2) {
-    module2.exports = {
-      base64Decode: function base64Decode(base64) {
-        return decodeURIComponent(escape(atob(base64)));
-      }
-    };
-  }
-});
-
-// update.js
-var require_update = __commonJS({
-  "update.js"(exports2, module2) {
-    var path2 = require("path");
-    var moment = require_moment();
-    var hfm = require_front_matter();
-    var fs2 = require_fs();
-    var extend = require_extend();
-    var utils = require_utils5();
-    module2.exports = function(model, unimark, update, callback, hexo2) {
-      unimark = utils.base64Decode(unimark);
-      const newFrontMatter = update.frontMatter;
-      if (newFrontMatter) {
-        delete update.frontMatter;
-      }
-      var post = hexo2.model(model).filter((post2) => {
-        return unimark === post2.permalink;
-      }).data[0];
-      if (!post) {
-        return callback("Post not found");
-      }
-      var config = hexo2.config, layout = post.layout = (post.layout || config.default_layout).toLowerCase(), slug = post.slug = `${hfm.escape(post.slug || post.title, config.filename_case)}-${Date.now()}`, date = post.date = post.date ? moment(post.date) : moment();
-      var split = hfm.split(post.raw), frontMatter = split.data;
-      console.log(hfm.parse([frontMatter, "---", split.content].join("\n")));
-      compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
-      var preservedKeys = ["title", "date", "tags", "categories", "_content", "author"];
-      Object.keys(hexo2.config.metadata || {}).forEach(function(key) {
-        preservedKeys.push(key);
-      });
-      var prev_full = post.full_source, full_source = prev_full;
-      if (update.source && update.source !== post.source) {
-        full_source = hexo2.source_dir + update.source;
-      }
-      preservedKeys.forEach(function(attr) {
-        if (attr in update) {
-          compiled[attr] = update[attr];
-        }
-      });
-      compiled.date = moment(compiled.date).toDate();
-      if (newFrontMatter) {
-        Object.keys(newFrontMatter).forEach((name) => {
-          compiled[name] = newFrontMatter[name];
-        });
-        Object.keys(compiled).forEach((name) => {
-          if (["title", "date", "tags", "categories", "_content", "author"].includes(name)) {
-            return;
-          }
-          if (Object.keys(newFrontMatter).includes(name)) {
-            return;
-          }
-          delete compiled[name];
-        });
-      }
-      delete update._content;
-      var raw = hfm.stringify(compiled, { prefixSeparator: true });
-      update.raw = raw;
-      update.updated = moment();
-      update.slug = slug;
-      if (typeof update.tags !== "undefined") {
-        post.setTags(update.tags);
-        delete update.tags;
-      }
-      if (typeof update.categories !== "undefined") {
-        post.setCategories(update.categories);
-        delete update.categories;
-      }
-      extend(post, update);
-      post.save().then(async () => {
-        fs2.writeFileSync(full_source, raw);
-        hexo2.log.info("\u6587\u7AE0\u4FDD\u5B58\u6210\u529F\uFF01");
-        await hexo2.source.process().then(function() {
-          callback(null, hexo2.model(model).filter((post2) => {
-            const permalink = post2.permalink;
-            return unimark === permalink;
-          }).data[0]);
-        });
-      }).catch((err) => {
-        hexo2.log.error("\u4FDD\u5B58\u5931\u8D25:", err);
-        callback(err, null);
-      });
     };
   }
 });
