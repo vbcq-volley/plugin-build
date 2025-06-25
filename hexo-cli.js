@@ -23,9 +23,9 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/picocolors.js
+// node_modules/picocolors/picocolors.js
 var require_picocolors = __commonJS({
-  "node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/picocolors.js"(exports2, module2) {
+  "node_modules/picocolors/picocolors.js"(exports2, module2) {
     var p = process || {};
     var argv = p.argv || [];
     var env2 = p.env || {};
@@ -95,9 +95,9 @@ var require_picocolors = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tildify@2.0.0/node_modules/tildify/index.js
+// node_modules/tildify/index.js
 var require_tildify = __commonJS({
-  "node_modules/.pnpm/tildify@2.0.0/node_modules/tildify/index.js"(exports2, module2) {
+  "node_modules/tildify/index.js"(exports2, module2) {
     "use strict";
     var path = require("path");
     var os = require("os");
@@ -109,9 +109,9 @@ var require_tildify = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/es5.js
+// node_modules/bluebird/js/release/es5.js
 var require_es5 = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/es5.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/es5.js"(exports2, module2) {
     var isES5 = function() {
       "use strict";
       return this === void 0;
@@ -194,9 +194,9 @@ var require_es5 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/util.js
+// node_modules/bluebird/js/release/util.js
 var require_util = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/util.js"(exports, module) {
+  "node_modules/bluebird/js/release/util.js"(exports, module) {
     "use strict";
     var es5 = require_es5();
     var canEvaluate = typeof navigator == "undefined";
@@ -568,9 +568,9 @@ var require_util = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/schedule.js
+// node_modules/bluebird/js/release/schedule.js
 var require_schedule = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/schedule.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/schedule.js"(exports2, module2) {
     "use strict";
     var util = require_util();
     var schedule;
@@ -634,9 +634,9 @@ var require_schedule = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/queue.js
+// node_modules/bluebird/js/release/queue.js
 var require_queue = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/queue.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/queue.js"(exports2, module2) {
     "use strict";
     function arrayMove(src, srcIndex, dst, dstIndex, len) {
       for (var j = 0; j < len; ++j) {
@@ -702,9 +702,9 @@ var require_queue = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/async.js
+// node_modules/bluebird/js/release/async.js
 var require_async = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/async.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/async.js"(exports2, module2) {
     "use strict";
     var firstLineError;
     try {
@@ -815,9 +815,9 @@ var require_async = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/errors.js
+// node_modules/bluebird/js/release/errors.js
 var require_errors = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/errors.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/errors.js"(exports2, module2) {
     "use strict";
     var es52 = require_es5();
     var Objectfreeze = es52.freeze;
@@ -931,9 +931,9 @@ var require_errors = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/thenables.js
+// node_modules/bluebird/js/release/thenables.js
 var require_thenables = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/thenables.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/thenables.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL) {
       var util = require_util();
@@ -1014,9 +1014,9 @@ var require_thenables = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/promise_array.js
+// node_modules/bluebird/js/release/promise_array.js
 var require_promise_array = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/promise_array.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/promise_array.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL, tryConvertToPromise, apiRejection, Proxyable) {
       var util = require_util();
@@ -1187,9 +1187,9 @@ var require_promise_array = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/context.js
+// node_modules/bluebird/js/release/context.js
 var require_context = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/context.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/context.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2) {
       var longStackTraces = false;
@@ -1263,9 +1263,9 @@ var require_context = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/debuggability.js
+// node_modules/bluebird/js/release/debuggability.js
 var require_debuggability = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/debuggability.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/debuggability.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, Context, enableAsyncHooks, disableAsyncHooks) {
       var async = Promise2._async;
@@ -2187,9 +2187,9 @@ var require_debuggability = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/catch_filter.js
+// node_modules/bluebird/js/release/catch_filter.js
 var require_catch_filter = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/catch_filter.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/catch_filter.js"(exports2, module2) {
     "use strict";
     module2.exports = function(NEXT_FILTER) {
       var util = require_util();
@@ -2231,9 +2231,9 @@ var require_catch_filter = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/finally.js
+// node_modules/bluebird/js/release/finally.js
 var require_finally = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/finally.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/finally.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, tryConvertToPromise, NEXT_FILTER) {
       var util = require_util();
@@ -2376,9 +2376,9 @@ var require_finally = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/nodeback.js
+// node_modules/bluebird/js/release/nodeback.js
 var require_nodeback = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/nodeback.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/nodeback.js"(exports2, module2) {
     "use strict";
     var util = require_util();
     var maybeWrapAsError2 = util.maybeWrapAsError;
@@ -2433,9 +2433,9 @@ var require_nodeback = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/method.js
+// node_modules/bluebird/js/release/method.js
 var require_method = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/method.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/method.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL, tryConvertToPromise, apiRejection, debug) {
       var util = require_util();
@@ -2497,9 +2497,9 @@ var require_method = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/bind.js
+// node_modules/bluebird/js/release/bind.js
 var require_bind = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/bind.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/bind.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL, tryConvertToPromise, debug) {
       var calledBind = false;
@@ -2568,9 +2568,9 @@ var require_bind = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/cancel.js
+// node_modules/bluebird/js/release/cancel.js
 var require_cancel = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/cancel.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/cancel.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, apiRejection, debug) {
       var util = require_util();
@@ -2685,9 +2685,9 @@ var require_cancel = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/direct_resolve.js
+// node_modules/bluebird/js/release/direct_resolve.js
 var require_direct_resolve = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/direct_resolve.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/direct_resolve.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2) {
       function returner() {
@@ -2755,9 +2755,9 @@ var require_direct_resolve = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/synchronous_inspection.js
+// node_modules/bluebird/js/release/synchronous_inspection.js
 var require_synchronous_inspection = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/synchronous_inspection.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/synchronous_inspection.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2) {
       function PromiseInspection(promise) {
@@ -2841,9 +2841,9 @@ var require_synchronous_inspection = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/join.js
+// node_modules/bluebird/js/release/join.js
 var require_join = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/join.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/join.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, tryConvertToPromise, INTERNAL, async) {
       var util = require_util();
@@ -2956,9 +2956,9 @@ var require_join = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/call_get.js
+// node_modules/bluebird/js/release/call_get.js
 var require_call_get = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/call_get.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/call_get.js"(exports2, module2) {
     "use strict";
     var cr = Object.create;
     if (cr) {
@@ -3070,9 +3070,9 @@ var require_call_get = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/generators.js
+// node_modules/bluebird/js/release/generators.js
 var require_generators = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/generators.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/generators.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug) {
       var errors = require_errors();
@@ -3286,9 +3286,9 @@ var require_generators = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/map.js
+// node_modules/bluebird/js/release/map.js
 var require_map = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/map.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/map.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
       var util = require_util();
@@ -3444,9 +3444,9 @@ var require_map = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/nodeify.js
+// node_modules/bluebird/js/release/nodeify.js
 var require_nodeify = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/nodeify.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/nodeify.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2) {
       var util = require_util();
@@ -3501,9 +3501,9 @@ var require_nodeify = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/promisify.js
+// node_modules/bluebird/js/release/promisify.js
 var require_promisify = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/promisify.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/promisify.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL) {
       var THIS = {};
@@ -3771,9 +3771,9 @@ var require_promisify = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/props.js
+// node_modules/bluebird/js/release/props.js
 var require_props = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/props.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/props.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, tryConvertToPromise, apiRejection) {
       var util = require_util();
@@ -3886,9 +3886,9 @@ var require_props = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/race.js
+// node_modules/bluebird/js/release/race.js
 var require_race = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/race.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/race.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL, tryConvertToPromise, apiRejection) {
       var util = require_util();
@@ -3931,9 +3931,9 @@ var require_race = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/reduce.js
+// node_modules/bluebird/js/release/reduce.js
 var require_reduce = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/reduce.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/reduce.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
       var util = require_util();
@@ -4096,9 +4096,9 @@ var require_reduce = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/settle.js
+// node_modules/bluebird/js/release/settle.js
 var require_settle = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/settle.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/settle.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, debug) {
       var PromiseInspection = Promise2.PromiseInspection;
@@ -4142,9 +4142,9 @@ var require_settle = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/some.js
+// node_modules/bluebird/js/release/some.js
 var require_some = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/some.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/some.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, PromiseArray, apiRejection) {
       var util = require_util();
@@ -4270,9 +4270,9 @@ var require_some = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/timers.js
+// node_modules/bluebird/js/release/timers.js
 var require_timers = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/timers.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/timers.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL, debug) {
       var util = require_util();
@@ -4369,9 +4369,9 @@ var require_timers = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/using.js
+// node_modules/bluebird/js/release/using.js
 var require_using = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/using.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/using.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, apiRejection, tryConvertToPromise, createContext, INTERNAL, debug) {
       var util = require_util();
@@ -4579,9 +4579,9 @@ var require_using = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/any.js
+// node_modules/bluebird/js/release/any.js
 var require_any = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/any.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/any.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2) {
       var SomePromiseArray = Promise2._SomePromiseArray;
@@ -4603,9 +4603,9 @@ var require_any = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/each.js
+// node_modules/bluebird/js/release/each.js
 var require_each = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/each.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/each.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL) {
       var PromiseReduce = Promise2.reduce;
@@ -4630,9 +4630,9 @@ var require_each = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/filter.js
+// node_modules/bluebird/js/release/filter.js
 var require_filter = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/filter.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/filter.js"(exports2, module2) {
     "use strict";
     module2.exports = function(Promise2, INTERNAL) {
       var PromiseMap = Promise2.map;
@@ -4646,9 +4646,9 @@ var require_filter = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/promise.js
+// node_modules/bluebird/js/release/promise.js
 var require_promise = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/promise.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/promise.js"(exports2, module2) {
     "use strict";
     module2.exports = function() {
       var makeSelfResolutionError = function() {
@@ -5375,9 +5375,9 @@ var require_promise = __commonJS({
   }
 });
 
-// node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/bluebird.js
+// node_modules/bluebird/js/release/bluebird.js
 var require_bluebird = __commonJS({
-  "node_modules/.pnpm/bluebird@3.7.2/node_modules/bluebird/js/release/bluebird.js"(exports2, module2) {
+  "node_modules/bluebird/js/release/bluebird.js"(exports2, module2) {
     "use strict";
     var old;
     if (typeof Promise !== "undefined") old = Promise;
@@ -5394,9 +5394,9 @@ var require_bluebird = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-log@4.1.0/node_modules/hexo-log/dist/log.js
+// node_modules/hexo-log/dist/log.js
 var require_log = __commonJS({
-  "node_modules/.pnpm/hexo-log@4.1.0/node_modules/hexo-log/dist/log.js"(exports2) {
+  "node_modules/hexo-log/dist/log.js"(exports2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -5525,9 +5525,9 @@ var require_log = __commonJS({
   }
 });
 
-// node_modules/.pnpm/abbrev@2.0.0/node_modules/abbrev/lib/index.js
+// node_modules/abbrev/lib/index.js
 var require_lib = __commonJS({
-  "node_modules/.pnpm/abbrev@2.0.0/node_modules/abbrev/lib/index.js"(exports2, module2) {
+  "node_modules/abbrev/lib/index.js"(exports2, module2) {
     module2.exports = abbrev;
     function abbrev(...args) {
       let list = args.length === 1 || Array.isArray(args[0]) ? args[0] : args;
@@ -5685,9 +5685,9 @@ var require_context2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/constants.js
+// node_modules/picomatch/lib/constants.js
 var require_constants = __commonJS({
-  "node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/constants.js"(exports2, module2) {
+  "node_modules/picomatch/lib/constants.js"(exports2, module2) {
     "use strict";
     var path = require("path");
     var WIN_SLASH = "\\\\/";
@@ -5882,9 +5882,9 @@ var require_constants = __commonJS({
   }
 });
 
-// node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/utils.js
+// node_modules/picomatch/lib/utils.js
 var require_utils = __commonJS({
-  "node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/utils.js"(exports2) {
+  "node_modules/picomatch/lib/utils.js"(exports2) {
     "use strict";
     var path = require("path");
     var win32 = process.platform === "win32";
@@ -5943,9 +5943,9 @@ var require_utils = __commonJS({
   }
 });
 
-// node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/scan.js
+// node_modules/picomatch/lib/scan.js
 var require_scan = __commonJS({
-  "node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/scan.js"(exports2, module2) {
+  "node_modules/picomatch/lib/scan.js"(exports2, module2) {
     "use strict";
     var utils = require_utils();
     var {
@@ -6273,9 +6273,9 @@ var require_scan = __commonJS({
   }
 });
 
-// node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/parse.js
+// node_modules/picomatch/lib/parse.js
 var require_parse = __commonJS({
-  "node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/parse.js"(exports2, module2) {
+  "node_modules/picomatch/lib/parse.js"(exports2, module2) {
     "use strict";
     var constants = require_constants();
     var utils = require_utils();
@@ -7046,9 +7046,9 @@ var require_parse = __commonJS({
   }
 });
 
-// node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/picomatch.js
+// node_modules/picomatch/lib/picomatch.js
 var require_picomatch = __commonJS({
-  "node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/lib/picomatch.js"(exports2, module2) {
+  "node_modules/picomatch/lib/picomatch.js"(exports2, module2) {
     "use strict";
     var path = require("path");
     var scan = require_scan();
@@ -7187,17 +7187,17 @@ var require_picomatch = __commonJS({
   }
 });
 
-// node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/index.js
+// node_modules/picomatch/index.js
 var require_picomatch2 = __commonJS({
-  "node_modules/.pnpm/picomatch@2.3.1/node_modules/picomatch/index.js"(exports2, module2) {
+  "node_modules/picomatch/index.js"(exports2, module2) {
     "use strict";
     module2.exports = require_picomatch();
   }
 });
 
-// node_modules/.pnpm/readdirp@3.6.0/node_modules/readdirp/index.js
+// node_modules/readdirp/index.js
 var require_readdirp = __commonJS({
-  "node_modules/.pnpm/readdirp@3.6.0/node_modules/readdirp/index.js"(exports2, module2) {
+  "node_modules/readdirp/index.js"(exports2, module2) {
     "use strict";
     var fs = require("fs");
     var { Readable } = require("stream");
@@ -7425,9 +7425,9 @@ var require_readdirp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/normalize-path@3.0.0/node_modules/normalize-path/index.js
+// node_modules/normalize-path/index.js
 var require_normalize_path = __commonJS({
-  "node_modules/.pnpm/normalize-path@3.0.0/node_modules/normalize-path/index.js"(exports2, module2) {
+  "node_modules/normalize-path/index.js"(exports2, module2) {
     module2.exports = function(path, stripTrailing) {
       if (typeof path !== "string") {
         throw new TypeError("expected path to be a string");
@@ -7452,9 +7452,9 @@ var require_normalize_path = __commonJS({
   }
 });
 
-// node_modules/.pnpm/anymatch@3.1.3/node_modules/anymatch/index.js
+// node_modules/anymatch/index.js
 var require_anymatch = __commonJS({
-  "node_modules/.pnpm/anymatch@3.1.3/node_modules/anymatch/index.js"(exports2, module2) {
+  "node_modules/anymatch/index.js"(exports2, module2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     var picomatch = require_picomatch2();
@@ -7519,9 +7519,9 @@ var require_anymatch = __commonJS({
   }
 });
 
-// node_modules/.pnpm/is-extglob@2.1.1/node_modules/is-extglob/index.js
+// node_modules/is-extglob/index.js
 var require_is_extglob = __commonJS({
-  "node_modules/.pnpm/is-extglob@2.1.1/node_modules/is-extglob/index.js"(exports2, module2) {
+  "node_modules/is-extglob/index.js"(exports2, module2) {
     module2.exports = function isExtglob(str) {
       if (typeof str !== "string" || str === "") {
         return false;
@@ -7536,9 +7536,9 @@ var require_is_extglob = __commonJS({
   }
 });
 
-// node_modules/.pnpm/is-glob@4.0.3/node_modules/is-glob/index.js
+// node_modules/is-glob/index.js
 var require_is_glob = __commonJS({
-  "node_modules/.pnpm/is-glob@4.0.3/node_modules/is-glob/index.js"(exports2, module2) {
+  "node_modules/is-glob/index.js"(exports2, module2) {
     var isExtglob = require_is_extglob();
     var chars = { "{": "}", "(": ")", "[": "]" };
     var strictCheck = function(str) {
@@ -7667,9 +7667,9 @@ var require_is_glob = __commonJS({
   }
 });
 
-// node_modules/.pnpm/glob-parent@5.1.2/node_modules/glob-parent/index.js
+// node_modules/chokidar/node_modules/glob-parent/index.js
 var require_glob_parent = __commonJS({
-  "node_modules/.pnpm/glob-parent@5.1.2/node_modules/glob-parent/index.js"(exports2, module2) {
+  "node_modules/chokidar/node_modules/glob-parent/index.js"(exports2, module2) {
     "use strict";
     var isGlob = require_is_glob();
     var pathPosixDirname = require("path").posix.dirname;
@@ -7696,9 +7696,9 @@ var require_glob_parent = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/utils.js
+// node_modules/braces/lib/utils.js
 var require_utils2 = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/utils.js"(exports2) {
+  "node_modules/braces/lib/utils.js"(exports2) {
     "use strict";
     exports2.isInteger = (num) => {
       if (typeof num === "number") {
@@ -7778,9 +7778,9 @@ var require_utils2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/stringify.js
+// node_modules/braces/lib/stringify.js
 var require_stringify = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/stringify.js"(exports2, module2) {
+  "node_modules/braces/lib/stringify.js"(exports2, module2) {
     "use strict";
     var utils = require_utils2();
     module2.exports = (ast, options = {}) => {
@@ -7809,9 +7809,9 @@ var require_stringify = __commonJS({
   }
 });
 
-// node_modules/.pnpm/is-number@7.0.0/node_modules/is-number/index.js
+// node_modules/is-number/index.js
 var require_is_number = __commonJS({
-  "node_modules/.pnpm/is-number@7.0.0/node_modules/is-number/index.js"(exports2, module2) {
+  "node_modules/is-number/index.js"(exports2, module2) {
     "use strict";
     module2.exports = function(num) {
       if (typeof num === "number") {
@@ -7825,9 +7825,9 @@ var require_is_number = __commonJS({
   }
 });
 
-// node_modules/.pnpm/to-regex-range@5.0.1/node_modules/to-regex-range/index.js
+// node_modules/to-regex-range/index.js
 var require_to_regex_range = __commonJS({
-  "node_modules/.pnpm/to-regex-range@5.0.1/node_modules/to-regex-range/index.js"(exports2, module2) {
+  "node_modules/to-regex-range/index.js"(exports2, module2) {
     "use strict";
     var isNumber = require_is_number();
     var toRegexRange = (min, max, options) => {
@@ -8036,9 +8036,9 @@ var require_to_regex_range = __commonJS({
   }
 });
 
-// node_modules/.pnpm/fill-range@7.1.1/node_modules/fill-range/index.js
+// node_modules/fill-range/index.js
 var require_fill_range = __commonJS({
-  "node_modules/.pnpm/fill-range@7.1.1/node_modules/fill-range/index.js"(exports2, module2) {
+  "node_modules/fill-range/index.js"(exports2, module2) {
     "use strict";
     var util = require("util");
     var toRegexRange = require_to_regex_range();
@@ -8230,9 +8230,9 @@ var require_fill_range = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/compile.js
+// node_modules/braces/lib/compile.js
 var require_compile = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/compile.js"(exports2, module2) {
+  "node_modules/braces/lib/compile.js"(exports2, module2) {
     "use strict";
     var fill = require_fill_range();
     var utils = require_utils2();
@@ -8282,9 +8282,9 @@ var require_compile = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/expand.js
+// node_modules/braces/lib/expand.js
 var require_expand = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/expand.js"(exports2, module2) {
+  "node_modules/braces/lib/expand.js"(exports2, module2) {
     "use strict";
     var fill = require_fill_range();
     var stringify = require_stringify();
@@ -8376,9 +8376,9 @@ var require_expand = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/constants.js
+// node_modules/braces/lib/constants.js
 var require_constants2 = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/constants.js"(exports2, module2) {
+  "node_modules/braces/lib/constants.js"(exports2, module2) {
     "use strict";
     module2.exports = {
       MAX_LENGTH: 1e4,
@@ -8477,9 +8477,9 @@ var require_constants2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/parse.js
+// node_modules/braces/lib/parse.js
 var require_parse2 = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/lib/parse.js"(exports2, module2) {
+  "node_modules/braces/lib/parse.js"(exports2, module2) {
     "use strict";
     var stringify = require_stringify();
     var {
@@ -8715,9 +8715,9 @@ var require_parse2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/braces@3.0.3/node_modules/braces/index.js
+// node_modules/braces/index.js
 var require_braces = __commonJS({
-  "node_modules/.pnpm/braces@3.0.3/node_modules/braces/index.js"(exports2, module2) {
+  "node_modules/braces/index.js"(exports2, module2) {
     "use strict";
     var stringify = require_stringify();
     var compile = require_compile();
@@ -8778,9 +8778,9 @@ var require_braces = __commonJS({
   }
 });
 
-// node_modules/.pnpm/binary-extensions@2.3.0/node_modules/binary-extensions/binary-extensions.json
+// node_modules/binary-extensions/binary-extensions.json
 var require_binary_extensions = __commonJS({
-  "node_modules/.pnpm/binary-extensions@2.3.0/node_modules/binary-extensions/binary-extensions.json"(exports2, module2) {
+  "node_modules/binary-extensions/binary-extensions.json"(exports2, module2) {
     module2.exports = [
       "3dm",
       "3ds",
@@ -9047,16 +9047,16 @@ var require_binary_extensions = __commonJS({
   }
 });
 
-// node_modules/.pnpm/binary-extensions@2.3.0/node_modules/binary-extensions/index.js
+// node_modules/binary-extensions/index.js
 var require_binary_extensions2 = __commonJS({
-  "node_modules/.pnpm/binary-extensions@2.3.0/node_modules/binary-extensions/index.js"(exports2, module2) {
+  "node_modules/binary-extensions/index.js"(exports2, module2) {
     module2.exports = require_binary_extensions();
   }
 });
 
-// node_modules/.pnpm/is-binary-path@2.1.0/node_modules/is-binary-path/index.js
+// node_modules/is-binary-path/index.js
 var require_is_binary_path = __commonJS({
-  "node_modules/.pnpm/is-binary-path@2.1.0/node_modules/is-binary-path/index.js"(exports2, module2) {
+  "node_modules/is-binary-path/index.js"(exports2, module2) {
     "use strict";
     var path = require("path");
     var binaryExtensions = require_binary_extensions2();
@@ -9065,9 +9065,9 @@ var require_is_binary_path = __commonJS({
   }
 });
 
-// node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/lib/constants.js
+// node_modules/chokidar/lib/constants.js
 var require_constants3 = __commonJS({
-  "node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/lib/constants.js"(exports2) {
+  "node_modules/chokidar/lib/constants.js"(exports2) {
     "use strict";
     var { sep } = require("path");
     var { platform } = process;
@@ -9129,9 +9129,9 @@ var require_constants3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/lib/nodefs-handler.js
+// node_modules/chokidar/lib/nodefs-handler.js
 var require_nodefs_handler = __commonJS({
-  "node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/lib/nodefs-handler.js"(exports2, module2) {
+  "node_modules/chokidar/lib/nodefs-handler.js"(exports2, module2) {
     "use strict";
     var fs = require("fs");
     var sysPath = require("path");
@@ -9620,9 +9620,9 @@ var require_nodefs_handler = __commonJS({
   }
 });
 
-// node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/lib/fsevents-handler.js
+// node_modules/chokidar/lib/fsevents-handler.js
 var require_fsevents_handler = __commonJS({
-  "node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/lib/fsevents-handler.js"(exports2, module2) {
+  "node_modules/chokidar/lib/fsevents-handler.js"(exports2, module2) {
     "use strict";
     var fs = require("fs");
     var sysPath = require("path");
@@ -10016,9 +10016,9 @@ var require_fsevents_handler = __commonJS({
   }
 });
 
-// node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/index.js
+// node_modules/chokidar/index.js
 var require_chokidar = __commonJS({
-  "node_modules/.pnpm/chokidar@3.6.0/node_modules/chokidar/index.js"(exports2) {
+  "node_modules/chokidar/index.js"(exports2) {
     "use strict";
     var { EventEmitter } = require("events");
     var fs = require("fs");
@@ -10761,9 +10761,9 @@ var require_chokidar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/cache.js
+// node_modules/hexo-util/dist/cache.js
 var require_cache = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/cache.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/cache.js"(exports2, module2) {
     "use strict";
     module2.exports = class Cache {
       constructor() {
@@ -10802,9 +10802,9 @@ var require_cache = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/cache_stream.js
+// node_modules/hexo-util/dist/cache_stream.js
 var require_cache_stream = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/cache_stream.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/cache_stream.js"(exports2, module2) {
     "use strict";
     var stream_1 = require("stream");
     var CacheStream = class extends stream_1.Transform {
@@ -10826,7 +10826,7 @@ var require_cache_stream = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tslib@2.8.1/node_modules/tslib/tslib.es6.mjs
+// node_modules/tslib/tslib.es6.mjs
 var tslib_es6_exports = {};
 __export(tslib_es6_exports, {
   __addDisposableResource: () => __addDisposableResource,
@@ -11265,7 +11265,7 @@ function __rewriteRelativeImportExtension(path, preserveJsx) {
 }
 var extendStatics, __assign, __createBinding, __setModuleDefault, ownKeys, _SuppressedError, tslib_es6_default;
 var init_tslib_es6 = __esm({
-  "node_modules/.pnpm/tslib@2.8.1/node_modules/tslib/tslib.es6.mjs"() {
+  "node_modules/tslib/tslib.es6.mjs"() {
     extendStatics = function(d, b) {
       extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
         d2.__proto__ = b2;
@@ -11351,9 +11351,9 @@ var init_tslib_es6 = __esm({
   }
 });
 
-// node_modules/.pnpm/lower-case@2.0.2/node_modules/lower-case/dist/index.js
+// node_modules/lower-case/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/.pnpm/lower-case@2.0.2/node_modules/lower-case/dist/index.js"(exports2) {
+  "node_modules/lower-case/dist/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.lowerCase = exports2.localeLowerCase = void 0;
@@ -11402,9 +11402,9 @@ var require_dist = __commonJS({
   }
 });
 
-// node_modules/.pnpm/no-case@3.0.4/node_modules/no-case/dist/index.js
+// node_modules/no-case/dist/index.js
 var require_dist2 = __commonJS({
-  "node_modules/.pnpm/no-case@3.0.4/node_modules/no-case/dist/index.js"(exports2) {
+  "node_modules/no-case/dist/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.noCase = void 0;
@@ -11436,9 +11436,9 @@ var require_dist2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/pascal-case@3.1.2/node_modules/pascal-case/dist/index.js
+// node_modules/pascal-case/dist/index.js
 var require_dist3 = __commonJS({
-  "node_modules/.pnpm/pascal-case@3.1.2/node_modules/pascal-case/dist/index.js"(exports2) {
+  "node_modules/pascal-case/dist/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.pascalCase = exports2.pascalCaseTransformMerge = exports2.pascalCaseTransform = void 0;
@@ -11467,9 +11467,9 @@ var require_dist3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/camel-case@4.1.2/node_modules/camel-case/dist/index.js
+// node_modules/camel-case/dist/index.js
 var require_dist4 = __commonJS({
-  "node_modules/.pnpm/camel-case@4.1.2/node_modules/camel-case/dist/index.js"(exports2) {
+  "node_modules/camel-case/dist/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.camelCase = exports2.camelCaseTransformMerge = exports2.camelCaseTransform = void 0;
@@ -11497,9 +11497,9 @@ var require_dist4 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/camel_case_keys.js
+// node_modules/hexo-util/dist/camel_case_keys.js
 var require_camel_case_keys = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/camel_case_keys.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/camel_case_keys.js"(exports2, module2) {
     "use strict";
     var camel_case_1 = require_dist4();
     function getter(key) {
@@ -11544,9 +11544,9 @@ var require_camel_case_keys = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/color.js
+// node_modules/hexo-util/dist/color.js
 var require_color = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/color.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/color.js"(exports2, module2) {
     "use strict";
     var rHex3 = /^#[0-9a-f]{3}$/;
     var rHex6 = /^#[0-9a-f]{6}$/;
@@ -11844,9 +11844,9 @@ var require_color = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/decode_url.js
+// node_modules/hexo-util/dist/decode_url.js
 var require_decode_url = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/decode_url.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/decode_url.js"(exports2, module2) {
     "use strict";
     var url_1 = require("url");
     var querystring_1 = require("querystring");
@@ -11864,9 +11864,9 @@ var require_decode_url = __commonJS({
   }
 });
 
-// node_modules/.pnpm/deepmerge@4.3.1/node_modules/deepmerge/dist/cjs.js
+// node_modules/deepmerge/dist/cjs.js
 var require_cjs = __commonJS({
-  "node_modules/.pnpm/deepmerge@4.3.1/node_modules/deepmerge/dist/cjs.js"(exports2, module2) {
+  "node_modules/deepmerge/dist/cjs.js"(exports2, module2) {
     "use strict";
     var isMergeableObject = function isMergeableObject2(value) {
       return isNonNullObject(value) && !isSpecial(value);
@@ -11967,9 +11967,9 @@ var require_cjs = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/deep_merge.js
+// node_modules/hexo-util/dist/deep_merge.js
 var require_deep_merge = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/deep_merge.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/deep_merge.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -11995,9 +11995,9 @@ var require_deep_merge = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/encode_url.js
+// node_modules/hexo-util/dist/encode_url.js
 var require_encode_url = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/encode_url.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/encode_url.js"(exports2, module2) {
     "use strict";
     var url_1 = require("url");
     var querystring_1 = require("querystring");
@@ -12015,9 +12015,9 @@ var require_encode_url = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/escape_diacritic.js
+// node_modules/hexo-util/dist/escape_diacritic.js
 var require_escape_diacritic = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/escape_diacritic.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/escape_diacritic.js"(exports2, module2) {
     "use strict";
     var defaultDiacriticsRemovalap = [
       { "base": "A", "letters": "A\u24B6\uFF21\xC0\xC1\xC2\u1EA6\u1EA4\u1EAA\u1EA8\xC3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\xC4\u01DE\u1EA2\xC5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F" },
@@ -12123,9 +12123,9 @@ var require_escape_diacritic = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/escape_html.js
+// node_modules/hexo-util/dist/escape_html.js
 var require_escape_html = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/escape_html.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/escape_html.js"(exports2, module2) {
     "use strict";
     var escapeTestNoEncode = /[<>"'`/=]|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/;
     var escapeReplaceNoEncode = new RegExp(escapeTestNoEncode.source, "g");
@@ -12152,9 +12152,9 @@ var require_escape_html = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/escape_regexp.js
+// node_modules/hexo-util/dist/escape_regexp.js
 var require_escape_regexp = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/escape_regexp.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/escape_regexp.js"(exports2, module2) {
     "use strict";
     function escapeRegExp(str) {
       if (typeof str !== "string")
@@ -12165,9 +12165,9 @@ var require_escape_regexp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/pretty_urls.js
+// node_modules/hexo-util/dist/pretty_urls.js
 var require_pretty_urls = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/pretty_urls.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/pretty_urls.js"(exports2, module2) {
     "use strict";
     function prettyUrls(url, options = {}) {
       options = Object.assign({
@@ -12186,9 +12186,9 @@ var require_pretty_urls = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/full_url_for.js
+// node_modules/hexo-util/dist/full_url_for.js
 var require_full_url_for = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/full_url_for.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/full_url_for.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -12220,9 +12220,9 @@ var require_full_url_for = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/gravatar.js
+// node_modules/hexo-util/dist/gravatar.js
 var require_gravatar = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/gravatar.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/gravatar.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -12250,9 +12250,9 @@ var require_gravatar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/hash.js
+// node_modules/hexo-util/dist/hash.js
 var require_hash = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/hash.js"(exports2) {
+  "node_modules/hexo-util/dist/hash.js"(exports2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -12274,9 +12274,9 @@ var require_hash = __commonJS({
   }
 });
 
-// node_modules/.pnpm/min-indent@1.0.1/node_modules/min-indent/index.js
+// node_modules/min-indent/index.js
 var require_min_indent = __commonJS({
-  "node_modules/.pnpm/min-indent@1.0.1/node_modules/min-indent/index.js"(exports2, module2) {
+  "node_modules/min-indent/index.js"(exports2, module2) {
     "use strict";
     module2.exports = (string) => {
       const match = string.match(/^[ \t]*(?=\S)/gm);
@@ -12288,9 +12288,9 @@ var require_min_indent = __commonJS({
   }
 });
 
-// node_modules/.pnpm/strip-indent@3.0.0/node_modules/strip-indent/index.js
+// node_modules/strip-indent/index.js
 var require_strip_indent = __commonJS({
-  "node_modules/.pnpm/strip-indent@3.0.0/node_modules/strip-indent/index.js"(exports2, module2) {
+  "node_modules/strip-indent/index.js"(exports2, module2) {
     "use strict";
     var minIndent = require_min_indent();
     module2.exports = (string) => {
@@ -12304,16 +12304,16 @@ var require_strip_indent = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/highlight_alias.json
+// node_modules/hexo-util/highlight_alias.json
 var require_highlight_alias = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/highlight_alias.json"(exports2, module2) {
+  "node_modules/hexo-util/highlight_alias.json"(exports2, module2) {
     module2.exports = { languages: ["1c", "abnf", "accesslog", "actionscript", "ada", "angelscript", "apache", "applescript", "arcade", "arduino", "armasm", "xml", "asciidoc", "aspectj", "autohotkey", "autoit", "avrasm", "awk", "axapta", "bash", "basic", "bnf", "brainfuck", "c", "cal", "capnproto", "ceylon", "clean", "clojure", "clojure-repl", "cmake", "coffeescript", "coq", "cos", "cpp", "crmsh", "crystal", "csharp", "csp", "css", "d", "markdown", "dart", "delphi", "diff", "django", "dns", "dockerfile", "dos", "dsconfig", "dts", "dust", "ebnf", "elixir", "elm", "ruby", "erb", "erlang-repl", "erlang", "excel", "fix", "flix", "fortran", "fsharp", "gams", "gauss", "gcode", "gherkin", "glsl", "gml", "go", "golo", "gradle", "graphql", "groovy", "haml", "handlebars", "haskell", "haxe", "hsp", "http", "hy", "inform7", "ini", "irpf90", "isbl", "java", "javascript", "jboss-cli", "json", "julia", "julia-repl", "kotlin", "lasso", "latex", "ldif", "leaf", "less", "lisp", "livecodeserver", "livescript", "llvm", "lsl", "lua", "makefile", "mathematica", "matlab", "maxima", "mel", "mercury", "mipsasm", "mizar", "perl", "mojolicious", "monkey", "moonscript", "n1ql", "nestedtext", "nginx", "nim", "nix", "node-repl", "nsis", "objectivec", "ocaml", "openscad", "oxygene", "parser3", "pf", "pgsql", "php", "php-template", "plaintext", "pony", "powershell", "processing", "profile", "prolog", "properties", "protobuf", "puppet", "purebasic", "python", "python-repl", "q", "qml", "r", "reasonml", "rib", "roboconf", "routeros", "rsl", "ruleslanguage", "rust", "sas", "scala", "scheme", "scilab", "scss", "shell", "smali", "smalltalk", "sml", "sqf", "sql", "stan", "stata", "step21", "stylus", "subunit", "swift", "taggerscript", "yaml", "tap", "tcl", "thrift", "tp", "twig", "typescript", "vala", "vbnet", "vbscript", "vbscript-html", "verilog", "vhdl", "vim", "wasm", "wren", "x86asm", "xl", "xquery", "zephir"], aliases: { "1c": "1c", abnf: "abnf", accesslog: "accesslog", actionscript: "actionscript", as: "actionscript", ada: "ada", angelscript: "angelscript", asc: "angelscript", apache: "apache", apacheconf: "apache", applescript: "applescript", osascript: "applescript", arcade: "arcade", arduino: "arduino", ino: "arduino", armasm: "armasm", arm: "armasm", xml: "xml", html: "xml", xhtml: "xml", rss: "xml", atom: "xml", xjb: "xml", xsd: "xml", xsl: "xml", plist: "xml", wsf: "xml", svg: "xml", asciidoc: "asciidoc", adoc: "asciidoc", aspectj: "aspectj", autohotkey: "autohotkey", ahk: "autohotkey", autoit: "autoit", avrasm: "avrasm", awk: "awk", axapta: "axapta", "x++": "axapta", bash: "bash", sh: "bash", basic: "basic", bnf: "bnf", brainfuck: "brainfuck", bf: "brainfuck", c: "c", h: "c", cal: "cal", capnproto: "capnproto", capnp: "capnproto", ceylon: "ceylon", clean: "clean", icl: "clean", dcl: "clean", clojure: "clojure", clj: "clojure", edn: "clojure", "clojure-repl": "clojure-repl", cmake: "cmake", "cmake.in": "cmake", coffeescript: "coffeescript", coffee: "coffeescript", cson: "coffeescript", iced: "coffeescript", coq: "coq", cos: "cos", cls: "cos", cpp: "cpp", cc: "cpp", "c++": "cpp", "h++": "cpp", hpp: "cpp", hh: "cpp", hxx: "cpp", cxx: "cpp", crmsh: "crmsh", crm: "crmsh", pcmk: "crmsh", crystal: "crystal", cr: "crystal", csharp: "csharp", cs: "csharp", "c#": "csharp", csp: "csp", css: "css", d: "d", markdown: "markdown", md: "markdown", mkdown: "markdown", mkd: "markdown", dart: "dart", delphi: "delphi", dpr: "delphi", dfm: "delphi", pas: "delphi", pascal: "delphi", diff: "diff", patch: "diff", django: "django", jinja: "django", dns: "dns", bind: "dns", zone: "dns", dockerfile: "dockerfile", docker: "dockerfile", dos: "dos", bat: "dos", cmd: "dos", dsconfig: "dsconfig", dts: "dts", dust: "dust", dst: "dust", ebnf: "ebnf", elixir: "elixir", ex: "elixir", exs: "elixir", elm: "elm", ruby: "ruby", rb: "ruby", gemspec: "ruby", podspec: "ruby", thor: "ruby", irb: "ruby", erb: "erb", "erlang-repl": "erlang-repl", erlang: "erlang", erl: "erlang", excel: "excel", xlsx: "excel", xls: "excel", fix: "fix", flix: "flix", fortran: "fortran", f90: "fortran", f95: "fortran", fsharp: "fsharp", fs: "fsharp", "f#": "fsharp", gams: "gams", gms: "gams", gauss: "gauss", gss: "gauss", gcode: "gcode", nc: "gcode", gherkin: "gherkin", feature: "gherkin", glsl: "glsl", gml: "gml", go: "go", golang: "go", golo: "golo", gradle: "gradle", graphql: "graphql", gql: "graphql", groovy: "groovy", haml: "haml", handlebars: "handlebars", hbs: "handlebars", "html.hbs": "handlebars", "html.handlebars": "handlebars", htmlbars: "handlebars", haskell: "haskell", hs: "haskell", haxe: "haxe", hx: "haxe", hsp: "hsp", http: "http", https: "http", hy: "hy", hylang: "hy", inform7: "inform7", i7: "inform7", ini: "ini", toml: "ini", irpf90: "irpf90", isbl: "isbl", java: "java", jsp: "java", javascript: "javascript", js: "javascript", jsx: "javascript", mjs: "javascript", cjs: "javascript", "jboss-cli": "jboss-cli", "wildfly-cli": "jboss-cli", json: "json", julia: "julia", "julia-repl": "julia-repl", jldoctest: "julia-repl", kotlin: "kotlin", kt: "kotlin", kts: "kotlin", lasso: "lasso", ls: "livescript", lassoscript: "lasso", latex: "latex", tex: "latex", ldif: "ldif", leaf: "leaf", less: "less", lisp: "lisp", livecodeserver: "livecodeserver", livescript: "livescript", llvm: "llvm", lsl: "lsl", lua: "lua", makefile: "makefile", mk: "makefile", mak: "makefile", make: "makefile", mathematica: "mathematica", mma: "mathematica", wl: "mathematica", matlab: "matlab", maxima: "maxima", mel: "mel", mercury: "mercury", m: "mercury", moo: "mercury", mipsasm: "mipsasm", mips: "mipsasm", mizar: "mizar", perl: "perl", pl: "perl", pm: "perl", mojolicious: "mojolicious", monkey: "monkey", moonscript: "moonscript", moon: "moonscript", n1ql: "n1ql", nestedtext: "nestedtext", nt: "nestedtext", nginx: "nginx", nginxconf: "nginx", nim: "nim", nix: "nix", nixos: "nix", "node-repl": "node-repl", nsis: "nsis", objectivec: "objectivec", mm: "objectivec", objc: "objectivec", "obj-c": "objectivec", "obj-c++": "objectivec", "objective-c++": "objectivec", ocaml: "ocaml", ml: "sml", openscad: "openscad", scad: "openscad", oxygene: "oxygene", parser3: "parser3", pf: "pf", "pf.conf": "pf", pgsql: "pgsql", postgres: "pgsql", postgresql: "pgsql", php: "php", "php-template": "php-template", plaintext: "plaintext", text: "plaintext", txt: "plaintext", pony: "pony", powershell: "powershell", pwsh: "powershell", ps: "powershell", ps1: "powershell", processing: "processing", pde: "processing", profile: "profile", prolog: "prolog", properties: "properties", protobuf: "protobuf", puppet: "puppet", pp: "puppet", purebasic: "purebasic", pb: "purebasic", pbi: "purebasic", python: "python", py: "python", gyp: "python", ipython: "python", "python-repl": "python-repl", pycon: "python-repl", q: "q", k: "q", kdb: "q", qml: "qml", qt: "qml", r: "r", reasonml: "reasonml", re: "reasonml", rib: "rib", roboconf: "roboconf", graph: "roboconf", instances: "roboconf", routeros: "routeros", mikrotik: "routeros", rsl: "rsl", ruleslanguage: "ruleslanguage", rust: "rust", rs: "rust", sas: "sas", scala: "scala", scheme: "scheme", scilab: "scilab", sci: "scilab", scss: "scss", shell: "shell", console: "shell", shellsession: "shell", smali: "smali", smalltalk: "smalltalk", st: "smalltalk", sml: "sml", sqf: "sqf", sql: "sql", stan: "stan", stanfuncs: "stan", stata: "stata", do: "stata", ado: "stata", step21: "step21", p21: "step21", step: "step21", stp: "step21", stylus: "stylus", styl: "stylus", subunit: "subunit", swift: "swift", taggerscript: "taggerscript", yaml: "yaml", yml: "yaml", tap: "tap", tcl: "tcl", tk: "tcl", thrift: "thrift", tp: "tp", twig: "twig", craftcms: "twig", typescript: "typescript", ts: "typescript", tsx: "typescript", vala: "vala", vbnet: "vbnet", vb: "vbnet", vbscript: "vbscript", vbs: "vbscript", "vbscript-html": "vbscript-html", verilog: "verilog", v: "verilog", sv: "verilog", svh: "verilog", vhdl: "vhdl", vim: "vim", wasm: "wasm", wren: "wren", x86asm: "x86asm", xl: "xl", tao: "xl", xquery: "xquery", xpath: "xquery", xq: "xquery", zephir: "zephir", zep: "zephir" } };
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/core.js
+// node_modules/highlight.js/lib/core.js
 var require_core = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/core.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/core.js"(exports2, module2) {
     function deepFreeze(obj2) {
       if (obj2 instanceof Map) {
         obj2.clear = obj2.delete = obj2.set = function() {
@@ -13849,9 +13849,9 @@ var require_core = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/1c.js
+// node_modules/highlight.js/lib/languages/1c.js
 var require_c = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/1c.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/1c.js"(exports2, module2) {
     function _1c(hljs) {
       const UNDERSCORE_IDENT_RE = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]+";
       const v7_keywords = "\u0434\u0430\u043B\u0435\u0435 ";
@@ -14002,9 +14002,9 @@ var require_c = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/abnf.js
+// node_modules/highlight.js/lib/languages/abnf.js
 var require_abnf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/abnf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/abnf.js"(exports2, module2) {
     function abnf(hljs) {
       const regex = hljs.regex;
       const IDENT = /^[a-zA-Z][a-zA-Z0-9-]*/;
@@ -14072,9 +14072,9 @@ var require_abnf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/accesslog.js
+// node_modules/highlight.js/lib/languages/accesslog.js
 var require_accesslog = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/accesslog.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/accesslog.js"(exports2, module2) {
     function accesslog(hljs) {
       const regex = hljs.regex;
       const HTTP_VERBS = [
@@ -14158,9 +14158,9 @@ var require_accesslog = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/actionscript.js
+// node_modules/highlight.js/lib/languages/actionscript.js
 var require_actionscript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/actionscript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/actionscript.js"(exports2, module2) {
     function actionscript(hljs) {
       const regex = hljs.regex;
       const IDENT_RE = /[a-zA-Z_$][a-zA-Z0-9_$]*/;
@@ -14305,9 +14305,9 @@ var require_actionscript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ada.js
+// node_modules/highlight.js/lib/languages/ada.js
 var require_ada = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ada.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ada.js"(exports2, module2) {
     function ada(hljs) {
       const INTEGER_RE = "\\d(_|\\d)*";
       const EXPONENT_RE = "[eE][-+]?" + INTEGER_RE;
@@ -14532,9 +14532,9 @@ var require_ada = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/angelscript.js
+// node_modules/highlight.js/lib/languages/angelscript.js
 var require_angelscript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/angelscript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/angelscript.js"(exports2, module2) {
     function angelscript(hljs) {
       const builtInTypeMode = {
         className: "built_in",
@@ -14703,9 +14703,9 @@ var require_angelscript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/apache.js
+// node_modules/highlight.js/lib/languages/apache.js
 var require_apache = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/apache.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/apache.js"(exports2, module2) {
     function apache(hljs) {
       const NUMBER_REF = {
         className: "number",
@@ -14802,9 +14802,9 @@ var require_apache = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/applescript.js
+// node_modules/highlight.js/lib/languages/applescript.js
 var require_applescript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/applescript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/applescript.js"(exports2, module2) {
     function applescript(hljs) {
       const regex = hljs.regex;
       const STRING = hljs.inherit(
@@ -14928,9 +14928,9 @@ var require_applescript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/arcade.js
+// node_modules/highlight.js/lib/languages/arcade.js
 var require_arcade = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/arcade.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/arcade.js"(exports2, module2) {
     function arcade(hljs) {
       const regex = hljs.regex;
       const IDENT_RE = "[A-Za-z_][0-9A-Za-z_]*";
@@ -15355,9 +15355,9 @@ var require_arcade = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/arduino.js
+// node_modules/highlight.js/lib/languages/arduino.js
 var require_arduino = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/arduino.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/arduino.js"(exports2, module2) {
     function cPlusPlus(hljs) {
       const regex = hljs.regex;
       const C_LINE_COMMENT_MODE = hljs.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] });
@@ -16293,9 +16293,9 @@ var require_arduino = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/armasm.js
+// node_modules/highlight.js/lib/languages/armasm.js
 var require_armasm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/armasm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/armasm.js"(exports2, module2) {
     function armasm(hljs) {
       const COMMENT = { variants: [
         hljs.COMMENT("^[ \\t]*(?=#)", "$", {
@@ -16386,9 +16386,9 @@ var require_armasm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/xml.js
+// node_modules/highlight.js/lib/languages/xml.js
 var require_xml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/xml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/xml.js"(exports2, module2) {
     function xml(hljs) {
       const regex = hljs.regex;
       const TAG_NAME_RE = regex.concat(/[\p{L}_]/u, regex.optional(/[\p{L}0-9_.-]*:/u), /[\p{L}0-9_.-]*/u);
@@ -16617,9 +16617,9 @@ var require_xml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/asciidoc.js
+// node_modules/highlight.js/lib/languages/asciidoc.js
 var require_asciidoc = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/asciidoc.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/asciidoc.js"(exports2, module2) {
     function asciidoc(hljs) {
       const regex = hljs.regex;
       const HORIZONTAL_RULE = {
@@ -16870,9 +16870,9 @@ var require_asciidoc = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/aspectj.js
+// node_modules/highlight.js/lib/languages/aspectj.js
 var require_aspectj = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/aspectj.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/aspectj.js"(exports2, module2) {
     function aspectj(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = [
@@ -17095,9 +17095,9 @@ var require_aspectj = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/autohotkey.js
+// node_modules/highlight.js/lib/languages/autohotkey.js
 var require_autohotkey = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/autohotkey.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/autohotkey.js"(exports2, module2) {
     function autohotkey(hljs) {
       const BACKTICK_ESCAPE = { begin: "`[\\s\\S]" };
       return {
@@ -17167,9 +17167,9 @@ var require_autohotkey = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/autoit.js
+// node_modules/highlight.js/lib/languages/autoit.js
 var require_autoit = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/autoit.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/autoit.js"(exports2, module2) {
     function autoit(hljs) {
       const KEYWORDS = "ByRef Case Const ContinueCase ContinueLoop Dim Do Else ElseIf EndFunc EndIf EndSelect EndSwitch EndWith Enum Exit ExitLoop For Func Global If In Local Next ReDim Return Select Static Step Switch Then To Until Volatile WEnd While With";
       const DIRECTIVES = [
@@ -17326,9 +17326,9 @@ var require_autoit = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/avrasm.js
+// node_modules/highlight.js/lib/languages/avrasm.js
 var require_avrasm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/avrasm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/avrasm.js"(exports2, module2) {
     function avrasm(hljs) {
       return {
         name: "AVR Assembly",
@@ -17389,9 +17389,9 @@ var require_avrasm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/awk.js
+// node_modules/highlight.js/lib/languages/awk.js
 var require_awk = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/awk.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/awk.js"(exports2, module2) {
     function awk(hljs) {
       const VARIABLE = {
         className: "variable",
@@ -17453,9 +17453,9 @@ var require_awk = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/axapta.js
+// node_modules/highlight.js/lib/languages/axapta.js
 var require_axapta = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/axapta.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/axapta.js"(exports2, module2) {
     function axapta(hljs) {
       const IDENT_RE = hljs.UNDERSCORE_IDENT_RE;
       const BUILT_IN_KEYWORDS = [
@@ -17632,9 +17632,9 @@ var require_axapta = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/bash.js
+// node_modules/highlight.js/lib/languages/bash.js
 var require_bash = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/bash.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/bash.js"(exports2, module2) {
     function bash(hljs) {
       const regex = hljs.regex;
       const VAR = {};
@@ -18031,9 +18031,9 @@ var require_bash = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/basic.js
+// node_modules/highlight.js/lib/languages/basic.js
 var require_basic = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/basic.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/basic.js"(exports2, module2) {
     function basic(hljs) {
       const KEYWORDS = [
         "ABS",
@@ -18262,9 +18262,9 @@ var require_basic = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/bnf.js
+// node_modules/highlight.js/lib/languages/bnf.js
 var require_bnf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/bnf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/bnf.js"(exports2, module2) {
     function bnf(hljs) {
       return {
         name: "Backus\u2013Naur Form",
@@ -18298,9 +18298,9 @@ var require_bnf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/brainfuck.js
+// node_modules/highlight.js/lib/languages/brainfuck.js
 var require_brainfuck = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/brainfuck.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/brainfuck.js"(exports2, module2) {
     function brainfuck(hljs) {
       const LITERAL = {
         className: "literal",
@@ -18350,9 +18350,9 @@ var require_brainfuck = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/c.js
+// node_modules/highlight.js/lib/languages/c.js
 var require_c2 = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/c.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/c.js"(exports2, module2) {
     function c(hljs) {
       const regex = hljs.regex;
       const C_LINE_COMMENT_MODE = hljs.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] });
@@ -18649,9 +18649,9 @@ var require_c2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cal.js
+// node_modules/highlight.js/lib/languages/cal.js
 var require_cal = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cal.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/cal.js"(exports2, module2) {
     function cal(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = [
@@ -18802,9 +18802,9 @@ var require_cal = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/capnproto.js
+// node_modules/highlight.js/lib/languages/capnproto.js
 var require_capnproto = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/capnproto.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/capnproto.js"(exports2, module2) {
     function capnproto(hljs) {
       const KEYWORDS = [
         "struct",
@@ -18897,9 +18897,9 @@ var require_capnproto = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ceylon.js
+// node_modules/highlight.js/lib/languages/ceylon.js
 var require_ceylon = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ceylon.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ceylon.js"(exports2, module2) {
     function ceylon(hljs) {
       const KEYWORDS = [
         "assembly",
@@ -19030,9 +19030,9 @@ var require_ceylon = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/clean.js
+// node_modules/highlight.js/lib/languages/clean.js
 var require_clean = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/clean.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/clean.js"(exports2, module2) {
     function clean(hljs) {
       const KEYWORDS = [
         "if",
@@ -19094,9 +19094,9 @@ var require_clean = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/clojure.js
+// node_modules/highlight.js/lib/languages/clojure.js
 var require_clojure = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/clojure.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/clojure.js"(exports2, module2) {
     function clojure(hljs) {
       const SYMBOLSTART = "a-zA-Z_\\-!.?+*=<>&'";
       const SYMBOL_RE = "[#]?[" + SYMBOLSTART + "][" + SYMBOLSTART + "0-9/;:$#]*";
@@ -19254,9 +19254,9 @@ var require_clojure = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/clojure-repl.js
+// node_modules/highlight.js/lib/languages/clojure-repl.js
 var require_clojure_repl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/clojure-repl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/clojure-repl.js"(exports2, module2) {
     function clojureRepl(hljs) {
       return {
         name: "Clojure REPL",
@@ -19276,9 +19276,9 @@ var require_clojure_repl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cmake.js
+// node_modules/highlight.js/lib/languages/cmake.js
 var require_cmake = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cmake.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/cmake.js"(exports2, module2) {
     function cmake(hljs) {
       return {
         name: "CMake",
@@ -19305,9 +19305,9 @@ var require_cmake = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/coffeescript.js
+// node_modules/highlight.js/lib/languages/coffeescript.js
 var require_coffeescript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/coffeescript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/coffeescript.js"(exports2, module2) {
     var KEYWORDS = [
       "as",
       // for exports
@@ -19660,9 +19660,9 @@ var require_coffeescript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/coq.js
+// node_modules/highlight.js/lib/languages/coq.js
 var require_coq = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/coq.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/coq.js"(exports2, module2) {
     function coq(hljs) {
       const KEYWORDS = [
         "_|0",
@@ -20104,9 +20104,9 @@ var require_coq = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cos.js
+// node_modules/highlight.js/lib/languages/cos.js
 var require_cos = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cos.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/cos.js"(exports2, module2) {
     function cos(hljs) {
       const STRINGS = {
         className: "string",
@@ -20200,9 +20200,9 @@ var require_cos = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cpp.js
+// node_modules/highlight.js/lib/languages/cpp.js
 var require_cpp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/cpp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/cpp.js"(exports2, module2) {
     function cpp(hljs) {
       const regex = hljs.regex;
       const C_LINE_COMMENT_MODE = hljs.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] });
@@ -20748,9 +20748,9 @@ var require_cpp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/crmsh.js
+// node_modules/highlight.js/lib/languages/crmsh.js
 var require_crmsh = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/crmsh.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/crmsh.js"(exports2, module2) {
     function crmsh(hljs) {
       const RESOURCES = "primitive rsc_template";
       const COMMANDS = "group clone ms master location colocation order fencing_topology rsc_ticket acl_target acl_group user role tag xml";
@@ -20839,9 +20839,9 @@ var require_crmsh = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/crystal.js
+// node_modules/highlight.js/lib/languages/crystal.js
 var require_crystal = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/crystal.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/crystal.js"(exports2, module2) {
     function crystal(hljs) {
       const INT_SUFFIX = "(_?[ui](8|16|32|64|128))?";
       const FLOAT_SUFFIX = "(_?f(32|64))?";
@@ -21142,9 +21142,9 @@ var require_crystal = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/csharp.js
+// node_modules/highlight.js/lib/languages/csharp.js
 var require_csharp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/csharp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/csharp.js"(exports2, module2) {
     function csharp(hljs) {
       const BUILT_IN_KEYWORDS = [
         "bool",
@@ -21547,9 +21547,9 @@ var require_csharp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/csp.js
+// node_modules/highlight.js/lib/languages/csp.js
 var require_csp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/csp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/csp.js"(exports2, module2) {
     function csp(hljs) {
       const KEYWORDS = [
         "base-uri",
@@ -21599,9 +21599,9 @@ var require_csp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/css.js
+// node_modules/highlight.js/lib/languages/css.js
 var require_css = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/css.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/css.js"(exports2, module2) {
     var MODES = (hljs) => {
       return {
         IMPORTANT: {
@@ -22541,9 +22541,9 @@ var require_css = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/d.js
+// node_modules/highlight.js/lib/languages/d.js
 var require_d = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/d.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/d.js"(exports2, module2) {
     function d(hljs) {
       const D_KEYWORDS = {
         $pattern: hljs.UNDERSCORE_IDENT_RE,
@@ -22658,9 +22658,9 @@ var require_d = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/markdown.js
+// node_modules/highlight.js/lib/languages/markdown.js
 var require_markdown = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/markdown.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/markdown.js"(exports2, module2) {
     function markdown(hljs) {
       const regex = hljs.regex;
       const INLINE_HTML = {
@@ -22895,9 +22895,9 @@ var require_markdown = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dart.js
+// node_modules/highlight.js/lib/languages/dart.js
 var require_dart = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dart.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dart.js"(exports2, module2) {
     function dart(hljs) {
       const SUBST = {
         className: "subst",
@@ -23154,9 +23154,9 @@ var require_dart = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/delphi.js
+// node_modules/highlight.js/lib/languages/delphi.js
 var require_delphi = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/delphi.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/delphi.js"(exports2, module2) {
     function delphi(hljs) {
       const KEYWORDS = [
         "exports",
@@ -23404,9 +23404,9 @@ var require_delphi = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/diff.js
+// node_modules/highlight.js/lib/languages/diff.js
 var require_diff = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/diff.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/diff.js"(exports2, module2) {
     function diff(hljs) {
       const regex = hljs.regex;
       return {
@@ -23462,9 +23462,9 @@ var require_diff = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/django.js
+// node_modules/highlight.js/lib/languages/django.js
 var require_django = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/django.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/django.js"(exports2, module2) {
     function django(hljs) {
       const FILTER = {
         begin: /\|[A-Za-z]+:?/,
@@ -23513,9 +23513,9 @@ var require_django = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dns.js
+// node_modules/highlight.js/lib/languages/dns.js
 var require_dns = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dns.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dns.js"(exports2, module2) {
     function dns(hljs) {
       const KEYWORDS = [
         "IN",
@@ -23588,9 +23588,9 @@ var require_dns = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dockerfile.js
+// node_modules/highlight.js/lib/languages/dockerfile.js
 var require_dockerfile = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dockerfile.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dockerfile.js"(exports2, module2) {
     function dockerfile(hljs) {
       const KEYWORDS = [
         "from",
@@ -23627,9 +23627,9 @@ var require_dockerfile = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dos.js
+// node_modules/highlight.js/lib/languages/dos.js
 var require_dos = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dos.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dos.js"(exports2, module2) {
     function dos(hljs) {
       const COMMENT = hljs.COMMENT(
         /^\s*@?rem\b/,
@@ -23791,9 +23791,9 @@ var require_dos = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dsconfig.js
+// node_modules/highlight.js/lib/languages/dsconfig.js
 var require_dsconfig = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dsconfig.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dsconfig.js"(exports2, module2) {
     function dsconfig(hljs) {
       const QUOTED_PROPERTY = {
         className: "string",
@@ -23853,9 +23853,9 @@ var require_dsconfig = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dts.js
+// node_modules/highlight.js/lib/languages/dts.js
 var require_dts = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dts.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dts.js"(exports2, module2) {
     function dts(hljs) {
       const STRINGS = {
         className: "string",
@@ -23993,9 +23993,9 @@ var require_dts = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dust.js
+// node_modules/highlight.js/lib/languages/dust.js
 var require_dust = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/dust.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/dust.js"(exports2, module2) {
     function dust(hljs) {
       const EXPRESSION_KEYWORDS = "if eq ne lt lte gt gte select default math sep";
       return {
@@ -24035,9 +24035,9 @@ var require_dust = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ebnf.js
+// node_modules/highlight.js/lib/languages/ebnf.js
 var require_ebnf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ebnf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ebnf.js"(exports2, module2) {
     function ebnf(hljs) {
       const commentMode = hljs.COMMENT(/\(\*/, /\*\)/);
       const nonTerminalMode = {
@@ -24082,9 +24082,9 @@ var require_ebnf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/elixir.js
+// node_modules/highlight.js/lib/languages/elixir.js
 var require_elixir = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/elixir.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/elixir.js"(exports2, module2) {
     function elixir(hljs) {
       const regex = hljs.regex;
       const ELIXIR_IDENT_RE = "[a-zA-Z_][a-zA-Z0-9_.]*(!|\\?)?";
@@ -24359,9 +24359,9 @@ var require_elixir = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/elm.js
+// node_modules/highlight.js/lib/languages/elm.js
 var require_elm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/elm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/elm.js"(exports2, module2) {
     function elm(hljs) {
       const COMMENT = { variants: [
         hljs.COMMENT("--", "$"),
@@ -24492,9 +24492,9 @@ var require_elm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ruby.js
+// node_modules/highlight.js/lib/languages/ruby.js
 var require_ruby = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ruby.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ruby.js"(exports2, module2) {
     function ruby(hljs) {
       const regex = hljs.regex;
       const RUBY_METHOD_RE = "([a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?)";
@@ -24910,9 +24910,9 @@ var require_ruby = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/erb.js
+// node_modules/highlight.js/lib/languages/erb.js
 var require_erb = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/erb.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/erb.js"(exports2, module2) {
     function erb(hljs) {
       return {
         name: "ERB",
@@ -24933,9 +24933,9 @@ var require_erb = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/erlang-repl.js
+// node_modules/highlight.js/lib/languages/erlang-repl.js
 var require_erlang_repl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/erlang-repl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/erlang-repl.js"(exports2, module2) {
     function erlangRepl(hljs) {
       const regex = hljs.regex;
       return {
@@ -24983,9 +24983,9 @@ var require_erlang_repl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/erlang.js
+// node_modules/highlight.js/lib/languages/erlang.js
 var require_erlang = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/erlang.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/erlang.js"(exports2, module2) {
     function erlang(hljs) {
       const BASIC_ATOM_RE = "[a-z'][a-zA-Z0-9_']*";
       const FUNCTION_NAME_RE = "(" + BASIC_ATOM_RE + ":" + BASIC_ATOM_RE + "|" + BASIC_ATOM_RE + ")";
@@ -25205,9 +25205,9 @@ var require_erlang = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/excel.js
+// node_modules/highlight.js/lib/languages/excel.js
 var require_excel = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/excel.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/excel.js"(exports2, module2) {
     function excel(hljs) {
       const BUILT_INS = [
         "ABS",
@@ -25784,9 +25784,9 @@ var require_excel = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/fix.js
+// node_modules/highlight.js/lib/languages/fix.js
 var require_fix = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/fix.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/fix.js"(exports2, module2) {
     function fix(hljs) {
       return {
         name: "FIX",
@@ -25822,9 +25822,9 @@ var require_fix = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/flix.js
+// node_modules/highlight.js/lib/languages/flix.js
 var require_flix = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/flix.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/flix.js"(exports2, module2) {
     function flix(hljs) {
       const CHAR = {
         className: "string",
@@ -25894,9 +25894,9 @@ var require_flix = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/fortran.js
+// node_modules/highlight.js/lib/languages/fortran.js
 var require_fortran = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/fortran.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/fortran.js"(exports2, module2) {
     function fortran(hljs) {
       const regex = hljs.regex;
       const PARAMS = {
@@ -26459,9 +26459,9 @@ var require_fortran = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/fsharp.js
+// node_modules/highlight.js/lib/languages/fsharp.js
 var require_fsharp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/fsharp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/fsharp.js"(exports2, module2) {
     function escape(value) {
       return new RegExp(value.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "m");
     }
@@ -27030,9 +27030,9 @@ var require_fsharp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gams.js
+// node_modules/highlight.js/lib/languages/gams.js
 var require_gams = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gams.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/gams.js"(exports2, module2) {
     function gams(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = {
@@ -27188,9 +27188,9 @@ var require_gams = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gauss.js
+// node_modules/highlight.js/lib/languages/gauss.js
 var require_gauss = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gauss.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/gauss.js"(exports2, module2) {
     function gauss(hljs) {
       const KEYWORDS = {
         keyword: "bool break call callexe checkinterrupt clear clearg closeall cls comlog compile continue create debug declare delete disable dlibrary dllcall do dos ed edit else elseif enable end endfor endif endp endo errorlog errorlogat expr external fn for format goto gosub graph if keyword let lib library line load loadarray loadexe loadf loadk loadm loadp loads loadx local locate loopnextindex lprint lpwidth lshow matrix msym ndpclex new open output outwidth plot plotsym pop prcsn print printdos proc push retp return rndcon rndmod rndmult rndseed run save saveall screen scroll setarray show sparse stop string struct system trace trap threadfor threadendfor threadbegin threadjoin threadstat threadend until use while winprint ne ge le gt lt and xor or not eq eqv",
@@ -27380,9 +27380,9 @@ var require_gauss = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gcode.js
+// node_modules/highlight.js/lib/languages/gcode.js
 var require_gcode = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gcode.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/gcode.js"(exports2, module2) {
     function gcode(hljs) {
       const regex = hljs.regex;
       const GCODE_KEYWORDS = {
@@ -27547,9 +27547,9 @@ var require_gcode = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gherkin.js
+// node_modules/highlight.js/lib/languages/gherkin.js
 var require_gherkin = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gherkin.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/gherkin.js"(exports2, module2) {
     function gherkin(hljs) {
       return {
         name: "Gherkin",
@@ -27594,9 +27594,9 @@ var require_gherkin = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/glsl.js
+// node_modules/highlight.js/lib/languages/glsl.js
 var require_glsl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/glsl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/glsl.js"(exports2, module2) {
     function glsl(hljs) {
       return {
         name: "GLSL",
@@ -27629,9 +27629,9 @@ var require_glsl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gml.js
+// node_modules/highlight.js/lib/languages/gml.js
 var require_gml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/gml.js"(exports2, module2) {
     function gml(hljs) {
       const KEYWORDS = [
         "#endregion",
@@ -30757,9 +30757,9 @@ var require_gml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/go.js
+// node_modules/highlight.js/lib/languages/go.js
 var require_go = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/go.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/go.js"(exports2, module2) {
     function go(hljs) {
       const LITERALS = [
         "true",
@@ -30916,9 +30916,9 @@ var require_go = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/golo.js
+// node_modules/highlight.js/lib/languages/golo.js
 var require_golo = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/golo.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/golo.js"(exports2, module2) {
     function golo(hljs) {
       const KEYWORDS = [
         "println",
@@ -30993,9 +30993,9 @@ var require_golo = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gradle.js
+// node_modules/highlight.js/lib/languages/gradle.js
 var require_gradle = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/gradle.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/gradle.js"(exports2, module2) {
     function gradle(hljs) {
       const KEYWORDS = [
         "task",
@@ -31179,9 +31179,9 @@ var require_gradle = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/graphql.js
+// node_modules/highlight.js/lib/languages/graphql.js
 var require_graphql = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/graphql.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/graphql.js"(exports2, module2) {
     function graphql(hljs) {
       const regex = hljs.regex;
       const GQL_NAME = /[_A-Za-z][_0-9A-Za-z]*/;
@@ -31254,9 +31254,9 @@ var require_graphql = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/groovy.js
+// node_modules/highlight.js/lib/languages/groovy.js
 var require_groovy = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/groovy.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/groovy.js"(exports2, module2) {
     function variants(variants2, obj2 = {}) {
       obj2.variants = variants2;
       return obj2;
@@ -31439,9 +31439,9 @@ var require_groovy = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/haml.js
+// node_modules/highlight.js/lib/languages/haml.js
 var require_haml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/haml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/haml.js"(exports2, module2) {
     function haml(hljs) {
       return {
         name: "HAML",
@@ -31548,9 +31548,9 @@ var require_haml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/handlebars.js
+// node_modules/highlight.js/lib/languages/handlebars.js
 var require_handlebars = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/handlebars.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/handlebars.js"(exports2, module2) {
     function handlebars(hljs) {
       const regex = hljs.regex;
       const BUILT_INS = {
@@ -31783,9 +31783,9 @@ var require_handlebars = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/haskell.js
+// node_modules/highlight.js/lib/languages/haskell.js
 var require_haskell = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/haskell.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/haskell.js"(exports2, module2) {
     function haskell(hljs) {
       const decimalDigits = "([0-9]_*)+";
       const hexDigits = "([0-9a-fA-F]_*)+";
@@ -31978,9 +31978,9 @@ var require_haskell = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/haxe.js
+// node_modules/highlight.js/lib/languages/haxe.js
 var require_haxe = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/haxe.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/haxe.js"(exports2, module2) {
     function haxe(hljs) {
       const IDENT_RE = "[a-zA-Z_$][a-zA-Z0-9_$]*";
       const HAXE_NUMBER_RE = /(-?)(\b0[xX][a-fA-F0-9_]+|(\b\d+(\.[\d_]*)?|\.[\d_]+)(([eE][-+]?\d+)|i32|u32|i64|f64)?)/;
@@ -32143,9 +32143,9 @@ var require_haxe = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/hsp.js
+// node_modules/highlight.js/lib/languages/hsp.js
 var require_hsp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/hsp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/hsp.js"(exports2, module2) {
     function hsp(hljs) {
       return {
         name: "HSP",
@@ -32195,9 +32195,9 @@ var require_hsp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/http.js
+// node_modules/highlight.js/lib/languages/http.js
 var require_http = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/http.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/http.js"(exports2, module2) {
     function http(hljs) {
       const regex = hljs.regex;
       const VERSION = "HTTP/([32]|1\\.[01])";
@@ -32288,9 +32288,9 @@ var require_http = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/hy.js
+// node_modules/highlight.js/lib/languages/hy.js
 var require_hy = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/hy.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/hy.js"(exports2, module2) {
     function hy(hljs) {
       const SYMBOLSTART = "a-zA-Z_\\-!.?+*=<>&#'";
       const SYMBOL_RE = "[" + SYMBOLSTART + "][" + SYMBOLSTART + "0-9/;:]*";
@@ -32391,9 +32391,9 @@ var require_hy = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/inform7.js
+// node_modules/highlight.js/lib/languages/inform7.js
 var require_inform7 = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/inform7.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/inform7.js"(exports2, module2) {
     function inform7(hljs) {
       const START_BRACKET = "\\[";
       const END_BRACKET = "\\]";
@@ -32453,9 +32453,9 @@ var require_inform7 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ini.js
+// node_modules/highlight.js/lib/languages/ini.js
 var require_ini = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ini.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ini.js"(exports2, module2) {
     function ini(hljs) {
       const regex = hljs.regex;
       const NUMBERS = {
@@ -32574,9 +32574,9 @@ var require_ini = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/irpf90.js
+// node_modules/highlight.js/lib/languages/irpf90.js
 var require_irpf90 = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/irpf90.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/irpf90.js"(exports2, module2) {
     function irpf90(hljs) {
       const regex = hljs.regex;
       const PARAMS = {
@@ -32633,9 +32633,9 @@ var require_irpf90 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/isbl.js
+// node_modules/highlight.js/lib/languages/isbl.js
 var require_isbl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/isbl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/isbl.js"(exports2, module2) {
     function isbl(hljs) {
       const UNDERSCORE_IDENT_RE = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_!][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]*";
       const FUNCTION_NAME_IDENT_RE = "[A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_][A-Za-z\u0410-\u042F\u0430-\u044F\u0451\u0401_0-9]*";
@@ -32895,9 +32895,9 @@ var require_isbl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/java.js
+// node_modules/highlight.js/lib/languages/java.js
 var require_java = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/java.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/java.js"(exports2, module2) {
     var decimalDigits = "[0-9](_*[0-9])*";
     var frac = `\\.(${decimalDigits})`;
     var hexDigits = "[0-9a-fA-F](_*[0-9a-fA-F])*";
@@ -33154,9 +33154,9 @@ var require_java = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/javascript.js
+// node_modules/highlight.js/lib/languages/javascript.js
 var require_javascript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/javascript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/javascript.js"(exports2, module2) {
     var IDENT_RE = "[A-Za-z$_][0-9A-Za-z$_]*";
     var KEYWORDS = [
       "as",
@@ -33860,9 +33860,9 @@ var require_javascript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/jboss-cli.js
+// node_modules/highlight.js/lib/languages/jboss-cli.js
 var require_jboss_cli = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/jboss-cli.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/jboss-cli.js"(exports2, module2) {
     function jbossCli(hljs) {
       const PARAM = {
         begin: /[\w-]+ *=/,
@@ -33918,9 +33918,9 @@ var require_jboss_cli = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/json.js
+// node_modules/highlight.js/lib/languages/json.js
 var require_json = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/json.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/json.js"(exports2, module2) {
     function json(hljs) {
       const ATTRIBUTE = {
         className: "attr",
@@ -33963,9 +33963,9 @@ var require_json = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/julia.js
+// node_modules/highlight.js/lib/languages/julia.js
 var require_julia = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/julia.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/julia.js"(exports2, module2) {
     function julia(hljs) {
       const VARIABLE_NAME_RE = "[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*";
       const KEYWORD_LIST = [
@@ -34337,9 +34337,9 @@ var require_julia = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/julia-repl.js
+// node_modules/highlight.js/lib/languages/julia-repl.js
 var require_julia_repl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/julia-repl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/julia-repl.js"(exports2, module2) {
     function juliaRepl(hljs) {
       return {
         name: "Julia REPL",
@@ -34368,9 +34368,9 @@ var require_julia_repl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/kotlin.js
+// node_modules/highlight.js/lib/languages/kotlin.js
 var require_kotlin = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/kotlin.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/kotlin.js"(exports2, module2) {
     var decimalDigits = "[0-9](_*[0-9])*";
     var frac = `\\.(${decimalDigits})`;
     var hexDigits = "[0-9a-fA-F](_*[0-9a-fA-F])*";
@@ -34628,9 +34628,9 @@ var require_kotlin = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lasso.js
+// node_modules/highlight.js/lib/languages/lasso.js
 var require_lasso = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lasso.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/lasso.js"(exports2, module2) {
     function lasso(hljs) {
       const LASSO_IDENT_RE = "[a-zA-Z_][\\w.]*";
       const LASSO_ANGLE_RE = "<\\?(lasso(script)?|=)";
@@ -34778,9 +34778,9 @@ var require_lasso = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/latex.js
+// node_modules/highlight.js/lib/languages/latex.js
 var require_latex = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/latex.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/latex.js"(exports2, module2) {
     function latex(hljs) {
       const regex = hljs.regex;
       const KNOWN_CONTROL_WORDS = regex.either(...[
@@ -35054,9 +35054,9 @@ var require_latex = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ldif.js
+// node_modules/highlight.js/lib/languages/ldif.js
 var require_ldif = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ldif.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ldif.js"(exports2, module2) {
     function ldif(hljs) {
       return {
         name: "LDIF",
@@ -35082,9 +35082,9 @@ var require_ldif = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/leaf.js
+// node_modules/highlight.js/lib/languages/leaf.js
 var require_leaf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/leaf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/leaf.js"(exports2, module2) {
     function leaf(hljs) {
       const IDENT = /([A-Za-z_][A-Za-z_0-9]*)?/;
       const LITERALS = [
@@ -35177,9 +35177,9 @@ var require_leaf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/less.js
+// node_modules/highlight.js/lib/languages/less.js
 var require_less = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/less.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/less.js"(exports2, module2) {
     var MODES = (hljs) => {
       return {
         IMPORTANT: {
@@ -36200,9 +36200,9 @@ var require_less = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lisp.js
+// node_modules/highlight.js/lib/languages/lisp.js
 var require_lisp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lisp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/lisp.js"(exports2, module2) {
     function lisp(hljs) {
       const LISP_IDENT_RE = "[a-zA-Z_\\-+\\*\\/<=>&#][a-zA-Z0-9_\\-+*\\/<=>&#!]*";
       const MEC_RE = "\\|[^]*?\\|";
@@ -36337,9 +36337,9 @@ var require_lisp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/livecodeserver.js
+// node_modules/highlight.js/lib/languages/livecodeserver.js
 var require_livecodeserver = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/livecodeserver.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/livecodeserver.js"(exports2, module2) {
     function livecodeserver(hljs) {
       const VARIABLE = {
         className: "variable",
@@ -36436,9 +36436,9 @@ var require_livecodeserver = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/livescript.js
+// node_modules/highlight.js/lib/languages/livescript.js
 var require_livescript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/livescript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/livescript.js"(exports2, module2) {
     var KEYWORDS = [
       "as",
       // for exports
@@ -36802,9 +36802,9 @@ var require_livescript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/llvm.js
+// node_modules/highlight.js/lib/languages/llvm.js
 var require_llvm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/llvm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/llvm.js"(exports2, module2) {
     function llvm(hljs) {
       const regex = hljs.regex;
       const IDENT_RE = /([-a-zA-Z$._][\w$.-]*)/;
@@ -36896,9 +36896,9 @@ var require_llvm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lsl.js
+// node_modules/highlight.js/lib/languages/lsl.js
 var require_lsl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lsl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/lsl.js"(exports2, module2) {
     function lsl(hljs) {
       const LSL_STRING_ESCAPE_CHARS = {
         className: "subst",
@@ -36964,9 +36964,9 @@ var require_lsl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lua.js
+// node_modules/highlight.js/lib/languages/lua.js
 var require_lua = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/lua.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/lua.js"(exports2, module2) {
     function lua(hljs) {
       const OPENING_LONG_BRACKET = "\\[=*\\[";
       const CLOSING_LONG_BRACKET = "\\]=*\\]";
@@ -37030,9 +37030,9 @@ var require_lua = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/makefile.js
+// node_modules/highlight.js/lib/languages/makefile.js
 var require_makefile = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/makefile.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/makefile.js"(exports2, module2) {
     function makefile(hljs) {
       const VARIABLE = {
         className: "variable",
@@ -37106,9 +37106,9 @@ var require_makefile = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mathematica.js
+// node_modules/highlight.js/lib/languages/mathematica.js
 var require_mathematica = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mathematica.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/mathematica.js"(exports2, module2) {
     var SYSTEM_SYMBOLS = [
       "AASTriangle",
       "AbelianGroup",
@@ -44443,9 +44443,9 @@ var require_mathematica = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/matlab.js
+// node_modules/highlight.js/lib/languages/matlab.js
 var require_matlab = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/matlab.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/matlab.js"(exports2, module2) {
     function matlab(hljs) {
       const TRANSPOSE_RE = "('|\\.')+";
       const TRANSPOSE = {
@@ -44524,9 +44524,9 @@ var require_matlab = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/maxima.js
+// node_modules/highlight.js/lib/languages/maxima.js
 var require_maxima = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/maxima.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/maxima.js"(exports2, module2) {
     function maxima(hljs) {
       const KEYWORDS = "if then else elseif for thru do while unless step in and or not";
       const LITERALS = "true false unknown inf minf ind und %e %i %pi %phi %gamma";
@@ -44583,9 +44583,9 @@ var require_maxima = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mel.js
+// node_modules/highlight.js/lib/languages/mel.js
 var require_mel = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mel.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/mel.js"(exports2, module2) {
     function mel(hljs) {
       return {
         name: "MEL",
@@ -44614,9 +44614,9 @@ var require_mel = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mercury.js
+// node_modules/highlight.js/lib/languages/mercury.js
 var require_mercury = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mercury.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/mercury.js"(exports2, module2) {
     function mercury(hljs) {
       const KEYWORDS = {
         keyword: "module use_module import_module include_module end_module initialise mutable initialize finalize finalise interface implementation pred mode func type inst solver any_pred any_func is semidet det nondet multi erroneous failure cc_nondet cc_multi typeclass instance where pragma promise external trace atomic or_else require_complete_switch require_det require_semidet require_multi require_nondet require_cc_multi require_cc_nondet require_erroneous require_failure",
@@ -44697,9 +44697,9 @@ var require_mercury = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mipsasm.js
+// node_modules/highlight.js/lib/languages/mipsasm.js
 var require_mipsasm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mipsasm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/mipsasm.js"(exports2, module2) {
     function mipsasm(hljs) {
       return {
         name: "MIPS Assembly",
@@ -44778,9 +44778,9 @@ var require_mipsasm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mizar.js
+// node_modules/highlight.js/lib/languages/mizar.js
 var require_mizar = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mizar.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/mizar.js"(exports2, module2) {
     function mizar(hljs) {
       return {
         name: "Mizar",
@@ -44792,9 +44792,9 @@ var require_mizar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/perl.js
+// node_modules/highlight.js/lib/languages/perl.js
 var require_perl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/perl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/perl.js"(exports2, module2) {
     function perl(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = [
@@ -45282,9 +45282,9 @@ var require_perl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mojolicious.js
+// node_modules/highlight.js/lib/languages/mojolicious.js
 var require_mojolicious = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/mojolicious.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/mojolicious.js"(exports2, module2) {
     function mojolicious(hljs) {
       return {
         name: "Mojolicious",
@@ -45315,9 +45315,9 @@ var require_mojolicious = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/monkey.js
+// node_modules/highlight.js/lib/languages/monkey.js
 var require_monkey = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/monkey.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/monkey.js"(exports2, module2) {
     function monkey(hljs) {
       const NUMBER = {
         className: "number",
@@ -45495,9 +45495,9 @@ var require_monkey = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/moonscript.js
+// node_modules/highlight.js/lib/languages/moonscript.js
 var require_moonscript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/moonscript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/moonscript.js"(exports2, module2) {
     function moonscript(hljs) {
       const KEYWORDS = {
         keyword: (
@@ -45635,9 +45635,9 @@ var require_moonscript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/n1ql.js
+// node_modules/highlight.js/lib/languages/n1ql.js
 var require_n1ql = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/n1ql.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/n1ql.js"(exports2, module2) {
     function n1ql(hljs) {
       const KEYWORDS = [
         "all",
@@ -45991,9 +45991,9 @@ var require_n1ql = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nestedtext.js
+// node_modules/highlight.js/lib/languages/nestedtext.js
 var require_nestedtext = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nestedtext.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/nestedtext.js"(exports2, module2) {
     function nestedtext(hljs) {
       const NESTED = {
         match: [
@@ -46072,9 +46072,9 @@ var require_nestedtext = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nginx.js
+// node_modules/highlight.js/lib/languages/nginx.js
 var require_nginx = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nginx.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/nginx.js"(exports2, module2) {
     function nginx(hljs) {
       const regex = hljs.regex;
       const VAR = {
@@ -46220,9 +46220,9 @@ var require_nginx = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nim.js
+// node_modules/highlight.js/lib/languages/nim.js
 var require_nim = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nim.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/nim.js"(exports2, module2) {
     function nim(hljs) {
       const TYPES = [
         "int",
@@ -46406,9 +46406,9 @@ var require_nim = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nix.js
+// node_modules/highlight.js/lib/languages/nix.js
 var require_nix = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nix.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/nix.js"(exports2, module2) {
     function nix(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = {
@@ -46758,9 +46758,9 @@ var require_nix = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/node-repl.js
+// node_modules/highlight.js/lib/languages/node-repl.js
 var require_node_repl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/node-repl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/node-repl.js"(exports2, module2) {
     function nodeRepl(hljs) {
       return {
         name: "Node REPL",
@@ -46788,9 +46788,9 @@ var require_node_repl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nsis.js
+// node_modules/highlight.js/lib/languages/nsis.js
 var require_nsis = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/nsis.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/nsis.js"(exports2, module2) {
     function nsis(hljs) {
       const regex = hljs.regex;
       const LANGUAGE_CONSTANTS = [
@@ -47323,9 +47323,9 @@ var require_nsis = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/objectivec.js
+// node_modules/highlight.js/lib/languages/objectivec.js
 var require_objectivec = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/objectivec.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/objectivec.js"(exports2, module2) {
     function objectivec(hljs) {
       const API_CLASS = {
         className: "built_in",
@@ -47571,9 +47571,9 @@ var require_objectivec = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ocaml.js
+// node_modules/highlight.js/lib/languages/ocaml.js
 var require_ocaml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ocaml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ocaml.js"(exports2, module2) {
     function ocaml(hljs) {
       return {
         name: "OCaml",
@@ -47642,9 +47642,9 @@ var require_ocaml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/openscad.js
+// node_modules/highlight.js/lib/languages/openscad.js
 var require_openscad = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/openscad.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/openscad.js"(exports2, module2) {
     function openscad(hljs) {
       const SPECIAL_VARS = {
         className: "keyword",
@@ -47716,9 +47716,9 @@ var require_openscad = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/oxygene.js
+// node_modules/highlight.js/lib/languages/oxygene.js
 var require_oxygene = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/oxygene.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/oxygene.js"(exports2, module2) {
     function oxygene(hljs) {
       const OXYGENE_KEYWORDS = {
         $pattern: /\.?\w+/,
@@ -47790,9 +47790,9 @@ var require_oxygene = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/parser3.js
+// node_modules/highlight.js/lib/languages/parser3.js
 var require_parser3 = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/parser3.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/parser3.js"(exports2, module2) {
     function parser3(hljs) {
       const CURLY_SUBCOMMENT = hljs.COMMENT(
         /\{/,
@@ -47842,9 +47842,9 @@ var require_parser3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/pf.js
+// node_modules/highlight.js/lib/languages/pf.js
 var require_pf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/pf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/pf.js"(exports2, module2) {
     function pf(hljs) {
       const MACRO = {
         className: "variable",
@@ -47883,9 +47883,9 @@ var require_pf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/pgsql.js
+// node_modules/highlight.js/lib/languages/pgsql.js
 var require_pgsql = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/pgsql.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/pgsql.js"(exports2, module2) {
     function pgsql(hljs) {
       const COMMENT_MODE = hljs.COMMENT("--", "$");
       const UNQUOTED_IDENT = "[a-zA-Z_][a-zA-Z_0-9$]*";
@@ -48168,9 +48168,9 @@ var require_pgsql = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/php.js
+// node_modules/highlight.js/lib/languages/php.js
 var require_php = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/php.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/php.js"(exports2, module2) {
     function php(hljs) {
       const regex = hljs.regex;
       const NOT_PERL_ETC = /(?![A-Za-z0-9])(?![$])/;
@@ -48774,9 +48774,9 @@ var require_php = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/php-template.js
+// node_modules/highlight.js/lib/languages/php-template.js
 var require_php_template = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/php-template.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/php-template.js"(exports2, module2) {
     function phpTemplate(hljs) {
       return {
         name: "PHP template",
@@ -48825,9 +48825,9 @@ var require_php_template = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/plaintext.js
+// node_modules/highlight.js/lib/languages/plaintext.js
 var require_plaintext = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/plaintext.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/plaintext.js"(exports2, module2) {
     function plaintext(hljs) {
       return {
         name: "Plain text",
@@ -48842,9 +48842,9 @@ var require_plaintext = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/pony.js
+// node_modules/highlight.js/lib/languages/pony.js
 var require_pony = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/pony.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/pony.js"(exports2, module2) {
     function pony(hljs) {
       const KEYWORDS = {
         keyword: "actor addressof and as be break class compile_error compile_intrinsic consume continue delegate digestof do else elseif embed end error for fun if ifdef in interface is isnt lambda let match new not object or primitive recover repeat return struct then trait try type until use var where while with xor",
@@ -48903,9 +48903,9 @@ var require_pony = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/powershell.js
+// node_modules/highlight.js/lib/languages/powershell.js
 var require_powershell = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/powershell.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/powershell.js"(exports2, module2) {
     function powershell(hljs) {
       const TYPES = [
         "string",
@@ -49164,9 +49164,9 @@ var require_powershell = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/processing.js
+// node_modules/highlight.js/lib/languages/processing.js
 var require_processing = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/processing.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/processing.js"(exports2, module2) {
     function processing(hljs) {
       const regex = hljs.regex;
       const BUILT_INS = [
@@ -49595,9 +49595,9 @@ var require_processing = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/profile.js
+// node_modules/highlight.js/lib/languages/profile.js
 var require_profile = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/profile.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/profile.js"(exports2, module2) {
     function profile(hljs) {
       return {
         name: "Python profiler",
@@ -49637,9 +49637,9 @@ var require_profile = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/prolog.js
+// node_modules/highlight.js/lib/languages/prolog.js
 var require_prolog = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/prolog.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/prolog.js"(exports2, module2) {
     function prolog(hljs) {
       const ATOM = {
         begin: /[a-z][A-Za-z0-9_]*/,
@@ -49719,9 +49719,9 @@ var require_prolog = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/properties.js
+// node_modules/highlight.js/lib/languages/properties.js
 var require_properties = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/properties.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/properties.js"(exports2, module2) {
     function properties(hljs) {
       const WS0 = "[ \\t\\f]*";
       const WS1 = "[ \\t\\f]+";
@@ -49780,9 +49780,9 @@ var require_properties = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/protobuf.js
+// node_modules/highlight.js/lib/languages/protobuf.js
 var require_protobuf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/protobuf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/protobuf.js"(exports2, module2) {
     function protobuf(hljs) {
       const KEYWORDS = [
         "package",
@@ -49857,9 +49857,9 @@ var require_protobuf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/puppet.js
+// node_modules/highlight.js/lib/languages/puppet.js
 var require_puppet = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/puppet.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/puppet.js"(exports2, module2) {
     function puppet(hljs) {
       const PUPPET_KEYWORDS = {
         keyword: (
@@ -49973,9 +49973,9 @@ var require_puppet = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/purebasic.js
+// node_modules/highlight.js/lib/languages/purebasic.js
 var require_purebasic = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/purebasic.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/purebasic.js"(exports2, module2) {
     function purebasic(hljs) {
       const STRINGS = {
         // PB IDE color: #0080FF (Azure Radiance)
@@ -50037,9 +50037,9 @@ var require_purebasic = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/python.js
+// node_modules/highlight.js/lib/languages/python.js
 var require_python = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/python.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/python.js"(exports2, module2) {
     function python(hljs) {
       const regex = hljs.regex;
       const IDENT_RE = /[\p{XID_Start}_]\p{XID_Continue}*/u;
@@ -50457,9 +50457,9 @@ var require_python = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/python-repl.js
+// node_modules/highlight.js/lib/languages/python-repl.js
 var require_python_repl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/python-repl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/python-repl.js"(exports2, module2) {
     function pythonRepl(hljs) {
       return {
         aliases: ["pycon"],
@@ -50487,9 +50487,9 @@ var require_python_repl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/q.js
+// node_modules/highlight.js/lib/languages/q.js
 var require_q = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/q.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/q.js"(exports2, module2) {
     function q(hljs) {
       const KEYWORDS = {
         $pattern: /(`?)[A-Za-z0-9_]+\b/,
@@ -50516,9 +50516,9 @@ var require_q = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/qml.js
+// node_modules/highlight.js/lib/languages/qml.js
 var require_qml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/qml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/qml.js"(exports2, module2) {
     function qml(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = {
@@ -50669,9 +50669,9 @@ var require_qml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/r.js
+// node_modules/highlight.js/lib/languages/r.js
 var require_r = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/r.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/r.js"(exports2, module2) {
     function r(hljs) {
       const regex = hljs.regex;
       const IDENT_RE = /(?:(?:[a-zA-Z]|\.[._a-zA-Z])[._a-zA-Z0-9]*)|\.(?!\d)/;
@@ -50884,9 +50884,9 @@ var require_r = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/reasonml.js
+// node_modules/highlight.js/lib/languages/reasonml.js
 var require_reasonml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/reasonml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/reasonml.js"(exports2, module2) {
     function reasonml(hljs) {
       const BUILT_IN_TYPES = [
         "array",
@@ -51028,9 +51028,9 @@ var require_reasonml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/rib.js
+// node_modules/highlight.js/lib/languages/rib.js
 var require_rib = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/rib.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/rib.js"(exports2, module2) {
     function rib(hljs) {
       return {
         name: "RenderMan RIB",
@@ -51048,9 +51048,9 @@ var require_rib = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/roboconf.js
+// node_modules/highlight.js/lib/languages/roboconf.js
 var require_roboconf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/roboconf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/roboconf.js"(exports2, module2) {
     function roboconf(hljs) {
       const IDENTIFIER = "[a-zA-Z-_][^\\n{]+\\{";
       const PROPERTY = {
@@ -51122,9 +51122,9 @@ var require_roboconf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/routeros.js
+// node_modules/highlight.js/lib/languages/routeros.js
 var require_routeros = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/routeros.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/routeros.js"(exports2, module2) {
     function routeros(hljs) {
       const STATEMENTS = "foreach do while for if from to step else on-error and or not in";
       const GLOBAL_COMMANDS = "global local beep delay put len typeof pick log time set find environment terminal error execute parse resolve toarray tobool toid toip toip6 tonum tostr totime";
@@ -51273,9 +51273,9 @@ var require_routeros = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/rsl.js
+// node_modules/highlight.js/lib/languages/rsl.js
 var require_rsl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/rsl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/rsl.js"(exports2, module2) {
     function rsl(hljs) {
       const BUILT_INS = [
         "abs",
@@ -51415,9 +51415,9 @@ var require_rsl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ruleslanguage.js
+// node_modules/highlight.js/lib/languages/ruleslanguage.js
 var require_ruleslanguage = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/ruleslanguage.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/ruleslanguage.js"(exports2, module2) {
     function ruleslanguage(hljs) {
       return {
         name: "Oracle Rules Language",
@@ -51449,9 +51449,9 @@ var require_ruleslanguage = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/rust.js
+// node_modules/highlight.js/lib/languages/rust.js
 var require_rust = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/rust.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/rust.js"(exports2, module2) {
     function rust(hljs) {
       const regex = hljs.regex;
       const RAW_IDENTIFIER = /(r#)?/;
@@ -51767,9 +51767,9 @@ var require_rust = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sas.js
+// node_modules/highlight.js/lib/languages/sas.js
 var require_sas = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sas.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/sas.js"(exports2, module2) {
     function sas(hljs) {
       const regex = hljs.regex;
       const SAS_KEYWORDS = [
@@ -52315,9 +52315,9 @@ var require_sas = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scala.js
+// node_modules/highlight.js/lib/languages/scala.js
 var require_scala = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scala.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/scala.js"(exports2, module2) {
     function scala(hljs) {
       const regex = hljs.regex;
       const ANNOTATION = {
@@ -52511,9 +52511,9 @@ var require_scala = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scheme.js
+// node_modules/highlight.js/lib/languages/scheme.js
 var require_scheme = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scheme.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/scheme.js"(exports2, module2) {
     function scheme(hljs) {
       const SCHEME_IDENT_RE = "[^\\(\\)\\[\\]\\{\\}\",'`;#|\\\\\\s]+";
       const SCHEME_SIMPLE_NUMBER_RE = "(-|\\+)?\\d+([./]\\d+)?";
@@ -52655,9 +52655,9 @@ var require_scheme = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scilab.js
+// node_modules/highlight.js/lib/languages/scilab.js
 var require_scilab = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scilab.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/scilab.js"(exports2, module2) {
     function scilab(hljs) {
       const COMMON_CONTAINS = [
         hljs.C_NUMBER_MODE,
@@ -52718,9 +52718,9 @@ var require_scilab = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scss.js
+// node_modules/highlight.js/lib/languages/scss.js
 var require_scss = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/scss.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/scss.js"(exports2, module2) {
     var MODES = (hljs) => {
       return {
         IMPORTANT: {
@@ -53645,9 +53645,9 @@ var require_scss = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/shell.js
+// node_modules/highlight.js/lib/languages/shell.js
 var require_shell = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/shell.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/shell.js"(exports2, module2) {
     function shell(hljs) {
       return {
         name: "Shell Session",
@@ -53674,9 +53674,9 @@ var require_shell = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/smali.js
+// node_modules/highlight.js/lib/languages/smali.js
 var require_smali = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/smali.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/smali.js"(exports2, module2) {
     function smali(hljs) {
       const smali_instr_low_prio = [
         "add",
@@ -53797,9 +53797,9 @@ var require_smali = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/smalltalk.js
+// node_modules/highlight.js/lib/languages/smalltalk.js
 var require_smalltalk = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/smalltalk.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/smalltalk.js"(exports2, module2) {
     function smalltalk(hljs) {
       const VAR_IDENT_RE = "[a-z][a-zA-Z0-9_]*";
       const CHAR = {
@@ -53863,9 +53863,9 @@ var require_smalltalk = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sml.js
+// node_modules/highlight.js/lib/languages/sml.js
 var require_sml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/sml.js"(exports2, module2) {
     function sml(hljs) {
       return {
         name: "SML (Standard ML)",
@@ -53936,9 +53936,9 @@ var require_sml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sqf.js
+// node_modules/highlight.js/lib/languages/sqf.js
 var require_sqf = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sqf.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/sqf.js"(exports2, module2) {
     function sqf(hljs) {
       const VARIABLE = {
         className: "variable",
@@ -56551,9 +56551,9 @@ var require_sqf = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sql.js
+// node_modules/highlight.js/lib/languages/sql.js
 var require_sql = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/sql.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/sql.js"(exports2, module2) {
     function sql(hljs) {
       const regex = hljs.regex;
       const COMMENT_MODE = hljs.COMMENT("--", "$");
@@ -57199,9 +57199,9 @@ var require_sql = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/stan.js
+// node_modules/highlight.js/lib/languages/stan.js
 var require_stan = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/stan.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/stan.js"(exports2, module2) {
     function stan(hljs) {
       const regex = hljs.regex;
       const BLOCKS = [
@@ -57699,9 +57699,9 @@ var require_stan = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/stata.js
+// node_modules/highlight.js/lib/languages/stata.js
 var require_stata = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/stata.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/stata.js"(exports2, module2) {
     function stata(hljs) {
       return {
         name: "Stata",
@@ -57742,9 +57742,9 @@ var require_stata = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/step21.js
+// node_modules/highlight.js/lib/languages/step21.js
 var require_step21 = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/step21.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/step21.js"(exports2, module2) {
     function step21(hljs) {
       const STEP21_IDENT_RE = "[A-Z_][A-Z0-9_.]*";
       const STEP21_KEYWORDS = {
@@ -57806,9 +57806,9 @@ var require_step21 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/stylus.js
+// node_modules/highlight.js/lib/languages/stylus.js
 var require_stylus = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/stylus.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/stylus.js"(exports2, module2) {
     var MODES = (hljs) => {
       return {
         IMPORTANT: {
@@ -58782,9 +58782,9 @@ var require_stylus = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/subunit.js
+// node_modules/highlight.js/lib/languages/subunit.js
 var require_subunit = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/subunit.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/subunit.js"(exports2, module2) {
     function subunit(hljs) {
       const DETAILS = {
         className: "string",
@@ -58824,9 +58824,9 @@ var require_subunit = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/swift.js
+// node_modules/highlight.js/lib/languages/swift.js
 var require_swift = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/swift.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/swift.js"(exports2, module2) {
     function source(re) {
       if (!re) return null;
       if (typeof re === "string") return re;
@@ -59704,9 +59704,9 @@ var require_swift = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/taggerscript.js
+// node_modules/highlight.js/lib/languages/taggerscript.js
 var require_taggerscript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/taggerscript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/taggerscript.js"(exports2, module2) {
     function taggerscript(hljs) {
       const NOOP = {
         className: "comment",
@@ -59756,9 +59756,9 @@ var require_taggerscript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/yaml.js
+// node_modules/highlight.js/lib/languages/yaml.js
 var require_yaml = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/yaml.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/yaml.js"(exports2, module2) {
     function yaml(hljs) {
       const LITERALS = "true false yes no null";
       const URI_CHARACTERS = "[\\w#;/?:@&=+$,.~*'()[\\]]+";
@@ -59962,9 +59962,9 @@ var require_yaml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/tap.js
+// node_modules/highlight.js/lib/languages/tap.js
 var require_tap = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/tap.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/tap.js"(exports2, module2) {
     function tap(hljs) {
       return {
         name: "Test Anything Protocol",
@@ -60006,9 +60006,9 @@ var require_tap = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/tcl.js
+// node_modules/highlight.js/lib/languages/tcl.js
 var require_tcl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/tcl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/tcl.js"(exports2, module2) {
     function tcl(hljs) {
       const regex = hljs.regex;
       const TCL_IDENT = /[a-zA-Z_][a-zA-Z0-9_]*/;
@@ -60191,9 +60191,9 @@ var require_tcl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/thrift.js
+// node_modules/highlight.js/lib/languages/thrift.js
 var require_thrift = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/thrift.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/thrift.js"(exports2, module2) {
     function thrift(hljs) {
       const TYPES = [
         "bool",
@@ -60266,9 +60266,9 @@ var require_thrift = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/tp.js
+// node_modules/highlight.js/lib/languages/tp.js
 var require_tp = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/tp.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/tp.js"(exports2, module2) {
     function tp(hljs) {
       const TPID = {
         className: "number",
@@ -60435,9 +60435,9 @@ var require_tp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/twig.js
+// node_modules/highlight.js/lib/languages/twig.js
 var require_twig = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/twig.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/twig.js"(exports2, module2) {
     function twig(hljs) {
       const regex = hljs.regex;
       const FUNCTION_NAMES = [
@@ -60679,9 +60679,9 @@ var require_twig = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/typescript.js
+// node_modules/highlight.js/lib/languages/typescript.js
 var require_typescript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/typescript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/typescript.js"(exports2, module2) {
     var IDENT_RE = "[A-Za-z$_][0-9A-Za-z$_]*";
     var KEYWORDS = [
       "as",
@@ -61498,9 +61498,9 @@ var require_typescript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vala.js
+// node_modules/highlight.js/lib/languages/vala.js
 var require_vala = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vala.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/vala.js"(exports2, module2) {
     function vala(hljs) {
       return {
         name: "Vala",
@@ -61544,9 +61544,9 @@ var require_vala = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vbnet.js
+// node_modules/highlight.js/lib/languages/vbnet.js
 var require_vbnet = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vbnet.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/vbnet.js"(exports2, module2) {
     function vbnet(hljs) {
       const regex = hljs.regex;
       const CHARACTER = {
@@ -61682,9 +61682,9 @@ var require_vbnet = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vbscript.js
+// node_modules/highlight.js/lib/languages/vbscript.js
 var require_vbscript = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vbscript.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/vbscript.js"(exports2, module2) {
     function vbscript(hljs) {
       const regex = hljs.regex;
       const BUILT_IN_FUNCTIONS = [
@@ -61893,9 +61893,9 @@ var require_vbscript = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vbscript-html.js
+// node_modules/highlight.js/lib/languages/vbscript-html.js
 var require_vbscript_html = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vbscript-html.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/vbscript-html.js"(exports2, module2) {
     function vbscriptHtml(hljs) {
       return {
         name: "VBScript in HTML",
@@ -61913,9 +61913,9 @@ var require_vbscript_html = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/verilog.js
+// node_modules/highlight.js/lib/languages/verilog.js
 var require_verilog = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/verilog.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/verilog.js"(exports2, module2) {
     function verilog(hljs) {
       const regex = hljs.regex;
       const KEYWORDS = {
@@ -62459,9 +62459,9 @@ var require_verilog = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vhdl.js
+// node_modules/highlight.js/lib/languages/vhdl.js
 var require_vhdl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vhdl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/vhdl.js"(exports2, module2) {
     function vhdl(hljs) {
       const INTEGER_RE = "\\d(_|\\d)*";
       const EXPONENT_RE = "[eE][-+]?" + INTEGER_RE;
@@ -62665,9 +62665,9 @@ var require_vhdl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vim.js
+// node_modules/highlight.js/lib/languages/vim.js
 var require_vim = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/vim.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/vim.js"(exports2, module2) {
     function vim(hljs) {
       return {
         name: "Vim Script",
@@ -62741,9 +62741,9 @@ var require_vim = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/wasm.js
+// node_modules/highlight.js/lib/languages/wasm.js
 var require_wasm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/wasm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/wasm.js"(exports2, module2) {
     function wasm(hljs) {
       hljs.regex;
       const BLOCK_COMMENT = hljs.COMMENT(/\(;/, /;\)/);
@@ -62867,9 +62867,9 @@ var require_wasm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/wren.js
+// node_modules/highlight.js/lib/languages/wren.js
 var require_wren = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/wren.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/wren.js"(exports2, module2) {
     function wren(hljs) {
       const regex = hljs.regex;
       const IDENT_RE = /[a-zA-Z]\w*/;
@@ -63151,9 +63151,9 @@ var require_wren = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/x86asm.js
+// node_modules/highlight.js/lib/languages/x86asm.js
 var require_x86asm = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/x86asm.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/x86asm.js"(exports2, module2) {
     function x86asm(hljs) {
       return {
         name: "Intel x86 Assembly",
@@ -63243,9 +63243,9 @@ var require_x86asm = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/xl.js
+// node_modules/highlight.js/lib/languages/xl.js
 var require_xl = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/xl.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/xl.js"(exports2, module2) {
     function xl(hljs) {
       const KWS = [
         "if",
@@ -63445,9 +63445,9 @@ var require_xl = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/xquery.js
+// node_modules/highlight.js/lib/languages/xquery.js
 var require_xquery = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/xquery.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/xquery.js"(exports2, module2) {
     function xquery(_hljs) {
       const KEYWORDS = [
         "module",
@@ -63777,9 +63777,9 @@ var require_xquery = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/zephir.js
+// node_modules/highlight.js/lib/languages/zephir.js
 var require_zephir = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/languages/zephir.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/languages/zephir.js"(exports2, module2) {
     function zephir(hljs) {
       const STRING = {
         className: "string",
@@ -63881,9 +63881,9 @@ var require_zephir = __commonJS({
   }
 });
 
-// node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/index.js
+// node_modules/highlight.js/lib/index.js
 var require_lib2 = __commonJS({
-  "node_modules/.pnpm/highlight.js@11.11.1/node_modules/highlight.js/lib/index.js"(exports2, module2) {
+  "node_modules/highlight.js/lib/index.js"(exports2, module2) {
     var hljs = require_core();
     hljs.registerLanguage("1c", require_c());
     hljs.registerLanguage("abnf", require_abnf());
@@ -64083,9 +64083,9 @@ var require_lib2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/highlight.js
+// node_modules/hexo-util/dist/highlight.js
 var require_highlight = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/highlight.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/highlight.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -64197,9 +64197,9 @@ var require_highlight = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/html_tag.js
+// node_modules/hexo-util/dist/html_tag.js
 var require_html_tag = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/html_tag.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/html_tag.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -64252,9 +64252,9 @@ var require_html_tag = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/is_external_link.js
+// node_modules/hexo-util/dist/is_external_link.js
 var require_is_external_link = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/is_external_link.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/is_external_link.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -64297,9 +64297,9 @@ var require_is_external_link = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/pattern.js
+// node_modules/hexo-util/dist/pattern.js
 var require_pattern = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/pattern.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/pattern.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -64363,9 +64363,9 @@ var require_pattern = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/permalink.js
+// node_modules/hexo-util/dist/permalink.js
 var require_permalink = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/permalink.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/permalink.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -64423,9 +64423,9 @@ var require_permalink = __commonJS({
   }
 });
 
-// node_modules/.pnpm/prismjs@1.30.0/node_modules/prismjs/components.js
+// node_modules/prismjs/components.js
 var require_components = __commonJS({
-  "node_modules/.pnpm/prismjs@1.30.0/node_modules/prismjs/components.js"(exports2, module2) {
+  "node_modules/prismjs/components.js"(exports2, module2) {
     var components = { "core": { "meta": { "path": "components/prism-core.js", "option": "mandatory" }, "core": "Core" }, "themes": { "meta": { "path": "themes/{id}.css", "link": "index.html?theme={id}", "exclusive": true }, "prism": { "title": "Default", "option": "default" }, "prism-dark": "Dark", "prism-funky": "Funky", "prism-okaidia": { "title": "Okaidia", "owner": "ocodia" }, "prism-twilight": { "title": "Twilight", "owner": "remybach" }, "prism-coy": { "title": "Coy", "owner": "tshedor" }, "prism-solarizedlight": { "title": "Solarized Light", "owner": "hectormatos2011 " }, "prism-tomorrow": { "title": "Tomorrow Night", "owner": "Rosey" } }, "languages": { "meta": { "path": "components/prism-{id}", "noCSS": true, "examplesPath": "examples/prism-{id}", "addCheckAll": true }, "markup": { "title": "Markup", "alias": ["html", "xml", "svg", "mathml", "ssml", "atom", "rss"], "aliasTitles": { "html": "HTML", "xml": "XML", "svg": "SVG", "mathml": "MathML", "ssml": "SSML", "atom": "Atom", "rss": "RSS" }, "option": "default" }, "css": { "title": "CSS", "option": "default", "modify": "markup" }, "clike": { "title": "C-like", "option": "default" }, "javascript": { "title": "JavaScript", "require": "clike", "modify": "markup", "optional": "regex", "alias": "js", "option": "default" }, "abap": { "title": "ABAP", "owner": "dellagustin" }, "abnf": { "title": "ABNF", "owner": "RunDevelopment" }, "actionscript": { "title": "ActionScript", "require": "javascript", "modify": "markup", "owner": "Golmote" }, "ada": { "title": "Ada", "owner": "Lucretia" }, "agda": { "title": "Agda", "owner": "xy-ren" }, "al": { "title": "AL", "owner": "RunDevelopment" }, "antlr4": { "title": "ANTLR4", "alias": "g4", "owner": "RunDevelopment" }, "apacheconf": { "title": "Apache Configuration", "owner": "GuiTeK" }, "apex": { "title": "Apex", "require": ["clike", "sql"], "owner": "RunDevelopment" }, "apl": { "title": "APL", "owner": "ngn" }, "applescript": { "title": "AppleScript", "owner": "Golmote" }, "aql": { "title": "AQL", "owner": "RunDevelopment" }, "arduino": { "title": "Arduino", "require": "cpp", "alias": "ino", "owner": "dkern" }, "arff": { "title": "ARFF", "owner": "Golmote" }, "armasm": { "title": "ARM Assembly", "alias": "arm-asm", "owner": "RunDevelopment" }, "arturo": { "title": "Arturo", "alias": "art", "optional": ["bash", "css", "javascript", "markup", "markdown", "sql"], "owner": "drkameleon" }, "asciidoc": { "alias": "adoc", "title": "AsciiDoc", "owner": "Golmote" }, "aspnet": { "title": "ASP.NET (C#)", "require": ["markup", "csharp"], "owner": "nauzilus" }, "asm6502": { "title": "6502 Assembly", "owner": "kzurawel" }, "asmatmel": { "title": "Atmel AVR Assembly", "owner": "cerkit" }, "autohotkey": { "title": "AutoHotkey", "owner": "aviaryan" }, "autoit": { "title": "AutoIt", "owner": "Golmote" }, "avisynth": { "title": "AviSynth", "alias": "avs", "owner": "Zinfidel" }, "avro-idl": { "title": "Avro IDL", "alias": "avdl", "owner": "RunDevelopment" }, "awk": { "title": "AWK", "alias": "gawk", "aliasTitles": { "gawk": "GAWK" }, "owner": "RunDevelopment" }, "bash": { "title": "Bash", "alias": ["sh", "shell"], "aliasTitles": { "sh": "Shell", "shell": "Shell" }, "owner": "zeitgeist87" }, "basic": { "title": "BASIC", "owner": "Golmote" }, "batch": { "title": "Batch", "owner": "Golmote" }, "bbcode": { "title": "BBcode", "alias": "shortcode", "aliasTitles": { "shortcode": "Shortcode" }, "owner": "RunDevelopment" }, "bbj": { "title": "BBj", "owner": "hyyan" }, "bicep": { "title": "Bicep", "owner": "johnnyreilly" }, "birb": { "title": "Birb", "require": "clike", "owner": "Calamity210" }, "bison": { "title": "Bison", "require": "c", "owner": "Golmote" }, "bnf": { "title": "BNF", "alias": "rbnf", "aliasTitles": { "rbnf": "RBNF" }, "owner": "RunDevelopment" }, "bqn": { "title": "BQN", "owner": "yewscion" }, "brainfuck": { "title": "Brainfuck", "owner": "Golmote" }, "brightscript": { "title": "BrightScript", "owner": "RunDevelopment" }, "bro": { "title": "Bro", "owner": "wayward710" }, "bsl": { "title": "BSL (1C:Enterprise)", "alias": "oscript", "aliasTitles": { "oscript": "OneScript" }, "owner": "Diversus23" }, "c": { "title": "C", "require": "clike", "owner": "zeitgeist87" }, "csharp": { "title": "C#", "require": "clike", "alias": ["cs", "dotnet"], "owner": "mvalipour" }, "cpp": { "title": "C++", "require": "c", "owner": "zeitgeist87" }, "cfscript": { "title": "CFScript", "require": "clike", "alias": "cfc", "owner": "mjclemente" }, "chaiscript": { "title": "ChaiScript", "require": ["clike", "cpp"], "owner": "RunDevelopment" }, "cil": { "title": "CIL", "owner": "sbrl" }, "cilkc": { "title": "Cilk/C", "require": "c", "alias": "cilk-c", "owner": "OpenCilk" }, "cilkcpp": { "title": "Cilk/C++", "require": "cpp", "alias": ["cilk-cpp", "cilk"], "owner": "OpenCilk" }, "clojure": { "title": "Clojure", "owner": "troglotit" }, "cmake": { "title": "CMake", "owner": "mjrogozinski" }, "cobol": { "title": "COBOL", "owner": "RunDevelopment" }, "coffeescript": { "title": "CoffeeScript", "require": "javascript", "alias": "coffee", "owner": "R-osey" }, "concurnas": { "title": "Concurnas", "alias": "conc", "owner": "jasontatton" }, "csp": { "title": "Content-Security-Policy", "owner": "ScottHelme" }, "cooklang": { "title": "Cooklang", "owner": "ahue" }, "coq": { "title": "Coq", "owner": "RunDevelopment" }, "crystal": { "title": "Crystal", "require": "ruby", "owner": "MakeNowJust" }, "css-extras": { "title": "CSS Extras", "require": "css", "modify": "css", "owner": "milesj" }, "csv": { "title": "CSV", "owner": "RunDevelopment" }, "cue": { "title": "CUE", "owner": "RunDevelopment" }, "cypher": { "title": "Cypher", "owner": "RunDevelopment" }, "d": { "title": "D", "require": "clike", "owner": "Golmote" }, "dart": { "title": "Dart", "require": "clike", "owner": "Golmote" }, "dataweave": { "title": "DataWeave", "owner": "machaval" }, "dax": { "title": "DAX", "owner": "peterbud" }, "dhall": { "title": "Dhall", "owner": "RunDevelopment" }, "diff": { "title": "Diff", "owner": "uranusjr" }, "django": { "title": "Django/Jinja2", "require": "markup-templating", "alias": "jinja2", "owner": "romanvm" }, "dns-zone-file": { "title": "DNS zone file", "owner": "RunDevelopment", "alias": "dns-zone" }, "docker": { "title": "Docker", "alias": "dockerfile", "owner": "JustinBeckwith" }, "dot": { "title": "DOT (Graphviz)", "alias": "gv", "optional": "markup", "owner": "RunDevelopment" }, "ebnf": { "title": "EBNF", "owner": "RunDevelopment" }, "editorconfig": { "title": "EditorConfig", "owner": "osipxd" }, "eiffel": { "title": "Eiffel", "owner": "Conaclos" }, "ejs": { "title": "EJS", "require": ["javascript", "markup-templating"], "owner": "RunDevelopment", "alias": "eta", "aliasTitles": { "eta": "Eta" } }, "elixir": { "title": "Elixir", "owner": "Golmote" }, "elm": { "title": "Elm", "owner": "zwilias" }, "etlua": { "title": "Embedded Lua templating", "require": ["lua", "markup-templating"], "owner": "RunDevelopment" }, "erb": { "title": "ERB", "require": ["ruby", "markup-templating"], "owner": "Golmote" }, "erlang": { "title": "Erlang", "owner": "Golmote" }, "excel-formula": { "title": "Excel Formula", "alias": ["xlsx", "xls"], "owner": "RunDevelopment" }, "fsharp": { "title": "F#", "require": "clike", "owner": "simonreynolds7" }, "factor": { "title": "Factor", "owner": "catb0t" }, "false": { "title": "False", "owner": "edukisto" }, "firestore-security-rules": { "title": "Firestore security rules", "require": "clike", "owner": "RunDevelopment" }, "flow": { "title": "Flow", "require": "javascript", "owner": "Golmote" }, "fortran": { "title": "Fortran", "owner": "Golmote" }, "ftl": { "title": "FreeMarker Template Language", "require": "markup-templating", "owner": "RunDevelopment" }, "gml": { "title": "GameMaker Language", "alias": "gamemakerlanguage", "require": "clike", "owner": "LiarOnce" }, "gap": { "title": "GAP (CAS)", "owner": "RunDevelopment" }, "gcode": { "title": "G-code", "owner": "RunDevelopment" }, "gdscript": { "title": "GDScript", "owner": "RunDevelopment" }, "gedcom": { "title": "GEDCOM", "owner": "Golmote" }, "gettext": { "title": "gettext", "alias": "po", "owner": "RunDevelopment" }, "gherkin": { "title": "Gherkin", "owner": "hason" }, "git": { "title": "Git", "owner": "lgiraudel" }, "glsl": { "title": "GLSL", "require": "c", "owner": "Golmote" }, "gn": { "title": "GN", "alias": "gni", "owner": "RunDevelopment" }, "linker-script": { "title": "GNU Linker Script", "alias": "ld", "owner": "RunDevelopment" }, "go": { "title": "Go", "require": "clike", "owner": "arnehormann" }, "go-module": { "title": "Go module", "alias": "go-mod", "owner": "RunDevelopment" }, "gradle": { "title": "Gradle", "require": "clike", "owner": "zeabdelkhalek-badido18" }, "graphql": { "title": "GraphQL", "optional": "markdown", "owner": "Golmote" }, "groovy": { "title": "Groovy", "require": "clike", "owner": "robfletcher" }, "haml": { "title": "Haml", "require": "ruby", "optional": ["css", "css-extras", "coffeescript", "erb", "javascript", "less", "markdown", "scss", "textile"], "owner": "Golmote" }, "handlebars": { "title": "Handlebars", "require": "markup-templating", "alias": ["hbs", "mustache"], "aliasTitles": { "mustache": "Mustache" }, "owner": "Golmote" }, "haskell": { "title": "Haskell", "alias": "hs", "owner": "bholst" }, "haxe": { "title": "Haxe", "require": "clike", "optional": "regex", "owner": "Golmote" }, "hcl": { "title": "HCL", "owner": "outsideris" }, "hlsl": { "title": "HLSL", "require": "c", "owner": "RunDevelopment" }, "hoon": { "title": "Hoon", "owner": "matildepark" }, "http": { "title": "HTTP", "optional": ["csp", "css", "hpkp", "hsts", "javascript", "json", "markup", "uri"], "owner": "danielgtaylor" }, "hpkp": { "title": "HTTP Public-Key-Pins", "owner": "ScottHelme" }, "hsts": { "title": "HTTP Strict-Transport-Security", "owner": "ScottHelme" }, "ichigojam": { "title": "IchigoJam", "owner": "BlueCocoa" }, "icon": { "title": "Icon", "owner": "Golmote" }, "icu-message-format": { "title": "ICU Message Format", "owner": "RunDevelopment" }, "idris": { "title": "Idris", "alias": "idr", "owner": "KeenS", "require": "haskell" }, "ignore": { "title": ".ignore", "owner": "osipxd", "alias": ["gitignore", "hgignore", "npmignore"], "aliasTitles": { "gitignore": ".gitignore", "hgignore": ".hgignore", "npmignore": ".npmignore" } }, "inform7": { "title": "Inform 7", "owner": "Golmote" }, "ini": { "title": "Ini", "owner": "aviaryan" }, "io": { "title": "Io", "owner": "AlesTsurko" }, "j": { "title": "J", "owner": "Golmote" }, "java": { "title": "Java", "require": "clike", "owner": "sherblot" }, "javadoc": { "title": "JavaDoc", "require": ["markup", "java", "javadoclike"], "modify": "java", "optional": "scala", "owner": "RunDevelopment" }, "javadoclike": { "title": "JavaDoc-like", "modify": ["java", "javascript", "php"], "owner": "RunDevelopment" }, "javastacktrace": { "title": "Java stack trace", "owner": "RunDevelopment" }, "jexl": { "title": "Jexl", "owner": "czosel" }, "jolie": { "title": "Jolie", "require": "clike", "owner": "thesave" }, "jq": { "title": "JQ", "owner": "RunDevelopment" }, "jsdoc": { "title": "JSDoc", "require": ["javascript", "javadoclike", "typescript"], "modify": "javascript", "optional": ["actionscript", "coffeescript"], "owner": "RunDevelopment" }, "js-extras": { "title": "JS Extras", "require": "javascript", "modify": "javascript", "optional": ["actionscript", "coffeescript", "flow", "n4js", "typescript"], "owner": "RunDevelopment" }, "json": { "title": "JSON", "alias": "webmanifest", "aliasTitles": { "webmanifest": "Web App Manifest" }, "owner": "CupOfTea696" }, "json5": { "title": "JSON5", "require": "json", "owner": "RunDevelopment" }, "jsonp": { "title": "JSONP", "require": "json", "owner": "RunDevelopment" }, "jsstacktrace": { "title": "JS stack trace", "owner": "sbrl" }, "js-templates": { "title": "JS Templates", "require": "javascript", "modify": "javascript", "optional": ["css", "css-extras", "graphql", "markdown", "markup", "sql"], "owner": "RunDevelopment" }, "julia": { "title": "Julia", "owner": "cdagnino" }, "keepalived": { "title": "Keepalived Configure", "owner": "dev-itsheng" }, "keyman": { "title": "Keyman", "owner": "mcdurdin" }, "kotlin": { "title": "Kotlin", "alias": ["kt", "kts"], "aliasTitles": { "kts": "Kotlin Script" }, "require": "clike", "owner": "Golmote" }, "kumir": { "title": "KuMir (\u041A\u0443\u041C\u0438\u0440)", "alias": "kum", "owner": "edukisto" }, "kusto": { "title": "Kusto", "owner": "RunDevelopment" }, "latex": { "title": "LaTeX", "alias": ["tex", "context"], "aliasTitles": { "tex": "TeX", "context": "ConTeXt" }, "owner": "japborst" }, "latte": { "title": "Latte", "require": ["clike", "markup-templating", "php"], "owner": "nette" }, "less": { "title": "Less", "require": "css", "optional": "css-extras", "owner": "Golmote" }, "lilypond": { "title": "LilyPond", "require": "scheme", "alias": "ly", "owner": "RunDevelopment" }, "liquid": { "title": "Liquid", "require": "markup-templating", "owner": "cinhtau" }, "lisp": { "title": "Lisp", "alias": ["emacs", "elisp", "emacs-lisp"], "owner": "JuanCaicedo" }, "livescript": { "title": "LiveScript", "owner": "Golmote" }, "llvm": { "title": "LLVM IR", "owner": "porglezomp" }, "log": { "title": "Log file", "optional": "javastacktrace", "owner": "RunDevelopment" }, "lolcode": { "title": "LOLCODE", "owner": "Golmote" }, "lua": { "title": "Lua", "owner": "Golmote" }, "magma": { "title": "Magma (CAS)", "owner": "RunDevelopment" }, "makefile": { "title": "Makefile", "owner": "Golmote" }, "markdown": { "title": "Markdown", "require": "markup", "optional": "yaml", "alias": "md", "owner": "Golmote" }, "markup-templating": { "title": "Markup templating", "require": "markup", "owner": "Golmote" }, "mata": { "title": "Mata", "owner": "RunDevelopment" }, "matlab": { "title": "MATLAB", "owner": "Golmote" }, "maxscript": { "title": "MAXScript", "owner": "RunDevelopment" }, "mel": { "title": "MEL", "owner": "Golmote" }, "mermaid": { "title": "Mermaid", "owner": "RunDevelopment" }, "metafont": { "title": "METAFONT", "owner": "LaeriExNihilo" }, "mizar": { "title": "Mizar", "owner": "Golmote" }, "mongodb": { "title": "MongoDB", "owner": "airs0urce", "require": "javascript" }, "monkey": { "title": "Monkey", "owner": "Golmote" }, "moonscript": { "title": "MoonScript", "alias": "moon", "owner": "RunDevelopment" }, "n1ql": { "title": "N1QL", "owner": "TMWilds" }, "n4js": { "title": "N4JS", "require": "javascript", "optional": "jsdoc", "alias": "n4jsd", "owner": "bsmith-n4" }, "nand2tetris-hdl": { "title": "Nand To Tetris HDL", "owner": "stephanmax" }, "naniscript": { "title": "Naninovel Script", "owner": "Elringus", "alias": "nani" }, "nasm": { "title": "NASM", "owner": "rbmj" }, "neon": { "title": "NEON", "owner": "nette" }, "nevod": { "title": "Nevod", "owner": "nezaboodka" }, "nginx": { "title": "nginx", "owner": "volado" }, "nim": { "title": "Nim", "owner": "Golmote" }, "nix": { "title": "Nix", "owner": "Golmote" }, "nsis": { "title": "NSIS", "owner": "idleberg" }, "objectivec": { "title": "Objective-C", "require": "c", "alias": "objc", "owner": "uranusjr" }, "ocaml": { "title": "OCaml", "owner": "Golmote" }, "odin": { "title": "Odin", "owner": "edukisto" }, "opencl": { "title": "OpenCL", "require": "c", "modify": ["c", "cpp"], "owner": "Milania1" }, "openqasm": { "title": "OpenQasm", "alias": "qasm", "owner": "RunDevelopment" }, "oz": { "title": "Oz", "owner": "Golmote" }, "parigp": { "title": "PARI/GP", "owner": "Golmote" }, "parser": { "title": "Parser", "require": "markup", "owner": "Golmote" }, "pascal": { "title": "Pascal", "alias": "objectpascal", "aliasTitles": { "objectpascal": "Object Pascal" }, "owner": "Golmote" }, "pascaligo": { "title": "Pascaligo", "owner": "DefinitelyNotAGoat" }, "psl": { "title": "PATROL Scripting Language", "owner": "bertysentry" }, "pcaxis": { "title": "PC-Axis", "alias": "px", "owner": "RunDevelopment" }, "peoplecode": { "title": "PeopleCode", "alias": "pcode", "owner": "RunDevelopment" }, "perl": { "title": "Perl", "owner": "Golmote" }, "php": { "title": "PHP", "require": "markup-templating", "owner": "milesj" }, "phpdoc": { "title": "PHPDoc", "require": ["php", "javadoclike"], "modify": "php", "owner": "RunDevelopment" }, "php-extras": { "title": "PHP Extras", "require": "php", "modify": "php", "owner": "milesj" }, "plant-uml": { "title": "PlantUML", "alias": "plantuml", "owner": "RunDevelopment" }, "plsql": { "title": "PL/SQL", "require": "sql", "owner": "Golmote" }, "powerquery": { "title": "PowerQuery", "alias": ["pq", "mscript"], "owner": "peterbud" }, "powershell": { "title": "PowerShell", "owner": "nauzilus" }, "processing": { "title": "Processing", "require": "clike", "owner": "Golmote" }, "prolog": { "title": "Prolog", "owner": "Golmote" }, "promql": { "title": "PromQL", "owner": "arendjr" }, "properties": { "title": ".properties", "owner": "Golmote" }, "protobuf": { "title": "Protocol Buffers", "require": "clike", "owner": "just-boris" }, "pug": { "title": "Pug", "require": ["markup", "javascript"], "optional": ["coffeescript", "ejs", "handlebars", "less", "livescript", "markdown", "scss", "stylus", "twig"], "owner": "Golmote" }, "puppet": { "title": "Puppet", "owner": "Golmote" }, "pure": { "title": "Pure", "optional": ["c", "cpp", "fortran"], "owner": "Golmote" }, "purebasic": { "title": "PureBasic", "require": "clike", "alias": "pbfasm", "owner": "HeX0R101" }, "purescript": { "title": "PureScript", "require": "haskell", "alias": "purs", "owner": "sriharshachilakapati" }, "python": { "title": "Python", "alias": "py", "owner": "multipetros" }, "qsharp": { "title": "Q#", "require": "clike", "alias": "qs", "owner": "fedonman" }, "q": { "title": "Q (kdb+ database)", "owner": "Golmote" }, "qml": { "title": "QML", "require": "javascript", "owner": "RunDevelopment" }, "qore": { "title": "Qore", "require": "clike", "owner": "temnroegg" }, "r": { "title": "R", "owner": "Golmote" }, "racket": { "title": "Racket", "require": "scheme", "alias": "rkt", "owner": "RunDevelopment" }, "cshtml": { "title": "Razor C#", "alias": "razor", "require": ["markup", "csharp"], "optional": ["css", "css-extras", "javascript", "js-extras"], "owner": "RunDevelopment" }, "jsx": { "title": "React JSX", "require": ["markup", "javascript"], "optional": ["jsdoc", "js-extras", "js-templates"], "owner": "vkbansal" }, "tsx": { "title": "React TSX", "require": ["jsx", "typescript"] }, "reason": { "title": "Reason", "require": "clike", "owner": "Golmote" }, "regex": { "title": "Regex", "owner": "RunDevelopment" }, "rego": { "title": "Rego", "owner": "JordanSh" }, "renpy": { "title": "Ren'py", "alias": "rpy", "owner": "HyuchiaDiego" }, "rescript": { "title": "ReScript", "alias": "res", "owner": "vmarcosp" }, "rest": { "title": "reST (reStructuredText)", "owner": "Golmote" }, "rip": { "title": "Rip", "owner": "ravinggenius" }, "roboconf": { "title": "Roboconf", "owner": "Golmote" }, "robotframework": { "title": "Robot Framework", "alias": "robot", "owner": "RunDevelopment" }, "ruby": { "title": "Ruby", "require": "clike", "alias": "rb", "owner": "samflores" }, "rust": { "title": "Rust", "owner": "Golmote" }, "sas": { "title": "SAS", "optional": ["groovy", "lua", "sql"], "owner": "Golmote" }, "sass": { "title": "Sass (Sass)", "require": "css", "optional": "css-extras", "owner": "Golmote" }, "scss": { "title": "Sass (SCSS)", "require": "css", "optional": "css-extras", "owner": "MoOx" }, "scala": { "title": "Scala", "require": "java", "owner": "jozic" }, "scheme": { "title": "Scheme", "owner": "bacchus123" }, "shell-session": { "title": "Shell session", "require": "bash", "alias": ["sh-session", "shellsession"], "owner": "RunDevelopment" }, "smali": { "title": "Smali", "owner": "RunDevelopment" }, "smalltalk": { "title": "Smalltalk", "owner": "Golmote" }, "smarty": { "title": "Smarty", "require": "markup-templating", "optional": "php", "owner": "Golmote" }, "sml": { "title": "SML", "alias": "smlnj", "aliasTitles": { "smlnj": "SML/NJ" }, "owner": "RunDevelopment" }, "solidity": { "title": "Solidity (Ethereum)", "alias": "sol", "require": "clike", "owner": "glachaud" }, "solution-file": { "title": "Solution file", "alias": "sln", "owner": "RunDevelopment" }, "soy": { "title": "Soy (Closure Template)", "require": "markup-templating", "owner": "Golmote" }, "sparql": { "title": "SPARQL", "require": "turtle", "owner": "Triply-Dev", "alias": "rq" }, "splunk-spl": { "title": "Splunk SPL", "owner": "RunDevelopment" }, "sqf": { "title": "SQF: Status Quo Function (Arma 3)", "require": "clike", "owner": "RunDevelopment" }, "sql": { "title": "SQL", "owner": "multipetros" }, "squirrel": { "title": "Squirrel", "require": "clike", "owner": "RunDevelopment" }, "stan": { "title": "Stan", "owner": "RunDevelopment" }, "stata": { "title": "Stata Ado", "require": ["mata", "java", "python"], "owner": "RunDevelopment" }, "iecst": { "title": "Structured Text (IEC 61131-3)", "owner": "serhioromano" }, "stylus": { "title": "Stylus", "owner": "vkbansal" }, "supercollider": { "title": "SuperCollider", "alias": "sclang", "owner": "RunDevelopment" }, "swift": { "title": "Swift", "owner": "chrischares" }, "systemd": { "title": "Systemd configuration file", "owner": "RunDevelopment" }, "t4-templating": { "title": "T4 templating", "owner": "RunDevelopment" }, "t4-cs": { "title": "T4 Text Templates (C#)", "require": ["t4-templating", "csharp"], "alias": "t4", "owner": "RunDevelopment" }, "t4-vb": { "title": "T4 Text Templates (VB)", "require": ["t4-templating", "vbnet"], "owner": "RunDevelopment" }, "tap": { "title": "TAP", "owner": "isaacs", "require": "yaml" }, "tcl": { "title": "Tcl", "owner": "PeterChaplin" }, "tt2": { "title": "Template Toolkit 2", "require": ["clike", "markup-templating"], "owner": "gflohr" }, "textile": { "title": "Textile", "require": "markup", "optional": "css", "owner": "Golmote" }, "toml": { "title": "TOML", "owner": "RunDevelopment" }, "tremor": { "title": "Tremor", "alias": ["trickle", "troy"], "owner": "darach", "aliasTitles": { "trickle": "trickle", "troy": "troy" } }, "turtle": { "title": "Turtle", "alias": "trig", "aliasTitles": { "trig": "TriG" }, "owner": "jakubklimek" }, "twig": { "title": "Twig", "require": "markup-templating", "owner": "brandonkelly" }, "typescript": { "title": "TypeScript", "require": "javascript", "optional": "js-templates", "alias": "ts", "owner": "vkbansal" }, "typoscript": { "title": "TypoScript", "alias": "tsconfig", "aliasTitles": { "tsconfig": "TSConfig" }, "owner": "dkern" }, "unrealscript": { "title": "UnrealScript", "alias": ["uscript", "uc"], "owner": "RunDevelopment" }, "uorazor": { "title": "UO Razor Script", "owner": "jaseowns" }, "uri": { "title": "URI", "alias": "url", "aliasTitles": { "url": "URL" }, "owner": "RunDevelopment" }, "v": { "title": "V", "require": "clike", "owner": "taggon" }, "vala": { "title": "Vala", "require": "clike", "optional": "regex", "owner": "TemplarVolk" }, "vbnet": { "title": "VB.Net", "require": "basic", "owner": "Bigsby" }, "velocity": { "title": "Velocity", "require": "markup", "owner": "Golmote" }, "verilog": { "title": "Verilog", "owner": "a-rey" }, "vhdl": { "title": "VHDL", "owner": "a-rey" }, "vim": { "title": "vim", "owner": "westonganger" }, "visual-basic": { "title": "Visual Basic", "alias": ["vb", "vba"], "aliasTitles": { "vba": "VBA" }, "owner": "Golmote" }, "warpscript": { "title": "WarpScript", "owner": "RunDevelopment" }, "wasm": { "title": "WebAssembly", "owner": "Golmote" }, "web-idl": { "title": "Web IDL", "alias": "webidl", "owner": "RunDevelopment" }, "wgsl": { "title": "WGSL", "owner": "Dr4gonthree" }, "wiki": { "title": "Wiki markup", "require": "markup", "owner": "Golmote" }, "wolfram": { "title": "Wolfram language", "alias": ["mathematica", "nb", "wl"], "aliasTitles": { "mathematica": "Mathematica", "nb": "Mathematica Notebook" }, "owner": "msollami" }, "wren": { "title": "Wren", "owner": "clsource" }, "xeora": { "title": "Xeora", "require": "markup", "alias": "xeoracube", "aliasTitles": { "xeoracube": "XeoraCube" }, "owner": "freakmaxi" }, "xml-doc": { "title": "XML doc (.net)", "require": "markup", "modify": ["csharp", "fsharp", "vbnet"], "owner": "RunDevelopment" }, "xojo": { "title": "Xojo (REALbasic)", "owner": "Golmote" }, "xquery": { "title": "XQuery", "require": "markup", "owner": "Golmote" }, "yaml": { "title": "YAML", "alias": "yml", "owner": "hason" }, "yang": { "title": "YANG", "owner": "RunDevelopment" }, "zig": { "title": "Zig", "owner": "RunDevelopment" } }, "plugins": { "meta": { "path": "plugins/{id}/prism-{id}", "link": "plugins/{id}/" }, "line-highlight": { "title": "Line Highlight", "description": "Highlights specific lines and/or line ranges." }, "line-numbers": { "title": "Line Numbers", "description": "Line number at the beginning of code lines.", "owner": "kuba-kubula" }, "show-invisibles": { "title": "Show Invisibles", "description": "Show hidden characters such as tabs and line breaks.", "optional": ["autolinker", "data-uri-highlight"] }, "autolinker": { "title": "Autolinker", "description": "Converts URLs and emails in code to clickable links. Parses Markdown links in comments." }, "wpd": { "title": "WebPlatform Docs", "description": 'Makes tokens link to <a href="https://webplatform.github.io/docs/">WebPlatform.org documentation</a>. The links open in a new tab.' }, "custom-class": { "title": "Custom Class", "description": "This plugin allows you to prefix Prism's default classes (<code>.comment</code> can become <code>.namespace--comment</code>) or replace them with your defined ones (like <code>.editor__comment</code>). You can even add new classes.", "owner": "dvkndn", "noCSS": true }, "file-highlight": { "title": "File Highlight", "description": "Fetch external files and highlight them with Prism. Used on the Prism website itself.", "noCSS": true }, "show-language": { "title": "Show Language", "description": "Display the highlighted language in code blocks (inline code does not show the label).", "owner": "nauzilus", "noCSS": true, "require": "toolbar" }, "jsonp-highlight": { "title": "JSONP Highlight", "description": "Fetch content with JSONP and highlight some interesting content (e.g. GitHub/Gists or Bitbucket API).", "noCSS": true, "owner": "nauzilus" }, "highlight-keywords": { "title": "Highlight Keywords", "description": "Adds special CSS classes for each keyword for fine-grained highlighting.", "owner": "vkbansal", "noCSS": true }, "remove-initial-line-feed": { "title": "Remove initial line feed", "description": "Removes the initial line feed in code blocks.", "owner": "Golmote", "noCSS": true }, "inline-color": { "title": "Inline color", "description": "Adds a small inline preview for colors in style sheets.", "require": "css-extras", "owner": "RunDevelopment" }, "previewers": { "title": "Previewers", "description": "Previewers for angles, colors, gradients, easing and time.", "require": "css-extras", "owner": "Golmote" }, "autoloader": { "title": "Autoloader", "description": "Automatically loads the needed languages to highlight the code blocks.", "owner": "Golmote", "noCSS": true }, "keep-markup": { "title": "Keep Markup", "description": "Prevents custom markup from being dropped out during highlighting.", "owner": "Golmote", "optional": "normalize-whitespace", "noCSS": true }, "command-line": { "title": "Command Line", "description": "Display a command line with a prompt and, optionally, the output/response from the commands.", "owner": "chriswells0" }, "unescaped-markup": { "title": "Unescaped Markup", "description": "Write markup without having to escape anything." }, "normalize-whitespace": { "title": "Normalize Whitespace", "description": "Supports multiple operations to normalize whitespace in code blocks.", "owner": "zeitgeist87", "optional": "unescaped-markup", "noCSS": true }, "data-uri-highlight": { "title": "Data-URI Highlight", "description": "Highlights data-URI contents.", "owner": "Golmote", "noCSS": true }, "toolbar": { "title": "Toolbar", "description": "Attach a toolbar for plugins to easily register buttons on the top of a code block.", "owner": "mAAdhaTTah" }, "copy-to-clipboard": { "title": "Copy to Clipboard Button", "description": "Add a button that copies the code block to the clipboard when clicked.", "owner": "mAAdhaTTah", "require": "toolbar", "noCSS": true }, "download-button": { "title": "Download Button", "description": "A button in the toolbar of a code block adding a convenient way to download a code file.", "owner": "Golmote", "require": "toolbar", "noCSS": true }, "match-braces": { "title": "Match braces", "description": "Highlights matching braces.", "owner": "RunDevelopment" }, "diff-highlight": { "title": "Diff Highlight", "description": "Highlights the code inside diff blocks.", "owner": "RunDevelopment", "require": "diff" }, "filter-highlight-all": { "title": "Filter highlightAll", "description": "Filters the elements the <code>highlightAll</code> and <code>highlightAllUnder</code> methods actually highlight.", "owner": "RunDevelopment", "noCSS": true }, "treeview": { "title": "Treeview", "description": "A language with special styles to highlight file system tree structures.", "owner": "Golmote" } } };
     if (typeof module2 !== "undefined" && module2.exports) {
       module2.exports = components;
@@ -64433,9 +64433,9 @@ var require_components = __commonJS({
   }
 });
 
-// node_modules/.pnpm/prismjs@1.30.0/node_modules/prismjs/prism.js
+// node_modules/prismjs/prism.js
 var require_prism = __commonJS({
-  "node_modules/.pnpm/prismjs@1.30.0/node_modules/prismjs/prism.js"(exports2, module2) {
+  "node_modules/prismjs/prism.js"(exports2, module2) {
     var _self = typeof window !== "undefined" ? window : typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope ? self : {};
     var Prism = function(_self2) {
       var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
@@ -65882,9 +65882,9 @@ var require_prism = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/prism.js
+// node_modules/hexo-util/dist/prism.js
 var require_prism2 = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/prism.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/prism.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -65972,9 +65972,9 @@ var require_prism2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/relative_url.js
+// node_modules/hexo-util/dist/relative_url.js
 var require_relative_url = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/relative_url.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/relative_url.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -66007,9 +66007,9 @@ var require_relative_url = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/slugize.js
+// node_modules/hexo-util/dist/slugize.js
 var require_slugize = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/slugize.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/slugize.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -66037,9 +66037,9 @@ var require_slugize = __commonJS({
   }
 });
 
-// node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/windows.js
+// node_modules/isexe/windows.js
 var require_windows = __commonJS({
-  "node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/windows.js"(exports2, module2) {
+  "node_modules/isexe/windows.js"(exports2, module2) {
     module2.exports = isexe;
     isexe.sync = sync;
     var fs = require("fs");
@@ -66077,9 +66077,9 @@ var require_windows = __commonJS({
   }
 });
 
-// node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/mode.js
+// node_modules/isexe/mode.js
 var require_mode = __commonJS({
-  "node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/mode.js"(exports2, module2) {
+  "node_modules/isexe/mode.js"(exports2, module2) {
     module2.exports = isexe;
     isexe.sync = sync;
     var fs = require("fs");
@@ -66110,9 +66110,9 @@ var require_mode = __commonJS({
   }
 });
 
-// node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/index.js
+// node_modules/isexe/index.js
 var require_isexe = __commonJS({
-  "node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/index.js"(exports2, module2) {
+  "node_modules/isexe/index.js"(exports2, module2) {
     var fs = require("fs");
     var core;
     if (process.platform === "win32" || global.TESTING_WINDOWS) {
@@ -66165,9 +66165,9 @@ var require_isexe = __commonJS({
   }
 });
 
-// node_modules/.pnpm/which@2.0.2/node_modules/which/which.js
+// node_modules/which/which.js
 var require_which = __commonJS({
-  "node_modules/.pnpm/which@2.0.2/node_modules/which/which.js"(exports2, module2) {
+  "node_modules/which/which.js"(exports2, module2) {
     var isWindows = process.platform === "win32" || process.env.OSTYPE === "cygwin" || process.env.OSTYPE === "msys";
     var path = require("path");
     var COLON = isWindows ? ";" : ":";
@@ -66261,9 +66261,9 @@ var require_which = __commonJS({
   }
 });
 
-// node_modules/.pnpm/path-key@3.1.1/node_modules/path-key/index.js
+// node_modules/path-key/index.js
 var require_path_key = __commonJS({
-  "node_modules/.pnpm/path-key@3.1.1/node_modules/path-key/index.js"(exports2, module2) {
+  "node_modules/path-key/index.js"(exports2, module2) {
     "use strict";
     var pathKey = (options = {}) => {
       const environment = options.env || process.env;
@@ -66278,9 +66278,9 @@ var require_path_key = __commonJS({
   }
 });
 
-// node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/util/resolveCommand.js
+// node_modules/cross-spawn/lib/util/resolveCommand.js
 var require_resolveCommand = __commonJS({
-  "node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/util/resolveCommand.js"(exports2, module2) {
+  "node_modules/cross-spawn/lib/util/resolveCommand.js"(exports2, module2) {
     "use strict";
     var path = require("path");
     var which = require_which();
@@ -66320,9 +66320,9 @@ var require_resolveCommand = __commonJS({
   }
 });
 
-// node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/util/escape.js
+// node_modules/cross-spawn/lib/util/escape.js
 var require_escape = __commonJS({
-  "node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/util/escape.js"(exports2, module2) {
+  "node_modules/cross-spawn/lib/util/escape.js"(exports2, module2) {
     "use strict";
     var metaCharsRegExp = /([()\][%!^"`<>&|;, *?])/g;
     function escapeCommand(arg) {
@@ -66345,17 +66345,17 @@ var require_escape = __commonJS({
   }
 });
 
-// node_modules/.pnpm/shebang-regex@3.0.0/node_modules/shebang-regex/index.js
+// node_modules/shebang-regex/index.js
 var require_shebang_regex = __commonJS({
-  "node_modules/.pnpm/shebang-regex@3.0.0/node_modules/shebang-regex/index.js"(exports2, module2) {
+  "node_modules/shebang-regex/index.js"(exports2, module2) {
     "use strict";
     module2.exports = /^#!(.*)/;
   }
 });
 
-// node_modules/.pnpm/shebang-command@2.0.0/node_modules/shebang-command/index.js
+// node_modules/shebang-command/index.js
 var require_shebang_command = __commonJS({
-  "node_modules/.pnpm/shebang-command@2.0.0/node_modules/shebang-command/index.js"(exports2, module2) {
+  "node_modules/shebang-command/index.js"(exports2, module2) {
     "use strict";
     var shebangRegex = require_shebang_regex();
     module2.exports = (string = "") => {
@@ -66373,9 +66373,9 @@ var require_shebang_command = __commonJS({
   }
 });
 
-// node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/util/readShebang.js
+// node_modules/cross-spawn/lib/util/readShebang.js
 var require_readShebang = __commonJS({
-  "node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/util/readShebang.js"(exports2, module2) {
+  "node_modules/cross-spawn/lib/util/readShebang.js"(exports2, module2) {
     "use strict";
     var fs = require("fs");
     var shebangCommand = require_shebang_command();
@@ -66395,9 +66395,9 @@ var require_readShebang = __commonJS({
   }
 });
 
-// node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/parse.js
+// node_modules/cross-spawn/lib/parse.js
 var require_parse3 = __commonJS({
-  "node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/parse.js"(exports2, module2) {
+  "node_modules/cross-spawn/lib/parse.js"(exports2, module2) {
     "use strict";
     var path = require("path");
     var resolveCommand = require_resolveCommand();
@@ -66457,9 +66457,9 @@ var require_parse3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/enoent.js
+// node_modules/cross-spawn/lib/enoent.js
 var require_enoent = __commonJS({
-  "node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/lib/enoent.js"(exports2, module2) {
+  "node_modules/cross-spawn/lib/enoent.js"(exports2, module2) {
     "use strict";
     var isWin = process.platform === "win32";
     function notFoundError(original, syscall) {
@@ -66507,9 +66507,9 @@ var require_enoent = __commonJS({
   }
 });
 
-// node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/index.js
+// node_modules/cross-spawn/index.js
 var require_cross_spawn = __commonJS({
-  "node_modules/.pnpm/cross-spawn@7.0.6/node_modules/cross-spawn/index.js"(exports2, module2) {
+  "node_modules/cross-spawn/index.js"(exports2, module2) {
     "use strict";
     var cp = require("child_process");
     var parse = require_parse3();
@@ -66534,9 +66534,9 @@ var require_cross_spawn = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/spawn.js
+// node_modules/hexo-util/dist/spawn.js
 var require_spawn = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/spawn.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/spawn.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -66602,9 +66602,9 @@ var require_spawn = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/strip_html.js
+// node_modules/hexo-util/dist/strip_html.js
 var require_strip_html = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/strip_html.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/strip_html.js"(exports2, module2) {
     "use strict";
     var STATE_PLAINTEXT = Symbol("plaintext");
     var STATE_HTML = Symbol("html");
@@ -66699,17 +66699,17 @@ var require_strip_html = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/strip_indent.js
+// node_modules/hexo-util/dist/strip_indent.js
 var require_strip_indent2 = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/strip_indent.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/strip_indent.js"(exports2, module2) {
     "use strict";
     module2.exports = require_strip_indent();
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/generated/decode-data-html.js
+// node_modules/entities/lib/generated/decode-data-html.js
 var require_decode_data_html = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/generated/decode-data-html.js"(exports2) {
+  "node_modules/entities/lib/generated/decode-data-html.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.default = new Uint16Array(
@@ -66721,9 +66721,9 @@ var require_decode_data_html = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/generated/decode-data-xml.js
+// node_modules/entities/lib/generated/decode-data-xml.js
 var require_decode_data_xml = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/generated/decode-data-xml.js"(exports2) {
+  "node_modules/entities/lib/generated/decode-data-xml.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.default = new Uint16Array(
@@ -66735,9 +66735,9 @@ var require_decode_data_xml = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/decode_codepoint.js
+// node_modules/entities/lib/decode_codepoint.js
 var require_decode_codepoint = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/decode_codepoint.js"(exports2) {
+  "node_modules/entities/lib/decode_codepoint.js"(exports2) {
     "use strict";
     var _a;
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -66799,9 +66799,9 @@ var require_decode_codepoint = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/decode.js
+// node_modules/entities/lib/decode.js
 var require_decode = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/decode.js"(exports2) {
+  "node_modules/entities/lib/decode.js"(exports2) {
     "use strict";
     var __createBinding2 = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -67158,9 +67158,9 @@ var require_decode = __commonJS({
   }
 });
 
-// node_modules/.pnpm/htmlparser2@9.1.0/node_modules/htmlparser2/lib/Tokenizer.js
+// node_modules/htmlparser2/lib/Tokenizer.js
 var require_Tokenizer = __commonJS({
-  "node_modules/.pnpm/htmlparser2@9.1.0/node_modules/htmlparser2/lib/Tokenizer.js"(exports2) {
+  "node_modules/htmlparser2/lib/Tokenizer.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.QuoteType = void 0;
@@ -67832,9 +67832,9 @@ var require_Tokenizer = __commonJS({
   }
 });
 
-// node_modules/.pnpm/htmlparser2@9.1.0/node_modules/htmlparser2/lib/Parser.js
+// node_modules/htmlparser2/lib/Parser.js
 var require_Parser = __commonJS({
-  "node_modules/.pnpm/htmlparser2@9.1.0/node_modules/htmlparser2/lib/Parser.js"(exports2) {
+  "node_modules/htmlparser2/lib/Parser.js"(exports2) {
     "use strict";
     var __createBinding2 = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -68267,9 +68267,9 @@ var require_Parser = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domelementtype@2.3.0/node_modules/domelementtype/lib/index.js
+// node_modules/domelementtype/lib/index.js
 var require_lib3 = __commonJS({
-  "node_modules/.pnpm/domelementtype@2.3.0/node_modules/domelementtype/lib/index.js"(exports2) {
+  "node_modules/domelementtype/lib/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.Doctype = exports2.CDATA = exports2.Tag = exports2.Style = exports2.Script = exports2.Comment = exports2.Directive = exports2.Text = exports2.Root = exports2.isTag = exports2.ElementType = void 0;
@@ -68301,9 +68301,9 @@ var require_lib3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domhandler@5.0.3/node_modules/domhandler/lib/node.js
+// node_modules/domhandler/lib/node.js
 var require_node = __commonJS({
-  "node_modules/.pnpm/domhandler@5.0.3/node_modules/domhandler/lib/node.js"(exports2) {
+  "node_modules/domhandler/lib/node.js"(exports2) {
     "use strict";
     var __extends2 = exports2 && exports2.__extends || /* @__PURE__ */ function() {
       var extendStatics2 = function(d, b) {
@@ -68735,9 +68735,9 @@ var require_node = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domhandler@5.0.3/node_modules/domhandler/lib/index.js
+// node_modules/domhandler/lib/index.js
 var require_lib4 = __commonJS({
-  "node_modules/.pnpm/domhandler@5.0.3/node_modules/domhandler/lib/index.js"(exports2) {
+  "node_modules/domhandler/lib/index.js"(exports2) {
     "use strict";
     var __createBinding2 = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -68894,9 +68894,9 @@ var require_lib4 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/generated/encode-html.js
+// node_modules/entities/lib/generated/encode-html.js
 var require_encode_html = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/generated/encode-html.js"(exports2) {
+  "node_modules/entities/lib/generated/encode-html.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     function restoreDiff(arr) {
@@ -68909,9 +68909,9 @@ var require_encode_html = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/escape.js
+// node_modules/entities/lib/escape.js
 var require_escape2 = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/escape.js"(exports2) {
+  "node_modules/entities/lib/escape.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.escapeText = exports2.escapeAttribute = exports2.escapeUTF8 = exports2.escape = exports2.encodeXML = exports2.getCodePoint = exports2.xmlReplacer = void 0;
@@ -68982,9 +68982,9 @@ var require_escape2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/encode.js
+// node_modules/entities/lib/encode.js
 var require_encode = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/encode.js"(exports2) {
+  "node_modules/entities/lib/encode.js"(exports2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -69037,9 +69037,9 @@ var require_encode = __commonJS({
   }
 });
 
-// node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/index.js
+// node_modules/entities/lib/index.js
 var require_lib5 = __commonJS({
-  "node_modules/.pnpm/entities@4.5.0/node_modules/entities/lib/index.js"(exports2) {
+  "node_modules/entities/lib/index.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.decodeXMLStrict = exports2.decodeHTML5Strict = exports2.decodeHTML4Strict = exports2.decodeHTML5 = exports2.decodeHTML4 = exports2.decodeHTMLAttribute = exports2.decodeHTMLStrict = exports2.decodeHTML = exports2.decodeXML = exports2.DecodingMode = exports2.EntityDecoder = exports2.encodeHTML5 = exports2.encodeHTML4 = exports2.encodeNonAsciiHTML = exports2.encodeHTML = exports2.escapeText = exports2.escapeAttribute = exports2.escapeUTF8 = exports2.escape = exports2.encodeXML = exports2.encode = exports2.decodeStrict = exports2.decode = exports2.EncodingMode = exports2.EntityLevel = void 0;
@@ -69167,9 +69167,9 @@ var require_lib5 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/dom-serializer@2.0.0/node_modules/dom-serializer/lib/foreignNames.js
+// node_modules/dom-serializer/lib/foreignNames.js
 var require_foreignNames = __commonJS({
-  "node_modules/.pnpm/dom-serializer@2.0.0/node_modules/dom-serializer/lib/foreignNames.js"(exports2) {
+  "node_modules/dom-serializer/lib/foreignNames.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.attributeNames = exports2.elementNames = void 0;
@@ -69280,9 +69280,9 @@ var require_foreignNames = __commonJS({
   }
 });
 
-// node_modules/.pnpm/dom-serializer@2.0.0/node_modules/dom-serializer/lib/index.js
+// node_modules/dom-serializer/lib/index.js
 var require_lib6 = __commonJS({
-  "node_modules/.pnpm/dom-serializer@2.0.0/node_modules/dom-serializer/lib/index.js"(exports2) {
+  "node_modules/dom-serializer/lib/index.js"(exports2) {
     "use strict";
     var __assign2 = exports2 && exports2.__assign || function() {
       __assign2 = Object.assign || function(t) {
@@ -69480,9 +69480,9 @@ var require_lib6 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/stringify.js
+// node_modules/domutils/lib/stringify.js
 var require_stringify2 = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/stringify.js"(exports2) {
+  "node_modules/domutils/lib/stringify.js"(exports2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -69538,9 +69538,9 @@ var require_stringify2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/traversal.js
+// node_modules/domutils/lib/traversal.js
 var require_traversal = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/traversal.js"(exports2) {
+  "node_modules/domutils/lib/traversal.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.getChildren = getChildren;
@@ -69602,9 +69602,9 @@ var require_traversal = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/manipulation.js
+// node_modules/domutils/lib/manipulation.js
 var require_manipulation = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/manipulation.js"(exports2) {
+  "node_modules/domutils/lib/manipulation.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.removeElement = removeElement;
@@ -69705,9 +69705,9 @@ var require_manipulation = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/querying.js
+// node_modules/domutils/lib/querying.js
 var require_querying = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/querying.js"(exports2) {
+  "node_modules/domutils/lib/querying.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.filter = filter;
@@ -69802,9 +69802,9 @@ var require_querying = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/legacy.js
+// node_modules/domutils/lib/legacy.js
 var require_legacy = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/legacy.js"(exports2) {
+  "node_modules/domutils/lib/legacy.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.testElement = testElement;
@@ -69920,9 +69920,9 @@ var require_legacy = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/helpers.js
+// node_modules/domutils/lib/helpers.js
 var require_helpers = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/helpers.js"(exports2) {
+  "node_modules/domutils/lib/helpers.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.DocumentPosition = void 0;
@@ -70012,9 +70012,9 @@ var require_helpers = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/feeds.js
+// node_modules/domutils/lib/feeds.js
 var require_feeds = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/feeds.js"(exports2) {
+  "node_modules/domutils/lib/feeds.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.getFeed = getFeed;
@@ -70152,9 +70152,9 @@ var require_feeds = __commonJS({
   }
 });
 
-// node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/index.js
+// node_modules/domutils/lib/index.js
 var require_lib7 = __commonJS({
-  "node_modules/.pnpm/domutils@3.2.2/node_modules/domutils/lib/index.js"(exports2) {
+  "node_modules/domutils/lib/index.js"(exports2) {
     "use strict";
     var __createBinding2 = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -70203,9 +70203,9 @@ var require_lib7 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/htmlparser2@9.1.0/node_modules/htmlparser2/lib/index.js
+// node_modules/htmlparser2/lib/index.js
 var require_lib8 = __commonJS({
-  "node_modules/.pnpm/htmlparser2@9.1.0/node_modules/htmlparser2/lib/index.js"(exports2) {
+  "node_modules/htmlparser2/lib/index.js"(exports2) {
     "use strict";
     var __createBinding2 = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
       if (k2 === void 0) k2 = k;
@@ -70299,9 +70299,9 @@ var require_lib8 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/toc_obj.js
+// node_modules/hexo-util/dist/toc_obj.js
 var require_toc_obj = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/toc_obj.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/toc_obj.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -70356,9 +70356,9 @@ var require_toc_obj = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/truncate.js
+// node_modules/hexo-util/dist/truncate.js
 var require_truncate = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/truncate.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/truncate.js"(exports2, module2) {
     "use strict";
     function truncate(str, options = {}) {
       if (typeof str !== "string")
@@ -70389,9 +70389,9 @@ var require_truncate = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/unescape_html.js
+// node_modules/hexo-util/dist/unescape_html.js
 var require_unescape_html = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/unescape_html.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/unescape_html.js"(exports2, module2) {
     "use strict";
     var htmlEntityMap = {
       "&amp;": "&",
@@ -70413,9 +70413,9 @@ var require_unescape_html = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/url_for.js
+// node_modules/hexo-util/dist/url_for.js
 var require_url_for = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/url_for.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/url_for.js"(exports2, module2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -70460,9 +70460,9 @@ var require_url_for = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/word_wrap.js
+// node_modules/hexo-util/dist/word_wrap.js
 var require_word_wrap = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/word_wrap.js"(exports2, module2) {
+  "node_modules/hexo-util/dist/word_wrap.js"(exports2, module2) {
     "use strict";
     function wordWrap(str, options = {}) {
       if (typeof str !== "string")
@@ -70482,9 +70482,9 @@ var require_word_wrap = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/index.js
+// node_modules/hexo-util/dist/index.js
 var require_dist5 = __commonJS({
-  "node_modules/.pnpm/hexo-util@3.3.0/node_modules/hexo-util/dist/index.js"(exports2) {
+  "node_modules/hexo-util/dist/index.js"(exports2) {
     "use strict";
     var __importDefault3 = exports2 && exports2.__importDefault || function(mod) {
       return mod && mod.__esModule ? mod : { "default": mod };
@@ -70617,9 +70617,9 @@ var require_dist5 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/polyfills.js
+// node_modules/graceful-fs/polyfills.js
 var require_polyfills = __commonJS({
-  "node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/polyfills.js"(exports2, module2) {
+  "node_modules/graceful-fs/polyfills.js"(exports2, module2) {
     var constants = require("constants");
     var origCwd = process.cwd;
     var cwd = null;
@@ -70905,9 +70905,9 @@ var require_polyfills = __commonJS({
   }
 });
 
-// node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/legacy-streams.js
+// node_modules/graceful-fs/legacy-streams.js
 var require_legacy_streams = __commonJS({
-  "node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/legacy-streams.js"(exports2, module2) {
+  "node_modules/graceful-fs/legacy-streams.js"(exports2, module2) {
     var Stream = require("stream").Stream;
     module2.exports = legacy;
     function legacy(fs) {
@@ -71001,9 +71001,9 @@ var require_legacy_streams = __commonJS({
   }
 });
 
-// node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/clone.js
+// node_modules/graceful-fs/clone.js
 var require_clone = __commonJS({
-  "node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/clone.js"(exports2, module2) {
+  "node_modules/graceful-fs/clone.js"(exports2, module2) {
     "use strict";
     module2.exports = clone;
     var getPrototypeOf = Object.getPrototypeOf || function(obj2) {
@@ -71024,9 +71024,9 @@ var require_clone = __commonJS({
   }
 });
 
-// node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/graceful-fs.js
+// node_modules/graceful-fs/graceful-fs.js
 var require_graceful_fs = __commonJS({
-  "node_modules/.pnpm/graceful-fs@4.2.11/node_modules/graceful-fs/graceful-fs.js"(exports2, module2) {
+  "node_modules/graceful-fs/graceful-fs.js"(exports2, module2) {
     var fs = require("fs");
     var polyfills = require_polyfills();
     var legacy = require_legacy_streams();
@@ -71394,9 +71394,9 @@ var require_graceful_fs = __commonJS({
   }
 });
 
-// node_modules/.pnpm/hexo-fs@4.1.3/node_modules/hexo-fs/dist/fs.js
+// node_modules/hexo-fs/dist/fs.js
 var require_fs = __commonJS({
-  "node_modules/.pnpm/hexo-fs@4.1.3/node_modules/hexo-fs/dist/fs.js"(exports2) {
+  "node_modules/hexo-fs/dist/fs.js"(exports2) {
     "use strict";
     var __awaiter2 = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
@@ -71912,9 +71912,9 @@ var require_goodbye = __commonJS({
   }
 });
 
-// node_modules/.pnpm/minimist@1.2.8/node_modules/minimist/index.js
+// node_modules/minimist/index.js
 var require_minimist = __commonJS({
-  "node_modules/.pnpm/minimist@1.2.8/node_modules/minimist/index.js"(exports2, module2) {
+  "node_modules/minimist/index.js"(exports2, module2) {
     "use strict";
     function hasKey(obj2, keys) {
       var o = obj2;
@@ -72134,9 +72134,9 @@ var require_minimist = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/homedir.js
+// node_modules/resolve/lib/homedir.js
 var require_homedir = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/homedir.js"(exports2, module2) {
+  "node_modules/resolve/lib/homedir.js"(exports2, module2) {
     "use strict";
     var os = require("os");
     module2.exports = os.homedir || function homedir() {
@@ -72156,9 +72156,9 @@ var require_homedir = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/caller.js
+// node_modules/resolve/lib/caller.js
 var require_caller = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/caller.js"(exports2, module2) {
+  "node_modules/resolve/lib/caller.js"(exports2, module2) {
     module2.exports = function() {
       var origPrepareStackTrace = Error.prepareStackTrace;
       Error.prepareStackTrace = function(_, stack2) {
@@ -72171,9 +72171,9 @@ var require_caller = __commonJS({
   }
 });
 
-// node_modules/.pnpm/path-parse@1.0.7/node_modules/path-parse/index.js
+// node_modules/path-parse/index.js
 var require_path_parse = __commonJS({
-  "node_modules/.pnpm/path-parse@1.0.7/node_modules/path-parse/index.js"(exports2, module2) {
+  "node_modules/path-parse/index.js"(exports2, module2) {
     "use strict";
     var isWindows = process.platform === "win32";
     var splitWindowsRe = /^(((?:[a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?[\\\/]?)(?:[^\\\/]*[\\\/])*)((\.{1,2}|[^\\\/]+?|)(\.[^.\/\\]*|))[\\\/]*$/;
@@ -72231,9 +72231,9 @@ var require_path_parse = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/node-modules-paths.js
+// node_modules/resolve/lib/node-modules-paths.js
 var require_node_modules_paths = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/node-modules-paths.js"(exports2, module2) {
+  "node_modules/resolve/lib/node-modules-paths.js"(exports2, module2) {
     var path = require("path");
     var parse = path.parse || require_path_parse();
     var getNodeModulesDirs = function getNodeModulesDirs2(absoluteStart, modules) {
@@ -72273,18 +72273,18 @@ var require_node_modules_paths = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/normalize-options.js
+// node_modules/resolve/lib/normalize-options.js
 var require_normalize_options = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/normalize-options.js"(exports2, module2) {
+  "node_modules/resolve/lib/normalize-options.js"(exports2, module2) {
     module2.exports = function(x, opts) {
       return opts || {};
     };
   }
 });
 
-// node_modules/.pnpm/function-bind@1.1.2/node_modules/function-bind/implementation.js
+// node_modules/function-bind/implementation.js
 var require_implementation = __commonJS({
-  "node_modules/.pnpm/function-bind@1.1.2/node_modules/function-bind/implementation.js"(exports2, module2) {
+  "node_modules/function-bind/implementation.js"(exports2, module2) {
     "use strict";
     var ERROR_MESSAGE = "Function.prototype.bind called on incompatible ";
     var toStr = Object.prototype.toString;
@@ -72358,18 +72358,18 @@ var require_implementation = __commonJS({
   }
 });
 
-// node_modules/.pnpm/function-bind@1.1.2/node_modules/function-bind/index.js
+// node_modules/function-bind/index.js
 var require_function_bind = __commonJS({
-  "node_modules/.pnpm/function-bind@1.1.2/node_modules/function-bind/index.js"(exports2, module2) {
+  "node_modules/function-bind/index.js"(exports2, module2) {
     "use strict";
     var implementation = require_implementation();
     module2.exports = Function.prototype.bind || implementation;
   }
 });
 
-// node_modules/.pnpm/hasown@2.0.2/node_modules/hasown/index.js
+// node_modules/hasown/index.js
 var require_hasown = __commonJS({
-  "node_modules/.pnpm/hasown@2.0.2/node_modules/hasown/index.js"(exports2, module2) {
+  "node_modules/hasown/index.js"(exports2, module2) {
     "use strict";
     var call = Function.prototype.call;
     var $hasOwn = Object.prototype.hasOwnProperty;
@@ -72378,9 +72378,9 @@ var require_hasown = __commonJS({
   }
 });
 
-// node_modules/.pnpm/is-core-module@2.16.1/node_modules/is-core-module/core.json
+// node_modules/is-core-module/core.json
 var require_core2 = __commonJS({
-  "node_modules/.pnpm/is-core-module@2.16.1/node_modules/is-core-module/core.json"(exports2, module2) {
+  "node_modules/is-core-module/core.json"(exports2, module2) {
     module2.exports = {
       assert: true,
       "node:assert": [">= 14.18 && < 15", ">= 16"],
@@ -72546,9 +72546,9 @@ var require_core2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/is-core-module@2.16.1/node_modules/is-core-module/index.js
+// node_modules/is-core-module/index.js
 var require_is_core_module = __commonJS({
-  "node_modules/.pnpm/is-core-module@2.16.1/node_modules/is-core-module/index.js"(exports2, module2) {
+  "node_modules/is-core-module/index.js"(exports2, module2) {
     "use strict";
     var hasOwn = require_hasown();
     function specifierIncluded(current, specifier) {
@@ -72609,9 +72609,9 @@ var require_is_core_module = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/async.js
+// node_modules/resolve/lib/async.js
 var require_async2 = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/async.js"(exports2, module2) {
+  "node_modules/resolve/lib/async.js"(exports2, module2) {
     var fs = require("fs");
     var getHomedir = require_homedir();
     var path = require("path");
@@ -72904,9 +72904,9 @@ var require_async2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/core.json
+// node_modules/resolve/lib/core.json
 var require_core3 = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/core.json"(exports2, module2) {
+  "node_modules/resolve/lib/core.json"(exports2, module2) {
     module2.exports = {
       assert: true,
       "node:assert": [">= 14.18 && < 15", ">= 16"],
@@ -73072,9 +73072,9 @@ var require_core3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/core.js
+// node_modules/resolve/lib/core.js
 var require_core4 = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/core.js"(exports2, module2) {
+  "node_modules/resolve/lib/core.js"(exports2, module2) {
     "use strict";
     var isCoreModule = require_is_core_module();
     var data = require_core3();
@@ -73089,9 +73089,9 @@ var require_core4 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/is-core.js
+// node_modules/resolve/lib/is-core.js
 var require_is_core = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/is-core.js"(exports2, module2) {
+  "node_modules/resolve/lib/is-core.js"(exports2, module2) {
     var isCoreModule = require_is_core_module();
     module2.exports = function isCore(x) {
       return isCoreModule(x);
@@ -73099,9 +73099,9 @@ var require_is_core = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/sync.js
+// node_modules/resolve/lib/sync.js
 var require_sync = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/lib/sync.js"(exports2, module2) {
+  "node_modules/resolve/lib/sync.js"(exports2, module2) {
     var isCore = require_is_core_module();
     var fs = require("fs");
     var path = require("path");
@@ -73292,9 +73292,9 @@ var require_sync = __commonJS({
   }
 });
 
-// node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/index.js
+// node_modules/resolve/index.js
 var require_resolve = __commonJS({
-  "node_modules/.pnpm/resolve@1.22.10/node_modules/resolve/index.js"(exports2, module2) {
+  "node_modules/resolve/index.js"(exports2, module2) {
     var async = require_async2();
     async.core = require_core4();
     async.isCore = require_is_core();
@@ -73408,9 +73408,9 @@ var require_help = __commonJS({
   }
 });
 
-// node_modules/.pnpm/command-exists@1.2.9/node_modules/command-exists/lib/command-exists.js
+// node_modules/command-exists/lib/command-exists.js
 var require_command_exists = __commonJS({
-  "node_modules/.pnpm/command-exists@1.2.9/node_modules/command-exists/lib/command-exists.js"(exports2, module2) {
+  "node_modules/command-exists/lib/command-exists.js"(exports2, module2) {
     "use strict";
     var exec = require("child_process").exec;
     var execSync = require("child_process").execSync;
@@ -73556,9 +73556,9 @@ var require_command_exists = __commonJS({
   }
 });
 
-// node_modules/.pnpm/command-exists@1.2.9/node_modules/command-exists/index.js
+// node_modules/command-exists/index.js
 var require_command_exists2 = __commonJS({
-  "node_modules/.pnpm/command-exists@1.2.9/node_modules/command-exists/index.js"(exports2, module2) {
+  "node_modules/command-exists/index.js"(exports2, module2) {
     module2.exports = require_command_exists();
   }
 });
@@ -73732,7 +73732,7 @@ var require_package = __commonJS({
         pretest: "npm run clean && npm run build",
         test: "mocha test/**/*.ts --require ts-node/register",
         "test-cov": "nyc --reporter=lcovonly npm test",
-        prepare: "git submodule init && git submodule update && git submodule foreach git pull origin master"
+        prepare: ""
       },
       repository: "hexojs/hexo-cli",
       homepage: "https://hexo.io/",
