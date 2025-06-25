@@ -6570,7 +6570,6 @@ var require_fr = __commonJS({
       // Messages de paramètres
       "\u68C0\u67E5\u7CFB\u7EDF\u72B6\u6001\u5931\u8D25": "\xC9chec de la v\xE9rification de l'\xE9tat du syst\xE8me",
       "\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\uFF0C\u4E0D\u80FD\u518D\u6B21\u6CE8\u518C": "Le syst\xE8me est d\xE9j\xE0 initialis\xE9, impossible de s'enregistrer \xE0 nouveau",
-      "\u672A\u914D\u7F6E\u767B\u5F55\u4FE1\u606F\uFF0C\u65E0\u9700\u767B\u5F55": "Pas de configuration de connexion requise",
       // Messages de succès
       "\u83B7\u53D6\u56FE\u7247\u6210\u529F": "R\xE9cup\xE9ration des images r\xE9ussie",
       "\u521B\u5EFA\u6587\u4EF6\u5939\u6210\u529F": "Cr\xE9ation du dossier r\xE9ussie",
@@ -86518,6 +86517,7 @@ var require_update = __commonJS({
       var split = hfm.split(post.raw), frontMatter = split.data;
       console.log(hfm.parse([frontMatter, "---", split.content].join("\n")));
       compiled = hfm.parse([frontMatter, "---", split.content].join("\n"));
+      console.log(compiled);
       var preservedKeys = ["title", "date", "tags", "categories", "_content", "author"];
       Object.keys(hexo2.config.metadata || {}).forEach(function(key) {
         preservedKeys.push(key);
