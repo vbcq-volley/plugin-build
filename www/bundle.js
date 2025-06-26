@@ -3116,7 +3116,7 @@ class App {
 
     switch (route) {
       case 'posts':
-        view = new Posts(this.main);
+        window.location="http://localhost:8080/pro/content/posts/blogs"
         break;
       case 'post':
         if (id) {
@@ -3126,7 +3126,7 @@ class App {
         }
         break;
       case 'pages':
-        view = new Pages(this.main);
+        window.location="http://localhost:8080/pro/content/pages"
         break;
       case 'page':
         if (id) {
