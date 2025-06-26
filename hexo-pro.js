@@ -138514,7 +138514,10 @@ var require_post_api = __commonJS({
       }
       function loadBlogInfoList() {
         const blogInfoList = fs2.readFileSync(path2.join(hexo2.base_dir, "blogInfoList.json"));
-        return JSON.parse(blogInfoList);
+        return JSON.parse(blogInfoList).map((item) => {
+          item.permalink = item.permalink.replace("http://example.com/", "https://vbcq-volley.github.io/");
+          return item;
+        });
       }
       function getHighlightedTextFromHtml(content, searchPattern, contextLength = 40) {
         if (!content || content.trim() === "") {
@@ -138587,7 +138590,7 @@ var require_post_api = __commonJS({
           const { item } = result;
           const highlightedText = getHighlightedTextFromHtml(item.content, req.body.searchPattern);
           return {
-            permalink: item.permalink,
+            permalink: item.permalink.replace("http://example.com/", "https://vbcq-volley.github.io/"),
             isPage: item.isPage,
             isDraft: item.isDraft,
             title: item.title,
