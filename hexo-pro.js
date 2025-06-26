@@ -172817,7 +172817,6 @@ function buildIndex() {
       this.permalink = permalink;
     }
   }
-  console.log(hexo.config);
   const posts = hexo.model("Post").toArray();
   const pages = hexo.model("Page").toArray();
   const blogInfoList = [];
@@ -172855,6 +172854,7 @@ hexo.extend.filter.register("server_middleware", function(app) {
       if (isStaticFile) {
         filePath = path.join(__dirname, "www", req.originalUrl.substring(4));
       }
+      console.log(filePath);
       fs.readFile(filePath, (err, data) => {
         if (err) {
           res.writeHead(404, { "Content-Type": "text/plain" });
