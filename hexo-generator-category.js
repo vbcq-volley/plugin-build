@@ -9,7 +9,7 @@ var require_pagination = __commonJS({
   "node_modules/.pnpm/hexo-pagination@3.0.0/node_modules/hexo-pagination/lib/pagination.js"(exports2, module2) {
     "use strict";
     var { format } = require("util");
-    function pagination(base, posts, options = {}) {
+    function pagination2(base, posts, options = {}) {
       if (typeof base !== "string") throw new TypeError("base must be a string!");
       if (!posts) throw new TypeError("posts is required!");
       if (base && !base.endsWith("/")) base += "/";
@@ -68,34 +68,7 @@ var require_pagination = __commonJS({
       }
       return result;
     }
-    module2.exports = pagination;
-  }
-});
-
-// lib/generator.js
-var require_generator = __commonJS({
-  "lib/generator.js"(exports2, module2) {
-    "use strict";
-    var pagination = require_pagination();
-    module2.exports = function(locals) {
-      const config = this.config;
-      const perPage = config.category_generator.per_page;
-      const paginationDir = config.pagination_dir || "page";
-      const orderBy = config.category_generator.order_by || "-date";
-      return locals.categories.reduce((result, category) => {
-        if (!category.length) return result;
-        const posts = category.posts.sort(orderBy);
-        const data = pagination(category.path, posts, {
-          perPage,
-          layout: ["category", "archive", "index"],
-          format: paginationDir + "/%d/",
-          data: {
-            category: category.name
-          }
-        });
-        return result.concat(data);
-      }, []);
-    };
+    module2.exports = pagination2;
   }
 });
 
@@ -103,4 +76,55 @@ var require_generator = __commonJS({
 hexo.config.category_generator = Object.assign({
   per_page: typeof hexo.config.per_page === "undefined" ? 10 : hexo.config.per_page
 }, hexo.config.category_generator);
-hexo.extend.generator.register("category", require_generator());
+var pagination = require_pagination();
+var temp = function(locals) {
+  const config = this.config;
+  console.log(this.config);
+  const perPage = config.per_page;
+  const paginationDir = config.pagination_dir || "page";
+  const orderBy = config.order_by || "-date";
+  const pages = hexo.locals.get("pages");
+  let categories = hexo.locals.get("categories") || [];
+  pages.data.forEach((page) => {
+    const globalCategories = categories.data || [];
+    const pageCategories = page.categories || [];
+    if (pageCategories.length > 0) {
+      const newCategories = pageCategories.filter((category) => !globalCategories.some((cat) => cat.name === category)).map((category) => ({
+        name: category,
+        posts: []
+      }));
+      const allCategories = [.../* @__PURE__ */ new Set([...globalCategories, ...newCategories])];
+      categories.data = allCategories.map((category) => ({
+        ...category,
+        posts: [...category.posts || []],
+        length: category.posts.length,
+        path: category.path || "category/" + category.name
+      })).map((cat) => {
+        if (pageCategories.includes(cat.name)) {
+          cat.posts.push(page);
+        }
+        return cat;
+      });
+      categories.length = allCategories.length;
+    }
+  });
+  hexo.locals.set("categories", function() {
+    return categories;
+  });
+  return categories.data.reduce((result, category) => {
+    if (!category.length) return result;
+    const posts = category.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const data = pagination(category.path, posts, {
+      perPage,
+      layout: ["category", "archive", "index"],
+      format: paginationDir + "/%d/",
+      data: {
+        category: category.name,
+        postTotal: category.length,
+        posts: category.posts
+      }
+    });
+    return result.concat(data);
+  }, []);
+};
+hexo.extend.generator.register("category", temp);
